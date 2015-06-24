@@ -1,0 +1,106 @@
+Public Function LIMITE_RSUL(xpercarga, xrsul, xcargasul, xUGarauc, xugG1, xugG2, xugG3, xugG4) As Variant
+'************************************************
+'IO-ON.SSE,revisão 62, Vig. 02/02/2014.
+'MOP/CNOS 021/2014, vig. 19/02/2014
+'************************************************
+
+'ITEM 6.4.1 e item 6.4.2
+
+Select Case xUGarauc
+    Case 3 '2G+1V
+        Select Case xcargasul
+            Case Is > 17300
+                lim = 3500
+            Case 17000 To 17300
+                lim = 5000
+            Case 16500 To 17000
+                lim = 6700
+            Case 16000 To 16500
+                lim = 7800
+            Case 15000 To 16000
+                lim = 7800
+            Case Is <= 15000
+                If xpercarga = "LEVE" Or xpercarga = "MINIMA" Then
+                    lim = 7800 - 300 'observação 6
+                Else
+                    lim = 7800
+                End If
+        End Select
+    Case 2 '1G+1V
+        Select Case xcargasul
+            Case Is > 17300
+                lim = 3500
+            Case 17000 To 17300
+                lim = 5000
+            Case 16500 To 17000
+                lim = 6000
+            Case 16000 To 16500
+                lim = 6700
+            Case 15000 To 16000
+                lim = 7800
+            Case Is <= 15000
+                If xpercarga = "LEVE" Or xpercarga = "MINIMA" Then
+                    lim = 7800 - 300 'observação 6
+                Else
+                    lim = 7800
+                End If
+        End Select
+    Case 0 '0 máquinas. Não há possibilidade de operar com somente 1 máquina
+        Select Case xcargasul
+            Case 16500 To 17000
+                lim = 4000
+            Case 16000 To 16500
+                lim = 4000
+            Case 15000 To 16000
+                lim = 6000
+            Case Is <= 15000
+                If xpercarga = "LEVE" Or xpercarga = "MINIMA" Then
+                    lim = 7800 - 300 'observação 6
+                Else
+                    lim = 7800
+                End If
+        End Select
+End Select
+
+
+Select Case xpercarga 'Item 6.4.3 IO-ON.SSE
+    Case "MEDIA", "PESADA"
+    r1 = 10
+    r2 = 12
+    r3 = 3
+    r4 = 4
+    Case "LEVE", "MINIMA"
+    r1 = 8
+    r2 = 8
+    r3 = 2
+    r4 = 3
+End Select
+
+
+red1 = 500
+red2 = 400
+red3 = 300
+red4 = 400
+
+dif1 = r1 - xugG1
+dif2 = r2 - xugG2
+dif3 = r3 - xugG3
+dif4 = r4 - xugG4
+
+If dif1 > 0 Then
+    lim = lim - (dif1 * red1)
+End If
+If dif2 > 0 Then
+    lim = lim - (dif2 * red2)
+End If
+If dif3 > 0 Then
+    lim = lim - (dif3 * red3)
+End If
+If dif4 > 0 Then
+    lim = lim - (dif4 * red4)
+End If
+
+
+LIMITE_RSUL = lim
+
+End Function

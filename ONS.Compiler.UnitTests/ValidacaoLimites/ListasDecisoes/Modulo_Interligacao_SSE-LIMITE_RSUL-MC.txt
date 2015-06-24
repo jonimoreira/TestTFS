@@ -1,0 +1,27 @@
+// <nome_variavel>[,<valor_inicial>[,<tipo>]]
+// default: double, 0.0
+
+xpercarga = "LEVE" 
+xrsul = 0.0
+xcargasul
+xUGarauc
+xugG1
+xugG2
+xugG3
+xugG4
+
+lim
+r1
+r2 
+r3 
+r4
+red1 
+red2 
+red3 
+red4 
+
+dif1 
+dif2 
+dif3 
+dif4 
+

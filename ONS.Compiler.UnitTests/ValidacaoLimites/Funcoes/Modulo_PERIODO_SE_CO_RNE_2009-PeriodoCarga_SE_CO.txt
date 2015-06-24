@@ -1,0 +1,108 @@
+Public Function PeriodoCarga_SE_CO(xHora As Date, xDiaSemana As String, xTipo As String, Hverao) As String
+
+Select Case xDiaSemana
+    Case "Segunda-Feira"
+        If xTipo = "ÚTIL" Then
+            GoTo xSegunda
+        Else
+            GoTo xDomingo
+        End If
+    Case "Terça-Feira", "Quarta-Feira", "Quinta-Feira", "Sexta-Feira", "Sábado"
+        If xTipo = "ÚTIL" Then
+            GoTo xTercaSabado
+        Else
+            GoTo xDomingo
+        End If
+    Case "Domingo"
+        GoTo xDomingo
+End Select
+
+Exit Function
+
+xSegunda:
+If Hverao = "VERÃO" Then 'horário de VERÃO->MOP 090/2013
+    Select Case xHora
+        Case "0:00:00" To "06:59:00"
+            PeriodoCarga_SE_CO = "MINIMA"
+        Case "7:00:00" To "18:59:00"
+            PeriodoCarga_SE_CO = "MEDIA"
+        Case "19:00:00" To "21:59:00"
+            PeriodoCarga_SE_CO = "PESADA"
+        Case "22:00:00" To "23:59:00"
+            PeriodoCarga_SE_CO = "MEDIA"
+    End Select
+End If
+If Hverao = "NORMAL" Then 'horário NORMAL
+    Select Case xHora
+        Case "0:00:00" To "06:59:00"
+            PeriodoCarga_SE_CO = "MINIMA"
+        Case "7:00:00" To "16:59:00"
+            PeriodoCarga_SE_CO = "MEDIA"
+        Case "17:00:00" To "21:59:00"
+            PeriodoCarga_SE_CO = "PESADA"
+        Case "22:00:00" To "23:59:00"
+            PeriodoCarga_SE_CO = "MEDIA"
+    End Select
+End If
+Exit Function
+
+xTercaSabado:
+If Hverao = "VERÃO" Then 'horário de VERÃO->MOP 090/2013
+    Select Case xHora
+        Case "0:00:00" To "06:59:00"
+            PeriodoCarga_SE_CO = "LEVE"
+        Case "7:00:00" To "18:59:00"
+            PeriodoCarga_SE_CO = "MEDIA"
+        Case "19:00:00" To "21:59:00"
+            PeriodoCarga_SE_CO = "PESADA"
+        Case "22:00:00" To "23:59:00"
+            PeriodoCarga_SE_CO = "MEDIA"
+    End Select
+End If
+If Hverao = "NORMAL" Then 'horário NORMAL
+    Select Case xHora
+        Case "0:00:00" To "06:59:00"
+            PeriodoCarga_SE_CO = "LEVE"
+        Case "7:00:00" To "16:59:00"
+            PeriodoCarga_SE_CO = "MEDIA"
+        Case "17:00:00" To "21:59:00"
+            PeriodoCarga_SE_CO = "PESADA"
+        Case "22:00:00" To "23:59:00"
+            PeriodoCarga_SE_CO = "MEDIA"
+    End Select
+End If
+Exit Function
+
+xDomingo:
+If Hverao = "VERÃO" Then 'horário de VERÃO->MOP 090/2013
+Select Case xHora
+    Case "0:00:00" To "04:59:00"
+        PeriodoCarga_SE_CO = "LEVE"
+    Case "5:00:00" To "09:59:00"
+        PeriodoCarga_SE_CO = "MINIMA"
+    Case "10:00:00" To "18:59:00"
+        PeriodoCarga_SE_CO = "LEVE"
+    Case "19:00:00" To "21:59:00"
+        PeriodoCarga_SE_CO = "MEDIA"
+    Case "22:00:00" To "23:59:00"
+        PeriodoCarga_SE_CO = "LEVE"
+End Select
+End If
+
+If Hverao = "NORMAL" Then 'horário NORMAL
+Select Case xHora
+    Case "0:00:00" To "04:59:00"
+        PeriodoCarga_SE_CO = "LEVE"
+    Case "5:00:00" To "09:59:00"
+        PeriodoCarga_SE_CO = "MINIMA"
+    Case "10:00:00" To "16:59:00"
+        PeriodoCarga_SE_CO = "LEVE"
+    Case "17:00:00" To "21:59:00"
+        PeriodoCarga_SE_CO = "MEDIA"
+    Case "22:00:00" To "23:59:00"
+        PeriodoCarga_SE_CO = "LEVE"
+End Select
+End If
+
+End Function
+
