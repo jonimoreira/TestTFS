@@ -183,6 +183,131 @@ namespace ONS.Compiler.UnitTests
 
         }
 
+        [TestMethod]
+        public void TestaCarregaListaDecisoes_Modulo_PERIODO_SE_CO_RNE_2009_PeriodoCarga_SE_CO()
+        {
+            Mediador mediador = new Mediador();
+
+            InequationEngine maquinaInequacoes = new InequationEngine();
+            mediador.CarregaMemoriaDeCalculo(maquinaInequacoes, "Modulo_PERIODO_SE_CO_RNE_2009-PeriodoCarga_SE_CO");
+            mediador.CarregaListaDecisoes(maquinaInequacoes, "Modulo_PERIODO_SE_CO_RNE_2009-PeriodoCarga_SE_CO");
+
+            Assert.AreEqual(true, true);
+
+        }
+
+        [TestMethod]
+        public void TestaAtualizaVariaveisDaMemoriaDeCalculo_Modulo_PERIODO_SE_CO_RNE_2009_PeriodoCarga_SE_CO()
+        {
+            Mediador mediador = new Mediador();
+
+            InequationEngine maquinaInequacoes = new InequationEngine();
+            mediador.CarregaMemoriaDeCalculo(maquinaInequacoes, "Modulo_PERIODO_SE_CO_RNE_2009-PeriodoCarga_SE_CO");
+            mediador.AtualizaVariaveisDaMemoriaDeCalculo(maquinaInequacoes, "Modulo_PERIODO_SE_CO_RNE_2009-PeriodoCarga_SE_CO");
+            mediador.CarregaListaDecisoes(maquinaInequacoes, "Modulo_PERIODO_SE_CO_RNE_2009-PeriodoCarga_SE_CO");
+
+            Assert.AreEqual(true, true);
+
+        }
+
+        [TestMethod]
+        public void TestaOperacaoComparacaoHora()
+        {
+            string pattern = "HH:mm:ss";
+            string horaA = "00:00:00";
+            string horaB = "23:59:00";
+            DateTime a = DateTime.Now;
+            DateTime b = DateTime.Now;
+            double result = double.MinValue;
+            DateTime horaConvertidaFlee = DateTime.Now;
+            
+            if (!DateTime.TryParseExact(horaA, pattern, null, System.Globalization.DateTimeStyles.None, out a) || !DateTime.TryParseExact(horaB, pattern, null, System.Globalization.DateTimeStyles.None, out b))
+            {
+                throw new Exception("Erro no parsing das variáveis de hora.");
+            }
+
+            string expressao = "(a>b or a<b or a=b or a<>b)";
+            string blocoAcaoTrue = "result=100;";
+            //string blocoAcaoTrue = "result=100;horaConvertidaFlee=cast(" + horaA + ");";
+            string blocoAcaoFalse = "result=0;";
+
+            InequationEngine maquinaInequacoes = new InequationEngine();
+            maquinaInequacoes.CalculationMemory.Add(new Variable("a", VariableDataType.Time, a));
+            maquinaInequacoes.CalculationMemory.Add(new Variable("b", VariableDataType.Time, b));
+            maquinaInequacoes.CalculationMemory.Add(new Variable("result", VariableDataType.Numeric, result));
+            maquinaInequacoes.CalculationMemory.Add(new Variable("horaA", VariableDataType.String, horaA));
+
+            Inequation inequacao = new Inequation(expressao);
+            ActionBlock blocoAcaoTrueObj = new ActionBlock(blocoAcaoTrue);
+            ActionBlock blocoAcaoFalseObj = new ActionBlock(blocoAcaoFalse);
+
+            Decision decisao = new Decision(inequacao, blocoAcaoTrueObj, blocoAcaoFalseObj);
+            maquinaInequacoes.DecisionsList.AddDecision(decisao);
+
+            maquinaInequacoes.Compile();
+
+            maquinaInequacoes.Execute();
+
+            Assert.AreEqual(maquinaInequacoes.CalculationMemory["a"].Value, a);
+            Assert.AreEqual(maquinaInequacoes.CalculationMemory["b"].Value, b);
+            Assert.AreEqual(maquinaInequacoes.CalculationMemory["result"].Value, 100.0);
+        }
+
+        [TestMethod]
+        public void TestaCompila_Modulo_PERIODO_SE_CO_RNE_2009_PeriodoCarga_SE_CO()
+        {
+            Mediador mediador = new Mediador();
+
+            InequationEngine maquinaInequacoes = new InequationEngine();
+            mediador.CarregaMemoriaDeCalculo(maquinaInequacoes, "Modulo_PERIODO_SE_CO_RNE_2009-PeriodoCarga_SE_CO");
+            mediador.CarregaListaDecisoes(maquinaInequacoes, "Modulo_PERIODO_SE_CO_RNE_2009-PeriodoCarga_SE_CO");
+
+            maquinaInequacoes.Compile();
+
+            Assert.AreEqual(true, true);
+        }
+
+        [TestMethod]
+        public void TestaExecuta_Modulo_PERIODO_SE_CO_RNE_2009_PeriodoCarga_SE_CO()
+        {
+            Mediador mediador = new Mediador();
+
+            InequationEngine maquinaInequacoes = new InequationEngine();
+            mediador.CarregaMemoriaDeCalculo(maquinaInequacoes, "Modulo_PERIODO_SE_CO_RNE_2009-PeriodoCarga_SE_CO");
+            mediador.CarregaListaDecisoes(maquinaInequacoes, "Modulo_PERIODO_SE_CO_RNE_2009-PeriodoCarga_SE_CO");
+
+            maquinaInequacoes.Compile();
+            maquinaInequacoes.Execute();
+
+            Variable PeriodoCarga_SE_CO = maquinaInequacoes.CalculationMemory["PeriodoCarga_SE_CO"];
+
+            Assert.AreEqual(PeriodoCarga_SE_CO.Value, "LEVE");
+        }
+
+        [TestMethod]
+        public void TestaExecutaComDados_Modulo_PERIODO_SE_CO_RNE_2009_PeriodoCarga_SE_CO()
+        {
+            Mediador mediador = new Mediador();
+
+            mediador.CarregaDados_SheetRow_S_SE();
+            mediador.CarregaDados_SheetRow_SUL();
+
+            InequationEngine maquinaInequacoes = new InequationEngine();
+            mediador.CarregaMemoriaDeCalculo(maquinaInequacoes, "Modulo_PERIODO_SE_CO_RNE_2009-PeriodoCarga_SE_CO");
+            mediador.CarregaListaDecisoes(maquinaInequacoes, "Modulo_PERIODO_SE_CO_RNE_2009-PeriodoCarga_SE_CO");
+
+            maquinaInequacoes.Compile();
+
+            for (int i = 0; i < mediador.linhas_S_SE.Count; i++)
+            {
+                mediador.AtualizaVariaveisDaMemoriaDeCalculo_Modulo_Interligacao_SSE_LIMITE_RSUL(maquinaInequacoes, mediador.linhas_S_SE[i], mediador.linhas_SUL[i]);
+                maquinaInequacoes.Execute();
+
+                Variable limite = maquinaInequacoes.CalculationMemory["lim"];
+
+                Assert.AreEqual(limite.Value, mediador.linhas_S_SE[i].LDretorno_LIM_RSUL_FSUL_SUP_RSUL);
+            }
+        }
 
         [TestMethod]
         public void TestaMaquinaInequacaoValidacaoLimites()

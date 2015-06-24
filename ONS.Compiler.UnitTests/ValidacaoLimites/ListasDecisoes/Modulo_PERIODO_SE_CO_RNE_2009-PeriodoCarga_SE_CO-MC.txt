@@ -2,7 +2,7 @@
 // default: double, 0.0
 
 // xHora As Date
-xHora = "0:00:00"
+xHora = hora(0:00:00)
 xDiaSemana = "Segunda-Feira" 
 xTipo = "ÚTIL"
 Hverao = "VERÃO"

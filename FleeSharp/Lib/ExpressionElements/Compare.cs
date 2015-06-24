@@ -78,10 +78,17 @@ namespace Ciloci.Flee
 				return typeof(bool);
 			} else if (this.AreBothChildrenSameEnum() == true) {
 				return typeof(bool);
-			} else {
-				// Invalid operands
-				return null;
 			}
+            else if (object.ReferenceEquals(leftType, typeof(DateTime)) & object.ReferenceEquals(rightType, typeof(string)))
+            {
+                // Comparison DateTime with String 
+                return typeof(bool);
+            }
+            else
+            {
+                // Invalid operands
+                return null;
+            }
 		}
 
 		private MethodInfo GetOverloadedCompareOperator()

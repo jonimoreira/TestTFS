@@ -102,7 +102,7 @@ namespace Ciloci.Flee
 			rootElement.Emit(ilg, services);
 
 			ilg.ValidateLength();
-
+            options.EmitToAssembly = true;
 			// Emit to an assembly if required
 			if (options.EmitToAssembly == true) {
 				EmitToAssembly(rootElement, services);

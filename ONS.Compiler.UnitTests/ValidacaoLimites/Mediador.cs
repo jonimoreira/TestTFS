@@ -167,10 +167,16 @@ namespace ONS.Compiler.UnitTests.ValidacaoLimites
                             varValue = valores[1];
                             double testDouble = double.MinValue;
                             bool testBool = true;
+                            DateTime testDateTime = DateTime.Now;
                             if (double.TryParse(varValue.ToString(), out testDouble))
                                 varType = VariableDataType.Numeric;
                             else if (bool.TryParse(varValue.ToString(), out testBool))
                                 varType = VariableDataType.Boolean;
+                            else if (DateTime.TryParse(varValue.ToString().Replace("hora(", string.Empty).Replace(")", string.Empty), out testDateTime))
+                            {
+                                varType = VariableDataType.Time;
+                                varValue = testDateTime;
+                            }
                             else
                                 throw new Exception("Erro ao carregar memória de cálculo do arquivo [" + fileName + "]. Formato de valor na definição de variável inválida em: " + line);
 

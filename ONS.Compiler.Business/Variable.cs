@@ -78,7 +78,8 @@ namespace ONS.Compiler.Business
     {
         Numeric = 1,
         String = 2,
-        Boolean = 3
+        Boolean = 3,
+        Time = 4,
     }
 
 }
