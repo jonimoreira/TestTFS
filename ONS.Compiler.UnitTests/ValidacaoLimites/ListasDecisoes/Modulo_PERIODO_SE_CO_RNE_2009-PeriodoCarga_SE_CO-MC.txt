@@ -11,5 +11,4 @@ PeriodoCarga_SE_CO = "LEVE"
 
 xSegunda = false
 xTercaSabado = false
-xDomingo = flase
-
+xDomingo = false

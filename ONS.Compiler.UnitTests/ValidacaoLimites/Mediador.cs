@@ -124,8 +124,8 @@ namespace ONS.Compiler.UnitTests.ValidacaoLimites
 
         public void CarregaMemoriaDeCalculo(InequationEngine maquinaInequacoes, string funcao)
         {
-            // Parse memória de cálculo no formato txt
-            string fileName = GetCaminhoBaseArquivosTeste() + @"\ValidacaoLimites\ListasDecisoes\Modulo_Interligacao_SSE-LIMITE_RSUL-MC.txt";
+            // Parse memória de cálculo no formato txt //Modulo_PERIODO_SE_CO_RNE_2009-PeriodoCarga_SE_CO
+            string fileName = GetCaminhoBaseArquivosTeste() + @"\ValidacaoLimites\ListasDecisoes\" + funcao + "-MC.txt";
             System.IO.StreamReader sr = new System.IO.StreamReader(File.OpenRead(fileName));
             
             while (sr.Peek() != -1)

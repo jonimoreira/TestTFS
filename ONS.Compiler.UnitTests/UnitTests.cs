@@ -172,6 +172,19 @@ namespace ONS.Compiler.UnitTests
         }
 
         [TestMethod]
+        public void TestaCarregaMemoriaDeCalculo_Modulo_PERIODO_SE_CO_RNE_2009_PeriodoCarga_SE_CO()
+        {
+            Mediador mediador = new Mediador();
+
+            InequationEngine maquinaInequacoes = new InequationEngine();
+            mediador.CarregaMemoriaDeCalculo(maquinaInequacoes, "Modulo_PERIODO_SE_CO_RNE_2009-PeriodoCarga_SE_CO");
+
+            Assert.AreEqual(true, true);
+
+        }
+
+
+        [TestMethod]
         public void TestaMaquinaInequacaoValidacaoLimites()
         {
             /*
