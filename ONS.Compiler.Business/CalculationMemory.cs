@@ -40,12 +40,12 @@ namespace ONS.Compiler.Business
         {
             get 
             {
-                return _calculationMemoryDictionary[key];
+                return _calculationMemoryDictionary[key.Trim().ToLower()];
             }
             set
             {
-                _calculationMemoryDictionary[key] = value;
-                _context.Variables[key] = value.Value;
+                _calculationMemoryDictionary[key.Trim().ToLower()] = value;
+                _context.Variables[key.Trim().ToLower()] = value.Value;
             }
         }
 

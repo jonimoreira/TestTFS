@@ -34,6 +34,7 @@ namespace ONS.Compiler.Business
         public InequationEngine()
         {
             _context = new ExpressionContext();
+            _context.Imports.AddType(typeof(CustomFunctions));
             _context.Options.EmitToAssembly = false;
             _calculationMemory = new CalculationMemory(_context);
         }

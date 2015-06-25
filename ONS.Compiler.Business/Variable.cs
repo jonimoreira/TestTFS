@@ -36,6 +36,10 @@ namespace ONS.Compiler.Business
                             d = convert.ToDouble(null);
                         }
                         return d;
+                    case Business.VariableDataType.Boolean:
+                        return Convert.ToBoolean(_variableValue);
+                    //case Business.VariableDataType.Time:
+                    //    return Convert.ToDateTime(_variableValue);
                     default:
                         return _variableValue;
                 }

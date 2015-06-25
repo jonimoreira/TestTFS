@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ONS.Compiler.Business;
 using ONS.Compiler.UnitTests.ValidacaoLimites;
 using System.Collections.Generic;
+using Ciloci.Flee.Tests;
 
 namespace ONS.Compiler.UnitTests
 {
@@ -277,6 +278,9 @@ namespace ONS.Compiler.UnitTests
             mediador.CarregaListaDecisoes(maquinaInequacoes, "Modulo_PERIODO_SE_CO_RNE_2009-PeriodoCarga_SE_CO");
 
             maquinaInequacoes.Compile();
+
+            //maquinaInequacoes.CalculationMemory["xHora"].Value = CustomFunctions.Hora("7:00:00");
+
             maquinaInequacoes.Execute();
 
             Variable PeriodoCarga_SE_CO = maquinaInequacoes.CalculationMemory["PeriodoCarga_SE_CO"];
@@ -290,8 +294,7 @@ namespace ONS.Compiler.UnitTests
             Mediador mediador = new Mediador();
 
             mediador.CarregaDados_SheetRow_S_SE();
-            mediador.CarregaDados_SheetRow_SUL();
-
+            
             InequationEngine maquinaInequacoes = new InequationEngine();
             mediador.CarregaMemoriaDeCalculo(maquinaInequacoes, "Modulo_PERIODO_SE_CO_RNE_2009-PeriodoCarga_SE_CO");
             mediador.CarregaListaDecisoes(maquinaInequacoes, "Modulo_PERIODO_SE_CO_RNE_2009-PeriodoCarga_SE_CO");
@@ -300,13 +303,27 @@ namespace ONS.Compiler.UnitTests
 
             for (int i = 0; i < mediador.linhas_S_SE.Count; i++)
             {
-                mediador.AtualizaVariaveisDaMemoriaDeCalculo_Modulo_Interligacao_SSE_LIMITE_RSUL(maquinaInequacoes, mediador.linhas_S_SE[i], mediador.linhas_SUL[i]);
+                maquinaInequacoes.CalculationMemory["xhora"].Value = CustomFunctions.Hora(mediador.linhas_S_SE[i].PK_HoraInicFim.Key + ":00");
                 maquinaInequacoes.Execute();
 
-                Variable limite = maquinaInequacoes.CalculationMemory["lim"];
+                Variable PeriodoCarga_SE_CO = maquinaInequacoes.CalculationMemory["PeriodoCarga_SE_CO"];
 
-                Assert.AreEqual(limite.Value, mediador.linhas_S_SE[i].LDretorno_LIM_RSUL_FSUL_SUP_RSUL);
+                Assert.AreEqual(PeriodoCarga_SE_CO.Value, mediador.linhas_S_SE[i].LDretorno_PERIODO_DE_CARGA);
             }
+        }
+
+        [TestMethod]
+        public void TestesInternosFlee()
+        {
+            var bulkTests = new BulkTests();
+
+            bulkTests.TestInvalidExpressions();
+            bulkTests.TestValidExpressions();
+
+            var benches = new Benchmarks();
+            benches.TestSimpleCalcEngine();
+
+            Assert.AreEqual(true, true);
         }
 
         [TestMethod]

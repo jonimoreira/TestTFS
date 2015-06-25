@@ -43,6 +43,7 @@
     <Compile Include="AssignedValue.cs" />
     <Compile Include="Assignment.cs" />
     <Compile Include="CalculationMemory.cs" />
+    <Compile Include="CustomFunctions.cs" />
     <Compile Include="Decision.cs" />
     <Compile Include="DecisionsList.cs" />
     <Compile Include="Inequation.cs" />

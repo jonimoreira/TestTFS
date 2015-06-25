@@ -3,9 +3,10 @@
 
 // xHora As Date
 xHora = hora(0:00:00)
-xDiaSemana = "Segunda-Feira" 
+
+xDiaSemana = "Terça-Feira" 
 xTipo = "ÚTIL"
-Hverao = "VERÃO"
+Hverao = "NORMAL"
 
 PeriodoCarga_SE_CO = "LEVE"
 

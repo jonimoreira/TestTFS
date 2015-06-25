@@ -58,6 +58,10 @@
     <Compile Include="UnitTests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\FleeSharp\Tests\Tests.csproj">
+      <Project>{eda40b19-83e3-4906-b587-0c62a5387ea1}</Project>
+      <Name>Tests</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ONS.Compiler.Business\ONS.Compiler.Business.csproj">
       <Project>{93c3d242-6f67-491e-b137-79b5742bf30c}</Project>
       <Name>ONS.Compiler.Business</Name>

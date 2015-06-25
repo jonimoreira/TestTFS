@@ -6,33 +6,35 @@
 ((xDiaSemana = "Terça-Feira" or xDiaSemana = "Quarta-Feira" or xDiaSemana = "Quinta-Feira" or xDiaSemana = "Sexta-Feira" or xDiaSemana = "Sábado") and xTipo = "ÚTIL"), xTercaSabado = true;
 ((xDiaSemana = "Terça-Feira" or xDiaSemana = "Quarta-Feira" or xDiaSemana = "Quinta-Feira" or xDiaSemana = "Sexta-Feira" or xDiaSemana = "Sábado") and xTipo <> "ÚTIL"), xDomingo = true;
 
-(xSegunda and Hverao = "VERÃO" and xHora > "0:00:00" and xHora < "06:59:00"), PeriodoCarga_SE_CO = "MINIMA";
-(xSegunda and Hverao = "VERÃO" and xHora > "7:00:00" and xHora < "18:59:00"), PeriodoCarga_SE_CO = "MEDIA";
-(xSegunda and Hverao = "VERÃO" and xHora > "19:00:00" and xHora < "21:59:00"), PeriodoCarga_SE_CO = "PESADA";
-(xSegunda and Hverao = "VERÃO" and xHora > "22:00:00" and xHora < "23:59:00"), PeriodoCarga_SE_CO = "MEDIA";
+(xSegunda and Hverao = "VERÃO" and xHora >= hora("0:00:00") and xHora <= hora("06:59:00")), PeriodoCarga_SE_CO = "MINIMA";
+(xSegunda and Hverao = "VERÃO" and xHora >= hora("7:00:00") and xHora <= hora("18:59:00")), PeriodoCarga_SE_CO = "MEDIA";
+(xSegunda and Hverao = "VERÃO" and xHora >= hora("19:00:00") and xHora <= hora("21:59:00")), PeriodoCarga_SE_CO = "PESADA";
+(xSegunda and Hverao = "VERÃO" and xHora >= hora("22:00:00") and xHora <= hora("23:59:00")), PeriodoCarga_SE_CO = "MEDIA";
 
-(xSegunda and Hverao = "NORMAL" and xHora > "0:00:00" and xHora < "06:59:00"), PeriodoCarga_SE_CO = "MINIMA";
-(xSegunda and Hverao = "NORMAL" and xHora > "7:00:00" and xHora < "16:59:00"), PeriodoCarga_SE_CO = "MEDIA";
-(xSegunda and Hverao = "NORMAL" and xHora > "17:00:00" and xHora < "21:59:00"), PeriodoCarga_SE_CO = "PESADA";
-(xSegunda and Hverao = "NORMAL" and xHora > "22:00:00" and xHora < "23:59:00"), PeriodoCarga_SE_CO = "MEDIA";
+(xSegunda and Hverao = "NORMAL" and xHora >= hora("0:00:00") and xHora <= hora("06:59:00")), PeriodoCarga_SE_CO = "MINIMA";
+(xSegunda and Hverao = "NORMAL" and xHora >= hora("7:00:00") and xHora <= hora("16:59:00")), PeriodoCarga_SE_CO = "MEDIA";
+(xSegunda and Hverao = "NORMAL" and xHora >= hora("17:00:00") and xHora <= hora("21:59:00")), PeriodoCarga_SE_CO = "PESADA";
+(xSegunda and Hverao = "NORMAL" and xHora >= hora("22:00:00") and xHora <= hora("23:59:00")), PeriodoCarga_SE_CO = "MEDIA";
 
-(xTercaSabado and Hverao = "VERÃO" and xHora > "0:00:00" and xHora < "06:59:00"), PeriodoCarga_SE_CO = "MINIMA";
-(xTercaSabado and Hverao = "VERÃO" and xHora > "7:00:00" and xHora < "18:59:00"), PeriodoCarga_SE_CO = "MEDIA";
-(xTercaSabado and Hverao = "VERÃO" and xHora > "19:00:00" and xHora < "21:59:00"), PeriodoCarga_SE_CO = "PESADA";
-(xTercaSabado and Hverao = "VERÃO" and xHora > "22:00:00" and xHora < "23:59:00"), PeriodoCarga_SE_CO = "MEDIA";
+(xTercaSabado and Hverao = "VERÃO" and xHora >= hora("0:00:00") and xHora <= hora("06:59:00")), PeriodoCarga_SE_CO = "LEVE";
+(xTercaSabado and Hverao = "VERÃO" and xHora >= hora("7:00:00") and xHora <= hora("18:59:00")), PeriodoCarga_SE_CO = "MEDIA";
+(xTercaSabado and Hverao = "VERÃO" and xHora >= hora("19:00:00") and xHora <= hora("21:59:00")), PeriodoCarga_SE_CO = "PESADA";
+(xTercaSabado and Hverao = "VERÃO" and xHora >= hora("22:00:00") and xHora <= hora("23:59:00")), PeriodoCarga_SE_CO = "MEDIA";
 
-(xTercaSabado and Hverao = "NORMAL" and xHora > "0:00:00" and xHora < "06:59:00"), PeriodoCarga_SE_CO = "MINIMA";
-(xTercaSabado and Hverao = "NORMAL" and xHora > "7:00:00" and xHora < "16:59:00"), PeriodoCarga_SE_CO = "MEDIA";
-(xTercaSabado and Hverao = "NORMAL" and xHora > "17:00:00" and xHora < "21:59:00"), PeriodoCarga_SE_CO = "PESADA";
-(xTercaSabado and Hverao = "NORMAL" and xHora > "22:00:00" and xHora < "23:59:00"), PeriodoCarga_SE_CO = "MEDIA";
+(xTercaSabado and Hverao = "NORMAL" and xHora >= hora("0:00:00") and xHora <= hora("06:59:00")), PeriodoCarga_SE_CO = "LEVE";
+(xTercaSabado and Hverao = "NORMAL" and xHora >= hora("7:00:00") and xHora <= hora("16:59:00")), PeriodoCarga_SE_CO = "MEDIA";
+(xTercaSabado and Hverao = "NORMAL" and xHora >= hora("17:00:00") and xHora <= hora("21:59:00")), PeriodoCarga_SE_CO = "PESADA";
+(xTercaSabado and Hverao = "NORMAL" and xHora >= hora("22:00:00") and xHora <= hora("23:59:00")), PeriodoCarga_SE_CO = "MEDIA";
 
-(xDomingo and Hverao = "VERÃO" and xHora > "0:00:00" and xHora < "06:59:00"), PeriodoCarga_SE_CO = "MINIMA";
-(xDomingo and Hverao = "VERÃO" and xHora > "7:00:00" and xHora < "18:59:00"), PeriodoCarga_SE_CO = "MEDIA";
-(xDomingo and Hverao = "VERÃO" and xHora > "19:00:00" and xHora < "21:59:00"), PeriodoCarga_SE_CO = "PESADA";
-(xDomingo and Hverao = "VERÃO" and xHora > "22:00:00" and xHora < "23:59:00"), PeriodoCarga_SE_CO = "MEDIA";
+(xDomingo and Hverao = "VERÃO" and xHora >= hora("0:00:00") and xHora <= hora("04:59:00")), PeriodoCarga_SE_CO = "LEVE";
+(xDomingo and Hverao = "VERÃO" and xHora >= hora("5:00:00") and xHora <= hora("09:59:00")), PeriodoCarga_SE_CO = "MINIMA";
+(xDomingo and Hverao = "VERÃO" and xHora >= hora("10:00:00") and xHora <= hora("18:59:00")), PeriodoCarga_SE_CO = "LEVE";
+(xDomingo and Hverao = "VERÃO" and xHora >= hora("19:00:00") and xHora <= hora("21:59:00")), PeriodoCarga_SE_CO = "MEDIA";
+(xDomingo and Hverao = "VERÃO" and xHora >= hora("22:00:00") and xHora <= hora("23:59:00")), PeriodoCarga_SE_CO = "LEVE";
 
-(xDomingo and Hverao = "NORMAL" and xHora > "0:00:00" and xHora < "06:59:00"), PeriodoCarga_SE_CO = "MINIMA";
-(xDomingo and Hverao = "NORMAL" and xHora > "7:00:00" and xHora < "16:59:00"), PeriodoCarga_SE_CO = "MEDIA";
-(xDomingo and Hverao = "NORMAL" and xHora > "17:00:00" and xHora < "21:59:00"), PeriodoCarga_SE_CO = "PESADA";
-(xDomingo and Hverao = "NORMAL" and xHora > "22:00:00" and xHora < "23:59:00"), PeriodoCarga_SE_CO = "MEDIA";
+(xDomingo and Hverao = "NORMAL" and xHora >= hora("0:00:00") and xHora <= hora("04:59:00")), PeriodoCarga_SE_CO = "LEVE";
+(xDomingo and Hverao = "NORMAL" and xHora >= hora("5:00:00") and xHora <= hora("09:59:00")), PeriodoCarga_SE_CO = "MINIMA";
+(xDomingo and Hverao = "NORMAL" and xHora >= hora("10:00:00") and xHora <= hora("16:59:00")), PeriodoCarga_SE_CO = "LEVE";
+(xDomingo and Hverao = "NORMAL" and xHora >= hora("17:00:00") and xHora <= hora("21:59:00")), PeriodoCarga_SE_CO = "MEDIA";
+(xDomingo and Hverao = "NORMAL" and xHora >= hora("22:00:00") and xHora <= hora("23:59:00")), PeriodoCarga_SE_CO = "LEVE";
 
