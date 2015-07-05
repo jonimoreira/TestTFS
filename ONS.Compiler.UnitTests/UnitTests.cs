@@ -50,8 +50,8 @@ namespace ONS.Compiler.UnitTests
             
             maquinaInequacoes.Execute();
 
-            Assert.AreEqual(maquinaInequacoes.CalculationMemory["a"].Value, 0.0);
-            Assert.AreEqual(maquinaInequacoes.CalculationMemory["b"].Value, -1.0);
+            Assert.AreEqual(maquinaInequacoes.CalculationMemory["a"].GetValue(), 0.0);
+            Assert.AreEqual(maquinaInequacoes.CalculationMemory["b"].GetValue(), -1.0);
         }
 
         [TestMethod]
@@ -144,7 +144,7 @@ namespace ONS.Compiler.UnitTests
 
             Variable limite = maquinaInequacoes.CalculationMemory["lim"];
 
-            Assert.AreEqual(limite.Value, -1500.0);
+            Assert.AreEqual(limite.GetValue(), -1500.0);
         }
 
         [TestMethod]
@@ -168,7 +168,7 @@ namespace ONS.Compiler.UnitTests
                 
                 Variable limite = maquinaInequacoes.CalculationMemory["lim"];
 
-                Assert.AreEqual(limite.Value, mediador.linhas_S_SE[i].LDretorno_LIM_RSUL_FSUL_SUP_RSUL);
+                Assert.AreEqual(limite.GetValue(), mediador.linhas_S_SE[i].LDretorno_LIM_RSUL_FSUL_SUP_RSUL);
             }
         }
 
@@ -212,7 +212,7 @@ namespace ONS.Compiler.UnitTests
         }
 
         [TestMethod]
-        public void TestaOperacaoComparacaoHora()
+        public void TestaOperacaoComparacaoSimplesHora()
         {
             string pattern = "HH:mm:ss";
             string horaA = "00:00:00";
@@ -227,7 +227,7 @@ namespace ONS.Compiler.UnitTests
                 throw new Exception("Erro no parsing das variáveis de hora.");
             }
 
-            string expressao = "(a>b or a<b or a=b or a<>b)";
+            string expressao = "(a>b or a<b or a=b or a<>b or a>=b or a<=b)";
             string blocoAcaoTrue = "result=100;";
             //string blocoAcaoTrue = "result=100;horaConvertidaFlee=cast(" + horaA + ");";
             string blocoAcaoFalse = "result=0;";
@@ -249,11 +249,157 @@ namespace ONS.Compiler.UnitTests
 
             maquinaInequacoes.Execute();
 
-            Assert.AreEqual(maquinaInequacoes.CalculationMemory["a"].Value, a);
-            Assert.AreEqual(maquinaInequacoes.CalculationMemory["b"].Value, b);
-            Assert.AreEqual(maquinaInequacoes.CalculationMemory["result"].Value, 100.0);
+            Assert.AreEqual(maquinaInequacoes.CalculationMemory["a"].GetValue(), a);
+            Assert.AreEqual(maquinaInequacoes.CalculationMemory["b"].GetValue(), b);
+            Assert.AreEqual(maquinaInequacoes.CalculationMemory["result"].GetValue(), 100.0);
         }
 
+        [TestMethod]
+        public void TestaOperacaoComparacaoHora()
+        {
+            string pattern = "HH:mm:ss";
+            string horaA = "20:27:31";
+            string horaB = "20:09:50";
+            DateTime a = DateTime.Now;
+            DateTime b = DateTime.Now;
+            double result = double.MinValue;
+            DateTime horaConvertidaFlee = DateTime.Now;
+
+            // Testa a maior que b 
+            string expressao = "(a>b)";
+            string blocoAcaoTrue = "result=100;";
+            string blocoAcaoFalse = "result=0;";
+            
+            if (!DateTime.TryParseExact(horaA, pattern, null, System.Globalization.DateTimeStyles.None, out a) || !DateTime.TryParseExact(horaB, pattern, null, System.Globalization.DateTimeStyles.None, out b))
+            {
+                throw new Exception("Erro no parsing das variáveis de hora.");
+            }
+
+            InequationEngine maquinaInequacoes = new InequationEngine();
+            maquinaInequacoes.CalculationMemory.Add(new Variable("a", VariableDataType.Time, a));
+            maquinaInequacoes.CalculationMemory.Add(new Variable("b", VariableDataType.Time, b));
+            maquinaInequacoes.CalculationMemory.Add(new Variable("result", VariableDataType.Numeric, result));
+            maquinaInequacoes.CalculationMemory.Add(new Variable("horaA", VariableDataType.String, horaA));
+
+            Inequation inequacao = new Inequation(expressao);
+            ActionBlock blocoAcaoTrueObj = new ActionBlock(blocoAcaoTrue);
+            ActionBlock blocoAcaoFalseObj = new ActionBlock(blocoAcaoFalse);
+
+            Decision decisao = new Decision(inequacao, blocoAcaoTrueObj, blocoAcaoFalseObj);
+            maquinaInequacoes.DecisionsList.AddDecision(decisao);
+
+            maquinaInequacoes.Compile();
+
+            maquinaInequacoes.Execute();
+
+            Assert.AreEqual(maquinaInequacoes.CalculationMemory["a"].GetValue(), a);
+            Assert.AreEqual(maquinaInequacoes.CalculationMemory["b"].GetValue(), b);
+            Assert.AreEqual(maquinaInequacoes.CalculationMemory["result"].GetValue(), 100.0);
+
+            expressao = "(a >= b)";
+            decisao.Inequation.Expression = expressao;
+            maquinaInequacoes.Compile();
+            maquinaInequacoes.Execute();
+            Assert.AreEqual(maquinaInequacoes.CalculationMemory["result"].GetValue(), 100.0);
+
+            expressao = "(a<b)";
+            decisao.Inequation.Expression = expressao;
+            maquinaInequacoes.Compile();
+            maquinaInequacoes.Execute();
+            Assert.AreEqual(maquinaInequacoes.CalculationMemory["result"].GetValue(), 0.0);
+
+            expressao = "(a <= b)";
+            decisao.Inequation.Expression = expressao;
+            maquinaInequacoes.Compile();
+            maquinaInequacoes.Execute();
+            Assert.AreEqual(maquinaInequacoes.CalculationMemory["result"].GetValue(), 0.0);
+
+            expressao = "(a = b)";
+            decisao.Inequation.Expression = expressao;
+            maquinaInequacoes.Compile();
+            maquinaInequacoes.Execute();
+            Assert.AreEqual(maquinaInequacoes.CalculationMemory["result"].GetValue(), 0.0);
+
+            horaA = "15:17:31";
+            horaB = "15:27:31";
+            if (!DateTime.TryParseExact(horaA, pattern, null, System.Globalization.DateTimeStyles.None, out a) || !DateTime.TryParseExact(horaB, pattern, null, System.Globalization.DateTimeStyles.None, out b))
+            {
+                throw new Exception("Erro no parsing das variáveis de hora.");
+            }
+            maquinaInequacoes.CalculationMemory.UpdateVariable("a", a);
+            maquinaInequacoes.CalculationMemory.UpdateVariable("b", b);
+
+            expressao = "(a > b)";
+            decisao.Inequation.Expression = expressao;
+            maquinaInequacoes.Compile();
+            maquinaInequacoes.Execute();
+            Assert.AreEqual(maquinaInequacoes.CalculationMemory["result"].GetValue(), 0.0);
+            
+            expressao = "(a < b)";
+            decisao.Inequation.Expression = expressao;
+            maquinaInequacoes.Compile();
+            maquinaInequacoes.Execute();
+            Assert.AreEqual(maquinaInequacoes.CalculationMemory["result"].GetValue(), 100.0);
+
+            expressao = "(a >= b)";
+            decisao.Inequation.Expression = expressao;
+            maquinaInequacoes.Compile();
+            maquinaInequacoes.Execute();
+            Assert.AreEqual(maquinaInequacoes.CalculationMemory["result"].GetValue(), 0.0);
+
+            expressao = "(a <= b)";
+            decisao.Inequation.Expression = expressao;
+            maquinaInequacoes.Compile();
+            maquinaInequacoes.Execute();
+            Assert.AreEqual(maquinaInequacoes.CalculationMemory["result"].GetValue(), 100.0);
+
+            expressao = "(a = b)";
+            decisao.Inequation.Expression = expressao;
+            maquinaInequacoes.Compile();
+            maquinaInequacoes.Execute();
+            Assert.AreEqual(maquinaInequacoes.CalculationMemory["result"].GetValue(), 0.0);
+
+            horaA = "11:00:22";
+            horaB = "11:00:22";
+            if (!DateTime.TryParseExact(horaA, pattern, null, System.Globalization.DateTimeStyles.None, out a) || !DateTime.TryParseExact(horaB, pattern, null, System.Globalization.DateTimeStyles.None, out b))
+            {
+                throw new Exception("Erro no parsing das variáveis de hora.");
+            }
+            maquinaInequacoes.CalculationMemory.UpdateVariable("a", a);
+            maquinaInequacoes.CalculationMemory.UpdateVariable("b", b);
+
+            expressao = "(a > b)";
+            decisao.Inequation.Expression = expressao;
+            maquinaInequacoes.Compile();
+            maquinaInequacoes.Execute();
+            Assert.AreEqual(maquinaInequacoes.CalculationMemory["result"].GetValue(), 0.0);
+
+            expressao = "(a < b)";
+            decisao.Inequation.Expression = expressao;
+            maquinaInequacoes.Compile();
+            maquinaInequacoes.Execute();
+            Assert.AreEqual(maquinaInequacoes.CalculationMemory["result"].GetValue(), 0.0);
+
+            expressao = "(a >= b)";
+            decisao.Inequation.Expression = expressao;
+            maquinaInequacoes.Compile();
+            maquinaInequacoes.Execute();
+            Assert.AreEqual(maquinaInequacoes.CalculationMemory["result"].GetValue(), 100.0);
+
+            expressao = "(a <= b)";
+            decisao.Inequation.Expression = expressao;
+            maquinaInequacoes.Compile();
+            maquinaInequacoes.Execute();
+            Assert.AreEqual(maquinaInequacoes.CalculationMemory["result"].GetValue(), 100.0);
+
+            expressao = "(a = b)";
+            decisao.Inequation.Expression = expressao;
+            maquinaInequacoes.Compile();
+            maquinaInequacoes.Execute();
+            Assert.AreEqual(maquinaInequacoes.CalculationMemory["result"].GetValue(), 100.0);
+
+        }
+        
         [TestMethod]
         public void TestaCompila_Modulo_PERIODO_SE_CO_RNE_2009_PeriodoCarga_SE_CO()
         {
@@ -278,14 +424,11 @@ namespace ONS.Compiler.UnitTests
             mediador.CarregaListaDecisoes(maquinaInequacoes, "Modulo_PERIODO_SE_CO_RNE_2009-PeriodoCarga_SE_CO");
 
             maquinaInequacoes.Compile();
-
-            //maquinaInequacoes.CalculationMemory["xHora"].Value = CustomFunctions.Hora("7:00:00");
-
             maquinaInequacoes.Execute();
 
             Variable PeriodoCarga_SE_CO = maquinaInequacoes.CalculationMemory["PeriodoCarga_SE_CO"];
 
-            Assert.AreEqual(PeriodoCarga_SE_CO.Value, "LEVE");
+            Assert.AreEqual(PeriodoCarga_SE_CO.GetValue(), "LEVE");
         }
 
         [TestMethod]
@@ -303,12 +446,12 @@ namespace ONS.Compiler.UnitTests
 
             for (int i = 0; i < mediador.linhas_S_SE.Count; i++)
             {
-                maquinaInequacoes.CalculationMemory["xhora"].Value = CustomFunctions.Hora(mediador.linhas_S_SE[i].PK_HoraInicFim.Key + ":00");
+                maquinaInequacoes.CalculationMemory.UpdateVariable("xhora", CustomFunctions.Hora(mediador.linhas_S_SE[i].PK_HoraInicFim.Key + ":00"));
                 maquinaInequacoes.Execute();
 
                 Variable PeriodoCarga_SE_CO = maquinaInequacoes.CalculationMemory["PeriodoCarga_SE_CO"];
 
-                Assert.AreEqual(PeriodoCarga_SE_CO.Value, mediador.linhas_S_SE[i].LDretorno_PERIODO_DE_CARGA);
+                Assert.AreEqual(PeriodoCarga_SE_CO.GetValue(), mediador.linhas_S_SE[i].LDretorno_PERIODO_DE_CARGA);
             }
         }
 

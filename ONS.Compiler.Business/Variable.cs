@@ -22,7 +22,7 @@ namespace ONS.Compiler.Business
             get { return _mnemonic; }
         }
 
-        public object Value
+        internal object Value
         { 
             get 
             {
@@ -47,6 +47,11 @@ namespace ONS.Compiler.Business
             }
             set 
             { _variableValue = value; }
+        }
+
+        public object GetValue()
+        {
+            return Value;
         }
 
         public Variable(string mnemonic, VariableDataType variableDataType)

@@ -49,13 +49,27 @@ namespace ONS.Compiler.UnitTests.ValidacaoLimites
                     sheetRow_S_SE.MC_CARGA_SIN = double.Parse(valores[12]);
                     sheetRow_S_SE.MC_CARGA_SUL = double.Parse(valores[13]);
                     sheetRow_S_SE.MC_LIM_ELO_CC = valores[23].Trim().ToLower();
+
+                    //sheetRow_S_SE.LDretorno_PERIODO_DE_CARGA = valores[24].Trim();
                     
-                    sheetRow_S_SE.LDretorno_PERIODO_DE_CARGA = valores[24].Trim();
                     sheetRow_S_SE.LDretorno_LIM_RSUL_FSUL_SUP_RSUL = double.Parse(valores[18]);
                     linhas_S_SE.Add(iLinhaIdx, sheetRow_S_SE);
                     iLinhaIdx++;
                 }
 
+            }
+
+            // Atualiza retorno do periodo de carga (LDretorno_PERIODO_DE_CARGA)
+            InequationEngine maquinaInequacoes = new InequationEngine();
+            CarregaMemoriaDeCalculo(maquinaInequacoes, "Modulo_PERIODO_SE_CO_RNE_2009-PeriodoCarga_SE_CO");
+            CarregaListaDecisoes(maquinaInequacoes, "Modulo_PERIODO_SE_CO_RNE_2009-PeriodoCarga_SE_CO");
+            maquinaInequacoes.Compile();
+
+            foreach (int key in linhas_S_SE.Keys)
+            {
+                maquinaInequacoes.CalculationMemory.UpdateVariable("xhora", CustomFunctions.Hora(linhas_S_SE[key].PK_HoraInicFim.Key + ":00"));
+                maquinaInequacoes.Execute();
+                linhas_S_SE[key].LDretorno_PERIODO_DE_CARGA = maquinaInequacoes.CalculationMemory["PeriodoCarga_SE_CO"].GetValue().ToString();
             }
         }
 
@@ -261,41 +275,14 @@ namespace ONS.Compiler.UnitTests.ValidacaoLimites
         {
             List<Variable> variablesList = new List<Variable>();
             // Mapeamento da MC: variáveis definidos no Modulo_Interligacao_SSE-LIMITE_RSUL-MC com objetos sheetRow_S_SE
-            foreach (string varName in maquinaInequacoes.CalculationMemory.Keys)
-            {
-                Variable var = maquinaInequacoes.CalculationMemory[varName];
-                switch (var.Mnemonic)
-                {
-                    case "xpercarga":
-                        var.Value = sheetRow_S_SE.LDretorno_PERIODO_DE_CARGA;
-                        break;
-                    case "xrsul":
-                        var.Value = sheetRow_S_SE.MC_RSUL;
-                        break;
-                    case "xcargasul":
-                        var.Value = sheetRow_S_SE.MC_CARGA_SUL;
-                        break;
-                    case "xugarauc":
-                        var.Value = sheetRow_SUL.MC_UGs_Gerando_Araucaria;
-                        break;
-                    case "xugg1":
-                        var.Value = sheetRow_SUL.MC_G1;
-                        break;
-                    case "xugg2":
-                        var.Value = sheetRow_SUL.MC_G2;
-                        break;
-                    case "xugg3":
-                        var.Value = sheetRow_SUL.MC_G3;
-                        break;
-                    case "xugg4":
-                        var.Value = sheetRow_SUL.MC_G4;
-                        break;
-                    default:
-                        break;
-                }
-                variablesList.Add(var);
-            }
-            maquinaInequacoes.CalculationMemory.UpdateVariables(variablesList);
+            maquinaInequacoes.CalculationMemory.UpdateVariable("xpercarga", sheetRow_S_SE.LDretorno_PERIODO_DE_CARGA);
+            maquinaInequacoes.CalculationMemory.UpdateVariable("xrsul", sheetRow_S_SE.MC_RSUL);
+            maquinaInequacoes.CalculationMemory.UpdateVariable("xcargasul", sheetRow_S_SE.MC_CARGA_SUL);
+            maquinaInequacoes.CalculationMemory.UpdateVariable("xugarauc", sheetRow_SUL.MC_UGs_Gerando_Araucaria);
+            maquinaInequacoes.CalculationMemory.UpdateVariable("xugg1", sheetRow_SUL.MC_G1);
+            maquinaInequacoes.CalculationMemory.UpdateVariable("xugg2", sheetRow_SUL.MC_G2);
+            maquinaInequacoes.CalculationMemory.UpdateVariable("xugg3", sheetRow_SUL.MC_G3);
+            maquinaInequacoes.CalculationMemory.UpdateVariable("xugg4", sheetRow_SUL.MC_G4);
         }
 
         private string GetCaminhoBaseArquivosTeste()

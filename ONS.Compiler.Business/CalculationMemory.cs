@@ -49,6 +49,12 @@ namespace ONS.Compiler.Business
             }
         }
 
+        public void UpdateVariable(string key, object value)
+        {
+            _calculationMemoryDictionary[key.Trim().ToLower()].Value = value;
+            _context.Variables[key.Trim().ToLower()] = value;
+        }
+
         public void UpdateVariables(List<Variable> variablesList)
         {
             foreach (Variable var in variablesList)

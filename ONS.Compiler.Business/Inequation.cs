@@ -15,6 +15,10 @@ namespace ONS.Compiler.Business
         public string Expression
         {
             get { return _expression; }
+            set 
+            {
+                _expression = value;
+            }
         }
 
         public Inequation(string expression)
@@ -27,7 +31,7 @@ namespace ONS.Compiler.Business
 
         public void Compile(ExpressionContext context)
         {
-            eDynamic = context.CompileDynamic(Expression);
+            eDynamic = context.CompileDynamic(_expression);
         }
 
         public bool Execute(ExpressionContext context)

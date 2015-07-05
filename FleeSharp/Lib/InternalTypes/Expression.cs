@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Reflection.Emit;
 using System.Reflection;
 using System.ComponentModel.Design;
+using System.Configuration;
 
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public License
@@ -134,9 +135,14 @@ namespace Ciloci.Flee
 
 		private static void EmitToAssembly(ExpressionElement rootElement, IServiceContainer services)
 		{
-			var assemblyName = new AssemblyName(EmitAssemblyName);
+            string emitAssemblyName = EmitAssemblyName;
 
-			var assemblyFileName = string.Format("{0}.dll", EmitAssemblyName);
+            if (ConfigurationManager.AppSettings["GenerateDifferentAssemblyName"] != null && ConfigurationManager.AppSettings["GenerateDifferentAssemblyName"].ToString() == "1")
+                emitAssemblyName = DateTime.Now.ToString("yyyy_MM_dd_hh_mm_ss_fff");
+			
+            var assemblyName = new AssemblyName(emitAssemblyName);
+
+			var assemblyFileName = string.Format("{0}.dll", emitAssemblyName);
 
 			var assemblyBuilder = System.AppDomain.CurrentDomain.DefineDynamicAssembly(assemblyName, AssemblyBuilderAccess.Save);
 			var moduleBuilder = assemblyBuilder.DefineDynamicModule(assemblyFileName, assemblyFileName);

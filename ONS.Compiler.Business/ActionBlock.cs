@@ -32,6 +32,7 @@ namespace ONS.Compiler.Business
 
         private void Parse(ExpressionContext context, CalculationMemory calculationMemory)
         {
+            _assignments.Clear();
             // assignments seprator token
             string[] temp = _expression.Split(';');
             int idx = 0;
