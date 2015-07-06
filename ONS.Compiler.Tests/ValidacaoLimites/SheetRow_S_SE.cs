@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ONS.Compiler.UnitTests.ValidacaoLimites
+namespace ONS.Compiler.Tests.ValidacaoLimites
 {
     public class SheetRow_S_SE
     {

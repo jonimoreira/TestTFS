@@ -103,7 +103,9 @@ namespace Ciloci.Flee
 			rootElement.Emit(ilg, services);
 
 			ilg.ValidateLength();
-            options.EmitToAssembly = true;
+
+            if (ConfigurationManager.AppSettings["GenerateDifferentAssemblyName"] != null && ConfigurationManager.AppSettings["GenerateDifferentAssemblyName"].ToString() == "1")
+                options.EmitToAssembly = true;
 			// Emit to an assembly if required
 			if (options.EmitToAssembly == true) {
 				EmitToAssembly(rootElement, services);

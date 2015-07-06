@@ -7,11 +7,21 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ONS.Compiler.Business", "ON
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lib", "FleeSharp\Lib\Lib.csproj", "{68D9F6EB-4603-404A-A7E9-0154DC36CF19}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ONS.Compiler.UnitTests", "ONS.Compiler.UnitTests\ONS.Compiler.UnitTests.csproj", "{895FEA17-019F-4683-A9E5-853909D74CE7}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "FleeSharp\Tests\Tests.csproj", "{EDA40B19-83E3-4906-B587-0C62A5387EA1}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FleeSharp", "FleeSharp", "{EB88D8C2-2280-4CF3-91FC-FC04D64AFFE2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ONS.MaquinaInequacoes.Service", "ONS.MaquinaInequacoes.Service\ONS.MaquinaInequacoes.Service.csproj", "{1DF8BCD5-1DDE-440F-84CB-96DFCCBF69CD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ONS.MaquinaInequacoes.WindowsFormApplication", "ONS.MaquinaInequacoes.WindowsFormApplication\ONS.MaquinaInequacoes.WindowsFormApplication.csproj", "{C33CE85B-2EE1-49D7-B3FB-EE5782E9C203}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1DF8BCD5-1DDE-440F-84CB-96DFCCBF69CD} = {1DF8BCD5-1DDE-440F-84CB-96DFCCBF69CD}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ONS.Compiler.Tests", "ONS.Compiler.Tests\ONS.Compiler.Tests.csproj", "{895FEA17-019F-4683-A9E5-853909D74CE7}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1DF8BCD5-1DDE-440F-84CB-96DFCCBF69CD} = {1DF8BCD5-1DDE-440F-84CB-96DFCCBF69CD}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,14 +37,22 @@ Global
 		{68D9F6EB-4603-404A-A7E9-0154DC36CF19}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{68D9F6EB-4603-404A-A7E9-0154DC36CF19}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{68D9F6EB-4603-404A-A7E9-0154DC36CF19}.Release|Any CPU.Build.0 = Release|Any CPU
-		{895FEA17-019F-4683-A9E5-853909D74CE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{895FEA17-019F-4683-A9E5-853909D74CE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{895FEA17-019F-4683-A9E5-853909D74CE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{895FEA17-019F-4683-A9E5-853909D74CE7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EDA40B19-83E3-4906-B587-0C62A5387EA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EDA40B19-83E3-4906-B587-0C62A5387EA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EDA40B19-83E3-4906-B587-0C62A5387EA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EDA40B19-83E3-4906-B587-0C62A5387EA1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DF8BCD5-1DDE-440F-84CB-96DFCCBF69CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DF8BCD5-1DDE-440F-84CB-96DFCCBF69CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DF8BCD5-1DDE-440F-84CB-96DFCCBF69CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DF8BCD5-1DDE-440F-84CB-96DFCCBF69CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C33CE85B-2EE1-49D7-B3FB-EE5782E9C203}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C33CE85B-2EE1-49D7-B3FB-EE5782E9C203}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C33CE85B-2EE1-49D7-B3FB-EE5782E9C203}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C33CE85B-2EE1-49D7-B3FB-EE5782E9C203}.Release|Any CPU.Build.0 = Release|Any CPU
+		{895FEA17-019F-4683-A9E5-853909D74CE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{895FEA17-019F-4683-A9E5-853909D74CE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{895FEA17-019F-4683-A9E5-853909D74CE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{895FEA17-019F-4683-A9E5-853909D74CE7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

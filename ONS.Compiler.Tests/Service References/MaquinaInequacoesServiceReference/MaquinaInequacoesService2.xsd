@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ONS.MaquinaInequacoes.Service.DataContracts" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ONS.MaquinaInequacoes.Service.DataContracts" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:2562/MaquinaInequacoesService.svc?xsd=xsd0" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:simpleType name="TipoDado">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Numerico">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="String">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Booleano">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">3</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="HoraMinutoSegundo">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">4</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="TipoDado" nillable="true" type="tns:TipoDado" />
+  <xs:complexType name="MemoriaCalculo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Variaveis" nillable="true" type="tns:ArrayOfVariavel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MemoriaCalculo" nillable="true" type="tns:MemoriaCalculo" />
+  <xs:complexType name="ArrayOfVariavel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Variavel" nillable="true" type="tns:Variavel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVariavel" nillable="true" type="tns:ArrayOfVariavel" />
+  <xs:complexType name="Variavel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Nome" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TipoDado" type="tns:TipoDado" />
+      <xs:element minOccurs="0" name="Valor" nillable="true" type="xs:anyType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Variavel" nillable="true" type="tns:Variavel" />
+  <xs:complexType name="ListaDecisoes">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Decisoes" nillable="true" type="tns:ArrayOfDecisao" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ListaDecisoes" nillable="true" type="tns:ListaDecisoes" />
+  <xs:complexType name="ArrayOfDecisao">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Decisao" nillable="true" type="tns:Decisao" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDecisao" nillable="true" type="tns:ArrayOfDecisao" />
+  <xs:complexType name="Decisao">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BlocoDeAcao" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Inequacao" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Decisao" nillable="true" type="tns:Decisao" />
+</xs:schema>

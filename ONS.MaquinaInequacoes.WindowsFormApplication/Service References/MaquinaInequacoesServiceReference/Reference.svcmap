@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="cbc1b596-87b9-47f0-8e7e-503fc3379c08" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:2562/MaquinaInequacoesService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="MaquinaInequacoesService.wsdl" MetadataType="Wsdl" ID="cbe596bc-273e-4f5e-b39e-29026f76cc4b" SourceId="1" SourceUrl="http://localhost:2562/MaquinaInequacoesService.svc?wsdl" />
+    <MetadataFile FileName="MaquinaInequacoesService.disco" MetadataType="Disco" ID="0bb98bdf-e808-460f-a2eb-236f498d1fb1" SourceId="1" SourceUrl="http://localhost:2562/MaquinaInequacoesService.svc?disco" />
+    <MetadataFile FileName="MaquinaInequacoesService2.xsd" MetadataType="Schema" ID="0bd4d5c6-eb45-4f91-935d-ed3004e7f84b" SourceId="1" SourceUrl="http://localhost:2562/MaquinaInequacoesService.svc?xsd=xsd2" />
+    <MetadataFile FileName="MaquinaInequacoesService.xsd" MetadataType="Schema" ID="43cb03d3-d9ea-4786-9f81-1cd19aa85afd" SourceId="1" SourceUrl="http://localhost:2562/MaquinaInequacoesService.svc?xsd=xsd0" />
+    <MetadataFile FileName="MaquinaInequacoesService1.xsd" MetadataType="Schema" ID="1897df4f-cfc4-48bd-bcdd-80c5b1d85cea" SourceId="1" SourceUrl="http://localhost:2562/MaquinaInequacoesService.svc?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

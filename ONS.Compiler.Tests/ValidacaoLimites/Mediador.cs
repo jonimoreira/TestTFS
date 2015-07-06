@@ -8,7 +8,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ONS.Compiler.UnitTests.ValidacaoLimites
+namespace ONS.Compiler.Tests.ValidacaoLimites
 {
     public class Mediador
     {
@@ -19,7 +19,7 @@ namespace ONS.Compiler.UnitTests.ValidacaoLimites
             linhas_S_SE.Clear();
 
             //Abre CSV como texto
-            string fileName = GetCaminhoCompletoArquivoTeste();
+            string fileName = GetCaminhoCompletoArquivoTeste_ValidacaoLimites_Aba_S_SE();
             System.IO.StreamReader sr = new System.IO.StreamReader(File.OpenRead(fileName));
 
             int iLinhaIdx = 0;
@@ -78,7 +78,7 @@ namespace ONS.Compiler.UnitTests.ValidacaoLimites
             linhas_SUL.Clear();
 
             //Abre CSV como texto
-            string fileName = GetCaminhoBaseArquivosTeste() + @"\ValidacaoLimites\Dados\Spreadsheet_Example02_SUL.csv";
+            string fileName = GetCaminhoCompletoArquivoTeste_ValidacaoLimites_Aba_SUL();
             System.IO.StreamReader sr = new System.IO.StreamReader(File.OpenRead(fileName));
 
             int iLinhaIdx = 0;
@@ -139,7 +139,7 @@ namespace ONS.Compiler.UnitTests.ValidacaoLimites
         public void CarregaMemoriaDeCalculo(InequationEngine maquinaInequacoes, string funcao)
         {
             // Parse memória de cálculo no formato txt //Modulo_PERIODO_SE_CO_RNE_2009-PeriodoCarga_SE_CO
-            string fileName = GetCaminhoBaseArquivosTeste() + @"\ValidacaoLimites\ListasDecisoes\" + funcao + "-MC.txt";
+            string fileName = GetCaminhoBaseArquivosTeste() + @"\ValidacaoLimites\MemoriaCalculo_ListasDecisoes\" + funcao + "-MC.txt";
             System.IO.StreamReader sr = new System.IO.StreamReader(File.OpenRead(fileName));
             
             while (sr.Peek() != -1)
@@ -205,18 +205,13 @@ namespace ONS.Compiler.UnitTests.ValidacaoLimites
 
         }
 
-        /// <summary>
-        /// Carrega a lista de decisões pelo nome da função (arquivo)
-        /// </summary>
-        /// <param name="funcao"></param>
-        /// <returns></returns>
         public void CarregaListaDecisoes(InequationEngine maquinaInequacoes, string funcao)
         {
             KeyValuePair<string, string> decisao = new KeyValuePair<string, string>();
 
             //Abre lista de decisões
             List<string> listaDecisioesOrdenada = new List<string>();
-            string fileName = GetCaminhoBaseArquivosTeste() + @"\ValidacaoLimites\ListasDecisoes\" + funcao + "-LD.txt";
+            string fileName = GetCaminhoBaseArquivosTeste() + @"\ValidacaoLimites\MemoriaCalculo_ListasDecisoes\" + funcao + "-LD.txt";
             StreamReader sr = new StreamReader(File.OpenRead(fileName));
             while (sr.Peek() != -1)
             {
@@ -300,17 +295,35 @@ namespace ONS.Compiler.UnitTests.ValidacaoLimites
             return result;
         }
 
-        private string GetCaminhoCompletoArquivoTeste()
+        private string GetCaminhoCompletoArquivoTeste_ValidacaoLimites_Aba_SUL()
         {
             string result = string.Empty;
+            string key = "CaminhoCompletoArquivoTeste_ValidacaoLimites_Aba_SUL";
             //  @"\ValidacaoLimites\Dados\Spreadsheet_Example02_S_SE.csv";
             try
             {
-                result = ConfigurationManager.AppSettings["CaminhoCompletoArquivoTeste"];
+                result = ConfigurationManager.AppSettings[key];
             }
             catch (Exception iEx)
             {
-                throw new Exception("Erro ao carregar chave 'CaminhoCompletoArquivoTeste' do arquivo de configuração (app.config)", iEx);
+                throw new Exception("Erro ao carregar chave '" + key + "' do arquivo de configuração (app.config)", iEx);
+            }
+
+            return result;
+        }
+
+        private string GetCaminhoCompletoArquivoTeste_ValidacaoLimites_Aba_S_SE()
+        {
+            string result = string.Empty;
+            string key = "CaminhoCompletoArquivoTeste_ValidacaoLimites_Aba_S_SE";
+            //  @"\ValidacaoLimites\Dados\Spreadsheet_Example02_S_SE.csv";
+            try
+            {
+                result = ConfigurationManager.AppSettings[key];
+            }
+            catch (Exception iEx)
+            {
+                throw new Exception("Erro ao carregar chave '" + key + "' do arquivo de configuração (app.config)", iEx);
             }
 
             return result;
