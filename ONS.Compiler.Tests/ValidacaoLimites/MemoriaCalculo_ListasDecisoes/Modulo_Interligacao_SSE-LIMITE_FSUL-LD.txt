@@ -1,0 +1,6 @@
+// [<inequacao>], <atribuições: {<nome_var>=<expressao_ou_valor>;}*>
+// default: inequacao = true
+
+(xpercarga = "PESADA"), lim = -5700;
+(xpercarga = "MEDIA"), lim = -5700;
+(xpercarga = "LEVE" or xpercarga = "MINIMA"), lim = -5900;

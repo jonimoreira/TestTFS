@@ -1,0 +1,13 @@
+// <nome_variavel>[,<valor_inicial>[,<tipo>]]
+// default: double, 0.0
+
+xangra = "2Ligadas"
+xMaqIpu
+xGerIPU
+xpercarga = "LEVE" 
+
+lim
+
+ehPesadaOuMedia = false
+ehLeveOuMinima = false
+ctrlFluxo = true

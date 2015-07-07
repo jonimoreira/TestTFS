@@ -1,0 +1,65 @@
+// [<inequacao>], <atribuições: {<nome_var>=<expressao_ou_valor>;}*>
+// default: inequacao = true
+
+(xUGarauc = 3 and xcargasul > 17300), lim = 500;
+(xUGarauc = 3 and xcargasul > 17000 and xcargasul < 17300), lim = 900;
+(xUGarauc = 3 and xcargasul > 16500 and xcargasul < 17000), lim = 1400;
+(xUGarauc = 3 and xcargasul > 16000 and xcargasul < 16500), lim = 1700;
+(xUGarauc = 3 and xcargasul > 15000 and xcargasul < 16000), lim = 1700;
+(xUGarauc = 3 and xcargasul <= 15000), lim = 1800;
+
+(xUGarauc = 2 and xcargasul > 17300), lim = 300;
+(xUGarauc = 2 and xcargasul > 17000 and xcargasul < 17300), lim = 700;
+(xUGarauc = 2 and xcargasul > 16500 and xcargasul < 17000), lim = 1300;
+(xUGarauc = 2 and xcargasul > 16000 and xcargasul < 16500), lim = 1550;
+(xUGarauc = 2 and xcargasul > 15000 and xcargasul < 16000), lim = 1600;
+(xUGarauc = 2 and xcargasul <= 15000), lim = 1750;
+
+(xUGarauc = 0 and xcargasul > 17300), lim = lim - 0;
+(xUGarauc = 0 and xcargasul > 16500 and xcargasul < 17000), lim = 650;
+(xUGarauc = 0 and xcargasul > 16000 and xcargasul < 16500), lim = 900;
+(xUGarauc = 0 and xcargasul > 15000 and xcargasul < 16000), lim = 1300;
+(xUGarauc = 0 and xcargasul <= 15000), lim = 1650;
+
+// Provavelmente tem erro de nao passar o xpercarga por parametro...
+//(xpercarga = "MEDIA" or xpercarga = "PESADA"), r1 = 10.0; r2 = 12.0; r3 = 3.0; r4 = 4.0;
+//(xpercarga = "LEVE" or xpercarga = "MINIMA"),  r1 = 8.0; r2 = 8.0; r3 = 2.0; r4 = 3.0;
+
+,red1 = 80;
+,red2 = 30;
+,red3 = 30;
+,red4 = 0;
+
+// Provavelmente tem erro de nao passar os xugG{1..4} por parametro...
+//,dif1 = r1 - xugG1;
+//,dif2 = r2 - xugG2;
+//,dif3 = r3 - xugG3;
+//,dif4 = r4 - xugG4;
+
+(dif1 > 0), lim = lim - (dif1 * red1);
+(dif2 > 0), lim = lim - (dif2 * red2);
+(dif3 > 0), lim = lim - (dif3 * red3);
+(dif4 > 0), lim = lim - (dif4 * red4);
+
+// Provavelmente tem um erro aqui: FRS_Ger deve ser referir a xFRS_Ger
+,difFRS = FRS_Ger - x_refFRS_Ger;
+
+,calcula_red_FINBA_FRS_GER = false;
+(difFRS > 0), calcula_red_FINBA_FRS_GER = true;
+(calcula_red_FINBA_FRS_GER and difFRS >= 100), red_FINBA_FRS_GER = 700;
+,lim = lim - red_FINBA_FRS_GER
+
+,ctrlFluxo=true;
+
+(ctrlFluxo and xcargasul <= 16500 and xJLGG = 1 and xJLG = 2), lim = lim; ctrlFluxo = false;
+(ctrlFluxo and xcargasul <= 16500 and xJLGG = 0 and xJLM = 2 And xJLP = 2), lim = lim; ctrlFluxo = false;
+(ctrlFluxo and xcargasul <= 16500 and xJLGG = 0 and xJLM <> 2 And xJLP <> 2), lim = lim - 150; ctrlFluxo = false;
+(ctrlFluxo and xcargasul <= 16500 and xJLGG <> 0 and xJLG = 1 and xJLM = 2), lim = lim; ctrlFluxo = false;
+(ctrlFluxo and xcargasul <= 16500 and xJLGG <> 0 and xJLG = 1 and xJLM <> 2), lim = lim - 100; ctrlFluxo = false;
+
+(ctrlFluxo and xcargasul >= 16500 and xJLP = 2 And xJLM = 2 And xJLG = 2 And xJLGG = 1), lim = lim; ctrlFluxo = false;
+(ctrlFluxo and xcargasul >= 16500 and xJLP <> 2 And xJLM <> 2 And xJLG <> 2 And xJLGG = 0), lim = lim - 150; ctrlFluxo = false;
+(ctrlFluxo and xcargasul >= 16500 and xJLP <> 2 And xJLM <> 2 And xJLG = 1 And xJLGG <> 1), lim = lim - 100; ctrlFluxo = false;
+(ctrlFluxo and xcargasul >= 16500 and xJLP <> 2 And xJLM = 1 And xJLG <> 2 And xJLGG <> 1), lim = lim - 50; ctrlFluxo = false;
+(ctrlFluxo and xcargasul >= 16500 and xJLP = 0 And xJLM <> 2 And xJLG <> 2 And xJLGG <> 1), lim = lim - 50; ctrlFluxo = false;
+

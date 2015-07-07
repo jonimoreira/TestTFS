@@ -98,9 +98,24 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <Content Include="ValidacaoLimites\Funcoes\Modulo_Interligacao_SSE-limiteFINBA.txt" />
+    <Content Include="ValidacaoLimites\Funcoes\Modulo_Interligacao_SSE-LimiteFBAIN.txt" />
+    <Content Include="ValidacaoLimites\Funcoes\Modulo_Interligacao_SSE-LIMITE_FSUL.txt" />
+    <Content Include="ValidacaoLimites\Funcoes\Modulo_Interligacao_SSE-Limite_RSE.txt" />
+    <Content Include="ValidacaoLimites\Funcoes\Modulo_Interligacao_SSE-LimiteFSE.txt" />
     <Content Include="ValidacaoLimites\Funcoes\Modulo_PERIODO_SE_CO_RNE_2009-PeriodoCarga_SE_CO.txt" />
     <Content Include="ValidacaoLimites\Funcoes\Modulo_Interligacao_SSE-LIMITE_RSUL.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_Interligacao_SSE-LimiteFBAIN-LD.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_Interligacao_SSE-limiteFINBA-LD.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_Interligacao_SSE-LIMITE_FSUL-LD.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_Interligacao_SSE-Limite_RSE-LD.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_Interligacao_SSE-LimiteFSE-LD.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_Interligacao_SSE-LIMITE_FSUL-MC.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_Interligacao_SSE-Limite_RSE-MC.txt" />
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_Interligacao_SSE-LIMITE_RSUL-LD.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_Interligacao_SSE-LimiteFBAIN-MC.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_Interligacao_SSE-limiteFINBA-MC.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_Interligacao_SSE-LimiteFSE-MC.txt" />
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_Interligacao_SSE-LIMITE_RSUL-MC.txt" />
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_PERIODO_SE_CO_RNE_2009-PeriodoCarga_SE_CO-MC.txt" />
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_PERIODO_SE_CO_RNE_2009-PeriodoCarga_SE_CO-LD.txt" />

@@ -49,10 +49,17 @@ namespace ONS.Compiler.Tests.ValidacaoLimites
                     sheetRow_S_SE.MC_CARGA_SIN = double.Parse(valores[12]);
                     sheetRow_S_SE.MC_CARGA_SUL = double.Parse(valores[13]);
                     sheetRow_S_SE.MC_LIM_ELO_CC = valores[23].Trim().ToLower();
+                    sheetRow_S_SE.MC_Gera_Usinas = double.Parse(valores[25]);
 
-                    //sheetRow_S_SE.LDretorno_PERIODO_DE_CARGA = valores[24].Trim();
-                    
-                    sheetRow_S_SE.LDretorno_LIM_RSUL_FSUL_SUP_RSUL = double.Parse(valores[18]);
+                    sheetRow_S_SE.LDvalorplanilha_LIM_FBAIN = double.Parse(valores[14]);
+                    sheetRow_S_SE.LDvalorplanilha_LIM_FINBA = double.Parse(valores[15]);
+                    sheetRow_S_SE.LDvalorplanilha_LIM_FSE = double.Parse(valores[16]);
+                    sheetRow_S_SE.LDvalorplanilha_LIM_RSE = double.Parse(valores[17]);
+                    sheetRow_S_SE.LDvalorplanilha_LIM_RSUL_FSUL_SUP_RSUL = double.Parse(valores[18]);
+                    sheetRow_S_SE.LDvalorplanilha_LIM_RSUL_FSUL_INF_FSUL = double.Parse(valores[19]);
+
+                    sheetRow_S_SE.LDvalorplanilha_PERIODO_DE_CARGA = valores[24].Trim();
+
                     linhas_S_SE.Add(iLinhaIdx, sheetRow_S_SE);
                     iLinhaIdx++;
                 }
@@ -123,11 +130,18 @@ namespace ONS.Compiler.Tests.ValidacaoLimites
                     sheetRow_SUL.MC_C_Sincrono_CNO = double.Parse(valores[22]);
                     sheetRow_SUL.MC_C_Sincrono_GPS = double.Parse(valores[23]);
                     sheetRow_SUL.MC_C_Sincrono_S_Osorio = double.Parse(valores[24]);
+
+                    sheetRow_SUL.MC_J_Lacerda_P = double.Parse(valores[25]);
+                    sheetRow_SUL.MC_J_Lacerda_M = double.Parse(valores[26]);
+                    sheetRow_SUL.MC_J_Lacerda_G = double.Parse(valores[27]);
+                    sheetRow_SUL.MC_J_Lacerda_GG = double.Parse(valores[28]);
                     
                     sheetRow_SUL.MC_G1 = double.Parse(valores[39]);
                     sheetRow_SUL.MC_G2 = double.Parse(valores[40]);
                     sheetRow_SUL.MC_G3 = double.Parse(valores[41]);
                     sheetRow_SUL.MC_G4 = double.Parse(valores[42]);
+
+                    sheetRow_SUL.LD_ValorReferenciaFRS_Usinas = double.Parse(valores[43]);
 
                     linhas_SUL.Add(iLinhaIdx, sheetRow_SUL);
                     iLinhaIdx++;
@@ -256,9 +270,39 @@ namespace ONS.Compiler.Tests.ValidacaoLimites
             switch (funcao)
             {
                 case "Modulo_Interligacao_SSE-LIMITE_RSUL":
-                    for (int i = 0; i < linhas_S_SE.Count; i++) //TODO: sem sentido
+                    for (int i = 0; i < linhas_S_SE.Count; i++)
                     {
                         AtualizaVariaveisDaMemoriaDeCalculo_Modulo_Interligacao_SSE_LIMITE_RSUL(maquinaInequacoes, linhas_S_SE[i], linhas_SUL[i]);
+                    }
+                    break;
+                case "Modulo_Interligacao_SSE-LimiteFBAIN":
+                    for (int i = 0; i < linhas_S_SE.Count; i++) 
+                    {
+                        AtualizaVariaveisDaMemoriaDeCalculo_Modulo_Interligacao_SSE_LimiteFBAIN(maquinaInequacoes, linhas_S_SE[i]);
+                    }
+                    break;
+                case "Modulo_Interligacao_SSE-limiteFINBA":
+                    for (int i = 0; i < linhas_S_SE.Count; i++)
+                    {
+                        AtualizaVariaveisDaMemoriaDeCalculo_Modulo_Interligacao_SSE_limiteFINBA(maquinaInequacoes, linhas_S_SE[i], linhas_SUL[i]);
+                    }
+                    break;
+                case "Modulo_Interligacao_SSE-LimiteFSE":
+                    for (int i = 0; i < linhas_S_SE.Count; i++)
+                    {
+                        AtualizaVariaveisDaMemoriaDeCalculo_Modulo_Interligacao_SSE_LimiteFSE(maquinaInequacoes, linhas_S_SE[i]);
+                    }
+                    break;
+                case "Modulo_Interligacao_SSE-Limite_RSE":
+                    for (int i = 0; i < linhas_S_SE.Count; i++)
+                    {
+                        AtualizaVariaveisDaMemoriaDeCalculo_Modulo_Interligacao_SSE_LimiteFSE(maquinaInequacoes, linhas_S_SE[i]);
+                    }
+                    break;
+                case "Modulo_Interligacao_SSE-LIMITE_FSUL":
+                    for (int i = 0; i < linhas_S_SE.Count; i++)
+                    {
+                        AtualizaVariaveisDaMemoriaDeCalculo_Modulo_Interligacao_SSE_LIMITE_FSUL(maquinaInequacoes, linhas_S_SE[i]);
                     }
                     break;
                 default:
@@ -269,7 +313,6 @@ namespace ONS.Compiler.Tests.ValidacaoLimites
         public void AtualizaVariaveisDaMemoriaDeCalculo_Modulo_Interligacao_SSE_LIMITE_RSUL(InequationEngine maquinaInequacoes, SheetRow_S_SE sheetRow_S_SE, SheetRow_SUL sheetRow_SUL)
         {
             List<Variable> variablesList = new List<Variable>();
-            // Mapeamento da MC: variáveis definidos no Modulo_Interligacao_SSE-LIMITE_RSUL-MC com objetos sheetRow_S_SE
             maquinaInequacoes.CalculationMemory.UpdateVariable("xpercarga", sheetRow_S_SE.LDretorno_PERIODO_DE_CARGA);
             maquinaInequacoes.CalculationMemory.UpdateVariable("xrsul", sheetRow_S_SE.MC_RSUL);
             maquinaInequacoes.CalculationMemory.UpdateVariable("xcargasul", sheetRow_S_SE.MC_CARGA_SUL);
@@ -279,6 +322,63 @@ namespace ONS.Compiler.Tests.ValidacaoLimites
             maquinaInequacoes.CalculationMemory.UpdateVariable("xugg3", sheetRow_SUL.MC_G3);
             maquinaInequacoes.CalculationMemory.UpdateVariable("xugg4", sheetRow_SUL.MC_G4);
         }
+
+        public void AtualizaVariaveisDaMemoriaDeCalculo_Modulo_Interligacao_SSE_LimiteFBAIN(InequationEngine maquinaInequacoes, SheetRow_S_SE sheetRow_S_SE)
+        {
+            List<Variable> variablesList = new List<Variable>();
+            maquinaInequacoes.CalculationMemory.UpdateVariable("xpercarga", sheetRow_S_SE.LDretorno_PERIODO_DE_CARGA);
+            maquinaInequacoes.CalculationMemory.UpdateVariable("xNMaqIpu", sheetRow_S_SE.MC_Mq_60Hz);
+            maquinaInequacoes.CalculationMemory.UpdateVariable("xGerIPU", sheetRow_S_SE.MC_GIPU_60Hz);
+            //maquinaInequacoes.CalculationMemory.UpdateVariable("xangra", sheetRow_SUL.MC_UGs_Gerando_Araucaria);
+
+        }
+
+        public void AtualizaVariaveisDaMemoriaDeCalculo_Modulo_Interligacao_SSE_limiteFINBA(InequationEngine maquinaInequacoes, SheetRow_S_SE sheetRow_S_SE, SheetRow_SUL sheetRow_SUL)
+        {
+            List<Variable> variablesList = new List<Variable>();
+            maquinaInequacoes.CalculationMemory.UpdateVariable("xrsul", sheetRow_S_SE.MC_RSUL);
+            maquinaInequacoes.CalculationMemory.UpdateVariable("xcargasul", sheetRow_S_SE.MC_CARGA_SUL);
+            maquinaInequacoes.CalculationMemory.UpdateVariable("xugarauc", sheetRow_SUL.MC_UGs_Gerando_Araucaria);
+            maquinaInequacoes.CalculationMemory.UpdateVariable("x_refFRS_Ger", sheetRow_SUL.LD_ValorReferenciaFRS_Usinas);
+            maquinaInequacoes.CalculationMemory.UpdateVariable("xFRS_GerUSs", sheetRow_SUL.MC_FRS - sheetRow_S_SE.MC_Gera_Usinas);
+            maquinaInequacoes.CalculationMemory.UpdateVariable("xJLP", sheetRow_SUL.MC_J_Lacerda_P);
+            maquinaInequacoes.CalculationMemory.UpdateVariable("xJLM", sheetRow_SUL.MC_J_Lacerda_M);
+            maquinaInequacoes.CalculationMemory.UpdateVariable("xJLG", sheetRow_SUL.MC_J_Lacerda_G);
+            maquinaInequacoes.CalculationMemory.UpdateVariable("xJLGG", sheetRow_SUL.MC_J_Lacerda_GG);
+
+        }
+
+        public void AtualizaVariaveisDaMemoriaDeCalculo_Modulo_Interligacao_SSE_LimiteFSE(InequationEngine maquinaInequacoes, SheetRow_S_SE sheetRow_S_SE)
+        {
+            List<Variable> variablesList = new List<Variable>();
+            //maquinaInequacoes.CalculationMemory.UpdateVariable("xangra", sheetRow_SUL.MC_UGs_Gerando_Araucaria);
+            maquinaInequacoes.CalculationMemory.UpdateVariable("xMaqIpu", sheetRow_S_SE.MC_Mq_60Hz);
+            maquinaInequacoes.CalculationMemory.UpdateVariable("xGerIPU", sheetRow_S_SE.MC_GIPU_60Hz);
+            maquinaInequacoes.CalculationMemory.UpdateVariable("xpercarga", sheetRow_S_SE.LDretorno_PERIODO_DE_CARGA);
+            // LimiteFSE($A$23,L6,K6,Y6)
+            // LimiteFSE(xangra, xMaqIpu, xGerIPU, xpercarga)
+        }
+
+        public void AtualizaVariaveisDaMemoriaDeCalculo_Modulo_Interligacao_SSE_Limite_RSE(InequationEngine maquinaInequacoes, SheetRow_S_SE sheetRow_S_SE)
+        {
+            List<Variable> variablesList = new List<Variable>();
+            maquinaInequacoes.CalculationMemory.UpdateVariable("xelo", sheetRow_S_SE.MC_POT_ELO_CC);
+            //maquinaInequacoes.CalculationMemory.UpdateVariable("xangra", sheetRow_SUL.MC_UGs_Gerando_Araucaria);
+            maquinaInequacoes.CalculationMemory.UpdateVariable("xMaq", sheetRow_S_SE.MC_Mq_60Hz);
+            maquinaInequacoes.CalculationMemory.UpdateVariable("xGerIPU", sheetRow_S_SE.MC_GIPU_60Hz);
+            maquinaInequacoes.CalculationMemory.UpdateVariable("xrsul", sheetRow_S_SE.MC_RSUL);
+            maquinaInequacoes.CalculationMemory.UpdateVariable("xpercarga", sheetRow_S_SE.LDretorno_PERIODO_DE_CARGA);
+            // Limite_RSE(I6,$A$23, L6, K6, F6,Y6)
+            // Limite_RSE(xelo, xangra, xMaq, xGerIPU, xrsul, xpercarga)
+        }
+
+        public void AtualizaVariaveisDaMemoriaDeCalculo_Modulo_Interligacao_SSE_LIMITE_FSUL(InequationEngine maquinaInequacoes, SheetRow_S_SE sheetRow_S_SE)
+        {
+            List<Variable> variablesList = new List<Variable>();
+            maquinaInequacoes.CalculationMemory.UpdateVariable("xpercarga", sheetRow_S_SE.LDretorno_PERIODO_DE_CARGA);
+            
+        }
+
 
         private string GetCaminhoBaseArquivosTeste()
         {

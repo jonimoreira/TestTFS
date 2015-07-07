@@ -1,0 +1,44 @@
+
+
+Public Function LimiteFSE(xangra, xMaqIpu, xGerIPU, xpercarga)
+'************************************************
+'IO-ON.SSE,revisão 61, Vig. 03/01/2014.
+'************************************************
+
+Select Case xpercarga
+    Case "PESADA", "MEDIA"
+        Select Case xGerIPU
+            Case Is <= 5700
+                lim = 6800
+            Case Is <= 6700
+                lim = 6900
+            Case Is <= 7200
+                lim = 6750
+        End Select
+'**************
+    Case Is = "LEVE", "MINIMA"
+        Select Case xGerIPU
+            Case Is <= 6700
+                lim = 6100
+            Case Is <= 7200
+                lim = 5900
+        End Select
+End Select
+
+'Redução de limites de acordo com ANGRA I ou ANGRA II
+Select Case xpercarga
+    Case "LEVE", "MINIMA"
+        Select Case xangra
+            Case "0Ligada" ' Angra 1 e Angra 2 desligadas
+                lim = lim - 0
+            Case "1Ligada" ' Angra 1 ou Angra 2 desligada
+                lim = lim - 0
+            Case "2Ligadas"
+                lim = lim - 0
+        End Select
+End Select
+
+LimiteFSE = lim
+
+End Function
+

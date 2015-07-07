@@ -1,0 +1,55 @@
+
+Public Function LimiteFBAIN(xpercarga, xNMaqIpu, xGerIPU, xangra)
+'************************************************
+'IO-ON.SSE,revisão 61, Vig. 03/01/2014.
+''************************************************
+'xFSUL = -xrsul
+
+Select Case xpercarga
+    Case "PESADA", "MEDIA"
+        Select Case xGerIPU
+            Case Is <= 4000
+                lim = 1850
+            Case Is <= 5000
+                lim = 1850
+            Case Is <= 5700
+                lim = 1750
+            Case Is <= 6700
+                lim = 1650
+            Case Is <= 7200
+                lim = 1300
+        End Select
+    
+    '**************
+    Case Is = "LEVE", "MINIMA"
+        Select Case xGerIPU
+            Case Is <= 4000
+                lim = 1850
+            Case Is <= 5000
+                lim = 1650
+            Case Is <= 5700
+                lim = 1600
+            Case Is <= 6700
+                lim = 1500
+            Case Is <= 7200
+                lim = 1200
+        End Select
+End Select
+
+'Redução de limites de acordo com o ELO e ANGRA I ou ANGRA II
+Select Case xpercarga
+    Case "LEVE", "MINIMA"
+        Select Case xangra
+            Case "0Ligada" ' Angra 1 e Angra 2 desligadas
+                lim = lim - 100
+            Case "1Ligada" ' Angra 1 ou Angra 2 desligada
+                lim = lim - 50
+            Case "2Ligadas"
+                lim = lim - 0
+        End Select
+End Select
+
+
+LimiteFBAIN = lim
+    
+End Function

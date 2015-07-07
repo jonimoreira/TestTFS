@@ -1,0 +1,145 @@
+Public Function limiteFINBA(xrsul, xcargasul, xUGarauc, x_refFRS_Ger, xFRS_GerUSs, xJLP, xJLM, xJLG, xJLGG)
+'************************************************
+'IO-ON.SSE,revisão 62, Vig. 02/02/2014.
+'MOP/CNOS 021/2014, vig. 19/02/2014
+'************************************************
+
+'Item 6.4.1 e 6.4.2
+Select Case xUGarauc
+    Case 3 '2G+1V
+        Select Case xcargasul
+            Case Is > 17300
+                lim = 500
+            Case 17000 To 17300
+                lim = 900
+            Case 16500 To 17000
+                lim = 1400
+            Case 16000 To 16500
+                lim = 1700
+            Case 15000 To 16000
+                lim = 1700
+            Case Is <= 15000
+                lim = 1800
+        End Select
+    Case 2 '1G+1V
+        Select Case xcargasul
+            Case Is > 17300
+                lim = 300
+            Case 17000 To 17300
+                lim = 700
+            Case 16500 To 17000
+                lim = 1300
+            Case 16000 To 16500
+                lim = 1550
+            Case 15000 To 16000
+                lim = 1600
+            Case Is <= 15000
+                lim = 1750
+        End Select
+    Case 0 '0 máquinas. Não há possibilidade de operar com somente 1 máquina
+        Select Case xcargasul
+            Case Is > 17300
+                lim = lim - 0 'não está definido
+            Case 16500 To 17000
+                lim = 650
+            Case 16000 To 16500
+                lim = 900
+            Case 15000 To 16000
+                lim = 1300
+            Case Is <= 15000
+                lim = 1650
+        End Select
+End Select
+
+Select Case xpercarga 'Item 6.4.3
+    Case "MEDIA", "PESADA"
+    r1 = 10
+    r2 = 12
+    r3 = 3
+    r4 = 4
+    Case "LEVE", "MINIMA"
+    r1 = 8
+    r2 = 8
+    r3 = 2
+    r4 = 3
+End Select
+
+Dim red(4)
+red(1) = 80
+red(2) = 30
+red(3) = 30
+red(4) = 0
+
+dif1 = r1 - xugG1
+dif2 = r2 - xugG2
+dif3 = r3 - xugG3
+dif4 = r4 - xugG4
+
+If dif1 > 0 Then
+    lim = lim - (dif1 * red1)
+End If
+If dif2 > 0 Then
+    lim = lim - (dif2 * red2)
+End If
+If dif3 > 0 Then
+    lim = lim - (dif3 * red3)
+End If
+If dif4 > 0 Then
+    lim = lim - (dif4 * red4)
+End If
+
+'verificação de FRS-Geração para redução no FINBA
+difFRS = FRS_Ger - x_refFRS_Ger
+
+If difFRS > 0 Then
+    lim = lim - red_FINBA_FRS_GER(lim, xFRS_GER) 'redução no limite da LT Ibiuna/Bateias, com o aumento no valor da referencia FRS-Geração
+End If
+
+'item 6.4.2 (observação 5) e 6.4.4 - Máquinas de JLacerda
+'regras:
+'-para cargasul >=16500 -> 2P+2M+2G+1GG - não há redução
+'-para cargasul <=16500 -> 2G+1GG (mínima) - não há redução
+' configurações diferentes: item 6.4.4
+Select Case xcargasul
+    Case Is <= 16500
+        If xJLG = 2 And xJLGG = 1 Then
+            'não há alteração
+        ElseIf xJLGG = 0 Then
+            If xJLM = 2 And xJLP = 2 Then
+                'não há alteração
+            Else
+                lim = lim - 150
+            End If
+        ElseIf xJLG = 1 Then
+            If xJLM = 2 Then
+                'não há alteração
+            Else
+                lim = lim - 100
+            End If
+        Else
+            lim = "JLac!!!"
+        End If
+    Case Is >= 16500
+        'xJLP, xJLM, xJLG, xJLGG
+        If xJLP = 2 And xJLM = 2 And xJLG = 2 And xJLGG = 1 Then
+            'não há alteração
+        Else   'qualquer um que não atender, acumula a redução
+            If xJLGG = 0 Then
+                lim = lim - 150
+            End If
+            If xJLG = 1 Then
+                lim = lim - 100
+            End If
+            If xJLM = 1 Then
+                lim = lim - 50
+            End If
+            If xJLP = 0 Then
+                lim = lim - 50
+            End If
+        End If
+End Select
+
+
+limiteFINBA = lim
+
+End Function

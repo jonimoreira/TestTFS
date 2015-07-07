@@ -1,0 +1,27 @@
+// [<inequacao>], <atribuições: {<nome_var>=<expressao_ou_valor>;}*>
+// default: inequacao = true
+
+,ehPesadaOuMedia = false;
+,ehLeveOuMinima = false;
+,ctrlFluxo = true;
+
+(xpercarga = "PESADA" or xpercarga = "MEDIA"), ehPesadaOuMedia = true;
+(xpercarga = "LEVE" or xpercarga = "MINIMA"), ehLeveOuMinima = true;
+
+(ctrlFluxo and ehPesadaOuMedia and xGerIPU <= 6700), lim = 9100; ctrlFluxo = false;
+(ctrlFluxo and ehPesadaOuMedia and xGerIPU <= 7200), lim = 8400; ctrlFluxo = false;
+
+,ctrlFluxo = true;
+
+(ctrlFluxo and ehLeveOuMinima and xGerIPU <= 6700), lim = 9200; ctrlFluxo = false;
+(ctrlFluxo and ehLeveOuMinima and xGerIPU <= 7200), lim = 8500; ctrlFluxo = false;
+
+
+(ehLeveOuMinima and xangra = "0Ligada"), lim = lim - 400;
+(ehLeveOuMinima and xangra = "1Ligada"), lim = lim - 200;
+(ehLeveOuMinima and xangra = "2Ligadas"), lim = lim - 0;
+
+// Provavelmente ha um erro aqui pq a variavel xelo nao esta sendo usada
+(ehLeveOuMinima and xangra = "0Ligada"), lim = lim - 400;
+(ehLeveOuMinima and xangra = "1Ligada"), lim = lim - 200;
+(ehLeveOuMinima and xangra = "2Ligadas"), lim = lim - 0;

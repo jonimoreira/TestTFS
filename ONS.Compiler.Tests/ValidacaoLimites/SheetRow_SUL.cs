@@ -55,7 +55,7 @@ namespace ONS.Compiler.Tests.ValidacaoLimites
         public string LD_Lim_Grbi_II_SUP_Import = string.Empty;
         public string LD_Lim_Grbi_II_INF_Export = string.Empty;
         public string LD_PERIODO_DE_CARGA = string.Empty;
-        public string LD_ValorReferenciaFRS_Usinas = string.Empty;
+        public double LD_ValorReferenciaFRS_Usinas = 0.0;
 
 
     }

@@ -25,24 +25,29 @@ namespace ONS.Compiler.Tests.ValidacaoLimites
         public double MC_Gera_Usinas = 0.0;
 
         // Propriedades funções (lista de decisões: LD_)
-        public string LD_LIM_FBAIN = string.Empty;
-        public string LD_LIM_FINBA = string.Empty;
-        public string LD_LIM_FSE = string.Empty;
-        public string LD_LIM_RSE = string.Empty;
+        public double LDvalorplanilha_LIM_FBAIN = 0.0;
+        public double LDretorno_LIM_FBAIN = 0.0;
+
+        public double LDvalorplanilha_LIM_FINBA = 0.0;
+        public double LDretorno_LIM_FINBA = 0.0;
+
+        public double LDvalorplanilha_LIM_FSE = 0.0;
+        public double LDretorno_LIM_FSE = 0.0;
+
+        public double LDvalorplanilha_LIM_RSE = 0.0;
+        public double LDretorno_LIM_RSE = 0.0;
         
-        /// <summary>
-        /// =LIMITE_RSUL(Y6,F6,N6,SUL!Z6,SUL!AN6,SUL!AO6,SUL!AP6,SUL!AQ6)
-        /// =LIMITE_RSUL(LD_PERIODO_DE_CARGA,MC_RSUL,MC_CARGA_SUL,SheetRow_SUL.MC_UGs_Gerando_Araucaria,SheetRow_SUL.MC_G1,SheetRow_SUL.MC_G2,SheetRow_SUL.MC_G3,SheetRow_SUL.MC_G4)
-        /// </summary>
-        public List<string> LD_LIM_RSUL_FSUL_SUP_RSUL = new List<string>();
+        public double LDvalorplanilha_LIM_RSUL_FSUL_SUP_RSUL = 0.0;
         public double LDretorno_LIM_RSUL_FSUL_SUP_RSUL = 0.0;
 
-        public string LD_LIM_RSUL_FSUL_INF_FSUL = string.Empty;
+        public double LDvalorplanilha_LIM_RSUL_FSUL_INF_FSUL = 0.0;
+        public double LDretorno_LIM_RSUL_FSUL_INF_FSUL = 0.0;
+
         public string LD_Mqs_crt_IPU_max = string.Empty;
         public string LD_Limite_GIPU_SUP = string.Empty;
         public string LD_Limite_GIPU_INF = string.Empty;
 
-        public string LD_PERIODO_DE_CARGA = string.Empty;
+        public string LDvalorplanilha_PERIODO_DE_CARGA = string.Empty;
         public string LDretorno_PERIODO_DE_CARGA = string.Empty;
         
         public string LD_Valor_referencia_FRS_Usinas = string.Empty;

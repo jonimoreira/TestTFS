@@ -1,0 +1,28 @@
+// [<inequacao>], <atribuições: {<nome_var>=<expressao_ou_valor>;}*>
+// default: inequacao = true
+
+,ehPesadaOuMedia = false;
+,ehLeveOuMinima = false;
+,controleFluxo = true;
+
+(xpercarga = "PESADA" or xpercarga = "MEDIA"), ehPesadaOuMedia = true;
+(xpercarga = "LEVE" or xpercarga = "MINIMA"), ehLeveOuMinima = true;
+
+(controleFluxo and ehPesadaOuMedia and xGerIPU <= 4000), lim = 1850; controleFluxo = false;
+(controleFluxo and ehPesadaOuMedia and xGerIPU <= 5000), lim = 1850; controleFluxo = false;
+(controleFluxo and ehPesadaOuMedia and xGerIPU <= 5700), lim = 1750; controleFluxo = false;
+(controleFluxo and ehPesadaOuMedia and xGerIPU <= 6700), lim = 1650; controleFluxo = false;
+(controleFluxo and ehPesadaOuMedia and xGerIPU <= 7200), lim = 1300; controleFluxo = false;
+
+,controleFluxo = true;
+
+(controleFluxo and ehLeveOuMinima and xGerIPU <= 4000), lim = 1850; controleFluxo = false;
+(controleFluxo and ehLeveOuMinima and xGerIPU <= 5000), lim = 1650; controleFluxo = false;
+(controleFluxo and ehLeveOuMinima and xGerIPU <= 5700), lim = 1600; controleFluxo = false;
+(controleFluxo and ehLeveOuMinima and xGerIPU <= 6700), lim = 1500; controleFluxo = false;
+(controleFluxo and ehLeveOuMinima and xGerIPU <= 7200), lim = 1200; controleFluxo = false;
+
+(ehLeveOuMinima and xangra = "0Ligada"), lim = lim - 100;
+(ehLeveOuMinima and xangra = "1Ligada"), lim = lim - 50;
+(ehLeveOuMinima and xangra = "2Ligadas"), lim = lim - 0;
+

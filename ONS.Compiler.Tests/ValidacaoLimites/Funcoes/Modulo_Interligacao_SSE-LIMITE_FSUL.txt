@@ -1,0 +1,17 @@
+
+Public Function LIMITE_FSUL(xpercarga)
+'********************************************************************
+'IO.ON.SSE - Rev. 62 Data: 02/02/2014
+'********************************************************************
+
+Select Case xpercarga
+    Case "PESADA"
+        lim = -5700
+    Case "MEDIA"
+        lim = -5700
+    Case "LEVE", "MINIMA"
+        lim = -5900
+End Select
+
+LIMITE_FSUL = lim
+End Function
