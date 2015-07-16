@@ -71,8 +71,14 @@
     <Compile Include="ValidacaoLimites\SheetRow_S_SE.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MaquinaInequacoesUnitTests.cs" />
+    <Compile Include="ValidacaoLimites\UnitTestsLocal\Modulo_Interligacao_SSE_LIMITE_FSUL.cs" />
+    <Compile Include="ValidacaoLimites\UnitTestsLocal\Modulo_Interligacao_SSE_LIMITE_RSUL.cs" />
+    <Compile Include="ValidacaoLimites\UnitTestsLocal\Modulo_PERIODO_SE_CO_RNE_2009_PeriodoCarga_SE_CO.cs" />
+    <Compile Include="ValidacaoLimites\UnitTestsLocal\Modulo_Interligacao_SSE_LimiteFBAIN.cs" />
+    <Compile Include="ValidacaoLimites\UnitTestsLocal\Modulo_Interligacao_SSE_limiteFINBA.cs" />
+    <Compile Include="ValidacaoLimites\UnitTestsLocal\Modulo_Interligacao_SSE_LimiteFSE.cs" />
+    <Compile Include="ValidacaoLimites\UnitTestsLocal\Modulo_Interligacao_SSE_Limite_RSE.cs" />
     <Compile Include="ValidacaoLimites\ValidacaoLimitesUnitTests.cs" />
-    <Compile Include="WCF\WCFUnitTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FleeSharp\Tests\Tests.csproj">
@@ -98,13 +104,13 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <Content Include="ValidacaoLimites\Funcoes\Modulo_Interligacao_SSE-limiteFINBA.txt" />
-    <Content Include="ValidacaoLimites\Funcoes\Modulo_Interligacao_SSE-LimiteFBAIN.txt" />
-    <Content Include="ValidacaoLimites\Funcoes\Modulo_Interligacao_SSE-LIMITE_FSUL.txt" />
-    <Content Include="ValidacaoLimites\Funcoes\Modulo_Interligacao_SSE-Limite_RSE.txt" />
-    <Content Include="ValidacaoLimites\Funcoes\Modulo_Interligacao_SSE-LimiteFSE.txt" />
-    <Content Include="ValidacaoLimites\Funcoes\Modulo_PERIODO_SE_CO_RNE_2009-PeriodoCarga_SE_CO.txt" />
-    <Content Include="ValidacaoLimites\Funcoes\Modulo_Interligacao_SSE-LIMITE_RSUL.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\FuncoesMacroPlanilha\Modulo_Interligacao_SSE-limiteFINBA.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\FuncoesMacroPlanilha\Modulo_Interligacao_SSE-LimiteFBAIN.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\FuncoesMacroPlanilha\Modulo_Interligacao_SSE-LIMITE_FSUL.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\FuncoesMacroPlanilha\Modulo_Interligacao_SSE-Limite_RSE.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\FuncoesMacroPlanilha\Modulo_Interligacao_SSE-LimiteFSE.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\FuncoesMacroPlanilha\Modulo_PERIODO_SE_CO_RNE_2009-PeriodoCarga_SE_CO.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\FuncoesMacroPlanilha\Modulo_Interligacao_SSE-LIMITE_RSUL.txt" />
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_Interligacao_SSE-LimiteFBAIN-LD.txt" />
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_Interligacao_SSE-limiteFINBA-LD.txt" />
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_Interligacao_SSE-LIMITE_FSUL-LD.txt" />
@@ -129,18 +135,18 @@
     <None Include="Service References\MaquinaInequacoesServiceReference\MaquinaInequacoesService2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="WCF\TestaWCFBasico.loadtest">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="ValidacaoLimites\Dados\Spreadsheet_Example01.csv" />
-    <None Include="ValidacaoLimites\Dados\Spreadsheet_Example02_SUL.csv" />
-    <None Include="ValidacaoLimites\Dados\Spreadsheet_Example02_S_SE.csv" />
+    <None Include="ValidacaoLimites\DadosPlanilha\Spreadsheet_Example01.csv" />
+    <None Include="ValidacaoLimites\DadosPlanilha\Spreadsheet_Example02_SUL.csv" />
+    <None Include="ValidacaoLimites\DadosPlanilha\Spreadsheet_Example02_S_SE.csv" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\MaquinaInequacoesServiceReference\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ValidacaoLimites\UnitTestsWCF\" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

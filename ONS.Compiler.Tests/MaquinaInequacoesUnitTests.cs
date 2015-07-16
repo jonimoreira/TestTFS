@@ -10,8 +10,11 @@ namespace ONS.Compiler.Tests
     [TestClass]
     public class MaquinaInequacoesUnitTests
     {
+        /// <summary>
+        /// Execução dos testes internos da solução do FleeC#.
+        /// </summary>
         [TestMethod]
-        public void TestesSolucaoFlee()
+        public void RodarTestesInternosSolucaoFlee()
         {
             var bulkTests = new BulkTests();
 
@@ -24,8 +27,12 @@ namespace ONS.Compiler.Tests
             Assert.AreEqual(true, true);
         }
 
+        /// <summary>
+        /// Verifica se a máquina de inequações aceita variáveis com mesmo nome.
+        /// Se der erro a máquina está aceitando.
+        /// </summary>
         [TestMethod]
-        public void TestaVariavelDuplicada()
+        public void CarregarVariavelDuplicada()
         {
             InequationEngine maquinaInequacoes = new InequationEngine();
             maquinaInequacoes.CalculationMemory.Add(new Variable("a", VariableDataType.String));
@@ -41,8 +48,11 @@ namespace ONS.Compiler.Tests
             Assert.Fail();
         }
 
+        /// <summary>
+        /// Testa execução simples de uma decisão (inequação, bloco V, bloco F).
+        /// </summary>
         [TestMethod]
-        public void TestaExecucaoExpressao()
+        public void ExecutarExpressaoSimples()
         {
             int a=1, b=2;
             string expressao = "(a+b)>0";
@@ -68,8 +78,11 @@ namespace ONS.Compiler.Tests
             Assert.AreEqual(maquinaInequacoes.CalculationMemory["b"].GetValue(), -1.0);
         }
 
+        /// <summary>
+        /// Testa inequação com comparação simples de variáveis do tipo hora.
+        /// </summary>
         [TestMethod]
-        public void TestaOperacaoComparacaoSimplesHora()
+        public void ExecutarOperacaoComparacaoSimplesHora()
         {
             string pattern = "HH:mm:ss";
             string horaA = "00:00:00";
@@ -111,8 +124,11 @@ namespace ONS.Compiler.Tests
             Assert.AreEqual(maquinaInequacoes.CalculationMemory["result"].GetValue(), 100.0);
         }
 
+        /// <summary>
+        /// Testa inequações com variações de comparação de variáveis do tipo hora.
+        /// </summary>
         [TestMethod]
-        public void TestaOperacaoComparacaoHora()
+        public void ExecutarOperacaoComparacaoHora()
         {
             string pattern = "HH:mm:ss";
             string horaA = "20:27:31";
@@ -257,6 +273,62 @@ namespace ONS.Compiler.Tests
 
         }
 
+
+        [TestMethod]
+        public void ChamarServico()
+        {
+            string memoriaCalculo = @"
+                    a = 1.0
+                    b = 2.0
+                    ";
+            //To get the randon value as input from the value collection
+            string listaDecisoes = "(a>b),a=1;";
+
+            //Created a service client
+            var serviceClient = new MaquinaInequacoesServiceReference.MaquinaInequacoesServiceClient();
+
+            // call the service method getdata
+            var response = serviceClient.ExecutarString(memoriaCalculo, listaDecisoes);
+
+        }
+
+        [TestMethod]
+        public void ExecutarExpressaoSimplesPorServico()
+        {
+            int a = 1, b = 2;
+            string expressao = "(a+b)>0";
+            string blocoAcaoTrue = "a=0;b=-1";
+
+            MaquinaInequacoesServiceReference.Variavel variavelA = new MaquinaInequacoesServiceReference.Variavel();
+            variavelA.Nome = "a";
+            variavelA.TipoDado = MaquinaInequacoesServiceReference.TipoDado.Numerico;
+            variavelA.Valor = a;
+
+            MaquinaInequacoesServiceReference.Variavel variavelB = new MaquinaInequacoesServiceReference.Variavel();
+            variavelB.Nome = "b";
+            variavelB.TipoDado = MaquinaInequacoesServiceReference.TipoDado.Numerico;
+            variavelB.Valor = b;
+
+            MaquinaInequacoesServiceReference.MemoriaCalculo memoriaCalculo = new MaquinaInequacoesServiceReference.MemoriaCalculo();
+            memoriaCalculo.Variaveis = new List<MaquinaInequacoesServiceReference.Variavel>();
+            memoriaCalculo.Variaveis.Add(variavelA);
+            memoriaCalculo.Variaveis.Add(variavelB);
+
+            MaquinaInequacoesServiceReference.Decisao decisao = new MaquinaInequacoesServiceReference.Decisao();
+            decisao.Inequacao = expressao;
+            decisao.BlocoDeAcao = blocoAcaoTrue;
+
+            MaquinaInequacoesServiceReference.ListaDecisoes listaDecisoes = new MaquinaInequacoesServiceReference.ListaDecisoes();
+            listaDecisoes.Decisoes = new List<MaquinaInequacoesServiceReference.Decisao>();
+            listaDecisoes.Decisoes.Add(decisao);
+
+            MaquinaInequacoesServiceReference.MaquinaInequacoesServiceClient serviceClient = new MaquinaInequacoesServiceReference.MaquinaInequacoesServiceClient();
+            memoriaCalculo = serviceClient.ExecutarObjeto(memoriaCalculo, listaDecisoes);
+
+            Assert.AreEqual(memoriaCalculo.Variaveis[0].Valor, 0.0);
+            Assert.AreEqual(memoriaCalculo.Variaveis[1].Valor, -1.0);
+
+        }
 
     }
 }

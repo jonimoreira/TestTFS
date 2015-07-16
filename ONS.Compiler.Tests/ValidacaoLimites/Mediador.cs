@@ -14,7 +14,7 @@ namespace ONS.Compiler.Tests.ValidacaoLimites
     {
         public Dictionary<int, SheetRow_S_SE> linhas_S_SE = new Dictionary<int,SheetRow_S_SE>();
         public Dictionary<int, SheetRow_SUL> linhas_SUL = new Dictionary<int, SheetRow_SUL>();
-        public void CarregaDados_SheetRow_S_SE()
+        public void CarregarDados_SheetRow_S_SE()
         {
             linhas_S_SE.Clear();
 
@@ -67,9 +67,11 @@ namespace ONS.Compiler.Tests.ValidacaoLimites
             }
 
             // Atualiza retorno do periodo de carga (LDretorno_PERIODO_DE_CARGA)
+            // TODO: passar parametro bool se for para executar (cuidado com complexidade ciclomática)
+            
             InequationEngine maquinaInequacoes = new InequationEngine();
-            CarregaMemoriaDeCalculo(maquinaInequacoes, "Modulo_PERIODO_SE_CO_RNE_2009-PeriodoCarga_SE_CO");
-            CarregaListaDecisoes(maquinaInequacoes, "Modulo_PERIODO_SE_CO_RNE_2009-PeriodoCarga_SE_CO");
+            CarregarMemoriaDeCalculo(maquinaInequacoes, "Modulo_PERIODO_SE_CO_RNE_2009-PeriodoCarga_SE_CO");
+            CarregarListaDecisoes(maquinaInequacoes, "Modulo_PERIODO_SE_CO_RNE_2009-PeriodoCarga_SE_CO");
             maquinaInequacoes.Compile();
 
             foreach (int key in linhas_S_SE.Keys)
@@ -78,9 +80,10 @@ namespace ONS.Compiler.Tests.ValidacaoLimites
                 maquinaInequacoes.Execute();
                 linhas_S_SE[key].LDretorno_PERIODO_DE_CARGA = maquinaInequacoes.CalculationMemory["PeriodoCarga_SE_CO"].GetValue().ToString();
             }
+             
         }
 
-        public void CarregaDados_SheetRow_SUL()
+        public void CarregarDados_SheetRow_SUL()
         {
             linhas_SUL.Clear();
 
@@ -150,7 +153,12 @@ namespace ONS.Compiler.Tests.ValidacaoLimites
             }
         }
 
-        public void CarregaMemoriaDeCalculo(InequationEngine maquinaInequacoes, string funcao)
+        /// <summary>
+        /// Método para carregar a memória de cálculo de acordo com o arquivo txt seguindo a sintaxe básica para declaração de variáveis.
+        /// </summary>
+        /// <param name="maquinaInequacoes"></param>
+        /// <param name="funcao">Nome completo da função de acordo com o arquivo txt. Padrão: Modulo_{nomeModulo}_{nomeFuncao}</param>
+        public void CarregarMemoriaDeCalculo(InequationEngine maquinaInequacoes, string funcao)
         {
             // Parse memória de cálculo no formato txt //Modulo_PERIODO_SE_CO_RNE_2009-PeriodoCarga_SE_CO
             string fileName = GetCaminhoBaseArquivosTeste() + @"\ValidacaoLimites\MemoriaCalculo_ListasDecisoes\" + funcao + "-MC.txt";
@@ -219,7 +227,12 @@ namespace ONS.Compiler.Tests.ValidacaoLimites
 
         }
 
-        public void CarregaListaDecisoes(InequationEngine maquinaInequacoes, string funcao)
+        /// <summary>
+        /// Método para carregar a lista de decisões de acordo com o arquivo txt seguindo a sintaxe básica.
+        /// </summary>
+        /// <param name="maquinaInequacoes"></param>
+        /// <param name="funcao">Nome completo da função de acordo com o arquivo txt. Padrão: Modulo_{nomeModulo}_{nomeFuncao}</param>
+        public void CarregarListaDecisoes(InequationEngine maquinaInequacoes, string funcao)
         {
             KeyValuePair<string, string> decisao = new KeyValuePair<string, string>();
 
@@ -245,7 +258,7 @@ namespace ONS.Compiler.Tests.ValidacaoLimites
                         throw new Exception("Erro ao carregar lista de decisões do arquivo. Formato de linha na definição de atribuições na decisão inválida em: " + valores[1]);
 
                     decisao = new KeyValuePair<string,string>(inequacao, valores[1].Trim());
-                    AtualizaListaDeDecisoes(maquinaInequacoes, decisao);
+                    AtualizarListaDeDecisoes(maquinaInequacoes, decisao);
                 }
                 else
                 {
@@ -254,7 +267,12 @@ namespace ONS.Compiler.Tests.ValidacaoLimites
             }
         }
 
-        public void AtualizaListaDeDecisoes(InequationEngine maquinaInequacoes, KeyValuePair<string, string> decisaoLinha)
+        /// <summary>
+        /// Método para popular a decisão com {inequação, bloco V}. Bloco F = vazio.
+        /// </summary>
+        /// <param name="maquinaInequacoes"></param>
+        /// <param name="decisaoLinha"></param>
+        public void AtualizarListaDeDecisoes(InequationEngine maquinaInequacoes, KeyValuePair<string, string> decisaoLinha)
         {
             Inequation inequacao = new Inequation(decisaoLinha.Key);
             ActionBlock blocoAcaoTrueObj = new ActionBlock(decisaoLinha.Value);
@@ -264,121 +282,6 @@ namespace ONS.Compiler.Tests.ValidacaoLimites
             maquinaInequacoes.DecisionsList.AddDecision(decisao);
 
         }
-
-        public void AtualizaVariaveisDaMemoriaDeCalculo(InequationEngine maquinaInequacoes, string funcao)
-        {
-            switch (funcao)
-            {
-                case "Modulo_Interligacao_SSE-LIMITE_RSUL":
-                    for (int i = 0; i < linhas_S_SE.Count; i++)
-                    {
-                        AtualizaVariaveisDaMemoriaDeCalculo_Modulo_Interligacao_SSE_LIMITE_RSUL(maquinaInequacoes, linhas_S_SE[i], linhas_SUL[i]);
-                    }
-                    break;
-                case "Modulo_Interligacao_SSE-LimiteFBAIN":
-                    for (int i = 0; i < linhas_S_SE.Count; i++) 
-                    {
-                        AtualizaVariaveisDaMemoriaDeCalculo_Modulo_Interligacao_SSE_LimiteFBAIN(maquinaInequacoes, linhas_S_SE[i]);
-                    }
-                    break;
-                case "Modulo_Interligacao_SSE-limiteFINBA":
-                    for (int i = 0; i < linhas_S_SE.Count; i++)
-                    {
-                        AtualizaVariaveisDaMemoriaDeCalculo_Modulo_Interligacao_SSE_limiteFINBA(maquinaInequacoes, linhas_S_SE[i], linhas_SUL[i]);
-                    }
-                    break;
-                case "Modulo_Interligacao_SSE-LimiteFSE":
-                    for (int i = 0; i < linhas_S_SE.Count; i++)
-                    {
-                        AtualizaVariaveisDaMemoriaDeCalculo_Modulo_Interligacao_SSE_LimiteFSE(maquinaInequacoes, linhas_S_SE[i]);
-                    }
-                    break;
-                case "Modulo_Interligacao_SSE-Limite_RSE":
-                    for (int i = 0; i < linhas_S_SE.Count; i++)
-                    {
-                        AtualizaVariaveisDaMemoriaDeCalculo_Modulo_Interligacao_SSE_LimiteFSE(maquinaInequacoes, linhas_S_SE[i]);
-                    }
-                    break;
-                case "Modulo_Interligacao_SSE-LIMITE_FSUL":
-                    for (int i = 0; i < linhas_S_SE.Count; i++)
-                    {
-                        AtualizaVariaveisDaMemoriaDeCalculo_Modulo_Interligacao_SSE_LIMITE_FSUL(maquinaInequacoes, linhas_S_SE[i]);
-                    }
-                    break;
-                default:
-                    break;
-            }
-        }
-
-        public void AtualizaVariaveisDaMemoriaDeCalculo_Modulo_Interligacao_SSE_LIMITE_RSUL(InequationEngine maquinaInequacoes, SheetRow_S_SE sheetRow_S_SE, SheetRow_SUL sheetRow_SUL)
-        {
-            List<Variable> variablesList = new List<Variable>();
-            maquinaInequacoes.CalculationMemory.UpdateVariable("xpercarga", sheetRow_S_SE.LDretorno_PERIODO_DE_CARGA);
-            maquinaInequacoes.CalculationMemory.UpdateVariable("xrsul", sheetRow_S_SE.MC_RSUL);
-            maquinaInequacoes.CalculationMemory.UpdateVariable("xcargasul", sheetRow_S_SE.MC_CARGA_SUL);
-            maquinaInequacoes.CalculationMemory.UpdateVariable("xugarauc", sheetRow_SUL.MC_UGs_Gerando_Araucaria);
-            maquinaInequacoes.CalculationMemory.UpdateVariable("xugg1", sheetRow_SUL.MC_G1);
-            maquinaInequacoes.CalculationMemory.UpdateVariable("xugg2", sheetRow_SUL.MC_G2);
-            maquinaInequacoes.CalculationMemory.UpdateVariable("xugg3", sheetRow_SUL.MC_G3);
-            maquinaInequacoes.CalculationMemory.UpdateVariable("xugg4", sheetRow_SUL.MC_G4);
-        }
-
-        public void AtualizaVariaveisDaMemoriaDeCalculo_Modulo_Interligacao_SSE_LimiteFBAIN(InequationEngine maquinaInequacoes, SheetRow_S_SE sheetRow_S_SE)
-        {
-            List<Variable> variablesList = new List<Variable>();
-            maquinaInequacoes.CalculationMemory.UpdateVariable("xpercarga", sheetRow_S_SE.LDretorno_PERIODO_DE_CARGA);
-            maquinaInequacoes.CalculationMemory.UpdateVariable("xNMaqIpu", sheetRow_S_SE.MC_Mq_60Hz);
-            maquinaInequacoes.CalculationMemory.UpdateVariable("xGerIPU", sheetRow_S_SE.MC_GIPU_60Hz);
-            //maquinaInequacoes.CalculationMemory.UpdateVariable("xangra", sheetRow_SUL.MC_UGs_Gerando_Araucaria);
-
-        }
-
-        public void AtualizaVariaveisDaMemoriaDeCalculo_Modulo_Interligacao_SSE_limiteFINBA(InequationEngine maquinaInequacoes, SheetRow_S_SE sheetRow_S_SE, SheetRow_SUL sheetRow_SUL)
-        {
-            List<Variable> variablesList = new List<Variable>();
-            maquinaInequacoes.CalculationMemory.UpdateVariable("xrsul", sheetRow_S_SE.MC_RSUL);
-            maquinaInequacoes.CalculationMemory.UpdateVariable("xcargasul", sheetRow_S_SE.MC_CARGA_SUL);
-            maquinaInequacoes.CalculationMemory.UpdateVariable("xugarauc", sheetRow_SUL.MC_UGs_Gerando_Araucaria);
-            maquinaInequacoes.CalculationMemory.UpdateVariable("x_refFRS_Ger", sheetRow_SUL.LD_ValorReferenciaFRS_Usinas);
-            maquinaInequacoes.CalculationMemory.UpdateVariable("xFRS_GerUSs", sheetRow_SUL.MC_FRS - sheetRow_S_SE.MC_Gera_Usinas);
-            maquinaInequacoes.CalculationMemory.UpdateVariable("xJLP", sheetRow_SUL.MC_J_Lacerda_P);
-            maquinaInequacoes.CalculationMemory.UpdateVariable("xJLM", sheetRow_SUL.MC_J_Lacerda_M);
-            maquinaInequacoes.CalculationMemory.UpdateVariable("xJLG", sheetRow_SUL.MC_J_Lacerda_G);
-            maquinaInequacoes.CalculationMemory.UpdateVariable("xJLGG", sheetRow_SUL.MC_J_Lacerda_GG);
-
-        }
-
-        public void AtualizaVariaveisDaMemoriaDeCalculo_Modulo_Interligacao_SSE_LimiteFSE(InequationEngine maquinaInequacoes, SheetRow_S_SE sheetRow_S_SE)
-        {
-            List<Variable> variablesList = new List<Variable>();
-            //maquinaInequacoes.CalculationMemory.UpdateVariable("xangra", sheetRow_SUL.MC_UGs_Gerando_Araucaria);
-            maquinaInequacoes.CalculationMemory.UpdateVariable("xMaqIpu", sheetRow_S_SE.MC_Mq_60Hz);
-            maquinaInequacoes.CalculationMemory.UpdateVariable("xGerIPU", sheetRow_S_SE.MC_GIPU_60Hz);
-            maquinaInequacoes.CalculationMemory.UpdateVariable("xpercarga", sheetRow_S_SE.LDretorno_PERIODO_DE_CARGA);
-            // LimiteFSE($A$23,L6,K6,Y6)
-            // LimiteFSE(xangra, xMaqIpu, xGerIPU, xpercarga)
-        }
-
-        public void AtualizaVariaveisDaMemoriaDeCalculo_Modulo_Interligacao_SSE_Limite_RSE(InequationEngine maquinaInequacoes, SheetRow_S_SE sheetRow_S_SE)
-        {
-            List<Variable> variablesList = new List<Variable>();
-            maquinaInequacoes.CalculationMemory.UpdateVariable("xelo", sheetRow_S_SE.MC_POT_ELO_CC);
-            //maquinaInequacoes.CalculationMemory.UpdateVariable("xangra", sheetRow_SUL.MC_UGs_Gerando_Araucaria);
-            maquinaInequacoes.CalculationMemory.UpdateVariable("xMaq", sheetRow_S_SE.MC_Mq_60Hz);
-            maquinaInequacoes.CalculationMemory.UpdateVariable("xGerIPU", sheetRow_S_SE.MC_GIPU_60Hz);
-            maquinaInequacoes.CalculationMemory.UpdateVariable("xrsul", sheetRow_S_SE.MC_RSUL);
-            maquinaInequacoes.CalculationMemory.UpdateVariable("xpercarga", sheetRow_S_SE.LDretorno_PERIODO_DE_CARGA);
-            // Limite_RSE(I6,$A$23, L6, K6, F6,Y6)
-            // Limite_RSE(xelo, xangra, xMaq, xGerIPU, xrsul, xpercarga)
-        }
-
-        public void AtualizaVariaveisDaMemoriaDeCalculo_Modulo_Interligacao_SSE_LIMITE_FSUL(InequationEngine maquinaInequacoes, SheetRow_S_SE sheetRow_S_SE)
-        {
-            List<Variable> variablesList = new List<Variable>();
-            maquinaInequacoes.CalculationMemory.UpdateVariable("xpercarga", sheetRow_S_SE.LDretorno_PERIODO_DE_CARGA);
-            
-        }
-
 
         private string GetCaminhoBaseArquivosTeste()
         {
