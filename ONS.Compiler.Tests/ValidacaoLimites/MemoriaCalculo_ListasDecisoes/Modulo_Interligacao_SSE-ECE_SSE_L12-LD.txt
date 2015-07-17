@@ -1,0 +1,18 @@
+// [<inequacao>], <atribuições: {<nome_var>=<expressao_ou_valor>;}*>
+// default: inequacao = true
+
+,ctrlFluxo = true;
+(ctrlFluxo and xMqs = 7 and (xFIV >= 5000) Or (xFSE >= 6500)), corte = 3; ctrlFluxo = false;
+(ctrlFluxo and xMqs = 7 and ((xFIV >= 4750 And xFIV < 5000) Or (xFSE >= 6050 And xFSE < 6500))), corte = 2; ctrlFluxo = false;
+(ctrlFluxo and xMqs = 7 and (xFIV >= 4300 And xFIV < 4750)), corte = 1; ctrlFluxo = false;
+
+,ctrlFluxo = true;
+(ctrlFluxo and xMqs = 8 and ((xFIV >= 5600) Or (xFSE >= 6600))), corte = 3; ctrlFluxo = false;
+(ctrlFluxo and xMqs = 8 and ((xFIV >= 5450 And xFIV < 5600) Or (xFSE >= 6050 And xFSE < 6600))), corte = 2; ctrlFluxo = false;
+(ctrlFluxo and xMqs = 8 and (xFIV >= 5000 And xFIV < 5450)), corte = 1; ctrlFluxo = false;
+
+,ctrlFluxo = true;
+(ctrlFluxo and (xMqs = 9 or xMqs = 10) and ((xFIV >= 6300) Or (xFSE >= 6800))), corte = 3; ctrlFluxo = false;
+(ctrlFluxo and (xMqs = 9 or xMqs = 10) and ((xFIV >= 5850 And xFIV < 6300) Or (xFSE >= 6050 And xFSE < 6800))), corte = 2; ctrlFluxo = false;
+(ctrlFluxo and (xMqs = 9 or xMqs = 10) and ((xFIV >= 5400 And xFIV < 5850))), corte = 1; ctrlFluxo = false;
+

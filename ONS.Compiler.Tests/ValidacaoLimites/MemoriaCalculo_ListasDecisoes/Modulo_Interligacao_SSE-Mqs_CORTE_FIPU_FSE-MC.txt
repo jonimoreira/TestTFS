@@ -1,0 +1,14 @@
+// <nome_variavel>[,<valor_inicial>[,<tipo>]]
+// default: double, 0.0
+
+xFIV
+xFSE
+xMqs
+
+corte
+corte1
+corte2
+corte3
+corte4
+
+ctrlFluxo = false

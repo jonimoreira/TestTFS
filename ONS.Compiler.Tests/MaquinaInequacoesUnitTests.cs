@@ -287,9 +287,16 @@ namespace ONS.Compiler.Tests
             //Created a service client
             var serviceClient = new MaquinaInequacoesServiceReference.MaquinaInequacoesServiceClient();
 
-            // call the service method getdata
-            var response = serviceClient.ExecutarString(memoriaCalculo, listaDecisoes);
-
+            try
+            {
+                // call the service method getdata
+                var response = serviceClient.ExecutarString(memoriaCalculo, listaDecisoes);
+            }
+            catch (Exception iEx)
+            {
+                if (iEx is System.ServiceModel.EndpointNotFoundException)
+                    throw new Exception("O serviço parece não estar ativo, verifique se o caminho é válido.", iEx);
+            }
         }
 
         [TestMethod]
@@ -322,12 +329,19 @@ namespace ONS.Compiler.Tests
             listaDecisoes.Decisoes = new List<MaquinaInequacoesServiceReference.Decisao>();
             listaDecisoes.Decisoes.Add(decisao);
 
-            MaquinaInequacoesServiceReference.MaquinaInequacoesServiceClient serviceClient = new MaquinaInequacoesServiceReference.MaquinaInequacoesServiceClient();
-            memoriaCalculo = serviceClient.ExecutarObjeto(memoriaCalculo, listaDecisoes);
+            try
+            {
+                MaquinaInequacoesServiceReference.MaquinaInequacoesServiceClient serviceClient = new MaquinaInequacoesServiceReference.MaquinaInequacoesServiceClient();
+                memoriaCalculo = serviceClient.ExecutarObjeto(memoriaCalculo, listaDecisoes);
 
-            Assert.AreEqual(memoriaCalculo.Variaveis[0].Valor, 0.0);
-            Assert.AreEqual(memoriaCalculo.Variaveis[1].Valor, -1.0);
-
+                Assert.AreEqual(memoriaCalculo.Variaveis[0].Valor, 0.0);
+                Assert.AreEqual(memoriaCalculo.Variaveis[1].Valor, -1.0);
+            }
+            catch (Exception iEx)
+            {
+                if (iEx is System.ServiceModel.EndpointNotFoundException)
+                    throw new Exception("O serviço parece não estar ativo, verifique se o caminho é válido.", iEx);
+            }
         }
 
     }

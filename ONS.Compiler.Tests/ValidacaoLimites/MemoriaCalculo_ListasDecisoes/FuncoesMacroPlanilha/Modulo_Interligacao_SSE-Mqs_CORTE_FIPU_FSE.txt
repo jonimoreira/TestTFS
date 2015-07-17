@@ -1,0 +1,27 @@
+
+Public Function Mqs_CORTE_FIPU_FSE(xFIV, xFSE, xMqs)
+'***************************************************
+' IO-EE.SSE, rev26. Vig. 15/03/2012
+' Só são válidas as lógicas 12, 13, 14 e 15, segundo limite FNS (ver IO.ON.NSE - item 6.2)
+' MOP/CNOS 016/2014 vig. 13/02/2014
+'***************************************************
+Dim corte(4)
+
+corte(1) = ECE_SSE_L12(xFIV, xFSE, xMqs)
+corte(2) = ECE_SSE_L13(xFIV, xFSE, xMqs)
+corte(3) = ECE_SSE_L14(xFIV, xFSE, xMqs)
+corte(4) = ECE_SSE_L15(xFIV, xFSE, xMqs)
+
+Max = 0
+aux = 1
+While aux <= 4
+    If corte(aux) > Max Then
+        Max = corte(aux)
+    End If
+    aux = aux + 1
+Wend
+
+Mqs_CORTE_FIPU_FSE = Max
+
+
+End Function

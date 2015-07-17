@@ -19,5 +19,16 @@ namespace ONS.Compiler.Business
             return result;
         }
 
+        public static double Max(params double[] list)
+        {
+            double result = double.MinValue;
+            for (int i = 0; i < list.Length; i++)
+            { 
+                if(list[i] > result)
+                    result = list[i];
+            }
+            return result;
+        }
     }
+
 }

@@ -71,7 +71,9 @@
     <Compile Include="ValidacaoLimites\SheetRow_S_SE.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MaquinaInequacoesUnitTests.cs" />
+    <Compile Include="ValidacaoLimites\UnitTestsLocal\Modulo_Interligacao_SSE_Mqs_CORTE_FIPU_FSE.cs" />
     <Compile Include="ValidacaoLimites\UnitTestsLocal\Modulo_Interligacao_SSE_LIMITE_FSUL.cs" />
+    <Compile Include="ValidacaoLimites\UnitTestsLocal\Modulo_Interligacao_ECE_SSE_L12.cs" />
     <Compile Include="ValidacaoLimites\UnitTestsLocal\Modulo_Interligacao_SSE_LIMITE_RSUL.cs" />
     <Compile Include="ValidacaoLimites\UnitTestsLocal\Modulo_PERIODO_SE_CO_RNE_2009_PeriodoCarga_SE_CO.cs" />
     <Compile Include="ValidacaoLimites\UnitTestsLocal\Modulo_Interligacao_SSE_LimiteFBAIN.cs" />
@@ -106,14 +108,20 @@
     </None>
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\FuncoesMacroPlanilha\Modulo_Interligacao_SSE-limiteFINBA.txt" />
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\FuncoesMacroPlanilha\Modulo_Interligacao_SSE-LimiteFBAIN.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\FuncoesMacroPlanilha\Modulo_Interligacao_SSE-ECE_SSE_L12.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\FuncoesMacroPlanilha\Modulo_Interligacao_SSE-Mqs_CORTE_FIPU_FSE.txt" />
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\FuncoesMacroPlanilha\Modulo_Interligacao_SSE-LIMITE_FSUL.txt" />
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\FuncoesMacroPlanilha\Modulo_Interligacao_SSE-Limite_RSE.txt" />
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\FuncoesMacroPlanilha\Modulo_Interligacao_SSE-LimiteFSE.txt" />
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\FuncoesMacroPlanilha\Modulo_PERIODO_SE_CO_RNE_2009-PeriodoCarga_SE_CO.txt" />
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\FuncoesMacroPlanilha\Modulo_Interligacao_SSE-LIMITE_RSUL.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_Interligacao_SSE-Mqs_CORTE_FIPU_FSE-LD.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_Interligacao_SSE-Mqs_CORTE_FIPU_FSE-MC.txt" />
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_Interligacao_SSE-LimiteFBAIN-LD.txt" />
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_Interligacao_SSE-limiteFINBA-LD.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_Interligacao_SSE-ECE_SSE_L12-LD.txt" />
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_Interligacao_SSE-LIMITE_FSUL-LD.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_Interligacao_SSE-ECE_SSE_L12-MC.txt" />
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_Interligacao_SSE-Limite_RSE-LD.txt" />
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_Interligacao_SSE-LimiteFSE-LD.txt" />
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_Interligacao_SSE-LIMITE_FSUL-MC.txt" />

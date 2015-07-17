@@ -57,7 +57,7 @@ namespace ONS.Compiler.Tests.ValidacaoLimites
                     sheetRow_S_SE.LDvalorplanilha_LIM_RSE = double.Parse(valores[17]);
                     sheetRow_S_SE.LDvalorplanilha_LIM_RSUL_FSUL_SUP_RSUL = double.Parse(valores[18]);
                     sheetRow_S_SE.LDvalorplanilha_LIM_RSUL_FSUL_INF_FSUL = double.Parse(valores[19]);
-
+                    sheetRow_S_SE.LDvalorplanilha_Mqs_crt_IPU_max = double.Parse(valores[20]);
                     sheetRow_S_SE.LDvalorplanilha_PERIODO_DE_CARGA = valores[24].Trim();
 
                     linhas_S_SE.Add(iLinhaIdx, sheetRow_S_SE);
@@ -244,25 +244,17 @@ namespace ONS.Compiler.Tests.ValidacaoLimites
             {
                 string line = sr.ReadLine().Trim();
 
-                // separa linha
-                string[] valores = line.Split(',');
-                if (line.Trim() == string.Empty || (line.Length > 2 && line.Substring(0, 2) == "//"))
+                if (!line.StartsWith("//") && line != string.Empty)
                 {
-                    // Linha vazia ou comentário
-                }
-                else if (valores.Length == 2)
-                {
-                    string inequacao = valores[0].Trim();
-                    string[] atribuicoes = valores[1].Split(';');
+                    // separa inequação e bloco de ação: <ineq>,<bloco ação>
+                    string inequacao = line.Substring(0, line.IndexOf(","));
+                    string blocoAcao = line.Substring(line.IndexOf(",")+1);
+                    string[] atribuicoes = blocoAcao.Split(';');
                     if (atribuicoes.Length == 0)
-                        throw new Exception("Erro ao carregar lista de decisões do arquivo. Formato de linha na definição de atribuições na decisão inválida em: " + valores[1]);
+                        throw new Exception("Erro ao carregar lista de decisões do arquivo. Formato de linha na definição de atribuições na decisão inválida em: " + blocoAcao);
 
-                    decisao = new KeyValuePair<string,string>(inequacao, valores[1].Trim());
+                    decisao = new KeyValuePair<string, string>(inequacao, blocoAcao);
                     AtualizarListaDeDecisoes(maquinaInequacoes, decisao);
-                }
-                else
-                {
-                    throw new Exception("Erro ao carregar lista de decisões do arquivo. Formato de linha na definição de decisão inválida em: " + line);                    
                 }
             }
         }

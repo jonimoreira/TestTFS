@@ -1,0 +1,38 @@
+
+Public Function ECE_SSE_L12(xFIV, xFSE, xMqs)
+'*************************************************************************************************
+'IO-EE.SSE, REV. 36 VIG. 10/09/2013
+'item 23.4-> Para essa lógica foram consideradas apenas as referências para configuração completa.
+'*************************************************************************************************
+corte = 0
+    Select Case xMqs
+        Case 7
+            If (xFIV >= 5000) Or (xFSE >= 6500) Then
+                corte = 3
+            ElseIf (xFIV >= 4750 And xFIV < 5000) Or (xFSE >= 6050 And xFSE < 6500) Then
+                corte = 2
+            ElseIf (xFIV >= 4300 And xFIV < 4750) Then
+                corte = 1
+            End If
+        Case 8
+            If (xFIV >= 5600) Or (xFSE >= 6600) Then
+                corte = 3
+            ElseIf (xFIV >= 5450 And xFIV < 5600) Or (xFSE >= 6050 And xFSE < 6600) Then
+                corte = 2
+            ElseIf (xFIV >= 5000 And xFIV < 5450) Then
+                corte = 1
+            End If
+        Case 9, 10
+            If (xFIV >= 6300) Or (xFSE >= 6800) Then
+                corte = 3
+            ElseIf (xFIV >= 5850 And xFIV < 6300) Or (xFSE >= 6050 And xFSE < 6800) Then
+                corte = 2
+            ElseIf (xFIV >= 5400 And xFIV < 5850) Then
+                corte = 1
+            End If
+                
+    End Select
+
+ECE_SSE_L12 = corte
+
+End Function

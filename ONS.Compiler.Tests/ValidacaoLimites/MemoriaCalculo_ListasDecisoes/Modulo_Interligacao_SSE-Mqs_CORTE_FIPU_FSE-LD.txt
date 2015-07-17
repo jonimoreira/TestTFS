@@ -1,0 +1,95 @@
+// [<inequacao>], <atribuições: {<nome_var>=<expressao_ou_valor>;}*>
+// default: inequacao = true
+
+, corte1 = 0; corte2 = 0; corte3 = 0; corte4 = 0; corte = 0;
+
+// ECE_SSE_L12 -> corte1
+,ctrlFluxo = true;
+(ctrlFluxo and xMqs = 7 and ((xFIV >= 5000) Or (xFSE >= 6500))), corte1 = 3; ctrlFluxo = false;
+(ctrlFluxo and xMqs = 7 and ((xFIV >= 4750 And xFIV < 5000) Or (xFSE >= 6050 And xFSE < 6500))), corte1 = 2; ctrlFluxo = false;
+(ctrlFluxo and xMqs = 7 and (xFIV >= 4300 And xFIV < 4750)), corte1 = 1; ctrlFluxo = false;
+
+,ctrlFluxo = true;
+(ctrlFluxo and xMqs = 8 and ((xFIV >= 5600) Or (xFSE >= 6600))), corte1 = 3; ctrlFluxo = false;
+(ctrlFluxo and xMqs = 8 and ((xFIV >= 5450 And xFIV < 5600) Or (xFSE >= 6050 And xFSE < 6600))), corte1 = 2; ctrlFluxo = false;
+(ctrlFluxo and xMqs = 8 and (xFIV >= 5000 And xFIV < 5450)), corte1 = 1; ctrlFluxo = false;
+
+,ctrlFluxo = true;
+(ctrlFluxo and (xMqs = 9 or xMqs = 10) and ((xFIV >= 6300) Or (xFSE >= 6800))), corte1 = 3; ctrlFluxo = false;
+(ctrlFluxo and (xMqs = 9 or xMqs = 10) and ((xFIV >= 5850 And xFIV < 6300) Or (xFSE >= 6050 And xFSE < 6800))), corte1 = 2; ctrlFluxo = false;
+(ctrlFluxo and (xMqs = 9 or xMqs = 10) and ((xFIV >= 5400 And xFIV < 5850))), corte1 = 1; ctrlFluxo = false;
+
+// ECE_SSE_L13 -> corte2
+,ctrlFluxo = true;
+(ctrlFluxo and xMqs = 7 and ((xFIV >= 5000) Or (xFSE >= 6500))), corte2 = 3; ctrlFluxo = false;
+(ctrlFluxo and xMqs = 7 and ((xFIV >= 4750 And xFIV < 5000) Or (xFSE >= 6050 And xFSE < 6500))), corte2 = 2; ctrlFluxo = false;
+(ctrlFluxo and xMqs = 7 and (xFIV >= 4300 And xFIV < 4750)), corte2 = 1; ctrlFluxo = false;
+
+,ctrlFluxo = true;
+(ctrlFluxo and xMqs = 8 and ((xFIV >= 5600) Or (xFSE >= 6600))), corte2 = 3; ctrlFluxo = false;
+(ctrlFluxo and xMqs = 8 and ((xFIV >= 5450 And xFIV < 5600) Or (xFSE >= 6050 And xFSE < 6600))), corte2 = 2; ctrlFluxo = false;
+(ctrlFluxo and xMqs = 8 and (xFIV >= 5000 And xFIV < 5450)), corte2 = 1; ctrlFluxo = false;
+
+,ctrlFluxo = true;
+(ctrlFluxo and (xMqs = 9 or xMqs = 10) and ((xFIV >= 6300) Or (xFSE >= 6800))), corte2 = 3; ctrlFluxo = false;
+(ctrlFluxo and (xMqs = 9 or xMqs = 10) and ((xFIV >= 5850 And xFIV < 6300) Or (xFSE >= 6050 And xFSE < 6800))), corte2 = 2; ctrlFluxo = false;
+(ctrlFluxo and (xMqs = 9 or xMqs = 10) and ((xFIV >= 5400 And xFIV < 5850))), corte2 = 1; ctrlFluxo = false;
+
+// ECE_SSE_L14 -> corte3
+,ctrlFluxo = true;
+(ctrlFluxo and xMqs = 5 and ((xFIV >= 1500) Or (xFSE >= 3900))), corte3 = 1; ctrlFluxo = false;
+
+,ctrlFluxo = true;
+(ctrlFluxo and xMqs = 6 and ((xFIV >= 1600) Or (xFSE >= 4700))), corte3 = 2; ctrlFluxo = false;
+(ctrlFluxo and xMqs = 6 and ((xFIV >= 1500 And xFIV < 1600) Or (xFSE >= 4100 And xFSE < 4700))), corte3 = 1; ctrlFluxo = false;
+
+,ctrlFluxo = true;
+(ctrlFluxo and xMqs = 7 and ((xFIV >= 1700) Or (xFSE >= 4800))), corte3 = 3; ctrlFluxo = false;
+(ctrlFluxo and xMqs = 7 and ((xFIV >= 1600 And xFIV < 1700) Or (xFSE >= 4700 And xFSE < 4800))), corte3 = 2; ctrlFluxo = false;
+(ctrlFluxo and xMqs = 7 and ((xFIV >= 1500 And xFIV < 1600) Or (xFSE >= 4300 And xFSE < 4700))), corte3 = 1; ctrlFluxo = false;
+
+,ctrlFluxo = true;
+(ctrlFluxo and xMqs = 8 and ((xFIV >= 5400) Or (xFSE >= 5100))), corte3 = 4; ctrlFluxo = false;
+(ctrlFluxo and xMqs = 8 and ((xFIV >= 4800 And xFIV < 5400) Or (xFSE >= 4900 And xFSE < 5100))), corte3 = 3; ctrlFluxo = false;
+(ctrlFluxo and xMqs = 8 and ((xFIV >= 4600 And xFIV < 4800) Or (xFSE >= 4800 And xFSE < 4900))), corte3 = 2; ctrlFluxo = false;
+(ctrlFluxo and xMqs = 8 and ((xFIV >= 4000 And xFIV < 4600) Or (xFSE >= 4300 And xFSE < 4800))), corte3 = 1; ctrlFluxo = false;
+
+,ctrlFluxo = true;
+(ctrlFluxo and xMqs = 9 and ((xFIV >= 5500) Or (xFSE >= 5500))), corte3 = 4; ctrlFluxo = false;
+(ctrlFluxo and xMqs = 9 and ((xFIV >= 5000 And xFIV < 5500) Or (xFSE >= 4900 And xFSE < 5500))), corte3 = 3; ctrlFluxo = false;
+(ctrlFluxo and xMqs = 9 and ((xFIV >= 4800 And xFIV < 5000) Or (xFSE >= 4800 And xFSE < 4900))), corte3 = 2; ctrlFluxo = false;
+(ctrlFluxo and xMqs = 9 and ((xFIV >= 4200 And xFIV < 4800) Or (xFSE >= 4400 And xFSE < 4800))), corte3 = 1; ctrlFluxo = false;
+
+,ctrlFluxo = true;
+(ctrlFluxo and xMqs = 10 and ((xFIV >= 5600) Or (xFSE >= 5800))), corte3 = 4; ctrlFluxo = false;
+(ctrlFluxo and xMqs = 10 and ((xFIV >= 5200 And xFIV < 5600) Or (xFSE >= 5000 And xFSE < 5800))), corte3 = 3; ctrlFluxo = false;
+(ctrlFluxo and xMqs = 10 and ((xFIV >= 4900 And xFIV < 5200) Or (xFSE >= 4900 And xFSE < 5000))), corte3 = 2; ctrlFluxo = false;
+(ctrlFluxo and xMqs = 10 and ((xFIV >= 4400 And xFIV < 4900) Or (xFSE >= 4500 And xFSE < 4900))), corte3 = 1; ctrlFluxo = false;
+
+// ECE_SSE_L15 -> corte4
+,ctrlFluxo = true;
+(ctrlFluxo and xMqs = 5 and ((xFIV >= 3500) Or (xFSE >= 3700))), corte4 = 1; ctrlFluxo = false;
+
+,ctrlFluxo = true;
+(ctrlFluxo and xMqs = 6 and ((xFIV >= 4100) Or (xFSE >= 3900))), corte4 = 2; ctrlFluxo = false;
+
+,ctrlFluxo = true;
+(ctrlFluxo and xMqs = 7 and ((xFIV >= 5200) Or (xFSE >= 4600))), corte4 = 3; ctrlFluxo = false;
+(ctrlFluxo and xMqs = 7 and ((xFIV >= 4600 And xFIV < 5200) Or (xFSE >= 3900 And xFSE < 4600))), corte4 = 2; ctrlFluxo = false;
+
+,ctrlFluxo = true;
+(ctrlFluxo and xMqs = 8 and ((xFIV >= 5800) Or (xFSE >= 5500))), corte4 = 4; ctrlFluxo = false;
+(ctrlFluxo and xMqs = 8 and ((xFIV >= 5600 And xFIV < 5800) Or (xFSE >= 5000 And xFSE < 5500))), corte4 = 3; ctrlFluxo = false;
+(ctrlFluxo and xMqs = 8 and ((xFIV >= 4800 And xFIV < 5600) Or (xFSE >= 4100 And xFSE < 5000))), corte4 = 2; ctrlFluxo = false;
+
+,ctrlFluxo = true;
+(ctrlFluxo and xMqs = 9 and ((xFIV >= 6500) Or (xFSE >= 5500))), corte4 = 4; ctrlFluxo = false;
+(ctrlFluxo and xMqs = 9 and ((xFIV >= 5900 And xFIV < 6500) Or (xFSE >= 5000 And xFSE < 5500))), corte4 = 3; ctrlFluxo = false;
+(ctrlFluxo and xMqs = 9 and ((xFIV >= 5000 And xFIV < 5900) Or (xFSE >= 4100 And xFSE < 5000))), corte4 = 2; ctrlFluxo = false;
+
+,ctrlFluxo = true;
+(ctrlFluxo and xMqs = 10 and ((xFIV >= 6500) Or (xFSE >= 5800))), corte4 = 4; ctrlFluxo = false;
+(ctrlFluxo and xMqs = 10 and ((xFIV >= 5900 And xFIV < 6500) Or (xFSE >= 5000 And xFSE < 5800))), corte4 = 3; ctrlFluxo = false;
+(ctrlFluxo and xMqs = 10 and ((xFIV >= 5000 And xFIV < 5900) Or (xFSE >= 4100 And xFSE < 5000))), corte4 = 2; ctrlFluxo = false;
+
+,corte = max(corte1, corte2, corte3, corte4);
