@@ -1,6 +1,11 @@
 // [<inequacao>], <atribuições: {<nome_var>=<expressao_ou_valor>;}*>
 // default: inequacao = true
 
+,xSegunda = false
+,xTercaSabado = false
+,xDomingo = false
+
+
 (xDiaSemana = "Segunda-Feira" and xTipo = "ÚTIL"), xSegunda = true;
 (xDiaSemana = "Segunda-Feira" and xTipo <> "ÚTIL"), xDomingo = true;
 ((xDiaSemana = "Terça-Feira" or xDiaSemana = "Quarta-Feira" or xDiaSemana = "Quinta-Feira" or xDiaSemana = "Sexta-Feira" or xDiaSemana = "Sábado") and xTipo = "ÚTIL"), xTercaSabado = true;

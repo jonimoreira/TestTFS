@@ -1,0 +1,111 @@
+Public Function PeriodoCarga_N_NE(xHora As Date, xDiaSemana As String, xTipo As String, Hverao) As String
+
+Select Case xDiaSemana
+    Case "Sábado"
+        If xTipo = "ÚTIL" Then
+            GoTo xSabado
+        Else
+            GoTo xDomingo
+        End If
+    Case "Domingo"
+        GoTo xDomingo
+    Case "Segunda-Feira", "Terça-Feira", "Quarta-Feira", "Quinta-Feira", "Sexta-Feira"
+        If xTipo = "ÚTIL" Then
+            GoTo xSegundaSexta
+        Else
+            GoTo xDomingo
+        End If
+End Select
+
+PeriodoCarga_N_NE = PCarga
+
+Exit Function
+
+
+xSabado:
+If Hverao = "VERÃO" Then 'horário de VERÃO->MOP 090/2013
+    Select Case xHora
+        Case "00:00:00" To "1:59:00"
+            PCarga = "MEDIA"
+        Case "2:00:00" To "18:59:00"
+            PCarga = "LEVE"
+        Case "19:00:00" To "23:59:00"
+            PCarga = "PESADA"
+    End Select
+End If
+If Hverao = "NORMAL" Then  'horário NORMAL->IO's de operação normal NNE, NSE e SENE.
+    Select Case xHora
+        Case "00:00:00" To "0:59:00"
+            PCarga = "MEDIA"
+        Case "1:00:00" To "17:59:00"
+            PCarga = "LEVE"
+        Case "18:00:00" To "22:59:00"
+            PCarga = "PESADA"
+        Case "23:00:00" To "23:59:00"
+            PCarga = "MEDIA"
+    End Select
+End If
+PeriodoCarga_N_NE = PCarga
+Exit Function
+
+
+xSegundaSexta:
+If Hverao = "VERÃO" Then 'horário de VERÃO->MOP 090/2013
+    Select Case xHora
+        Case "0:00:00" To "1:59:00"
+            PCarga = "MEDIA"
+        Case "2:00:00" To "8:59:00"
+            PCarga = "LEVE"
+        Case "9:00:00" To "18:59:00"
+            PCarga = "MEDIA"
+        Case "19:00:00" To "23:59:00"
+            PCarga = "PESADA"
+        End Select
+End If
+If Hverao = "NORMAL" Then  'horário NORMAL->IO's de operação normal NNE, NSE e SENE.
+    Select Case xHora
+        Case "0:00:00" To "0:59:00"
+            PCarga = "MEDIA"
+        Case "1:00:00" To "7:59:00"
+            PCarga = "LEVE"
+        Case "8:00:00" To "17:59:00"
+            PCarga = "MEDIA"
+        Case "18:00:00" To "22:59:00"
+            PCarga = "PESADA"
+        Case "23:00:00" To "23:59:00"
+            PCarga = "MEDIA"
+        End Select
+End If
+PeriodoCarga_N_NE = PCarga
+Exit Function
+
+xDomingo:
+If Hverao = "VERÃO" Then 'horário de VERÃO->MOP 090/2013
+   Select Case xHora
+        Case "0:00:00" To "00:59:00"
+            PCarga = "MEDIA"
+        Case "1:00:00" To "06:59:00"
+            PCarga = "LEVE"
+        Case "7:00:00" To "18:59:00"
+            PCarga = "MINIMA"
+        Case "19:00:00" To "22:59:00"
+            PCarga = "PESADA"
+        Case "23:00:00" To "23:59:00"
+            PCarga = "MEDIA"
+   End Select
+End If
+If Hverao = "NORMAL" Then  'horário NORMAL->IO's de operação normal NNE, NSE e SENE.
+   Select Case xHora
+        Case "0:00:00" To "05:59:00"
+            PCarga = "LEVE"
+        Case "6:00:00" To "17:59:00"
+            PCarga = "MINIMA"
+        Case "18:00:00" To "21:59:00"
+            PCarga = "PESADA"
+        Case "22:00:00" To "23:59:00"
+            PCarga = "MEDIA"
+   End Select
+End If
+PeriodoCarga_N_NE = PCarga
+
+End Function

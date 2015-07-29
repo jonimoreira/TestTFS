@@ -1,0 +1,37 @@
+Public Function Limite_Sup_EXPN_IO_NNE(xpercarga As String, xRNE As Double, xEXPN As Double) As Variant
+'************************************************
+'IO-ON.NNE rev 52, vig 11/09/2013
+' MOP/CNOS 012/2014, vig 05/02/2014
+'************************************************
+
+'Estabelece o limite do SUPERIOR EXPN
+Select Case xpercarga
+    Case Is = "PESADA" ' Carga Pesada
+        Select Case xRNE
+            Case Is <= 4100
+                lim = 5600
+            Case 4100 To 5100
+                lim = 5300
+        End Select
+
+    Case Is = "MEDIA" ' Carga Média
+        Select Case xRNE
+            Case Is <= 4000
+                lim = 5600
+            Case 4000 To 4900
+                lim = 5300
+        End Select
+
+    Case Is = "LEVE", "MINIMA" ' Carga Leve ou Mínima
+        Select Case xRNE
+            Case Is <= 4100
+                lim = 5600
+            Case 4100 To 4500
+                lim = 5300
+            Case 4500 To 4800
+                lim = 3800
+        End Select
+End Select
+
+Limite_Sup_EXPN_IO_NNE = lim
+End Function

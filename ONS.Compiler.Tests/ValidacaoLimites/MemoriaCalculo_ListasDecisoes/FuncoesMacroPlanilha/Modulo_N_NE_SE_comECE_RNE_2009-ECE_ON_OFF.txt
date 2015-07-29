@@ -1,0 +1,20 @@
+
+
+Public Function ECE_ON_OFF(xpercarga, xFNS) As String
+'************************************************
+'IO-EE.SSE, REV 36.     Vigência: 10/09/2013
+'
+'************************************************
+
+'ITEM 3.2 DA IO-ON.NSE
+
+If xFNS > 2000 Then
+    estado_ece = "LIGADO"
+Else
+    estado_ece = "DESLIGADO"
+End If
+
+ECE_ON_OFF = estado_ece
+
+End Function
+

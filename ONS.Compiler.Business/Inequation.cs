@@ -31,15 +31,20 @@ namespace ONS.Compiler.Business
 
         public void Compile(ExpressionContext context)
         {
-            eDynamic = context.CompileDynamic(_expression);
+            if (_expression != string.Empty && _expression != "true" && _expression != "false")
+                eDynamic = context.CompileDynamic(_expression);
+            
         }
 
         public bool Execute(ExpressionContext context)
         {
             if (eDynamic == null)
                 this.Compile(context);
-            
-            bool result = (bool)eDynamic.Evaluate();
+
+            bool result = (_expression == "true") ? true : false;
+            if (_expression != string.Empty && _expression != "true" && _expression != "false")
+                result = (bool)eDynamic.Evaluate();
+
             return result;
         }
 

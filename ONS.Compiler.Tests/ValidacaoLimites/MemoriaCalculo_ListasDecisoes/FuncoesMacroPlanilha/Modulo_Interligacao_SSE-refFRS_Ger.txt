@@ -1,0 +1,62 @@
+Public Function refFRS_Ger(xcargasul, xUGarauc)
+'************************************************
+'IO-ON.SSE,revisão 62, Vig. 02/02/2014.
+'MOP/CNOS 021/2014 VIG 19/02/2014
+'************************************************
+
+Select Case xcargasul 'Item 6.4.2
+    Case Is <= 15000
+        Select Case xUGarauc
+            Case Is = 3
+                lim = 3500
+            Case Is = 2
+                lim = 3500
+            Case Is = 0
+                lim = 3000
+        End Select
+    Case Is <= 16000
+        Select Case xUGarauc
+            Case Is = 3
+                lim = 2700
+            Case Is = 2
+                lim = 3700
+            Case Is = 0
+                lim = 2200
+        End Select
+    Case Is <= 16500
+        Select Case xUGarauc
+            Case Is = 3
+                lim = 2200
+            Case Is = 2
+                lim = 1900
+            Case Is = 0
+                lim = 1300
+        End Select
+    Case Is <= 17000
+        Select Case xUGarauc
+            Case Is = 3
+                lim = 1200
+            Case Is = 2
+                lim = 1000
+            Case Is = 0
+                lim = 0
+        End Select
+    Case Is <= 17300
+        Select Case xUGarauc
+            Case Is = 3
+                lim = 800
+            Case Is = 2
+                lim = 800
+        End Select
+    Case Is > 17300
+        Select Case xUGarauc
+            Case Is = 3
+                lim = 200
+            Case Is = 2
+                lim = 200
+        End Select
+End Select
+
+refFRS_Ger = lim
+
+End Function

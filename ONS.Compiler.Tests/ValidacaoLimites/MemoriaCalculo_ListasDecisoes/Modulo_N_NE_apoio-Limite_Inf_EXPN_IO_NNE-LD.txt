@@ -1,0 +1,26 @@
+// [<inequacao>], <atribuições: {<nome_var>=<expressao_ou_valor>;}*>
+// default: inequacao = true
+
+(xpercarga = "PESADA" and xRNE <= 3400), lim = -1600;
+(xpercarga = "PESADA" and xRNE > 3400 and xRNE <= 4100), lim = -600;
+(xpercarga = "PESADA" and xRNE > 4100 and xRNE <= 4300), lim = 0;
+(xpercarga = "PESADA" and xRNE > 4300 and xRNE <= 4500), lim = 1000;
+(xpercarga = "PESADA" and xRNE > 4500 and xRNE <= 4700), lim = 2000;
+(xpercarga = "PESADA" and xRNE > 4700 and xRNE <= 5000), lim = 3000;
+,tempA = RegressaoLinearA(5000, 5100, 3000, 3650);
+,tempB = RegressaoLinearB(5000, 5100, 3000, 3650);
+(xpercarga = "PESADA" and xRNE > 5000 and xRNE <= 5100), lim = tempA * xRNE + tempB;
+
+(xpercarga = "MEDIA" and xRNE <= 4000), lim = -1000;
+(xpercarga = "MEDIA" and xRNE > 4000 and xRNE <= 4200), lim = -500;
+(xpercarga = "MEDIA" and xRNE > 4200 and xRNE <= 4300), lim = 0;
+(xpercarga = "MEDIA" and xRNE > 4300 and xRNE <= 4600), lim = 1000;
+(xpercarga = "MEDIA" and xRNE > 4600 and xRNE <= 4800), lim = 2000;
+(xpercarga = "MEDIA" and xRNE > 4800 and xRNE <= 4900), lim = 3000;
+
+((xpercarga = "LEVE" or xpercarga = "MINIMA") and xRNE <= 4100), lim = -900;
+((xpercarga = "LEVE" or xpercarga = "MINIMA") and xRNE > 4100 and xRNE <= 4300), lim = -400;
+((xpercarga = "LEVE" or xpercarga = "MINIMA") and xRNE > 4300 and xRNE <= 4600), lim = 1000;
+((xpercarga = "LEVE" or xpercarga = "MINIMA") and xRNE > 4600 and xRNE <= 4700), lim = 2000;
+((xpercarga = "LEVE" or xpercarga = "MINIMA") and xRNE > 4700 and xRNE <= 4800), lim = 3000;
+

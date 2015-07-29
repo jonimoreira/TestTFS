@@ -1,14 +1,14 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ONS.Compiler.Business;
+using System.Collections.Generic;
 
 namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsLocal
 {
     [TestClass]
-    public class Modulo_PERIODO_SE_CO_RNE_2009_PeriodoCarga_SE_CO
+    public class Modulo_Interligacao_SSE_GIPU_minimo
     {
-        private string nomeFuncao = "Modulo_PERIODO_SE_CO_RNE_2009-PeriodoCarga_SE_CO";
-
+        private string nomeFuncao = "Modulo_Interligacao_SSE-GIPU_minimo";
         /// <summary>
         /// Testa o carregamento da memória de cálculo (MC) a partir do arquivo txt.
         /// </summary>
@@ -70,13 +70,14 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsLocal
             mediador.CarregarListaDecisoes(maquinaInequacoes, nomeFuncao);
 
             maquinaInequacoes.Compile();
+            //TODO: medir tempo compilação vc execução
             maquinaInequacoes.Execute();
 
-            Variable PeriodoCarga_SE_CO = maquinaInequacoes.CalculationMemory["PeriodoCarga_SE_CO"];
+            Variable limite = maquinaInequacoes.CalculationMemory["lim"];
 
-            Assert.AreEqual(PeriodoCarga_SE_CO.GetValue(), "LEVE");
+            Assert.AreEqual(limite.GetValue(), 0.0);
         }
-
+        
         /// <summary>
         /// Testa atualização das variáveis na memória de cálculo de acordo com os dados provenientes da planilha
         /// </summary>
@@ -88,18 +89,17 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsLocal
             InequationEngine maquinaInequacoes = new InequationEngine();
             mediador.CarregarMemoriaDeCalculo(maquinaInequacoes, nomeFuncao);
             mediador.CarregarListaDecisoes(maquinaInequacoes, nomeFuncao);
-
+            
             mediador.CarregarDados_SheetRow_S_SE();
-
             for (int i = 0; i < mediador.linhas_S_SE.Count; i++)
             {
-                AtualizarVariaveisDaMemoriaDeCalculo(maquinaInequacoes, mediador.linhas_S_SE[i], "Terça-Feira", "ÚTIL", "NORMAL");
+                AtualizarVariaveisDaMemoriaDeCalculo(maquinaInequacoes, mediador.linhas_S_SE[i]);
             }
 
             Assert.AreEqual(true, true);
 
         }
-
+                
         /// <summary>
         /// Testa a execução da lista de decisões com base nas variáveis da memória de cálculo e seus valores provenientes da planilha
         /// </summary>
@@ -118,12 +118,12 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsLocal
 
             for (int i = 0; i < mediador.linhas_S_SE.Count; i++)
             {
-                AtualizarVariaveisDaMemoriaDeCalculo(maquinaInequacoes, mediador.linhas_S_SE[i], "Terça-Feira", "ÚTIL", "NORMAL"); 
+                AtualizarVariaveisDaMemoriaDeCalculo(maquinaInequacoes, mediador.linhas_S_SE[i]);
                 maquinaInequacoes.Execute();
 
-                Variable PeriodoCarga_SE_CO = maquinaInequacoes.CalculationMemory["PeriodoCarga_SE_CO"];
+                Variable limite = maquinaInequacoes.CalculationMemory["lim"];
 
-                Assert.AreEqual(PeriodoCarga_SE_CO.GetValue(), mediador.linhas_S_SE[i].LDretorno_PERIODO_DE_CARGA);
+                Assert.AreEqual(limite.GetValue(), mediador.linhas_S_SE[i].LDvalorplanilha_Limite_GIPU_INF);
             }
         }
 
@@ -131,15 +131,11 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsLocal
         /// Atualiza as variáveis da memória de cálculo de acordo com os valores contidos nos parâmetros.
         /// </summary>
         /// <param name="maquinaInequacoes"></param>
-        /// <param name="xDiaSemana"></param>
-        /// <param name="xTipo"></param>
-        /// <param name="Hverao"></param>
-        public void AtualizarVariaveisDaMemoriaDeCalculo(InequationEngine maquinaInequacoes, SheetRow_S_SE sheetRow_S_SE, string xDiaSemana, string xTipo, string Hverao)
+        /// <param name="sheetRow_S_SE"></param>
+        public void AtualizarVariaveisDaMemoriaDeCalculo(InequationEngine maquinaInequacoes, SheetRow_S_SE sheetRow_S_SE)
         {
-            maquinaInequacoes.CalculationMemory.UpdateVariable("xhora", CustomFunctions.Hora(sheetRow_S_SE.PK_HoraInicFim.Key + ":00"));
-            //maquinaInequacoes.CalculationMemory.UpdateVariable("xDiaSemana", xDiaSemana);
-           // maquinaInequacoes.CalculationMemory.UpdateVariable("xTipo", xTipo);
-            //maquinaInequacoes.CalculationMemory.UpdateVariable("Hverao", Hverao);
+            maquinaInequacoes.CalculationMemory.UpdateVariable("xrsul", sheetRow_S_SE.MC_RSUL);
+            maquinaInequacoes.CalculationMemory.UpdateVariable("xcargasul", sheetRow_S_SE.MC_CARGA_SUL);
         }
 
     }

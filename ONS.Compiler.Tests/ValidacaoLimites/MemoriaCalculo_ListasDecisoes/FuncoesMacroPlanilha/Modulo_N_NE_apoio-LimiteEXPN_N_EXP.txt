@@ -1,0 +1,23 @@
+Public Function LimiteEXPN_N_EXP(xpercarga As String, xRNE As Double, xEXPN As Double, xFSENE) As Variant
+'************************************************
+'IO-ON.NNE rev 52, vig 11/09/2013
+' MOP/CNOS 012/2014, vig 05/02/2014
+' MOP/CNOS 039/2014, VIG 27/03/2014
+'************************************************
+
+'Estabelece o limite do EXPN, considerando o cenário...
+'...Norte Exportador, independentemente de outro cenário
+
+lim = Limite_Sup_EXPN_IO_NNE(xpercarga, xRNE, xEXPN)
+
+
+' MOP/CNOS 039/2014, VIG 27/03/2014
+If xFSENE = 0 Then
+    If xEXPN > 0 Then
+        lim = 5600
+    End If
+End If
+
+LimiteEXPN_N_EXP = lim
+
+End Function

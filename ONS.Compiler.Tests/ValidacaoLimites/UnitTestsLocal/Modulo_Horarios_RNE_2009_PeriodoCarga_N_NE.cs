@@ -5,9 +5,9 @@ using ONS.Compiler.Business;
 namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsLocal
 {
     [TestClass]
-    public class Modulo_PERIODO_SE_CO_RNE_2009_PeriodoCarga_SE_CO
+    public class Modulo_Horarios_RNE_2009_PeriodoCarga_N_NE
     {
-        private string nomeFuncao = "Modulo_PERIODO_SE_CO_RNE_2009-PeriodoCarga_SE_CO";
+        private string nomeFuncao = "Modulo_Horarios_RNE_2009-PeriodoCarga_N_NE";
 
         /// <summary>
         /// Testa o carregamento da memória de cálculo (MC) a partir do arquivo txt.
@@ -72,9 +72,9 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsLocal
             maquinaInequacoes.Compile();
             maquinaInequacoes.Execute();
 
-            Variable PeriodoCarga_SE_CO = maquinaInequacoes.CalculationMemory["PeriodoCarga_SE_CO"];
+            Variable PeriodoCarga_N_NE = maquinaInequacoes.CalculationMemory["PeriodoCarga_N_NE"];
 
-            Assert.AreEqual(PeriodoCarga_SE_CO.GetValue(), "LEVE");
+            Assert.AreEqual(PeriodoCarga_N_NE.GetValue(), "MEDIA");
         }
 
         /// <summary>
@@ -89,11 +89,11 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsLocal
             mediador.CarregarMemoriaDeCalculo(maquinaInequacoes, nomeFuncao);
             mediador.CarregarListaDecisoes(maquinaInequacoes, nomeFuncao);
 
-            mediador.CarregarDados_SheetRow_S_SE();
+            mediador.CarregarDados_SheetRow_N_NE_SE();
 
-            for (int i = 0; i < mediador.linhas_S_SE.Count; i++)
+            for (int i = 0; i < mediador.linhas_N_NE_SE.Count; i++)
             {
-                AtualizarVariaveisDaMemoriaDeCalculo(maquinaInequacoes, mediador.linhas_S_SE[i], "Terça-Feira", "ÚTIL", "NORMAL");
+                AtualizarVariaveisDaMemoriaDeCalculo(maquinaInequacoes, mediador.linhas_N_NE_SE[i], "Terça-Feira", "ÚTIL", "NORMAL");
             }
 
             Assert.AreEqual(true, true);
@@ -114,16 +114,16 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsLocal
 
             maquinaInequacoes.Compile();
 
-            mediador.CarregarDados_SheetRow_S_SE();
+            mediador.CarregarDados_SheetRow_N_NE_SE();
 
-            for (int i = 0; i < mediador.linhas_S_SE.Count; i++)
+            for (int i = 0; i < mediador.linhas_N_NE_SE.Count; i++)
             {
-                AtualizarVariaveisDaMemoriaDeCalculo(maquinaInequacoes, mediador.linhas_S_SE[i], "Terça-Feira", "ÚTIL", "NORMAL"); 
+                AtualizarVariaveisDaMemoriaDeCalculo(maquinaInequacoes, mediador.linhas_N_NE_SE[i], "Terça-Feira", "ÚTIL", "NORMAL");
                 maquinaInequacoes.Execute();
 
-                Variable PeriodoCarga_SE_CO = maquinaInequacoes.CalculationMemory["PeriodoCarga_SE_CO"];
+                Variable PeriodoCarga_N_NE = maquinaInequacoes.CalculationMemory["PeriodoCarga_N_NE"];
 
-                Assert.AreEqual(PeriodoCarga_SE_CO.GetValue(), mediador.linhas_S_SE[i].LDretorno_PERIODO_DE_CARGA);
+                Assert.AreEqual(PeriodoCarga_N_NE.GetValue(), mediador.linhas_N_NE_SE[i].LDvalorplanilha_PerCargaNNE);
             }
         }
 
@@ -134,11 +134,11 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsLocal
         /// <param name="xDiaSemana"></param>
         /// <param name="xTipo"></param>
         /// <param name="Hverao"></param>
-        public void AtualizarVariaveisDaMemoriaDeCalculo(InequationEngine maquinaInequacoes, SheetRow_S_SE sheetRow_S_SE, string xDiaSemana, string xTipo, string Hverao)
+        public void AtualizarVariaveisDaMemoriaDeCalculo(InequationEngine maquinaInequacoes, SheetRow_N_NE_SE sheetRow_N_NE_SE, string xDiaSemana, string xTipo, string Hverao)
         {
-            maquinaInequacoes.CalculationMemory.UpdateVariable("xhora", CustomFunctions.Hora(sheetRow_S_SE.PK_HoraInicFim.Key + ":00"));
+            maquinaInequacoes.CalculationMemory.UpdateVariable("xhora", CustomFunctions.Hora(sheetRow_N_NE_SE.PK_HoraInicFim.Key + ":00"));
             //maquinaInequacoes.CalculationMemory.UpdateVariable("xDiaSemana", xDiaSemana);
-           // maquinaInequacoes.CalculationMemory.UpdateVariable("xTipo", xTipo);
+            //maquinaInequacoes.CalculationMemory.UpdateVariable("xTipo", xTipo);
             //maquinaInequacoes.CalculationMemory.UpdateVariable("Hverao", Hverao);
         }
 

@@ -1,0 +1,43 @@
+Public Function GIPU_minimo(xrsul, xcargasul)
+
+'***************************************************
+'IO-ON.SSE, rev. 61, vig. 03/01/2014
+'Tabela do item 6.4.2.5
+'***************************************************
+
+Select Case xrsul
+    Case 3001 To 5000
+        Select Case xcargasul
+            Case Is > 10000
+                lim = 5600
+            Case Is <= 10000
+                lim = 4900
+        End Select
+    Case 5000 To 6000
+        Select Case xcargasul
+            Case Is > 10000
+                lim = 6300
+            Case Is <= 10000
+                lim = 4900
+        End Select
+    Case 6000 To 7000
+        Select Case xcargasul
+            Case Is > 10000
+                lim = 6300
+            Case Is <= 10000
+                lim = 4900
+        End Select
+    Case Is >= 7000
+        Select Case xcargasul
+            Case Is > 14000
+                lim = 6800
+            Case Is > 10000
+                lim = 6300
+            Case Is <= 10000
+                lim = 5600
+        End Select
+End Select
+
+GIPU_minimo = lim
+
+End Function

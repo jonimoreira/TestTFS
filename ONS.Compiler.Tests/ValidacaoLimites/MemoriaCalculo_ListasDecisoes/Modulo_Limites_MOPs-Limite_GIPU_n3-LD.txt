@@ -1,0 +1,8 @@
+// [<inequacao>], <atribuições: {<nome_var>=<expressao_ou_valor>;}*>
+// default: inequacao = true
+
+(xlogica24 = "Ligada" and xcarga_SIN >= 65000), lim = 4200;
+(xlogica24 = "Ligada" and xcarga_SIN >= 55000 and xcarga_SIN < 65000), lim = 3900;
+(xlogica24 = "Ligada" and xcarga_SIN < 55000), lim = 3800;
+
+(xlogica24 <> "Ligada"), lim = 3000;

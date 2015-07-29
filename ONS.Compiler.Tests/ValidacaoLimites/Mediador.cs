@@ -14,6 +14,8 @@ namespace ONS.Compiler.Tests.ValidacaoLimites
     {
         public Dictionary<int, SheetRow_S_SE> linhas_S_SE = new Dictionary<int,SheetRow_S_SE>();
         public Dictionary<int, SheetRow_SUL> linhas_SUL = new Dictionary<int, SheetRow_SUL>();
+        public Dictionary<int, SheetRow_N_NE_SE> linhas_N_NE_SE = new Dictionary<int, SheetRow_N_NE_SE>();
+        
         public void CarregarDados_SheetRow_S_SE()
         {
             linhas_S_SE.Clear();
@@ -58,7 +60,10 @@ namespace ONS.Compiler.Tests.ValidacaoLimites
                     sheetRow_S_SE.LDvalorplanilha_LIM_RSUL_FSUL_SUP_RSUL = double.Parse(valores[18]);
                     sheetRow_S_SE.LDvalorplanilha_LIM_RSUL_FSUL_INF_FSUL = double.Parse(valores[19]);
                     sheetRow_S_SE.LDvalorplanilha_Mqs_crt_IPU_max = double.Parse(valores[20]);
+                    sheetRow_S_SE.LDvalorplanilha_Limite_GIPU_SUP = double.Parse(valores[21]);
+                    sheetRow_S_SE.LDvalorplanilha_Limite_GIPU_INF = double.Parse(valores[22]);
                     sheetRow_S_SE.LDvalorplanilha_PERIODO_DE_CARGA = valores[24].Trim();
+                    sheetRow_S_SE.LDvalorplanilha_Valor_referencia_FRS_Usinas = double.Parse(valores[26]);
 
                     linhas_S_SE.Add(iLinhaIdx, sheetRow_S_SE);
                     iLinhaIdx++;
@@ -147,6 +152,59 @@ namespace ONS.Compiler.Tests.ValidacaoLimites
                     sheetRow_SUL.LD_ValorReferenciaFRS_Usinas = double.Parse(valores[43]);
 
                     linhas_SUL.Add(iLinhaIdx, sheetRow_SUL);
+                    iLinhaIdx++;
+                }
+
+            }
+        }
+
+        public void CarregarDados_SheetRow_N_NE_SE()
+        {
+            linhas_SUL.Clear();
+
+            //Abre CSV como texto
+            string fileName = GetCaminhoCompletoArquivoTeste_ValidacaoLimites_Aba_N_NE_SE();
+            System.IO.StreamReader sr = new System.IO.StreamReader(File.OpenRead(fileName));
+
+            int iLinhaIdx = 0;
+
+            while (sr.Peek() != -1)
+            {
+                string line = sr.ReadLine();
+
+                // separa linha do CSV
+                string[] valores = line.Split(',');
+                double primeiraColunaComValor = 0.0;
+
+                if (valores.Length > 3 && double.TryParse(valores[3], out primeiraColunaComValor))
+                {
+
+                    SheetRow_N_NE_SE sheetRow_N_NE_SE = new SheetRow_N_NE_SE();
+                    sheetRow_N_NE_SE.PK_HoraInicFim = new KeyValuePair<string, string>(valores[1].Trim(), valores[2].Trim());
+                    sheetRow_N_NE_SE.MC_EXP_N = double.Parse(valores[3]);
+                    sheetRow_N_NE_SE.MC_RNE = double.Parse(valores[4]);
+                    sheetRow_N_NE_SE.MC_FNE = double.Parse(valores[5]);
+                    sheetRow_N_NE_SE.MC_EXP_SE = double.Parse(valores[6]);
+                    sheetRow_N_NE_SE.MC_FMCCO = double.Parse(valores[7]);
+                    sheetRow_N_NE_SE.MC_FSENE = double.Parse(valores[8]);
+                    sheetRow_N_NE_SE.MC_FNS = double.Parse(valores[9]);
+                    sheetRow_N_NE_SE.MC_FSM = double.Parse(valores[10]);
+                    sheetRow_N_NE_SE.MC_SMGerando = double.Parse(valores[11]);
+                    sheetRow_N_NE_SE.MC_Maqs_Laj = double.Parse(valores[12]);
+                    sheetRow_N_NE_SE.MC_Maqs_Px = double.Parse(valores[13]);
+                    sheetRow_N_NE_SE.MC_Maqs_SMCOp = double.Parse(valores[14]);
+                    sheetRow_N_NE_SE.MC_CARGASIN = double.Parse(valores[15]);
+                    sheetRow_N_NE_SE.MC_CargaNE = double.Parse(valores[18]);
+                    sheetRow_N_NE_SE.MC_Xingo_Gera = double.Parse(valores[19]);
+                    sheetRow_N_NE_SE.MC_Xingo_NumUgs = double.Parse(valores[20]);
+                    sheetRow_N_NE_SE.MC_Gera_Porto_Pecem = double.Parse(valores[21]);
+
+                    sheetRow_N_NE_SE.LDvalorplanilha_ECETUCIPU = valores[17].Trim();
+                    sheetRow_N_NE_SE.LDvalorplanilha_LimiteEXPN_SUP = double.Parse(valores[22]);
+                    sheetRow_N_NE_SE.LDvalorplanilha_LimiteEXPN_INF = double.Parse(valores[23]);
+                    sheetRow_N_NE_SE.LDvalorplanilha_PerCargaNNE = valores[34].Trim();
+                    
+                    linhas_N_NE_SE.Add(iLinhaIdx, sheetRow_N_NE_SE);
                     iLinhaIdx++;
                 }
 
@@ -312,6 +370,22 @@ namespace ONS.Compiler.Tests.ValidacaoLimites
             string result = string.Empty;
             string key = "CaminhoCompletoArquivoTeste_ValidacaoLimites_Aba_S_SE";
             //  @"\ValidacaoLimites\Dados\Spreadsheet_Example02_S_SE.csv";
+            try
+            {
+                result = ConfigurationManager.AppSettings[key];
+            }
+            catch (Exception iEx)
+            {
+                throw new Exception("Erro ao carregar chave '" + key + "' do arquivo de configuração (app.config)", iEx);
+            }
+
+            return result;
+        }
+
+        private string GetCaminhoCompletoArquivoTeste_ValidacaoLimites_Aba_N_NE_SE()
+        {
+            string result = string.Empty;
+            string key = "CaminhoCompletoArquivoTeste_ValidacaoLimites_Aba_N_NE_SE";
             try
             {
                 result = ConfigurationManager.AppSettings[key];

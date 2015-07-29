@@ -46,14 +46,17 @@ namespace ONS.Compiler.Tests.ValidacaoLimites
         public double LDvalorplanilha_Mqs_crt_IPU_max = 0.0;
         public double LDretorno_Mqs_crt_IPU_max = 0.0;
 
-        public string LD_Limite_GIPU_SUP = string.Empty;
-        public string LD_Limite_GIPU_INF = string.Empty;
+        public double LDvalorplanilha_Limite_GIPU_SUP = 0.0;
+        public double LDretorno_Limite_GIPU_SUP = 0.0;
 
+        public double LDvalorplanilha_Limite_GIPU_INF = 0.0;
+        public double LDretorno_Limite_GIPU_INF = 0.0;
+        
         public string LDvalorplanilha_PERIODO_DE_CARGA = string.Empty;
         public string LDretorno_PERIODO_DE_CARGA = string.Empty;
-        
-        public string LD_Valor_referencia_FRS_Usinas = string.Empty;
 
+        public double LDvalorplanilha_Valor_referencia_FRS_Usinas = 0.0;
+        public double LDretorno_Valor_referencia_FRS_Usinas = 0.0;
 
 
     }

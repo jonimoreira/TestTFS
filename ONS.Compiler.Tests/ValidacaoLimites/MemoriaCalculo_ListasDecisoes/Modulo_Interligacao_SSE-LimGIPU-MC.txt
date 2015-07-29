@@ -1,0 +1,5 @@
+// <nome_variavel>[,<valor_inicial>[,<tipo>]]
+// default: double, 0.0
+
+xmaq60
+lim

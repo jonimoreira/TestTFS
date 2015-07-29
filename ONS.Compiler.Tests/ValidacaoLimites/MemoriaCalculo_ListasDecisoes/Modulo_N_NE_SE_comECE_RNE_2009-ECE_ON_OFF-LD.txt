@@ -1,0 +1,6 @@
+// [<inequacao>], <atribuições: {<nome_var>=<expressao_ou_valor>;}*>
+// default: inequacao = true
+
+(xFNS > 2000), estado_ece = "LIGADO";
+(xFNS <= 2000), estado_ece = "DESLIGADO";
+

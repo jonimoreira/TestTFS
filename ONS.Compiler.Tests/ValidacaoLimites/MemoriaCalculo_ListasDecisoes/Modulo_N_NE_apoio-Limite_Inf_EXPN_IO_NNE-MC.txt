@@ -1,0 +1,12 @@
+// <nome_variavel>[,<valor_inicial>[,<tipo>]]
+// default: double, 0.0
+
+xpercarga = "LEVE"
+xRNE
+xEXPN
+xEXPSE
+
+lim
+
+tempA
+tempB

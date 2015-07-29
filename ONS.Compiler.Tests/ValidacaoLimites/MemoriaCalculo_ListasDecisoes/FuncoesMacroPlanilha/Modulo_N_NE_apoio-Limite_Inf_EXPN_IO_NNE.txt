@@ -1,0 +1,67 @@
+Public Function Limite_Inf_EXPN_IO_NNE(xpercarga As String, xRNE As Double, xEXPN As Double, xEXPSE As Double) As Variant
+
+'************************************************
+'IO-ON.NNE rev 52, vig 11/09/2013
+' MOP/CNOS 012/2014, vig 05/02/2014
+'************************************************
+
+Select Case xpercarga
+    Case Is = "PESADA" ' Carga Pesada
+        Select Case xRNE
+            Case Is <= 3400
+                lim = -1600
+            Case Is <= 4100
+                lim = -600
+            Case Is <= 4300
+                lim = 0
+            Case Is <= 4500
+                lim = 1000
+            Case Is <= 4700
+                lim = 2000
+            Case Is <= 5000
+                lim = 3000
+            Case 5000 To 5100
+                s = RegressaoLinear(5000, 5100, 3000, 3650)
+                lim = s(1) * xRNE + s(2)
+            Case Else
+                lim = "!RNE!"
+        End Select
+
+    Case Is = "MEDIA" ' Carga Média
+        Select Case xRNE
+            Case Is <= 4000
+                lim = -1000
+            Case Is <= 4200
+                lim = -500
+            Case Is <= 4300
+                lim = 0
+            Case Is <= 4600
+                lim = 1000
+            Case Is <= 4800
+                lim = 2000
+            Case Is <= 4900
+                lim = 3000
+            Case Else
+                lim = "!RNE!"
+        End Select
+
+    Case Is = "LEVE", "MINIMA" ' Carga Leve ou Mínima
+        Select Case xRNE
+            Case Is <= 4100
+                lim = -900
+            Case Is <= 4300
+                lim = -400
+            Case Is <= 4600
+                lim = 1000
+            Case Is <= 4700
+                lim = 2000
+            Case Is <= 4800
+                lim = 3000
+            Case Else
+                lim = "!RNE!"
+        End Select
+    End Select
+
+Limite_Inf_EXPN_IO_NNE = lim
+
+End Function

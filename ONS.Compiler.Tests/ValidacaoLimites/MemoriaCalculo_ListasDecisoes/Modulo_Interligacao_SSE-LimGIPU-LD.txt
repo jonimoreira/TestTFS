@@ -1,0 +1,9 @@
+// [<inequacao>], <atribuições: {<nome_var>=<expressao_ou_valor>;}*>
+// default: inequacao = true
+
+(xmaq60 = 10), lim = 7200;
+(xmaq60 = 9), lim = 6450;
+(xmaq60 = 8), lim = 5700;
+(xmaq60 = 7), lim = 4900;
+(xmaq60 <= 6), lim = xmaq60 * 720;
+

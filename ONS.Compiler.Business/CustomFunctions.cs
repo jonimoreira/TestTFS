@@ -29,6 +29,21 @@ namespace ONS.Compiler.Business
             }
             return result;
         }
+
+        public static double RegressaoLinearA(double x1, double x2, double y1, double y2)
+        {
+            double a = (y1 - y2) / (x1 - x2);
+            double b = y1 - a * x1;
+            
+            return a;
+        }
+        public static double RegressaoLinearB(double x1, double x2, double y1, double y2)
+        {
+            double a = (y1 - y2) / (x1 - x2);
+            double b = y1 - a * x1;
+
+            return b;
+        }
     }
 
 }

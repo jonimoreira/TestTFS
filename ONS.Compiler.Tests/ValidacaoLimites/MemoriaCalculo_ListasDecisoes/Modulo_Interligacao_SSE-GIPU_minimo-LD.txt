@@ -1,0 +1,15 @@
+// [<inequacao>], <atribuições: {<nome_var>=<expressao_ou_valor>;}*>
+// default: inequacao = true
+
+(xrsul >= 3001 and xrsul <= 5000 and xcargasul > 10000), lim = 5600;
+(xrsul >= 3001 and xrsul <= 5000 and xcargasul <= 10000), lim = 4900;
+
+(xrsul >= 5001 and xrsul <= 6000 and xcargasul > 10000), lim = 6300;
+(xrsul >= 5001 and xrsul <= 6000 and xcargasul <= 10000), lim = 4900;
+
+(xrsul >= 6001 and xrsul <= 7000 and xcargasul > 10000), lim = 6300;
+(xrsul >= 6001 and xrsul <= 7000 and xcargasul <= 10000), lim = 4900;
+
+(xrsul >= 7000 and xcargasul > 14000), lim = 6800;
+(xrsul >= 7000 and xcargasul > 10000 and xcargasul <= 14000), lim = 6300;
+(xrsul >= 7000 and xcargasul <= 10000), lim = 5600;

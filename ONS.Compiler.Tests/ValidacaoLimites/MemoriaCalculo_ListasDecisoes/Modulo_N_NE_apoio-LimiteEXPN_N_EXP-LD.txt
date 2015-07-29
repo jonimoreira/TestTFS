@@ -1,0 +1,14 @@
+// [<inequacao>], <atribuições: {<nome_var>=<expressao_ou_valor>;}*>
+// default: inequacao = true
+
+(xpercarga = "PESADA" and xRNE <= 4100), lim = 5600;
+(xpercarga = "PESADA" and xRNE > 4100 and xRNE <= 5100), lim = 5300;
+
+(xpercarga = "MEDIA" and xRNE <= 4000), lim = 5600;
+(xpercarga = "MEDIA" and xRNE > 4000 and xRNE <= 4900), lim = 5300;
+
+((xpercarga = "LEVE" or xpercarga = "MINIMA") and xRNE <= 4100), lim = 5600;
+((xpercarga = "LEVE" or xpercarga = "MINIMA") and xRNE > 4100 and xRNE <= 4500), lim = 5300;
+((xpercarga = "LEVE" or xpercarga = "MINIMA") and xRNE > 4500 and xRNE <= 4800), lim = 3800;
+
+(xFSENE = 0 and xEXPN > 0), lim = 5600;

@@ -1,0 +1,24 @@
+// [<inequacao>], <atribuições: {<nome_var>=<expressao_ou_valor>;}*>
+// default: inequacao = true
+
+(xcargasul <= 15000 and xUGarauc = 3), lim = 3500;
+(xcargasul <= 15000 and xUGarauc = 2), lim = 3500;
+(xcargasul <= 15000 and xUGarauc = 0), lim = 3000;
+
+(xcargasul > 15000 and xcargasul <= 16000 and xUGarauc = 3), lim = 2700;
+(xcargasul > 15000 and xcargasul <= 16000 and xUGarauc = 2), lim = 3700;
+(xcargasul > 15000 and xcargasul <= 16000 and xUGarauc = 0), lim = 2200;
+
+(xcargasul > 16000 and xcargasul <= 16500 and xUGarauc = 3), lim = 2200;
+(xcargasul > 16000 and xcargasul <= 16500 and xUGarauc = 2), lim = 1900;
+(xcargasul > 16000 and xcargasul <= 16500 and xUGarauc = 0), lim = 1300;
+
+(xcargasul > 16500 and xcargasul <= 17000 and xUGarauc = 3), lim = 1200;
+(xcargasul > 16500 and xcargasul <= 17000 and xUGarauc = 2), lim = 1000;
+(xcargasul > 16500 and xcargasul <= 17000 and xUGarauc = 0), lim = 0;
+
+(xcargasul > 17000 and xcargasul <= 17300 and xUGarauc = 3), lim = 800;
+(xcargasul > 17000 and xcargasul <= 17300 and xUGarauc = 2), lim = 800;
+
+(xcargasul > 17300 and xUGarauc = 3), lim = 200;
+(xcargasul > 17300 and xUGarauc = 2), lim = 200;

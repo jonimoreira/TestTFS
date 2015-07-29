@@ -1,0 +1,24 @@
+Public Function LimGIPU(xmaq60)
+'************************************************
+'IO-ON.SSE,revisão 61, Vig. 03/01/2014.
+'************************************************
+
+'Item 6.1
+lim = 99999 'iniciando variável
+
+Select Case xmaq60
+    Case Is = 10
+        lim = 7200
+    Case Is = 9
+        lim = 6450
+    Case Is = 8
+        lim = 5700
+    Case Is = 7
+        lim = 4900
+    Case Is <= 6
+        lim = xmaq60 * 720   'capacidade de geração
+End Select
+
+LimGIPU = lim
+
+End Function

@@ -32,5 +32,16 @@ namespace ONS.Compiler.Tests.ValidacaoLimites
 
         }
 
+        [TestMethod]
+        public void CarregarDadosPlanilhaAba_N_NE_SE()
+        {
+            Mediador mediador = new Mediador();
+
+            mediador.CarregarDados_SheetRow_N_NE_SE();
+
+            Assert.AreEqual(true, true);
+
+        }
+
     }
 }
