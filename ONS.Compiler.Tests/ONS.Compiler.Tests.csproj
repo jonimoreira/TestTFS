@@ -74,6 +74,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MaquinaInequacoesUnitTests.cs" />
     <Compile Include="ValidacaoLimites\UnitTestsLocal\Modulo_Interligacao_SSE_GIPU_minimo.cs" />
+    <Compile Include="ValidacaoLimites\UnitTestsLocal\Modulo_N_NE_apoio_Limite_RNExEXPN_IO_NNE.cs" />
     <Compile Include="ValidacaoLimites\UnitTestsLocal\Modulo_N_NE_apoio_Limite_Inf_EXPN_IO_NNE.cs" />
     <Compile Include="ValidacaoLimites\UnitTestsLocal\Modulo_N_NE_apoio_LimiteEXPN_N_EXP.cs" />
     <Compile Include="ValidacaoLimites\UnitTestsLocal\Modulo_N_NE_apoio_Limite_Sup_EXPN_IO_NNE.cs" />
@@ -117,6 +118,7 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\FuncoesMacroPlanilha\Modulo_N_NE_apoio-Limite_RNExEXPN_IO_NNE.txt" />
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\FuncoesMacroPlanilha\Modulo_Interligacao_SSE-GIPU_minimo.txt" />
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\FuncoesMacroPlanilha\Modulo_N_NE_apoio-Limite_Inf_EXPN_IO_NNE.txt" />
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\FuncoesMacroPlanilha\Modulo_N_NE_apoio-LimiteEXPN_N_EXP.txt" />
@@ -138,9 +140,11 @@
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_N_NE_apoio-Limite_Inf_EXPN_IO_NNE-LD.txt" />
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_N_NE_apoio-LimiteEXPN_N_EXP-LD.txt" />
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_N_NE_apoio-Limite_Inf_EXPN_IO_NNE-MC.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_N_NE_apoio-Limite_RNExEXPN_IO_NNE-LD.txt" />
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_N_NE_apoio-Limite_Sup_EXPN_IO_NNE-LD.txt" />
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_Interligacao_SSE-GIPU_minimo-LD.txt" />
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_N_NE_apoio-LimiteEXPN_N_EXP-MC.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_N_NE_apoio-Limite_RNExEXPN_IO_NNE-MC.txt" />
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_N_NE_apoio-Limite_Sup_EXPN_IO_NNE-MC.txt" />
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_N_NE_SE_comECE_RNE_2009-ECE_ON_OFF-LD.txt" />
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_N_NE_SE_comECE_RNE_2009-ECE_ON_OFF-MC.txt" />

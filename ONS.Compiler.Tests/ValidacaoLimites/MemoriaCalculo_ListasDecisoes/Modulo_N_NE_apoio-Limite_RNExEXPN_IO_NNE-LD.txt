@@ -1,0 +1,28 @@
+// [<inequacao>], <atribuições: {<nome_var>=<expressao_ou_valor>;}*>
+// default: inequacao = true
+
+(xpercarga = "PESADA" and xEXPN >= 5300 and xEXPN < 5600), lim = 4100;
+(xpercarga = "PESADA" and xEXPN >= 3650 and xEXPN < 5300), lim = 5100;
+(xpercarga = "PESADA" and xEXPN >= 3000 and xEXPN < 3650), lim = RegressaoLinearA(3000, 3650, 5000, 5100) * xEXPN + RegressaoLinearB(3000, 3650, 5000, 5100);
+(xpercarga = "PESADA" and xEXPN >= 2000 and xEXPN < 3000), lim = 4700;
+(xpercarga = "PESADA" and xEXPN >= 1000 and xEXPN < 2000), lim = 4500;
+(xpercarga = "PESADA" and xEXPN >= 0 and xEXPN < 1000), lim = 4300;
+(xpercarga = "PESADA" and xEXPN >= -600 and xEXPN < 0), lim = 4100;
+(xpercarga = "PESADA" and xEXPN >= -1600 and xEXPN < -600), lim = 3400;
+
+(xpercarga = "MEDIA" and xEXPN >= 5300 and xEXPN < 5600), lim = 4000;
+(xpercarga = "MEDIA" and xEXPN >= 3000 and xEXPN < 5300), lim = 4900;
+(xpercarga = "MEDIA" and xEXPN >= 2000 and xEXPN < 3000), lim = 4800;
+(xpercarga = "MEDIA" and xEXPN >= 1000 and xEXPN < 2000), lim = 4600;
+(xpercarga = "MEDIA" and xEXPN >= 0 and xEXPN < 1000), lim = 4300;
+(xpercarga = "MEDIA" and xEXPN >= -500 and xEXPN < 0), lim = 4200;
+(xpercarga = "MEDIA" and xEXPN >= -1000 and xEXPN < -500), lim = 4000;
+
+((xpercarga = "LEVE" or xpercarga = "MINIMA") and xEXPN >= 5300 and xEXPN < 5600), lim = 4100;
+((xpercarga = "LEVE" or xpercarga = "MINIMA") and xEXPN >= 3800 and xEXPN < 5300), lim = 4300;
+((xpercarga = "LEVE" or xpercarga = "MINIMA") and xEXPN >= 3000 and xEXPN < 3800), lim = 4800;
+((xpercarga = "LEVE" or xpercarga = "MINIMA") and xEXPN >= 2000 and xEXPN < 3000), lim = 4700;
+((xpercarga = "LEVE" or xpercarga = "MINIMA") and xEXPN >= 1000 and xEXPN < 2000), lim = 4600;
+((xpercarga = "LEVE" or xpercarga = "MINIMA") and xEXPN >= -400 and xEXPN < 1000), lim = 4300;
+((xpercarga = "LEVE" or xpercarga = "MINIMA") and xEXPN >= -900 and xEXPN < -400), lim = 4100;
+

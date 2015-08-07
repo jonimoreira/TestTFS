@@ -1,0 +1,74 @@
+Public Function Limite_RNExEXPN_IO_NNE(xpercarga As String, ByVal xEXPN As Double, ByVal xEXPSE As Double) As Variant
+'************************************************
+'IO-ON.NNE, rev 51. Vig 06/03/2013
+'MOP/CNOS 012/2014. Vig 05/02/2014
+'************************************************
+
+Select Case xpercarga
+    Case Is = "PESADA" ' Carga Pesada
+        Select Case xEXPN
+            Case 5300 To 5600
+                lim = 4100
+            Case 3650 To 5300
+                lim = 5100
+            Case 3000 To 3650
+                s = RegressaoLinear(3000, 3650, 5000, 5100)
+                lim = s(1) * xEXPN + s(2)
+            Case 2000 To 3000
+                lim = 4700
+            Case 1000 To 2000
+                lim = 4500
+            Case 0 To 1000
+                lim = 4300
+            Case -600 To 0
+                lim = 4100
+            Case -1600 To -600
+                lim = 3400
+            Case Else
+                lim = "!EXPN!" ' Não especificado na Tabela"
+        End Select
+
+    Case Is = "MEDIA" ' Carga Média
+        Select Case xEXPN
+            Case 5300 To 5600
+                lim = 4000
+            Case 3000 To 5300
+                lim = 4900
+            Case 2000 To 3000
+                lim = 4800
+            Case 1000 To 2000
+                lim = 4600
+            Case 0 To 1000
+                lim = 4300
+            Case -500 To 0
+                lim = 4200
+            Case -1000 To -500
+                lim = 4000
+            Case Else
+                lim = "! EXPN!" ' Não especificado na Tabela
+        End Select
+
+    Case Is = "LEVE", "MINIMA" ' Carga Leve ou Mínima
+        Select Case xEXPN
+            Case 5300 To 5600
+                lim = 4100
+            Case 3800 To 5300
+                lim = 4300
+            Case 3000 To 3800
+                lim = 4800
+            Case 2000 To 3000
+                lim = 4700
+            Case 1000 To 2000
+                lim = 4600
+            Case -400 To 1000
+                lim = 4300
+            Case -900 To -400
+                lim = 4100
+            Case Else
+                lim = "!EXPN!" ' Não especificado na Tabela
+        End Select
+End Select
+
+Limite_RNExEXPN_IO_NNE = lim
+
+End Function
