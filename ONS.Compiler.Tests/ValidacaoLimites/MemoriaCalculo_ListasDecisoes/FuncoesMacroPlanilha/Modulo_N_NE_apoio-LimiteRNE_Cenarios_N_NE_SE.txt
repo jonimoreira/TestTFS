@@ -1,0 +1,54 @@
+Public Function LimiteRNE_Cenarios_N_NE_SE(xEXPN As Double, xRNE As Double, xEXP_SE As Double, xpercarga As String, x_cargaNE, xugxingo, xlimugx, xFSENE)
+
+'************************************************
+'IO-ON.NNE, revisão 48. Vigência: 02/02/2012
+'IO-CG.BR.01, rev 49. Vig 19/12/2013
+'MOP/CNOS 039/2014 VIG 27/03/2014
+'************************************************
+
+LimiteRNE_4 = Limite_RNExEXPN_IO_NNE(xpercarga, xEXPN, xEXP_SE)
+LimiteRNE_5 = Limite_RNExEXPSE_IO_NNE(xpercarga, xEXP_SE)
+
+LimiteRNE_6 = Limite_RNE_Xingo(xRNE, x_cargaNE, xugxingo, xlimugx)
+
+lim = Min2valores(LimiteRNE_4, LimiteRNE_5)
+lim = Min2valores(lim, LimiteRNE_6)
+
+'************************************************
+'MOP/CNOS 012/2014. Vig 05/02/2014
+'
+'em suma, sobrepõe qualquer outro limite
+'************************************************
+Select Case x_cargaNE
+
+    Case Is > 10250
+        lim = 4100
+    Case 8750 To 10250
+        lim = 3500
+    Case Is < 8750
+        lim = 3000
+End Select
+
+'MOP/CNOS 039/2014 VIG 27/03/2014
+'************************************************
+If xFSENE = 0 Then
+    If xEXPN > 0 Then
+        Select Case x_cargaNE  'ITEM 3.1, passo 1.1
+            Case Is >= 8000
+                lim = 2500
+            Case Is < 8000
+                lim = 2200
+        End Select
+    ElseIf xEXP_SE > 0 Then
+        Select Case xpercarga  'ITEM 3.1, passo 2.1
+            Case "Pesada", "Media"
+                lim = 2900
+            Case "Leve", "Minima"
+                lim = 2800
+        End Select
+    End If
+End If
+
+LimiteRNE_Cenarios_N_NE_SE = lim
+
+End Function

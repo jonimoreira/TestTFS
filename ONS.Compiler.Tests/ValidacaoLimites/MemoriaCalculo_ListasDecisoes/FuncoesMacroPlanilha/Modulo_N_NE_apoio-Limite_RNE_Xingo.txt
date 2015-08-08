@@ -1,0 +1,15 @@
+Public Function Limite_RNE_Xingo(xRNE, x_cargaNE, xugxingo, xlimugx)
+' IO-CG.BR.01, rev 49. Vig 19/12/2013
+
+If xRNE > 1500 Then
+    If xugxingo < xlimugx Then
+        lim = 0.4 * x_cargaNE 'conforme item 2 da MOP, limitar o RNE a 40% da carga do NE
+    Else
+        lim = 9999
+    End If
+    Else
+        lim = 9999
+End If
+
+Limite_RNE_Xingo = lim
+End Function

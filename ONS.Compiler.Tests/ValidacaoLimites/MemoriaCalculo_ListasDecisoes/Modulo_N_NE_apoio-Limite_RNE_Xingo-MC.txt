@@ -1,0 +1,10 @@
+// <nome_variavel>[,<valor_inicial>[,<tipo>]]
+// default: double, 0.0
+
+xRNE
+x_cargaNE
+xugxingo
+xlimugx
+
+lim
+

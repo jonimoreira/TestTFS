@@ -1,0 +1,80 @@
+Public Function Limite_Sup_EXPSE_IO_NNE(xpercarga As String, xRNE As Double, xEXPSE As Double, xPpecem) As Variant
+'************************************************
+'IO-ON.NNE rev 52, vig 11/09/2013
+' MOP/CNOS 012/2014 vig 05/02/2014
+'************************************************
+
+'Estabelece o limite SUPERIOR DO EXPSE
+Select Case xpercarga
+    Case Is = "PESADA" ' Carga Pesada
+        Select Case xRNE
+            Case Is <= 3400 'primeiro degrau
+                lim = 5000
+            Case 3400 To 4100
+                lim = 4700
+            Case 4100 To 4300
+                lim = 4300
+            Case 4300 To 4500
+                lim = 3500
+            Case 4500 To 4700
+                lim = 2700
+            Case 4700 To 5000
+                lim = 2000
+            Case 5000 To 5100
+                lim = 1000
+            Case Else
+                lim = "!RNE!"
+        End Select
+
+    Case Is = "MEDIA" ' Carga Média
+        Select Case xRNE
+            Case Is <= 4000 'primeiro degrau
+                lim = 5000
+            Case 4000 To 4200
+                lim = 4700
+            Case 4200 To 4300
+                lim = 4300
+            Case 4300 To 4600
+                lim = 3600
+            Case 4600 To 4800
+                lim = 2800
+            Case 4800 To 4900
+                lim = 1900
+            Case Else
+                lim = "!RNE!"
+        End Select
+
+    Case Is = "LEVE", "MINIMA" ' Carga Leve ou Mínima
+        Select Case xRNE
+            Case Is <= 4100 'primeiro degrau
+                lim = 5000
+            Case 4100 To 4300
+                lim = 4700
+            Case 4300 To 4600
+                lim = 3600
+            Case 4600 To 4700
+                lim = 2700
+            Case 4700 To 4800
+                lim = 1800
+            Case Else
+                lim = "!RNE!"
+        End Select
+End Select
+
+lim2 = 9999
+If xPpecem > 500 Then
+    Select Case xpercarga
+        Case Is = "PESADA" ' Carga Pesada
+            lim2 = 3500
+        Case Is = "MEDIA" ' Carga Média
+            lim2 = 3500
+        Case Is = "LEVE", "MINIMA" ' Carga Leve ou Mínima
+            lim2 = 3500
+    End Select
+End If
+
+lim = Min2valores(lim, lim2)
+
+Limite_Sup_EXPSE_IO_NNE = lim
+
+End Function

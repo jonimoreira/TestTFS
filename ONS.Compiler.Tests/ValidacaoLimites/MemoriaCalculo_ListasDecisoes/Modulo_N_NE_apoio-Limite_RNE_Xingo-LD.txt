@@ -1,0 +1,7 @@
+// [<inequacao>], <atribuições: {<nome_var>=<expressao_ou_valor>;}*>
+// default: inequacao = true
+
+
+(xRNE > 1500 and xugxingo < xlimugx), lim = 0.4 * x_cargaNE;
+(xRNE > 1500 and xugxingo >= xlimugx), lim = 9999;
+(xRNE <= 1500), lim = 9999;

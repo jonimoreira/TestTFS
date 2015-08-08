@@ -1,0 +1,17 @@
+Public Function LimiteEXP_SE_cenarios(xpercarga As String, xRNE As Double, xEXP_SE As Double, xPpecem, xFSENE) As Variant
+'************************************************
+'IO-ON.NNE rev 52, vig 11/09/2013
+' MOP/CNOS 012/2014, vig 05/02/2014
+' MOP/CNOS 039/2014 vig 27/03/2014
+'************************************************
+
+lim = Limite_Sup_EXPSE_IO_NNE(xpercarga, xRNE, xEXP_SE, xPpecem)
+
+If xFSENE = 0 And xEXP_SE > 0 Then
+    lim = 3500
+End If
+
+
+LimiteEXP_SE_cenarios = lim
+
+End Function

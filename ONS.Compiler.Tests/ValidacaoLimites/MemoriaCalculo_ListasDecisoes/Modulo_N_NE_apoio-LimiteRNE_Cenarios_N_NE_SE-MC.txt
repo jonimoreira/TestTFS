@@ -1,0 +1,18 @@
+// <nome_variavel>[,<valor_inicial>[,<tipo>]]
+// default: double, 0.0
+
+xpercarga = "LEVE"
+xEXPN
+xRNE
+xEXPSE
+x_cargaNE
+xugxingo 
+xlimugx 
+xFSENE
+
+lim
+
+LimiteRNE_4
+LimiteRNE_5
+LimiteRNE_6
+

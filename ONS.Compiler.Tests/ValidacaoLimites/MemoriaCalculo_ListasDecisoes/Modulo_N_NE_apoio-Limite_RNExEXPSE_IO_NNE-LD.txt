@@ -1,0 +1,28 @@
+'// [<inequacao>], <atribuições: {<nome_var>=<expressao_ou_valor>;}*>
+// default: inequacao = true
+
+(xpercarga = "PESADA" and xEXPSE >= 4700 and xEXPSE < 5000), lim = 3400;
+(xpercarga = "PESADA" and xEXPSE >= 4300 and xEXPSE < 4700), lim = 4100;
+(xpercarga = "PESADA" and xEXPSE >= 3500 and xEXPSE < 4300), lim = 4300;
+(xpercarga = "PESADA" and xEXPSE >= 2700 and xEXPSE < 3500), lim = 4500;
+(xpercarga = "PESADA" and xEXPSE >= 2000 and xEXPSE < 2700), lim = 4700;
+(xpercarga = "PESADA" and xEXPSE >= 1000 and xEXPSE < 2000), lim = 5300;
+(xpercarga = "PESADA" and xEXPSE >= -200 and xEXPSE < 1000), lim = 5100;
+(xpercarga = "PESADA" and xEXPSE >= -1500 and xEXPSE < -200), lim = 4100;
+
+(xpercarga = "MEDIA" and xEXPSE >= 4700 and xEXPSE < 5000), lim = 4000;
+(xpercarga = "MEDIA" and xEXPSE >= 4300 and xEXPSE < 4700), lim = 4200;
+(xpercarga = "MEDIA" and xEXPSE >= 3600 and xEXPSE < 4300), lim = 4300;
+(xpercarga = "MEDIA" and xEXPSE >= 2800 and xEXPSE < 3600), lim = 4600;
+(xpercarga = "MEDIA" and xEXPSE >= 1900 and xEXPSE < 2800), lim = 4800;
+(xpercarga = "MEDIA" and xEXPSE >= -400 and xEXPSE < 1900), lim = 4900;
+(xpercarga = "MEDIA" and xEXPSE >= -1600 and xEXPSE < -400), lim = 4000;
+
+((xpercarga = "LEVE" or xpercarga = "MINIMA") and xEXPSE >= 4700 and xEXPSE < 5000), lim = 4100;
+((xpercarga = "LEVE" or xpercarga = "MINIMA") and xEXPSE >= 3600 and xEXPSE < 4700), lim = 4300;
+((xpercarga = "LEVE" or xpercarga = "MINIMA") and xEXPSE >= 2700 and xEXPSE < 3600), lim = 4600;
+((xpercarga = "LEVE" or xpercarga = "MINIMA") and xEXPSE >= 1800 and xEXPSE < 2700), lim = 4700;
+((xpercarga = "LEVE" or xpercarga = "MINIMA") and xEXPSE >= 1000 and xEXPSE < 1800), lim = 4800;
+((xpercarga = "LEVE" or xpercarga = "MINIMA") and xEXPSE >= -800 and xEXPSE < 1000), lim = 4500;
+((xpercarga = "LEVE" or xpercarga = "MINIMA") and xEXPSE >= -1500 and xEXPSE < -800), lim = 4100;
+

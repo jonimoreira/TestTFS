@@ -30,6 +30,17 @@ namespace ONS.Compiler.Business
             return result;
         }
 
+        public static double Min(params double[] list)
+        {
+            double result = double.MaxValue;
+            for (int i = 0; i < list.Length; i++)
+            {
+                if (list[i] < result)
+                    result = list[i];
+            }
+            return result;
+        }
+
         public static double RegressaoLinearA(double x1, double x2, double y1, double y2)
         {
             double a = (y1 - y2) / (x1 - x2);
