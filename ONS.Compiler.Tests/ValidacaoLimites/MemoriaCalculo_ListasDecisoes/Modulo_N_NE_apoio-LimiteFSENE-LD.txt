@@ -1,0 +1,12 @@
+// [<inequacao>], <atribuições: {<nome_var>=<expressao_ou_valor>;}*>
+// default: inequacao = true
+
+(xpercarga = "PESADA"), lim = 950;
+
+(xpercarga = "MEDIA"), lim = 950;
+
+(xpercarga = "LEVE" or xpercarga = "MINIMA"), lim = 935;
+
+(x_cargaNE > 10250), lim = 1000;
+(x_cargaNE > 8750 and x_cargaNE <= 10250), lim = 900;
+(x_cargaNE < 8750), lim = 900;

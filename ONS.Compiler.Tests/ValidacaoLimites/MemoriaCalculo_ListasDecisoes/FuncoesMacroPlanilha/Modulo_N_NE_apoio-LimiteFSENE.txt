@@ -1,0 +1,34 @@
+Public Function LimiteFSENE(x_cargaNE) As Double
+'*********************************************************************
+'IO-ON.SENE, revisão 24. Vigência: 30/06/2011
+'*********************************************************************
+Select Case xpercarga
+    
+    Case Is = "PESADA" ' Carga Pesada
+        LimiteFSENE = 950
+   Case Is = "MEDIA" ' Carga Média
+        LimiteFSENE = 950
+    Case Is = "LEVE", "MINIMA" ' Carga Leve ou Mínima
+        LimiteFSENE = 935
+
+End Select
+
+
+'************************************************
+'MOP/CNOS 012/2014. Vig 05/02/2014
+'
+'em suma, sobrepõe qualquer outro limite
+'************************************************
+Select Case x_cargaNE
+
+    Case Is > 10250
+        lim = 1000
+    Case 8750 To 10250
+        lim = 900
+    Case Is < 8750
+        lim = 900
+End Select
+
+LimiteFSENE = lim
+
+End Function

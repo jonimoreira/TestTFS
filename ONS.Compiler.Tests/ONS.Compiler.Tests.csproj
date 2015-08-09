@@ -67,8 +67,14 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="ValidacaoLimites\Mediador.cs" />
+    <Compile Include="ValidacaoLimites\UnitTestsLocal\Modulo_Limites_MOPs_LimiteFNS_IO.cs" />
     <Compile Include="ValidacaoLimites\UnitTestsLocal\Modulo_N_NE_apoio_LimiteRNE_Cenarios_N_NE_SE.cs" />
     <Compile Include="ValidacaoLimites\UnitTestsLocal\Modulo_N_NE_apoio_LimiteEXP_SE_cenarios.cs" />
+    <Compile Include="ValidacaoLimites\UnitTestsLocal\Modulo_N_NE_apoio_Limite_Inf_EXPSE_IO_NNE.cs" />
+    <Compile Include="ValidacaoLimites\UnitTestsLocal\Modulo_N_NE_apoio_Limite_inf_EXP_SE_SE_EXP - Copy.cs" />
+    <Compile Include="ValidacaoLimites\UnitTestsLocal\Modulo_N_NE_apoio_Limite_inf_EXP_SE_SE_EXP.cs" />
+    <Compile Include="ValidacaoLimites\UnitTestsLocal\Modulo_N_NE_SE_comECE_RNE_2009_LimiteFNS_ECE_2.cs" />
+    <Compile Include="ValidacaoLimites\UnitTestsLocal\Modulo_N_NE_SE_semECE_RNE_2009_limiteFNS_SEM_ECE.cs" />
     <Compile Include="ValidacaoLimites\UnitTestsLocal\Modulo_N_NE_apoio_Limite_Sup_EXPSE_IO_NNE.cs" />
     <Compile Include="ValidacaoLimites\UnitTestsLocal\Modulo_N_NE_apoio_Limite_RNE_Xingo.cs" />
     <Compile Include="ValidacaoLimites\SheetRow_N_NE_SE.cs" />
@@ -83,6 +89,7 @@
     <Compile Include="ValidacaoLimites\UnitTestsLocal\Modulo_N_NE_apoio_Limite_Inf_EXPN_IO_NNE.cs" />
     <Compile Include="ValidacaoLimites\UnitTestsLocal\Modulo_N_NE_apoio_LimiteEXPN_N_EXP.cs" />
     <Compile Include="ValidacaoLimites\UnitTestsLocal\Modulo_N_NE_apoio_Limite_Sup_EXPN_IO_NNE.cs" />
+    <Compile Include="ValidacaoLimites\UnitTestsLocal\Modulo_N_NE_SE_comECE_RNE_2010_LimiteFNS_ECE_3_4.cs" />
     <Compile Include="ValidacaoLimites\UnitTestsLocal\Modulo_N_NE_SE_comECE_RNE_2009_ECE_ON_OFF.cs" />
     <Compile Include="ValidacaoLimites\UnitTestsLocal\Modulo_Limites_MOPs_Limite_GIPU_n3.cs" />
     <Compile Include="ValidacaoLimites\UnitTestsLocal\Modulo_Interligacao_SSE_LimGIPU.cs" />
@@ -123,8 +130,12 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\FuncoesMacroPlanilha\Modulo_Horarios_RNE_2009-PeriodoCarga_N_NE.txt" />
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\FuncoesMacroPlanilha\Modulo_N_NE_apoio-LimiteRNE_Cenarios_N_NE_SE.txt" />
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\FuncoesMacroPlanilha\Modulo_N_NE_apoio-LimiteEXP_SE_cenarios.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\FuncoesMacroPlanilha\Modulo_N_NE_apoio-LimiteFSENE.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\FuncoesMacroPlanilha\Modulo_N_NE_apoio-Limite_inf_EXP_SE_SE_EXP.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\FuncoesMacroPlanilha\Modulo_N_NE_apoio-Limite_Inf_EXPSE_IO_NNE.txt" />
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\FuncoesMacroPlanilha\Modulo_N_NE_apoio-Limite_Sup_EXPSE_IO_NNE.txt" />
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\FuncoesMacroPlanilha\Modulo_N_NE_apoio-Limite_RNE_Xingo.txt" />
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\FuncoesMacroPlanilha\Modulo_N_NE_apoio-Limite_RNExEXPSE_IO_NNE.txt" />
@@ -133,6 +144,9 @@
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\FuncoesMacroPlanilha\Modulo_N_NE_apoio-Limite_Inf_EXPN_IO_NNE.txt" />
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\FuncoesMacroPlanilha\Modulo_N_NE_apoio-LimiteEXPN_N_EXP.txt" />
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\FuncoesMacroPlanilha\Modulo_N_NE_apoio-Limite_Sup_EXPN_IO_NNE.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\FuncoesMacroPlanilha\Modulo_N_NE_SE_comECE_RNE_2009-LimiteFNS_ECE_2.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\FuncoesMacroPlanilha\Modulo_N_NE_SE_semECE_RNE_2009-limiteFNS_SEM_ECE.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\FuncoesMacroPlanilha\Modulo_N_NE_SE_comECE_RNE_2010-LimiteFNS_ECE_3_4.txt" />
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\FuncoesMacroPlanilha\Modulo_N_NE_SE_comECE_RNE_2009-ECE_ON_OFF.txt" />
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\FuncoesMacroPlanilha\Modulo_Limites_MOPs-Limite_GIPU_n3.txt" />
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\FuncoesMacroPlanilha\Modulo_Interligacao_SSE-LimGIPU.txt" />
@@ -144,9 +158,16 @@
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\FuncoesMacroPlanilha\Modulo_Interligacao_SSE-LIMITE_FSUL.txt" />
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\FuncoesMacroPlanilha\Modulo_Interligacao_SSE-Limite_RSE.txt" />
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\FuncoesMacroPlanilha\Modulo_Interligacao_SSE-LimiteFSE.txt" />
-    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\FuncoesMacroPlanilha\Modulo_Horarios_RNE_2009-PeriodoCarga_N_NE.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\FuncoesMacroPlanilha\Modulo_Limites_MOPs-LimiteFNS_IO.txt" />
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\FuncoesMacroPlanilha\Modulo_PERIODO_SE_CO_RNE_2009-PeriodoCarga_SE_CO.txt" />
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\FuncoesMacroPlanilha\Modulo_Interligacao_SSE-LIMITE_RSUL.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_Horarios_RNE_2009-PeriodoCarga_N_NE-LD.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_Limites_MOPs-Limite_GIPU_n3-LD.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_Limites_MOPs-LimiteFNS_IO-MC.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_N_NE_SE_comECE_RNE_2009-LimiteFNS_ECE_2-LD.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_N_NE_SE_comECE_RNE_2009-LimiteFNS_ECE_2-MC.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_N_NE_SE_semECE_RNE_2009-limiteFNS_SEM_ECE-MC.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_N_NE_SE_semECE_RNE_2009-limiteFNS_SEM_ECE-LD.txt" />
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_N_NE_apoio-LimiteRNE_Cenarios_N_NE_SE-LD.txt" />
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_N_NE_apoio-LimiteRNE_Cenarios_N_NE_SE-MC.txt" />
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_N_NE_apoio-LimiteEXP_SE_cenarios-LD.txt" />
@@ -154,6 +175,12 @@
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_N_NE_apoio-LimiteEXPN_N_EXP-LD.txt" />
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_N_NE_apoio-LimiteEXP_SE_cenarios-MC.txt" />
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_N_NE_apoio-Limite_Inf_EXPN_IO_NNE-MC.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_N_NE_apoio-LimiteFSENE-LD.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_N_NE_apoio-Limite_inf_EXP_SE_SE_EXP-LD.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_N_NE_apoio-Limite_Inf_EXPSE_IO_NNE-LD.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_N_NE_apoio-LimiteFSENE-MC.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_N_NE_apoio-Limite_inf_EXP_SE_SE_EXP-MC.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_N_NE_apoio-Limite_Inf_EXPSE_IO_NNE-MC.txt" />
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_N_NE_apoio-Limite_Sup_EXPSE_IO_NNE-LD.txt" />
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_N_NE_apoio-Limite_Sup_EXPSE_IO_NNE-MC.txt" />
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_N_NE_apoio-Limite_RNE_Xingo-LD.txt" />
@@ -166,9 +193,11 @@
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_N_NE_apoio-LimiteEXPN_N_EXP-MC.txt" />
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_N_NE_apoio-Limite_RNExEXPN_IO_NNE-MC.txt" />
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_N_NE_apoio-Limite_Sup_EXPN_IO_NNE-MC.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_N_NE_SE_comECE_RNE_2010-LimiteFNS_ECE_3_4-LD.txt" />
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_N_NE_SE_comECE_RNE_2009-ECE_ON_OFF-LD.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_N_NE_SE_comECE_RNE_2010-LimiteFNS_ECE_3_4-MC.txt" />
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_N_NE_SE_comECE_RNE_2009-ECE_ON_OFF-MC.txt" />
-    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_Limites_MOPs-Limite_GIPU_n3-LD.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_Limites_MOPs-LimiteFNS_IO-LD.txt" />
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_Interligacao_SSE-LimGIPU-LD.txt" />
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_Interligacao_SSE-GIPU_minimo-MC.txt" />
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_Limites_MOPs-Limite_GIPU_n3-MC.txt" />
@@ -191,7 +220,6 @@
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_Interligacao_SSE-limiteFINBA-MC.txt" />
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_Interligacao_SSE-LimiteFSE-MC.txt" />
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_Interligacao_SSE-LIMITE_RSUL-MC.txt" />
-    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_Horarios_RNE_2009-PeriodoCarga_N_NE-LD.txt" />
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_Horarios_RNE_2009-PeriodoCarga_N_NE-MC.txt" />
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_PERIODO_SE_CO_RNE_2009-PeriodoCarga_SE_CO-MC.txt" />
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_PERIODO_SE_CO_RNE_2009-PeriodoCarga_SE_CO-LD.txt" />

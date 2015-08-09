@@ -204,7 +204,10 @@ namespace ONS.Compiler.Tests.ValidacaoLimites
                     sheetRow_N_NE_SE.LDvalorplanilha_LimiteEXPN_INF = double.Parse(valores[23]);
                     sheetRow_N_NE_SE.LDvalorplanilha_LimiteRNE = double.Parse(valores[24]);
                     sheetRow_N_NE_SE.LDvalorplanilha_LimiteEXP_SE_Sup = double.Parse(valores[26]);
-                    
+                    sheetRow_N_NE_SE.LDvalorplanilha_LimiteEXP_SE_Inf = double.Parse(valores[27]);
+                    sheetRow_N_NE_SE.LDvalorplanilha_LimiteFSENE = double.Parse(valores[29]);
+                    sheetRow_N_NE_SE.LDvalorplanilha_LimFNS_N2 = double.Parse(valores[30]);
+
                     sheetRow_N_NE_SE.LDvalorplanilha_Xingo_MinMaqs = double.Parse(valores[33]);
                     sheetRow_N_NE_SE.LDvalorplanilha_PerCargaNNE = valores[34].Trim();
                     

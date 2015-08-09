@@ -1,0 +1,9 @@
+// <nome_variavel>[,<valor_inicial>[,<tipo>]]
+// default: double, 0.0
+
+xcarga_SIN
+xMqIPU
+xFSM
+
+lim
+

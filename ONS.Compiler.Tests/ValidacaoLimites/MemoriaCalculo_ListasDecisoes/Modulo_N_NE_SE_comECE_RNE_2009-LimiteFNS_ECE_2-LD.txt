@@ -1,0 +1,8 @@
+
+, maqinasSM = xSM_CSin + xMqSM;
+
+(maqinasSM = 0), lim = 2500;
+(maqinasSM = 1 and xcarga_SIN <= 43000), lim = 3500;
+(maqinasSM = 1 and xcarga_SIN > 43000), lim = 3700;
+(maqinasSM = 2 or maqinasSM = 2), lim = 4100;
+

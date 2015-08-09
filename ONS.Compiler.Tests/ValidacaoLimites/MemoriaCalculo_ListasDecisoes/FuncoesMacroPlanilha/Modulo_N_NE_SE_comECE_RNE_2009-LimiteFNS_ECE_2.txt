@@ -1,0 +1,28 @@
+
+
+Public Function LimiteFNS_ECE_2(xSM_CSin, xcarga_SIN, xMqSM) As Variant
+
+'************************************************
+'IO-ON.NSE, rev 34.     Vigência: 04/10/2012
+'MOP/CNOS 003/2014. Vigencia: 13/01/2014
+'************************************************
+
+maqinasSM = xSM_CSin + xMqSM 'soma das máquinas sincronizadas como gerador com aquelas que estão como síncrono
+
+Select Case maqinasSM   'ITEM 6.2.1
+    Case 0
+        lim = 2500
+    Case 1
+        If xcarga_SIN <= 43000 Then
+            lim = 3500
+        Else
+            lim = 3700
+        End If
+    Case 2 To 3
+        lim = 4100
+End Select
+
+LimiteFNS_ECE_2 = lim
+
+End Function
+

@@ -1,0 +1,16 @@
+// [<inequacao>], <atribuições: {<nome_var>=<expressao_ou_valor>;}*>
+// default: inequacao = true
+
+(xMqIPU = 4 and xcarga_SIN > 80000), lim = 4100;
+(xMqIPU = 4 and xcarga_SIN > 60000 and xcarga_SIN < 80000 and xFSM >= 4600.001 and xFSM <= 5100), lim = 3700;
+(xMqIPU = 4 and xcarga_SIN > 60000 and xcarga_SIN < 80000 and xFSM <= 4600), lim = 4000;
+(xMqIPU = 4 and xcarga_SIN <= 60000 and xFSM >= 4600.001 and xFSM <= 5100), lim = 3600;
+(xMqIPU = 4 and xcarga_SIN <= 60000 and xFSM <= 4600), lim = 3900;
+(xMqIPU = 4 and xcarga_SIN <= 53000 and xFSM >= 4200.001 and xFSM <= 4500), lim = 3200;
+(xMqIPU = 4 and xcarga_SIN <= 53000 and xFSM <= 4600), lim = 3500;
+
+(xMqIPU = 3 and xcarga_SIN > 80000), lim = 4100;
+(xMqIPU = 3 and xcarga_SIN > 60000 and xcarga_SIN <= 80000), lim = 4100;
+(xMqIPU = 3 and xcarga_SIN <= 60000), lim = 3800;
+(xMqIPU = 3 and xcarga_SIN <= 53000), lim = 3500;
+

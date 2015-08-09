@@ -1,0 +1,11 @@
+Public Function Limite_inf_EXP_SE_SE_EXP(xpercarga As String, xRNE As Double, xEXPSE As Double) As Variant
+'*********************************************************************
+'IO-ON.NNE, revisão 48. Vigência: 02/02/2012
+'MOP/CNOS 012/2014 vig 05/02/2014
+'*********************************************************************
+
+lim = Limite_Inf_EXPSE_IO_NNE(xpercarga, xRNE, xEXPSE)
+
+Limite_inf_EXP_SE_SE_EXP = lim
+
+End Function

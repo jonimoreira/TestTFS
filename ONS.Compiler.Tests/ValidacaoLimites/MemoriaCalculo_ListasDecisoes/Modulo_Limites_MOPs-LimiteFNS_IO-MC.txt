@@ -1,0 +1,27 @@
+// <nome_variavel>[,<valor_inicial>[,<tipo>]]
+// default: double, 0.0
+
+xcarga_SIN
+xMqIPU
+xMqSM
+xSM_cs
+xMqLJ
+xMqPX
+xECE_IPU_TUC = "LIGADO"
+xpercarga = ""
+xFSM
+xMW_ug_ipu 
+xFSENE
+
+lim
+
+flag_tabela3_4
+total_MqSM
+maqinasSM
+tabela_restrita
+
+bCtrlFluxo = false
+
+vlrLimiteFNS_ECE_3_4
+vlrlimiteFNS_SEM_ECE
+vlrLimiteFNS_ECE_2

@@ -47,6 +47,15 @@ namespace ONS.Compiler.Tests.ValidacaoLimites
 
         public double LDvalorplanilha_LimiteEXP_SE_Sup = 0.0;
         public double LDretorno_LimiteEXP_SE_Sup = 0.0;
+
+        public double LDvalorplanilha_LimiteEXP_SE_Inf = 0.0;
+        public double LDretorno_LimiteEXP_SE_Inf = 0.0;
+
+        public double LDvalorplanilha_LimiteFSENE = 0.0;
+        public double LDretorno_LimiteFSENE = 0.0;
+
+        public double LDvalorplanilha_LimFNS_N2 = 0.0;
+        public double LDretorno_LimLimFNS_N2 = 0.0;
         
         public double LDvalorplanilha_Xingo_MinMaqs = 0.0;
         public double LDretorno_Xingo_MinMaqs = 0.0;

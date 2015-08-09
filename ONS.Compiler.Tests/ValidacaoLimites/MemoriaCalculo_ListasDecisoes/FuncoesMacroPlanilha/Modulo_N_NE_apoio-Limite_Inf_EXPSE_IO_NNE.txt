@@ -1,0 +1,47 @@
+Public Function Limite_Inf_EXPSE_IO_NNE(xpercarga As String, xRNE As Double, xEXPSE As Double) As Variant
+'************************************************
+'IO-ON.NNE rev 52, vig 11/09/2013
+'MOP/CNOS 012/2014, vig 05/02/2014
+'************************************************
+
+'Estabelece o limite INFERIOR DO EXPSE
+Select Case xpercarga
+    Case Is = "PESADA" ' Carga Pesada
+        Select Case xRNE
+            Case Is <= 4100 'primeiro degrau
+                lim = -9999 'não temos limite. Os -1500 de "fundo de escala" são uma referência para fechamento EXPN+EXPSE=RNE
+'                lim = -1500
+            Case 4100 To 5100
+                lim = -200
+            Case Else
+                lim = "!RNE!"
+        End Select
+    
+    Case Is = "MEDIA" ' Carga Média
+        Select Case xRNE
+            Case Is <= 4000 'primeiro degrau
+                lim = -9999 'não temos limite. Os -1600 de "fundo de escala" são uma referência para fechamento EXPN+EXPSE=RNE
+'                lim = -1600
+            Case 4000 To 4900
+                lim = -400
+            Case Else
+                lim = "!RNE!"
+        End Select
+
+    Case Is = "LEVE", "MINIMA" ' Carga Leve ou Mínima
+        Select Case xRNE
+            Case Is <= 4100 'primeiro degrau
+                lim = -9999 'não temos limite. Os -1500 de "fundo de escala" são uma referência para fechamento EXPN+EXPSE=RNE
+'                lim = -1500
+            Case 4100 To 4500
+                lim = -800
+            Case 4500 To 4800
+                lim = 1000
+            Case Else
+                lim = "!RNE!"
+        End Select
+            
+End Select
+
+Limite_Inf_EXPSE_IO_NNE = lim
+End Function

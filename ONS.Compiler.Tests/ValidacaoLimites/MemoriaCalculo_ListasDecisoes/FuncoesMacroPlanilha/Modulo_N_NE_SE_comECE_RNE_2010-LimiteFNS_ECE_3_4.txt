@@ -1,0 +1,50 @@
+Public Function LimiteFNS_ECE_3_4(xcarga_SIN, xMqIPU, xFSM)
+'************************************************
+'IO-ON.NSE, rev 34      Vigência: 04/10/2012
+'MOP/CNOS 003/2014. Vigencia: 13/01/2014
+'************************************************
+'Função que calcula os limites do FNS, considerando 3 ou 4 maquinas em itaipu selecionadas para o corte
+    
+Select Case xMqIPU  'tabela 6.2.2
+    Case 4
+        Select Case xcarga_SIN
+            Case Is > 80000
+                lim = 4100
+            Case 60000 To 80000
+                Select Case xFSM
+                    Case 4600.001 To 5100
+                        lim = 3700
+                    Case Is <= 4600
+                        lim = 4000
+                End Select
+            Case Is <= 60000
+                Select Case xFSM
+                    Case 4600.001 To 5100
+                        lim = 3600
+                    Case Is <= 4600
+                        lim = 3900
+                End Select
+            Case Is <= 53000
+                Select Case xFSM
+                    Case 4200.001 To 4500
+                        lim = 3200
+                    Case Is <= 4600
+                        lim = 3500
+                End Select
+        End Select
+    Case 3
+        Select Case xcarga_SIN
+            Case Is > 80000
+                lim = 4100
+            Case 60000 To 80000
+                lim = 4100
+            Case Is <= 60000
+                lim = 3800
+            Case Is <= 53000
+                lim = 3500
+        End Select
+End Select
+
+LimiteFNS_ECE_3_4 = lim
+
+End Function
