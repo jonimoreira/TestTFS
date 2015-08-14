@@ -6,9 +6,9 @@ using System.Collections.Generic;
 namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsLocal
 {
     [TestClass]
-    public class Modulo_N_NE_apoio_Limite_inf_EXP_SE_SE_EXP
+    public class Modulo_N_NE_apoio_LimiteEXPN_N_EXP
     {
-        private string nomeFuncao = "Modulo_N_NE_apoio-Limite_inf_EXP_SE_SE_EXP";
+        private string nomeFuncao = "Modulo_N_NE_apoio-LimiteEXPN_N_EXP";
         /// <summary>
         /// Testa o carregamento da memória de cálculo (MC) a partir do arquivo txt.
         /// </summary>
@@ -75,7 +75,7 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsLocal
 
             Variable limite = maquinaInequacoes.CalculationMemory["lim"];
 
-            Assert.AreEqual(limite.GetValue(), -9999.0);
+            Assert.AreEqual(limite.GetValue(), 5600.0);
         }
         
         /// <summary>
@@ -123,7 +123,7 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsLocal
 
                 Variable limite = maquinaInequacoes.CalculationMemory["lim"];
 
-                Assert.AreEqual(limite.GetValue(), mediador.linhas_N_NE_SE[i].LDvalorplanilha_LimiteEXP_SE_Inf);
+                Assert.AreEqual(limite.GetValue(), mediador.linhas_N_NE_SE[i].LDvalorplanilha_LimiteEXPN_SUP);
             }
         }
         
@@ -136,7 +136,8 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsLocal
         {
             maquinaInequacoes.CalculationMemory.UpdateVariable("xpercarga", sheetRow_N_NE_SE.LDvalorplanilha_PerCargaNNE);
             maquinaInequacoes.CalculationMemory.UpdateVariable("xRNE", sheetRow_N_NE_SE.MC_RNE);
-            maquinaInequacoes.CalculationMemory.UpdateVariable("xEXPSE", sheetRow_N_NE_SE.MC_EXP_SE);
+            maquinaInequacoes.CalculationMemory.UpdateVariable("xEXPN", sheetRow_N_NE_SE.MC_EXP_N);
+            maquinaInequacoes.CalculationMemory.UpdateVariable("xFSENE", sheetRow_N_NE_SE.MC_FSENE);
         }
         
 

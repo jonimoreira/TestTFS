@@ -1,0 +1,36 @@
+Public Function LIM_FSM_n3(xcargaSIN, xcbrava, xhbo, xmq_sm, xpercarga)
+
+'********************************************
+'IO-ON.SSE, REV. 61 - Vigência: 03/01/2014
+'********************************************
+
+Select Case xcargaSIN
+    Case Is >= 65000
+        If xmq_sm = 2 Then
+            lim = 2700
+        ElseIf xmq_sm = 3 Then
+            lim = 3100
+        End If
+    Case Is >= 55000
+        If xmq_sm = 2 Then
+            lim = 2600
+        ElseIf xmq_sm = 3 Then
+            lim = 3000
+        End If
+    Case Else
+        If xmq_sm = 2 Then
+            lim = 2600
+        ElseIf xmq_sm = 3 Then
+            lim = 3000
+        End If
+End Select
+
+If xcbrava = 1 Then
+    lim = lim - 150
+ElseIf xcbrava = 0 Then
+    lim = "!Maq.C.Brava!"
+End If
+
+LIM_FSM_n3 = lim
+
+End Function

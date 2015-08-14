@@ -1,0 +1,35 @@
+Public Function LIMITEFSM_SEM_ECE(xcarga_SIN, xMqIPU) As Double
+'************************************************
+'IO-ON.CO.5GB, rev 42.     Vigência: 05/11/2013
+'MOP/CNOS 052/2014. Vigencia: 14/04/2014
+'************************************************
+
+lim = 0
+Select Case xMqIPU
+    Case 4
+        Select Case xcarga_SIN
+            Case Is > 80000
+                lim = 4400
+            Case 60000 To 80000
+                lim = 4300
+            Case 53000 To 60000
+                lim = 4200
+            Case Is <= 53000
+                lim = 3700
+        End Select
+    Case Is <= 3
+        Select Case xcarga_SIN
+            Case Is > 80000
+                lim = 5100
+            Case 60000 To 80000
+                lim = 5000
+            Case 53000 To 60000
+                lim = 5000
+            Case Is <= 53000
+                lim = 4200
+        End Select
+End Select
+    
+LIMITEFSM_SEM_ECE = lim
+
+End Function

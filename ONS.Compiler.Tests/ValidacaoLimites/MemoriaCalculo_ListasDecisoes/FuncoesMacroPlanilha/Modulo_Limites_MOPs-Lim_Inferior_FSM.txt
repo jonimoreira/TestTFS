@@ -1,0 +1,24 @@
+Public Function Lim_Inferior_FSM(xEXPSE, xugSM, xpercarga)
+'************************************************
+'IO-ON.CO.5GB, rev 42.     Vigência: 05/11/2013
+'MOP/CNOS 014/2014. Vigencia: 10/02  /2014
+'************************************************
+If xEXPSE > 0 Then
+    Select Case xpercarga
+        Case "MEDIA", "PESADA"
+            lim = -2700
+        Case "LEVE", "MINIMA"
+            Select Case xugSM
+                Case 3
+                    lim = -3000
+                Case Else
+                    lim = -2700
+            End Select
+    End Select
+Else
+    lim = -9999
+End If
+
+Lim_Inferior_FSM = lim
+
+End Function

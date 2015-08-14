@@ -1,0 +1,13 @@
+
+, lim = 0;
+
+(xMqIPU = 4 and xcarga_SIN > 80000), lim = 4400;
+(xMqIPU = 4 and xcarga_SIN > 60000 and xcarga_SIN <= 80000), lim = 4300;
+(xMqIPU = 4 and xcarga_SIN > 53000 and xcarga_SIN <= 60000), lim = 4200;
+(xMqIPU = 4 and xcarga_SIN <= 53000), lim = 3700;
+
+(xMqIPU <= 3 and xcarga_SIN > 80000), lim = 5100;
+(xMqIPU <= 3 and xcarga_SIN > 60000 and xcarga_SIN <= 80000), lim = 5000;
+(xMqIPU <= 3 and xcarga_SIN > 53000 and xcarga_SIN <= 60000), lim = 5000;
+(xMqIPU <= 3 and xcarga_SIN <= 53000), lim = 4200;
+

@@ -1,0 +1,11 @@
+
+, limTexto = "";
+
+(xcargaSIN >= 65000 and xmq_sm = 2), lim = 2400;
+(xcargaSIN >= 65000 and xmq_sm = 3), lim = 2500;
+(xcargaSIN >= 55000 and xcargaSIN < 65000 and xmq_sm = 2), lim = 2300;
+(xcargaSIN >= 55000 and xcargaSIN < 65000 and xmq_sm = 3), lim = 2400;
+(xcargaSIN < 55000 and xmq_sm = 2), lim = 2100;
+(xcargaSIN < 55000 and xmq_sm = 3), lim = 2200;
+
+(xcbrava <= 1), limTexto = "!Maq.C.Brava!";

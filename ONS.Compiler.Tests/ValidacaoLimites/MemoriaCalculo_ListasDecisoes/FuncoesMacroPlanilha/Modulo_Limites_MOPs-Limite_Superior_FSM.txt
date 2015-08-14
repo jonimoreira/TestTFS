@@ -1,0 +1,429 @@
+Public Function Limite_Superior_FSM(xMqSM, xSM_cs, xMqIPU, xMqLJ, xMqPX, xcarga_SIN, xECE_IPU_TUC, xpercarga, xEXPN, xFNS, xMW_ug_ipu, xFSENE)
+
+'************************************************
+'IO-ON.CO.5GB, rev 42.     Vigência: 05/11/2013
+'MOP/CNOS 052/2014. Vigencia: 17/04/2014
+'MOP/CNOS 061/2014  Vig 05/05/2014
+'************************************************
+
+total_MqSM = xMqSM + xSM_cs 'soma das máquinas sincronizadas como gerador com aquelas que estão como síncrono
+   
+   
+If xEXPN > 0 Then
+   
+    Select Case xMqIPU
+        Case 3, 4 'se for 3 ou 4 ugs de Itaipu selecionadas para o corte: item 6.1.1.2
+            If xECE_IPU_TUC = "LIGADO" Then
+
+                flag_tabela3_4 = 1  'indica que vale a tabela que considera 3 ou 4 ugs de corte em itaipu
+                total_MqSM = xMqSM + xSM_cs 'soma das máquinas sincronizadas como gerador com aquelas que estão como síncrono
+                
+                Select Case total_MqSM   'verifica as condições do item 6.1.1.2, (a), alíneas (3), (4)
+                    Case 3
+                        lim = LimiteFSM_ECE_3_4(xcarga_SIN, xMqIPU, xFNS)
+                    Case 2
+                        lim = LimiteFSM_ECE_3_4(xcarga_SIN, xMqIPU, xFNS)
+                        lim = lim - 200
+                    Case Else  'condições de máquinas de Serra da Mesa não atendidas. Assim, deve-se utilizar a outra tabela
+                        lim = LIMITEFSM_SEM_ECE(xcarga_SIN, xMqIPU) 'Limites Apresentados no Item 6.1.1.2, (b)
+                        flag_tabela3_4 = 0  'indica que a tabela válida não será mais a do item 6.1.1.2 que considera 3 ou 4 ugs de corte em itaipu
+                End Select
+                
+                If flag_tabela3_4 = 1 Then 'só valem as condições abaixo se as condições de máquinas de S.Mesa para 3 ou 4 ugs de corte em itaipu estiverem atendidas
+                    Select Case xMqPX   'verifica as condições do item 6.1.1.2, (a) alínea (6)
+                        Case 3
+                            lim = lim    'isso mesmo: não há redução nos limites
+                        Case 1 To 2
+                            lim = lim - 100
+                        Case Else  'condições de máquinas de Peixe não atendidas. Assim, deve-se utilizar a outra tabela
+                        lim = LIMITEFSM_SEM_ECE(xcarga_SIN, xMqIPU) 'Limites Apresentados no Item 6.1.1.2, (b)
+                            flag_tabela3_4 = 0  'indica que a tabela válida não será mais a do item 6.1.1.2 que considera 3 ou 4 ugs de corte em itaipu
+                    End Select
+                End If
+                
+                If flag_tabela3_4 = 1 Then 'só valem as condições abaixo se as condições de máquinas de S.Mesa para 3 ou 4 ugs de corte em itaipu estiverem atendidas
+                    Select Case xMqLJ   'verifica as condições do item 6.1.1.2 alínea (7)
+                        Case Is >= 4
+                            lim = lim    'isso mesmo: não há redução nos limites
+                        Case Else  'condições de máquinas de Lajeado não atendidas. Assim, deve-se utilizar a outra tabela
+                        lim = LIMITEFSM_SEM_ECE(xcarga_SIN, xMqIPU) 'Limites Apresentados no Item 6.1.1.2, (b)
+                    End Select
+                End If
+                
+            Else 'se o ECE estiver desligado
+                    lim = LIMITEFSM_SEM_ECE(xcarga_SIN, xMqIPU)
+            End If
+
+        Case Is < 3 'se for ATÉ 2 ugs de Itaipu selecionadas para o corte: item 6.1.1.1
+            lim = LimiteFSM_ECE_ate2ugs(xpercarga, xcarga_SIN, total_MqSM)
+    End Select
+
+Else  'Limite superior para cenário Norte importador não definido em IO. Portanto, não é restritivo
+    lim = 9999
+End If
+
+'************************************************
+'MOP/CNOS 052/2014
+'---------------------------------
+' item 2.4
+'************************************************
+
+lim = 0 ' estamos "Zerando" os limites, para apontar erros em caso de falha na lógica.
+    
+tabela_restrita = 0  'não utilizará a tabela com valores restritos para FNS
+
+If xEXPN > 0 Then
+    If xECE_IPU_TUC = "LIGADO" Then
+        Select Case xcarga_SIN
+            Case Is > 70000
+                Select Case xMqIPU
+                    Case Is <= 3
+                        Select Case total_MqSM
+                            Case 3
+                                If xFNS <= 4100 Then
+                                    lim = 5300
+                                End If
+                            Case 2
+                                If xFNS <= 4100 Then
+                                    lim = 5000
+                                End If
+                            Case 1
+                                If xFNS <= 4100 Then
+                                    lim = 4700
+                                End If
+                            Case 0
+                                If xFNS <= 2500 Then
+                                    lim = 2600
+                                End If
+                        End Select
+                    Case 4
+                        Select Case total_MqSM
+                            Case 3
+                                Select Case xMW_ug_ipu
+                                    Case Is >= 600
+                                        Select Case xFNS
+                                            Case Is <= 3700
+                                                lim = 5100
+                                            Case 3700 To 4000
+                                                lim = 4600
+                                        End Select
+                                    Case Is < 600
+                                        Select Case xFNS
+                                            Case Is <= 4100
+                                                lim = 5000
+                                        End Select
+                                End Select
+                            Case 2
+                                Select Case xMW_ug_ipu
+                                    Case Is >= 600
+                                        Select Case xFNS
+                                            Case Is <= 3700
+                                                lim = 4900
+                                            Case 3700 To 4000
+                                                lim = 4400
+                                        End Select
+                                    Case Is < 600
+                                        Select Case xFNS
+                                            Case Is <= 4100
+                                                lim = 5000
+                                        End Select
+                                End Select
+                            Case 1
+                                If xFNS <= 3100 Then
+                                    lim = 4300
+                                End If
+                            Case 0
+                                If xFSM <= 2500 Then
+                                    lim = 2600
+                                End If
+                        End Select
+                End Select
+            Case Is > 60000
+                Select Case xMqIPU
+                    Case Is <= 3
+                        Select Case total_MqSM
+                            Case 3
+                                If xFNS <= 4100 Then
+                                    lim = 5100
+                                End If
+                            Case 2
+                                If xFNS <= 4100 Then
+                                    lim = 4800
+                                End If
+                            Case 1
+                                If xFNS <= 4100 Then
+                                    lim = 4500
+                                End If
+                            Case 0
+                                If xFNS <= 2500 Then
+                                    lim = 2600
+                                End If
+                        End Select
+                    Case 4
+                        Select Case total_MqSM
+                            Case 3
+                                Select Case xMW_ug_ipu
+                                    Case Is >= 600
+                                        Select Case xFNS
+                                            Case Is <= 3700
+                                                lim = 5100
+                                            Case 3700 To 4000
+                                                lim = 4600
+                                        End Select
+                                    Case Is < 600
+                                        Select Case xFNS
+                                            Case Is <= 4100
+                                                lim = 5000
+                                        End Select
+                                End Select
+                            Case 2
+                                Select Case xMW_ug_ipu
+                                    Case Is >= 600
+                                        Select Case xFNS
+                                            Case Is <= 3700
+                                                lim = 4900
+                                            Case 3700 To 4000
+                                                lim = 4400
+                                        End Select
+                                    Case Is < 600
+                                        Select Case xFNS
+                                            Case Is <= 4100
+                                                lim = 5000
+                                        End Select
+                                End Select
+                            Case 1
+                                If xFNS <= 3100 Then
+                                    lim = 4300
+                                End If
+                            Case 0
+                                If xFSM <= 2500 Then
+                                    lim = 2600
+                                End If
+                        End Select
+                End Select
+            Case Is <= 60000
+                Select Case xMqIPU
+                    Case Is <= 3
+                        Select Case total_MqSM
+                            Case 3
+                                If xFNS <= 4100 Then
+                                    lim = 5100
+                                End If
+                            Case 2
+                                If xFNS <= 4100 Then
+                                    lim = 4800
+                                End If
+                            Case 1
+                                If total_MqSM = 1 Then
+                                    If xMW_ug_ipu <= 650 Then
+                                        Select Case xFSM
+                                            Case Is < 4500
+                                                lim = 4100
+                                        End Select
+                                    End If
+                                Else
+                                    Select Case xFNS
+                                        Case Is <= 4000
+                                            lim = 4300
+                                        Case Is <= 4100
+                                            lim = 4100
+                                    End Select
+                                End If
+                            Case 0
+                                If xFNS <= 2500 Then
+                                    lim = 2600
+                                End If
+                        End Select
+                    Case 4
+                        Select Case total_MqSM
+                            Case 3
+                                Select Case xMW_ug_ipu
+                                    Case Is >= 600
+                                        Select Case xFNS
+                                            Case Is <= 3200
+                                                lim = 4500
+                                            Case 3200 To 3600
+                                                lim = 4200
+                                        End Select
+                                    Case Is < 600
+                                        Select Case xFNS
+                                            Case Is <= 3400
+                                                lim = 4800
+                                            Case 3400 To 3700
+                                                lim = 4500
+                                        End Select
+                                End Select
+                            Case 2
+                                Select Case xMW_ug_ipu
+                                    Case Is >= 600
+                                        Select Case xFNS
+                                            Case Is <= 3200
+                                                lim = 4300
+                                            Case 3200 To 3600
+                                                lim = 4000
+                                        End Select
+                                    Case Is < 600
+                                        Select Case xFNS
+                                            Case Is <= 3400
+                                                lim = 4800
+                                            Case 3400 To 3700
+                                                lim = 4500
+                                        End Select
+                            Case 1
+                                If xFNS <= 3000 Then
+                                    lim = 3700
+                                End If
+                            Case 0
+                                If xFSM <= 2500 Then
+                                    lim = 2600
+                                End If
+                        End Select
+                End Select
+            End Select
+        End Select
+    
+    Else
+            tabela_restrita = 1 'utilizará a tabela com valores restritos para FSM
+    End If
+
+
+    Select Case xMqPX  'condição (5)
+        Case 1, 2
+            lim = lim - 100
+        Case 0
+            tabela_restrita = 1 'utilizará a tabela com valores restritos para FSM
+    End Select
+    
+    Select Case xMqLJ  'condição (6)
+        Case 3
+            lim = lim - 200
+        Case Is < 3
+            tabela_restrita = 1 'utilizará a tabela com valores restritos para FSM
+    End Select
+
+    If tabela_restrita = 1 Then
+'If tabela_restrita = 1 And xMqIPU > 3 Then
+        lim = LIMITEFSM_SEM_ECE(xcarga_SIN, xMqIPU)  'esta tabela é a mesma da MOP 047/2014
+    End If
+    
+    
+
+Else  'Cenário sudeste exportador
+
+    lim = 99999  'ver a função que trata do limite INFERIOR
+
+End If
+
+
+'MOP/CNOS 061/2014
+'todas as possibilidades de UGs em itaipu selecionadas para corte pelas lógicas 12, 13, 14 e 15
+' SENE aberta
+If xFSENE = 0 Then 'sinaliza a SENE aberta
+    If xMqIPU <= 3 Then  'até 3 máquinas para o corte em Itaipu (lógicas 12, 13, 14 ou 15)
+        Select Case xcarga_SIN
+            Case Is > 70000
+                Select Case total_MqSM
+                    Case 3 'qualquer combinação: 0, 1, 2 ou 3G, complementados por 3, 2, 1 ou 0CS
+                        lim = 5300
+                    Case 2 'qualquer combinação: 0, 1, 2G, complementados por 2, 1 ou 0CS
+                        lim = 5000
+                    Case 1 '1G ou 1CS
+                        lim = 4700
+                    Case 0
+                        lim = "FechaSENE" 'com 0 UGs em S.Mesa, a medida é voltar com a SENE.
+                        'lim = 2600
+                End Select
+            Case 60000 To 70000
+                Select Case total_MqSM
+                    Case 3 'qualquer combinação: 0, 1, 2 ou 3G, complementados por 3, 2, 1 ou 0CS
+                        lim = 5100
+                    Case 2 'qualquer combinação: 0, 1, 2G, complementados por 2, 1 ou 0CS
+                        lim = 4800
+                    Case 1 '1G ou 1CS
+                        lim = 4500
+                    Case 0
+                        lim = "FechaSENE" 'com 0 UGs em S.Mesa, a medida é voltar com a SENE.
+                        'lim = 2600
+                End Select
+            Case Is <= 60000
+                Select Case total_MqSM
+                    Case 3 'qualquer combinação: 0, 1, 2 ou 3G, complementados por 3, 2, 1 ou 0CS
+                        lim = 5100
+                    Case 2 'qualquer combinação: 0, 1, 2G, complementados por 2, 1 ou 0CS
+                        lim = 4800
+                    Case 1 '1G ou 1CS
+                        Select Case xMW_ug_ipu
+                            Case Is > 650
+                                If xFNS > 4000 And xFNS <= 4100 Then
+                                    lim = 4300
+                                ElseIf xFNS <= 4100 Then
+                                    lim = 4100
+                                End If
+                            Case Is <= 650
+                                lim = 4500
+                        End Select
+                    Case 0
+                        lim = "FechaSENE" 'com 0 UGs em S.Mesa, a medida é voltar com a SENE.
+                        'lim = 2600
+                End Select
+        End Select
+    ElseIf xMqIPU = 4 Then  '4 UGs selecionadas para o corte
+        Select Case xcarga_SIN
+            Case Is > 70000
+                Select Case total_MqSM
+                    Case 3 'qualquer combinação: 0, 1, 2 ou 3G, complementados por 3, 2, 1 ou 0CS
+                        Select Case xMW_ug_ipu
+                            Case 650.001 To 730
+                                lim = 3600
+                            Case 600.001 To 650
+                                lim = 3900
+                            Case Is <= 600
+                                lim = 4100
+                        End Select
+                    Case 2 'qualquer combinação: 0, 1, 2G, complementados por 2, 1 ou 0CS
+                        Select Case xMW_ug_ipu
+                            Case 650.001 To 730
+                                lim = 3600
+                            Case 600.001 To 650
+                                lim = 3900
+                            Case Is <= 600
+                                lim = 4100
+                        End Select
+                    Case 1 '1G ou 1CS
+                        Select Case xMW_ug_ipu
+                            Case 650.001 To 730
+                                lim = 3400
+                            Case 600.001 To 650
+                                lim = 3700
+                            Case Is <= 600
+                                lim = 4000
+                        End Select
+                    Case 0
+                        lim = "FechaSENE" 'com 0 UGs em S.Mesa, a medida é voltar com a SENE.
+                        'lim = 2600
+                End Select
+            Case Is > 69000
+                If xMW_ug_ipu <= 600 Then
+                    Select Case total_MqSM
+                        Case Is >= 2
+                            lim = 3800
+                        Case Is = 1
+                            lim = 3700
+                        Case Is = 0
+                            lim = "FechaSENE" 'com 0 UGs em S.Mesa, a medida é voltar com a SENE.
+                    End Select
+                Else
+                    lim = "FechaSENE"
+                End If
+            Case 60000 To 69000
+                lim = "FechaSENE" 'com 4 UGs em Itaipu no corte, deve-se fechar a SENE para carga do sin <= 69000 MW
+            Case Is <= 60000
+                lim = "FechaSENE" 'com 4 UGs em Itaipu no corte, deve-se fechar a SENE para carga do sin <= 69000 MW
+        End Select
+    End If
+End If
+
+
+Limite_Superior_FSM = lim
+
+End Function

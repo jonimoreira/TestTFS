@@ -1,0 +1,5 @@
+
+(xEXPSE > 0 and (xpercarga = "MEDIA" or xpercarga = "PESADA")), lim = -2700;
+(xEXPSE > 0 and (xpercarga = "LEVE" or xpercarga = "MINIMA") and xugSM = 3), lim = -3000;
+(xEXPSE > 0 and (xpercarga = "LEVE" or xpercarga = "MINIMA") and xugSM <> 3), lim = -2700;
+(xEXPSE <= 0), lim = -9999;

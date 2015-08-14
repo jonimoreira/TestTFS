@@ -1,0 +1,21 @@
+Public Function min_Xingo(xRNE, xger_xingo)
+' IO-CG.BR.01, rev 49. Vig 19/12/2013
+'
+If xRNE > 1500 Then
+    Select Case xger_xingo
+    
+        Case Is < 1200
+            maqs = 3
+        Case 1201 To 1550
+            maqs = 4
+        Case 1551 To 1860
+            maqs = 5
+        Case Is > 1860
+            maqs = 6
+    End Select
+Else
+    maqs = 0
+End If
+
+min_Xingo = maqs
+End Function

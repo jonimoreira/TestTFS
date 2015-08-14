@@ -15,6 +15,7 @@ namespace ONS.Compiler.Tests.ValidacaoLimites
         public Dictionary<int, SheetRow_S_SE> linhas_S_SE = new Dictionary<int,SheetRow_S_SE>();
         public Dictionary<int, SheetRow_SUL> linhas_SUL = new Dictionary<int, SheetRow_SUL>();
         public Dictionary<int, SheetRow_N_NE_SE> linhas_N_NE_SE = new Dictionary<int, SheetRow_N_NE_SE>();
+        public Dictionary<int, SheetRow_SEVERA_N3> linhas_SEVERA_N3 = new Dictionary<int, SheetRow_SEVERA_N3>();
         
         public void CarregarDados_SheetRow_S_SE()
         {
@@ -207,7 +208,8 @@ namespace ONS.Compiler.Tests.ValidacaoLimites
                     sheetRow_N_NE_SE.LDvalorplanilha_LimiteEXP_SE_Inf = double.Parse(valores[27]);
                     sheetRow_N_NE_SE.LDvalorplanilha_LimiteFSENE = double.Parse(valores[29]);
                     sheetRow_N_NE_SE.LDvalorplanilha_LimFNS_N2 = double.Parse(valores[30]);
-
+                    sheetRow_N_NE_SE.LDvalorplanilha_LimFSM_N2_Inf = double.Parse(valores[31]);
+                    
                     sheetRow_N_NE_SE.LDvalorplanilha_Xingo_MinMaqs = double.Parse(valores[33]);
                     sheetRow_N_NE_SE.LDvalorplanilha_PerCargaNNE = valores[34].Trim();
                     
@@ -217,6 +219,49 @@ namespace ONS.Compiler.Tests.ValidacaoLimites
 
             }
         }
+
+        public void CarregarDados_SheetRow_SEVERA_N3()
+        {
+            linhas_SUL.Clear();
+
+            //Abre CSV como texto
+            string fileName = GetCaminhoCompletoArquivoTeste_ValidacaoLimites_Aba_SEVERA_N3();
+            System.IO.StreamReader sr = new System.IO.StreamReader(File.OpenRead(fileName));
+
+            int iLinhaIdx = 0;
+
+            while (sr.Peek() != -1)
+            {
+                string line = sr.ReadLine();
+
+                // separa linha do CSV
+                string[] valores = line.Split(',');
+                double primeiraColunaComValor = 0.0;
+
+                if (valores.Length > 3 && double.TryParse(valores[3], out primeiraColunaComValor))
+                {
+
+                    SheetRow_SEVERA_N3 sheetRow_SEVERA_N3 = new SheetRow_SEVERA_N3();
+                    sheetRow_SEVERA_N3.PK_HoraInicFim = new KeyValuePair<string, string>(valores[1].Trim(), valores[2].Trim());
+                    sheetRow_SEVERA_N3.MC_HBO = double.Parse(valores[9]);
+                    sheetRow_SEVERA_N3.MC_MqsCanaBrava = double.Parse(valores[11]);
+
+                    sheetRow_SEVERA_N3.LDvalorplanilha_LIM_FSE_n3 = double.Parse(valores[14]);
+                    sheetRow_SEVERA_N3.LDvalorplanilha_LIM_RSE_n3 = double.Parse(valores[15]);
+
+                    if (!double.TryParse(valores[16], out sheetRow_SEVERA_N3.LDvalorplanilha_LIMIT_FNS))
+                        sheetRow_SEVERA_N3.LDvalorplanilha_LIMIT_FNS = double.MinValue;
+
+                    sheetRow_SEVERA_N3.LDvalorplanilha_LIMIT_FSM = double.Parse(valores[17]);
+                    sheetRow_SEVERA_N3.LDvalorplanilha_LIMIT_RSUL = double.Parse(valores[18]);
+                    
+                    linhas_SEVERA_N3.Add(iLinhaIdx, sheetRow_SEVERA_N3);
+                    iLinhaIdx++;
+                }
+
+            }
+        }
+
 
         /// <summary>
         /// Método para carregar a memória de cálculo de acordo com o arquivo txt seguindo a sintaxe básica para declaração de variáveis.
@@ -393,6 +438,22 @@ namespace ONS.Compiler.Tests.ValidacaoLimites
         {
             string result = string.Empty;
             string key = "CaminhoCompletoArquivoTeste_ValidacaoLimites_Aba_N_NE_SE";
+            try
+            {
+                result = ConfigurationManager.AppSettings[key];
+            }
+            catch (Exception iEx)
+            {
+                throw new Exception("Erro ao carregar chave '" + key + "' do arquivo de configuração (app.config)", iEx);
+            }
+
+            return result;
+        }
+
+        private string GetCaminhoCompletoArquivoTeste_ValidacaoLimites_Aba_SEVERA_N3()
+        {
+            string result = string.Empty;
+            string key = "CaminhoCompletoArquivoTeste_ValidacaoLimites_Aba_SEVERA_N3";
             try
             {
                 result = ConfigurationManager.AppSettings[key];

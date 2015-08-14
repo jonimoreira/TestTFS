@@ -1,0 +1,34 @@
+Public Function LIM_FNS_n3(xcargaSIN, xcbrava, xhbo, xmq_sm, xpercarga)
+'********************************************
+'IO-ON.SSE, REV. 61 - Vigência: 03/01/2014
+'********************************************
+
+Select Case xcargaSIN
+    Case Is >= 65000
+        If xmq_sm = 2 Then
+            lim = 2400
+        ElseIf xmq_sm = 3 Then
+            lim = 2500
+        End If
+    Case Is >= 55000
+        If xmq_sm = 2 Then
+            lim = 2300
+        ElseIf xmq_sm = 3 Then
+            lim = 2400
+        End If
+    Case Else
+        If xmq_sm = 2 Then
+            lim = 2100
+        ElseIf xmq_sm = 3 Then
+            lim = 2200
+        End If
+End Select
+
+If xcbrava <= 1 Then
+    lim = "!Maq.C.Brava!"
+End If
+
+LIM_FNS_n3 = lim
+
+End Function
+

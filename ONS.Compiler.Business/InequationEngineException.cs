@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ONS.Compiler.Business
-{
+{ 
     [Serializable]
     public sealed class InequationEngineException: Exception
     {

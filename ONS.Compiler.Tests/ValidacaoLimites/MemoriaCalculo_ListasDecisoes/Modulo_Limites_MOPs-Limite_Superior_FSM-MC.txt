@@ -1,0 +1,19 @@
+
+lim
+
+xMqSM
+xSM_cs
+xMqIPU
+xMqLJ
+xMqPX
+xcarga_SIN
+xECE_IPU_TUC = "LIGADO"
+xpercarga = ""
+xEXPN
+xFNS 
+xMW_ug_ipu 
+xFSENE
+
+total_MqSM
+tabela_restrita
+bCalculaLIMITEFSM_SEM_ECE = false

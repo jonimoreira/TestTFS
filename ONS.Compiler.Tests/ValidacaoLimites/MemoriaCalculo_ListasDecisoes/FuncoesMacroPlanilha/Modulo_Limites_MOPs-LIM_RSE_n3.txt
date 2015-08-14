@@ -1,0 +1,27 @@
+Public Function LIM_RSE_n3(xpercarga, xcargaSIN, xelocc, xhbo, xlimite_rse)
+'********************************************
+'IO-ON.SSE, REV. 61 - Vigência: 03/01/2014
+'********************************************
+
+lim = "inicial"
+
+If xcargaSIN >= 63000 And xhbo >= 700 Then
+    lim = 3500 ' item 6.3 b.1)
+ElseIf xcargaSIN < 63000 Then
+    Select Case xpercarga
+        Case "PESADA", "MEDIA"
+            If xhbo >= 500 Then
+                lim = 3300 ' item 6.3 b.2)
+            End If
+        Case "LEVE", "MINIMA"
+            lim = 4000
+    End Select
+End If
+
+If lim = "inicial" Then
+    lim = 4000 'Valor adotado independentemente de período de carga e da geração Hbo.  Item 6.3, b.3)
+End If
+
+LIM_RSE_n3 = lim
+
+End Function

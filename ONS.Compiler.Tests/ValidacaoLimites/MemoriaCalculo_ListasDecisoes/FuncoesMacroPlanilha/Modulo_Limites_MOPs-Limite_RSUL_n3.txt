@@ -1,0 +1,18 @@
+Public Function Limite_RSUL_n3(xcarga_SIN)
+
+'**************************************************************************************************
+'IO-ON.SSE, REV. 61 - Vigência: 03/01/2014
+'**************************************************************************************************
+
+
+Select Case xcarga_SIN
+    Case Is >= 65000
+        lim = 2300
+    Case Else
+        lim = 2800
+End Select
+
+
+Limite_RSUL_n3 = lim
+
+End Function

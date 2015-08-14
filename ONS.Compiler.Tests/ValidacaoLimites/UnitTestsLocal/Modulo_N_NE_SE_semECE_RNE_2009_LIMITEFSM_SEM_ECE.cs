@@ -6,9 +6,9 @@ using System.Collections.Generic;
 namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsLocal
 {
     [TestClass]
-    public class Modulo_N_NE_apoio_Limite_inf_EXP_SE_SE_EXP
+    public class Modulo_N_NE_SE_semECE_RNE_2009_LIMITEFSM_SEM_ECE
     {
-        private string nomeFuncao = "Modulo_N_NE_apoio-Limite_inf_EXP_SE_SE_EXP";
+        private string nomeFuncao = "Modulo_N_NE_SE_semECE_RNE_2009-LIMITEFSM_SEM_ECE";
         /// <summary>
         /// Testa o carregamento da memória de cálculo (MC) a partir do arquivo txt.
         /// </summary>
@@ -75,7 +75,7 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsLocal
 
             Variable limite = maquinaInequacoes.CalculationMemory["lim"];
 
-            Assert.AreEqual(limite.GetValue(), -9999.0);
+            Assert.AreEqual(limite.GetValue(), 4200.0);
         }
         
         /// <summary>
@@ -91,9 +91,11 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsLocal
             mediador.CarregarListaDecisoes(maquinaInequacoes, nomeFuncao);
             
             mediador.CarregarDados_SheetRow_N_NE_SE();
+            mediador.CarregarDados_SheetRow_S_SE();
+
             for (int i = 0; i < mediador.linhas_N_NE_SE.Count; i++)
             {
-                AtualizarVariaveisDaMemoriaDeCalculo(maquinaInequacoes, mediador.linhas_N_NE_SE[i]);
+                AtualizarVariaveisDaMemoriaDeCalculo(maquinaInequacoes, mediador.linhas_N_NE_SE[i], mediador.linhas_S_SE[i]);
             }
 
             Assert.AreEqual(true, true);
@@ -101,42 +103,14 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsLocal
         }
 
         /// <summary>
-        /// Testa a execução da lista de decisões com base nas variáveis da memória de cálculo e seus valores provenientes da planilha
-        /// </summary>
-        [TestMethod]
-        public void ExecutarComDados()
-        {
-            Mediador mediador = new Mediador();
-
-            InequationEngine maquinaInequacoes = new InequationEngine();
-            mediador.CarregarMemoriaDeCalculo(maquinaInequacoes, nomeFuncao);
-            mediador.CarregarListaDecisoes(maquinaInequacoes, nomeFuncao);
-
-            maquinaInequacoes.Compile();
-
-            mediador.CarregarDados_SheetRow_N_NE_SE();
-
-            for (int i = 0; i < mediador.linhas_N_NE_SE.Count; i++)
-            {
-                AtualizarVariaveisDaMemoriaDeCalculo(maquinaInequacoes, mediador.linhas_N_NE_SE[i]);
-                maquinaInequacoes.Execute();
-
-                Variable limite = maquinaInequacoes.CalculationMemory["lim"];
-
-                Assert.AreEqual(limite.GetValue(), mediador.linhas_N_NE_SE[i].LDvalorplanilha_LimiteEXP_SE_Inf);
-            }
-        }
-        
-        /// <summary>
         /// Atualiza as variáveis da memória de cálculo de acordo com os valores contidos nos parâmetros.
         /// </summary>
         /// <param name="maquinaInequacoes"></param>
         /// <param name="sheetRow_S_SE"></param>
-        public void AtualizarVariaveisDaMemoriaDeCalculo(InequationEngine maquinaInequacoes, SheetRow_N_NE_SE sheetRow_N_NE_SE)
+        public void AtualizarVariaveisDaMemoriaDeCalculo(InequationEngine maquinaInequacoes, SheetRow_N_NE_SE sheetRow_N_NE_SE, SheetRow_S_SE sheetRow_S_SE)
         {
-            maquinaInequacoes.CalculationMemory.UpdateVariable("xpercarga", sheetRow_N_NE_SE.LDvalorplanilha_PerCargaNNE);
-            maquinaInequacoes.CalculationMemory.UpdateVariable("xRNE", sheetRow_N_NE_SE.MC_RNE);
-            maquinaInequacoes.CalculationMemory.UpdateVariable("xEXPSE", sheetRow_N_NE_SE.MC_EXP_SE);
+            maquinaInequacoes.CalculationMemory.UpdateVariable("xcarga_SIN", sheetRow_N_NE_SE.MC_CARGASIN);
+            maquinaInequacoes.CalculationMemory.UpdateVariable("xMqIPU", sheetRow_S_SE.LDvalorplanilha_Mqs_crt_IPU_max);
         }
         
 

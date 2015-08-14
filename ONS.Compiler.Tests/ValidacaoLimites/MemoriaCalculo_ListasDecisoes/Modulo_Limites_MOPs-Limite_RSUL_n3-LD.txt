@@ -1,0 +1,5 @@
+
+, lim = 0;
+
+(xcarga_SIN >= 65000), lim = 2300;
+(xcarga_SIN < 65000), lim = 2800;

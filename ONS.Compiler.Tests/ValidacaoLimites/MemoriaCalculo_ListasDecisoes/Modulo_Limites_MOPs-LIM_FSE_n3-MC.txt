@@ -1,0 +1,11 @@
+
+lim
+
+bValorIndependente = true
+
+xpercarga = "LEVE"
+xcargaSIN
+xelocc
+xhbo
+xlimite_fse
+

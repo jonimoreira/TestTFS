@@ -1,0 +1,101 @@
+
+
+, total_MqSM = xMqSM + xSM_cs; lim = 0; tabela_restrita = 0; bCalculaLIMITEFSM_SEM_ECE = false;
+
+(xEXPN > 0 and xECE_IPU_TUC = "LIGADO" and xcarga_SIN > 70000 and xMqIPU <= 3 and total_MqSM = 3 and xFNS <= 4100), lim = 5300;
+(xEXPN > 0 and xECE_IPU_TUC = "LIGADO" and xcarga_SIN > 70000 and xMqIPU <= 3 and total_MqSM = 2 and xFNS <= 4100), lim = 5000;
+(xEXPN > 0 and xECE_IPU_TUC = "LIGADO" and xcarga_SIN > 70000 and xMqIPU <= 3 and total_MqSM = 1 and xFNS <= 4100), lim = 4700;
+(xEXPN > 0 and xECE_IPU_TUC = "LIGADO" and xcarga_SIN > 70000 and xMqIPU <= 3 and total_MqSM = 0 and xFNS <= 2500), lim = 2600;
+(xEXPN > 0 and xECE_IPU_TUC = "LIGADO" and xcarga_SIN > 70000 and xMqIPU = 4 and total_MqSM = 3 and xMW_ug_ipu >= 600 and xFNS <= 3700), lim = 5100;
+(xEXPN > 0 and xECE_IPU_TUC = "LIGADO" and xcarga_SIN > 70000 and xMqIPU = 4 and total_MqSM = 3 and xMW_ug_ipu >= 600 and xFNS > 3700 and xFNS <= 4000), lim = 4600;
+(xEXPN > 0 and xECE_IPU_TUC = "LIGADO" and xcarga_SIN > 70000 and xMqIPU = 4 and total_MqSM = 3 and xMW_ug_ipu < 600 and xFNS <= 4100), lim = 5000;
+(xEXPN > 0 and xECE_IPU_TUC = "LIGADO" and xcarga_SIN > 70000 and xMqIPU = 4 and total_MqSM = 2 and xMW_ug_ipu >= 600 and xFNS <= 3700), lim = 4900;
+(xEXPN > 0 and xECE_IPU_TUC = "LIGADO" and xcarga_SIN > 70000 and xMqIPU = 4 and total_MqSM = 2 and xMW_ug_ipu >= 600 and xFNS > 3700 and xFNS <= 4000), lim = 4400;
+(xEXPN > 0 and xECE_IPU_TUC = "LIGADO" and xcarga_SIN > 70000 and xMqIPU = 4 and total_MqSM = 2 and xMW_ug_ipu < 600 and xFNS <= 4100), lim = 5000;
+(xEXPN > 0 and xECE_IPU_TUC = "LIGADO" and xcarga_SIN > 70000 and xMqIPU = 4 and total_MqSM = 1 and xFNS <= 3100), lim = 4300;
+(xEXPN > 0 and xECE_IPU_TUC = "LIGADO" and xcarga_SIN > 70000 and xMqIPU = 4 and total_MqSM = 0 and xFNS <= 2500), lim = 2600;
+
+(xEXPN > 0 and xECE_IPU_TUC = "LIGADO" and xcarga_SIN > 60000 and xMqIPU <= 3 and total_MqSM = 3 and xFNS <= 4100), lim = 5100;
+(xEXPN > 0 and xECE_IPU_TUC = "LIGADO" and xcarga_SIN > 60000 and xMqIPU <= 3 and total_MqSM = 2 and xFNS <= 4100), lim = 4800;
+(xEXPN > 0 and xECE_IPU_TUC = "LIGADO" and xcarga_SIN > 60000 and xMqIPU <= 3 and total_MqSM = 1 and xFNS <= 4100), lim = 4500;
+(xEXPN > 0 and xECE_IPU_TUC = "LIGADO" and xcarga_SIN > 60000 and xMqIPU <= 3 and total_MqSM = 0 and xFNS <= 2500), lim = 2600;
+
+(xEXPN > 0 and xECE_IPU_TUC = "LIGADO" and xcarga_SIN > 60000 and xMqIPU = 4 and total_MqSM = 3 and xMW_ug_ipu >= 600 and xFNS <= 3700), lim = 5100;
+(xEXPN > 0 and xECE_IPU_TUC = "LIGADO" and xcarga_SIN > 60000 and xMqIPU = 4 and total_MqSM = 3 and xMW_ug_ipu >= 600 and xFNS > 3700 and xFNS <= 4000), lim = 4600;
+(xEXPN > 0 and xECE_IPU_TUC = "LIGADO" and xcarga_SIN > 60000 and xMqIPU = 4 and total_MqSM = 3 and xMW_ug_ipu < 600 and xFNS <= 4100), lim = 5000;
+
+(xEXPN > 0 and xECE_IPU_TUC = "LIGADO" and xcarga_SIN > 60000 and xMqIPU = 4 and total_MqSM = 2 and xMW_ug_ipu >= 600 and xFNS <= 3700), lim = 4900;
+(xEXPN > 0 and xECE_IPU_TUC = "LIGADO" and xcarga_SIN > 60000 and xMqIPU = 4 and total_MqSM = 2 and xMW_ug_ipu >= 600 and xFNS > 3700 and xFNS <= 4000), lim = 4400;
+(xEXPN > 0 and xECE_IPU_TUC = "LIGADO" and xcarga_SIN > 60000 and xMqIPU = 4 and total_MqSM = 2 and xMW_ug_ipu < 600 and xFNS <= 4100), lim = 5000;
+(xEXPN > 0 and xECE_IPU_TUC = "LIGADO" and xcarga_SIN > 60000 and xMqIPU = 4 and total_MqSM = 1 and xFNS <= 3100), lim = 4300;
+(xEXPN > 0 and xECE_IPU_TUC = "LIGADO" and xcarga_SIN > 60000 and xMqIPU = 4 and total_MqSM = 0 and xFNS <= 2500), lim = 2600;
+
+(xEXPN > 0 and xECE_IPU_TUC = "LIGADO" and xcarga_SIN <= 60000 and xMqIPU <= 3 and total_MqSM = 3 and xFNS <= 4100), lim = 5100;
+(xEXPN > 0 and xECE_IPU_TUC = "LIGADO" and xcarga_SIN <= 60000 and xMqIPU <= 3 and total_MqSM = 2 and xFNS <= 4100), lim = 4800;
+(xEXPN > 0 and xECE_IPU_TUC = "LIGADO" and xcarga_SIN <= 60000 and xMqIPU <= 3 and total_MqSM = 1 and xMW_ug_ipu <= 650 and xFNS < 4500), lim = 4100;
+(xEXPN > 0 and xECE_IPU_TUC = "LIGADO" and xcarga_SIN <= 60000 and xMqIPU <= 3 and total_MqSM = 0 and xFNS < 2500), lim = 2600;
+
+(xEXPN > 0 and xECE_IPU_TUC = "LIGADO" and xcarga_SIN <= 60000 and xMqIPU = 4 and total_MqSM = 3 and xMW_ug_ipu >= 600 and xFNS <= 3200), lim = 4500;
+(xEXPN > 0 and xECE_IPU_TUC = "LIGADO" and xcarga_SIN <= 60000 and xMqIPU = 4 and total_MqSM = 3 and xMW_ug_ipu >= 600 and xFNS > 3200 and xFNS <= 3600), lim = 4200;
+(xEXPN > 0 and xECE_IPU_TUC = "LIGADO" and xcarga_SIN <= 60000 and xMqIPU = 4 and total_MqSM = 3 and xMW_ug_ipu < 600 and xFNS <= 3400), lim = 4800;
+(xEXPN > 0 and xECE_IPU_TUC = "LIGADO" and xcarga_SIN <= 60000 and xMqIPU = 4 and total_MqSM = 3 and xMW_ug_ipu < 600 and xFNS > 3400 and xFNS <= 3700), lim = 4500;
+(xEXPN > 0 and xECE_IPU_TUC = "LIGADO" and xcarga_SIN <= 60000 and xMqIPU = 4 and total_MqSM = 2 and xMW_ug_ipu >= 600 and xFNS <= 3200), lim = 4300;
+(xEXPN > 0 and xECE_IPU_TUC = "LIGADO" and xcarga_SIN <= 60000 and xMqIPU = 4 and total_MqSM = 2 and xMW_ug_ipu >= 600 and xFNS > 3200 and xFNS <= 3600), lim = 4000;
+(xEXPN > 0 and xECE_IPU_TUC = "LIGADO" and xcarga_SIN <= 60000 and xMqIPU = 4 and total_MqSM = 2 and xMW_ug_ipu < 600 and xFNS <= 3400), lim = 4800;
+(xEXPN > 0 and xECE_IPU_TUC = "LIGADO" and xcarga_SIN <= 60000 and xMqIPU = 4 and total_MqSM = 2 and xMW_ug_ipu < 600 and xFNS > 3400 and xFNS <= 3700), lim = 4500;
+(xEXPN > 0 and xECE_IPU_TUC = "LIGADO" and xcarga_SIN <= 60000 and xMqIPU = 4 and total_MqSM = 1 and xFNS <= 3000), lim = 3700;
+(xEXPN > 0 and xECE_IPU_TUC = "LIGADO" and xcarga_SIN <= 60000 and xMqIPU = 4 and total_MqSM = 0 and xFNS <= 2500), lim = 2600;
+
+(xEXPN > 0 and xECE_IPU_TUC <> "LIGADO"), tabela_restrita = 1;
+
+(xEXPN > 0 and (xMqPX = 1 or xMqPX = 2)), lim = lim - 100;
+(xEXPN > 0 and xMqPX = 0), tabela_restrita = 1;
+
+(xEXPN > 0 and xMqLJ = 3), lim = lim - 200;
+(xEXPN > 0 and xMqLJ < 3), tabela_restrita = 1;
+
+// --- LIMITEFSM_SEM_ECE
+(xEXPN > 0 and tabela_restrita = 1), bCalculaLIMITEFSM_SEM_ECE = true;
+(bCalculaLIMITEFSM_SEM_ECE and xMqIPU = 4 and xcarga_SIN > 80000), lim = 4400;
+(bCalculaLIMITEFSM_SEM_ECE and xMqIPU = 4 and xcarga_SIN > 60000 and xcarga_SIN <= 80000), lim = 4300;
+(bCalculaLIMITEFSM_SEM_ECE and xMqIPU = 4 and xcarga_SIN > 53000 and xcarga_SIN <= 60000), lim = 4200;
+(bCalculaLIMITEFSM_SEM_ECE and xMqIPU = 4 and xcarga_SIN <= 53000), lim = 3700;
+
+(bCalculaLIMITEFSM_SEM_ECE and xMqIPU <= 3 and xcarga_SIN > 80000), lim = 5100;
+(bCalculaLIMITEFSM_SEM_ECE and xMqIPU <= 3 and xcarga_SIN > 60000 and xcarga_SIN <= 80000), lim = 5000;
+(bCalculaLIMITEFSM_SEM_ECE and xMqIPU <= 3 and xcarga_SIN > 53000 and xcarga_SIN <= 60000), lim = 5000;
+(bCalculaLIMITEFSM_SEM_ECE and xMqIPU <= 3 and xcarga_SIN <= 53000), lim = 4200;
+
+// ---
+
+(xEXPN <= 0), lim = 99999;
+
+(xFSENE = 0 and xMqIPU <= 3 and xcarga_SIN > 70000 and total_MqSM = 3), lim = 5300;
+(xFSENE = 0 and xMqIPU <= 3 and xcarga_SIN > 70000 and total_MqSM = 2), lim = 5000;
+(xFSENE = 0 and xMqIPU <= 3 and xcarga_SIN > 70000 and total_MqSM = 1), lim = 4700;
+
+(xFSENE = 0 and xMqIPU <= 3 and xcarga_SIN > 60000 and xcarga_SIN <= 70000 and total_MqSM = 3), lim = 5100;
+(xFSENE = 0 and xMqIPU <= 3 and xcarga_SIN > 60000 and xcarga_SIN <= 70000 and total_MqSM = 2), lim = 4800;
+(xFSENE = 0 and xMqIPU <= 3 and xcarga_SIN > 60000 and xcarga_SIN <= 70000 and total_MqSM = 1), lim = 4500;
+
+(xFSENE = 0 and xMqIPU <= 3 and xcarga_SIN <= 60000 and total_MqSM = 3), lim = 5100;
+(xFSENE = 0 and xMqIPU <= 3 and xcarga_SIN <= 60000 and total_MqSM = 2), lim = 4800;
+(xFSENE = 0 and xMqIPU <= 3 and xcarga_SIN <= 60000 and total_MqSM = 1 and xMW_ug_ipu > 650 and xFNS > 4000 And xFNS <= 4100), lim = 4300;
+(xFSENE = 0 and xMqIPU <= 3 and xcarga_SIN <= 60000 and total_MqSM = 1 and xMW_ug_ipu > 650 and xFNS <= 4000), lim = 4100;
+(xFSENE = 0 and xMqIPU <= 3 and xcarga_SIN <= 60000 and total_MqSM = 1 and xMW_ug_ipu <= 650), lim = 4500;
+// estranha a regra: elseif <= 4100 originalmente, alterei.
+
+(xFSENE = 0 and xMqIPU = 4 and xcarga_SIN > 70000 and total_MqSM = 3 and xMW_ug_ipu >= 650.001 and xMW_ug_ipu < 730), lim = 3600;
+(xFSENE = 0 and xMqIPU = 4 and xcarga_SIN > 70000 and total_MqSM = 3 and xMW_ug_ipu >= 600.001 and xMW_ug_ipu < 650), lim = 3900;
+(xFSENE = 0 and xMqIPU = 4 and xcarga_SIN > 70000 and total_MqSM = 3 and xMW_ug_ipu <= 600), lim = 4100;
+(xFSENE = 0 and xMqIPU = 4 and xcarga_SIN > 70000 and total_MqSM = 2 and xMW_ug_ipu >= 650.001 and xMW_ug_ipu < 730), lim = 3600;
+(xFSENE = 0 and xMqIPU = 4 and xcarga_SIN > 70000 and total_MqSM = 2 and xMW_ug_ipu >= 600.001 and xMW_ug_ipu < 650), lim = 3900;
+(xFSENE = 0 and xMqIPU = 4 and xcarga_SIN > 70000 and total_MqSM = 2 and xMW_ug_ipu <= 600), lim = 4100;
+(xFSENE = 0 and xMqIPU = 4 and xcarga_SIN > 70000 and total_MqSM = 1 and xMW_ug_ipu >= 650.001 and xMW_ug_ipu < 730), lim = 3400;
+(xFSENE = 0 and xMqIPU = 4 and xcarga_SIN > 70000 and total_MqSM = 1 and xMW_ug_ipu >= 600.001 and xMW_ug_ipu < 650), lim = 3700;
+(xFSENE = 0 and xMqIPU = 4 and xcarga_SIN > 70000 and total_MqSM = 1 and xMW_ug_ipu <= 600), lim = 4000;
+
+(xFSENE = 0 and xMqIPU = 4 and xcarga_SIN > 69000 and xMW_ug_ipu <= 600 and total_MqSM >= 2), lim = 3800;
+(xFSENE = 0 and xMqIPU = 4 and xcarga_SIN > 69000 and xMW_ug_ipu <= 600 and total_MqSM = 1), lim = 3700;
+
+

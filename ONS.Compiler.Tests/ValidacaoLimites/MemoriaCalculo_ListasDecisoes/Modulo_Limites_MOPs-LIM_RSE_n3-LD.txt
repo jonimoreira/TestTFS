@@ -1,0 +1,8 @@
+
+, bValorIndependente = true;
+
+(xcargaSIN >= 63000 And xhbo >= 700), lim = 3500; bValorIndependente = false;
+(xcargaSIN < 63000 and (xpercarga = "MEDIA" or xpercarga = "PESADA") and xhbo >= 500), lim = 3300; bValorIndependente = false;
+(xcargaSIN < 63000 and (xpercarga = "LEVE" or xpercarga = "MINIMA")), lim = 4000; bValorIndependente = false;
+
+(bValorIndependente), lim = 4000;

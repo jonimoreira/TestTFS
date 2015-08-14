@@ -1,0 +1,7 @@
+
+(xRNE > 1500 and xger_xingo < 1200), maqs = 3;
+(xRNE > 1500 and xger_xingo >= 1201 and xger_xingo <= 1550), maqs = 4;
+(xRNE > 1500 and xger_xingo >= 1551 and xger_xingo <= 1860), maqs = 5;
+(xRNE > 1500 and xger_xingo > 1860), maqs = 6;
+(xRNE <= 1500), maqs = 0;
+

@@ -56,6 +56,9 @@ namespace ONS.Compiler.Tests.ValidacaoLimites
 
         public double LDvalorplanilha_LimFNS_N2 = 0.0;
         public double LDretorno_LimLimFNS_N2 = 0.0;
+
+        public double LDvalorplanilha_LimFSM_N2_Inf = 0.0;
+        public double LDretorno_LimFSM_N2_Inf = 0.0;
         
         public double LDvalorplanilha_Xingo_MinMaqs = 0.0;
         public double LDretorno_Xingo_MinMaqs = 0.0;

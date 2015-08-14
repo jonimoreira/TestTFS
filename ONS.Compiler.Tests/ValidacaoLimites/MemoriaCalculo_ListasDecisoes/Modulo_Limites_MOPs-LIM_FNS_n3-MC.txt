@@ -1,0 +1,10 @@
+
+lim
+limTexto = ""
+
+xcargaSIN
+xcbrava
+xhbo
+xmq_sm 
+xpercarga = "LEVE"
+
