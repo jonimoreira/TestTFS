@@ -1,0 +1,4 @@
+
+((xGarabi1 + xGarabi2) <= -1000), lim = -1000;
+((xGarabi1 + xGarabi2) > -1000), lim = 0;
+

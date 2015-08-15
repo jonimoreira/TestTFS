@@ -1,0 +1,10 @@
+Public Function LimiteSUPGARABI1(garabi1) As Variant
+
+'LEMBRETE: garabi > 0: Argentina para Brasil
+'IO-ON.S.5SU, rev 128. Vig.: 06/05/2013
+
+lim = 1000
+
+LimiteSUPGARABI1 = lim
+
+End Function

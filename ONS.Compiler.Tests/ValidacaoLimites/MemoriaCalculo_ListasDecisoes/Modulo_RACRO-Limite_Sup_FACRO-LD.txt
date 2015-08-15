@@ -1,0 +1,8 @@
+
+
+, lim = 200;
+
+(xBtB <> 0 And xTR_prov = 0 and t_nort <> 0), lim = 200;
+(xBtB <> 0 And xTR_prov = 0 and t_nort = 0), lim = 160;
+
+(xBtB = 0 And xPOLO1 = 0 And xTR_prov <> 0), lim = 220;

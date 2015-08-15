@@ -1,0 +1,7 @@
+
+(ger_Itq_PPdr = 0), lim = 800;
+(ger_Itq_PPdr > 0 and ger_Itq_PPdr <= 50), lim = 850;
+(ger_Itq_PPdr > 50 and ger_Itq_PPdr <= 100), lim = 900;
+(ger_Itq_PPdr > 100 and ger_Itq_PPdr <= 150), lim = 950;
+(ger_Itq_PPdr > 150 and ger_Itq_PPdr <= 200), lim = 1050;
+(ger_Itq_PPdr > 200), lim = 1050;

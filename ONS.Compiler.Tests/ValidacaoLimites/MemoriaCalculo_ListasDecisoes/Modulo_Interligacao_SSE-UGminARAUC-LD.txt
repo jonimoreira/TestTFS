@@ -1,0 +1,10 @@
+
+(xcargasul <= 15000), lim = 0;
+(xcargasul > 15000 and xcargasul <= 16000 and xrsul <= 4000), lim = 0;
+(xcargasul > 15000 and xcargasul <= 16000 and xrsul > 4000 and xrsul <= 5000), lim = 1;
+(xcargasul > 15000 and xcargasul <= 16000 and xrsul > 5000), lim = 2;
+(xcargasul > 16000 and xrsul <= 2000), lim = 0;
+(xcargasul > 16000 and xrsul > 2000 and xrsul <= 3000), lim = 1;
+(xcargasul > 16000 and xrsul > 3000 and xrsul <= 4000), lim = 2;
+(xcargasul > 16000 and xrsul > 4000), lim = 3;
+

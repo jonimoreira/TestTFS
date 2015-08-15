@@ -1,0 +1,25 @@
+Public Function Limite_Sup_FACRO(xBtB, xTR_prov, xPOLO1, t_nort)
+'**************************************************************************
+'IO-ON.N.ACRO, rev. 19, vigencia 02 /05 / 2013
+'IO-OC.N.ACRO, rev. 16, vigencia 02 /05 / 2013
+'**************************************************************************
+
+lim = 200  'maioria dos casos
+
+'Item 5.1 IO-OC.N.ACRO passo 2
+If xBtB <> 0 And xTR_prov = 0 Then 'Somente Back-to-Back em operação ou Back-to-Back + Bipolo
+    If t_nort <> 0 Then
+        lim = 200
+    Else
+        lim = 160
+    End If
+End If
+
+'Item 3.6.2 IO-OC.N.ACRO passo 3
+If xBtB = 0 And xPOLO1 = 0 And xTR_prov <> 0 Then 'Somente transformador em operação
+    lim = 220
+End If
+
+Limite_Sup_FACRO = lim
+
+End Function

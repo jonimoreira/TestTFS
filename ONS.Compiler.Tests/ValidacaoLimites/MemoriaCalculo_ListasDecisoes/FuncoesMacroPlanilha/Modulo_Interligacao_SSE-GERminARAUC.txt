@@ -1,0 +1,42 @@
+Public Function GERminARAUC(xrsul, xcargasul)
+'************************************************
+'IO-ON.SSE,revisão 62, Vig. 02/02/2014.
+'
+'************************************************
+
+Select Case xcargasul 'Item 6.4.2 da IO-ON.SSE
+    Case Is <= 15000
+    lim = 0
+    
+    Case Is <= 16000
+    Select Case xrsul
+        Case Is <= 4000
+        lim = 0
+        Case Is <= 5000
+        lim = 117
+        UG = 1
+        Case Is > 5000
+        lim = 175
+        UG = 2
+    End Select
+        
+    Case Is > 16000
+    Select Case xrsul
+        Case Is <= 2000
+        lim = 0
+        Case Is <= 3000
+        lim = 117
+        UG = 1
+        Case Is <= 4000
+        lim = 175
+        UG = 2
+        Case Is > 4000
+        lim = 351
+        UG = 3
+    End Select
+
+End Select
+       
+GERminARAUC = lim
+
+End Function

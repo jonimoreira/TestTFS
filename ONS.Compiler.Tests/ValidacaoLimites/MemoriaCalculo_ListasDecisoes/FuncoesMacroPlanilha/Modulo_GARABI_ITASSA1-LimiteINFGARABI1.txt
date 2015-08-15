@@ -1,0 +1,15 @@
+Public Function LimiteINFGARABI1(xGarabi1, xGarabi2) As Variant
+
+'LEMBRETE: garabi < 0: Brasil para Argentina
+'IO-ON.S.5SU, rev 125. Vig.: 29/01/2013
+
+If (xGarabi1 + xGarabi2) <= -1000 Then
+    lim = -1000  'conforme item 6.1.1.1, a transferência em montantes até 1000 MW deve ocorrer prioritariamente por GBI2, para cenário de Exportação pelo Brasil.
+Else
+    lim = 0
+End If
+
+
+LimiteINFGARABI1 = lim
+
+End Function

@@ -67,6 +67,15 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="ValidacaoLimites\Mediador.cs" />
+    <Compile Include="ValidacaoLimites\SheetRow_ACRO_MT.cs" />
+    <Compile Include="ValidacaoLimites\UnitTestsLocal\Modulo_RACRO_Limite_Sup_FACRO.cs" />
+    <Compile Include="ValidacaoLimites\UnitTestsLocal\Modulo_Acre_Rondonia_MT_limite_FMT.cs" />
+    <Compile Include="ValidacaoLimites\UnitTestsLocal\Modulo_GARABI_ITASSA1_LimiteINFGARABI2.cs" />
+    <Compile Include="ValidacaoLimites\UnitTestsLocal\Modulo_GARABI_ITASSA1_LimiteSUPGARABI2.cs" />
+    <Compile Include="ValidacaoLimites\UnitTestsLocal\Modulo_GARABI_ITASSA1_LimiteINFGARABI1.cs" />
+    <Compile Include="ValidacaoLimites\UnitTestsLocal\Modulo_Interligacao_SSE_GERminARAUC.cs" />
+    <Compile Include="ValidacaoLimites\UnitTestsLocal\Modulo_GARABI_ITASSA1_LimiteSUPGARABI1.cs" />
+    <Compile Include="ValidacaoLimites\UnitTestsLocal\Modulo_Interligacao_SSE_UGminARAUC.cs" />
     <Compile Include="ValidacaoLimites\UnitTestsLocal\Modulo_Limites_MOPs_Limite_Superior_FSM.cs" />
     <Compile Include="ValidacaoLimites\UnitTestsLocal\Modulo_Limites_MOPs_LIM_FNS_n3.cs" />
     <Compile Include="ValidacaoLimites\UnitTestsLocal\Modulo_Limites_MOPs_Limite_RSUL_n3.cs" />
@@ -139,7 +148,15 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\FuncoesMacroPlanilha\Modulo_RACRO-Limite_Sup_FACRO.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\FuncoesMacroPlanilha\Modulo_Acre_Rondonia_MT-limite_FMT.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\FuncoesMacroPlanilha\Modulo_GARABI_ITASSA1-LimiteINFGARABI2.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\FuncoesMacroPlanilha\Modulo_GARABI_ITASSA1-LimiteSUPGARABI2.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\FuncoesMacroPlanilha\Modulo_GARABI_ITASSA1-LimiteINFGARABI1.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\FuncoesMacroPlanilha\Modulo_GARABI_ITASSA1-LimiteSUPGARABI1.txt" />
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\FuncoesMacroPlanilha\Modulo_Horarios_RNE_2009-PeriodoCarga_N_NE.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\FuncoesMacroPlanilha\Modulo_Interligacao_SSE-GERminARAUC.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\FuncoesMacroPlanilha\Modulo_Interligacao_SSE-UGminARAUC.txt" />
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\FuncoesMacroPlanilha\Modulo_Limites_MOPs-Limite_Superior_FSM.txt" />
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\FuncoesMacroPlanilha\Modulo_Limites_MOPs-Limite_RSUL_n3.txt" />
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\FuncoesMacroPlanilha\Modulo_Limites_MOPs-LIM_FSM_n3.txt" />
@@ -179,7 +196,23 @@
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\FuncoesMacroPlanilha\Modulo_Limites_MOPs-LimiteFNS_IO.txt" />
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\FuncoesMacroPlanilha\Modulo_PERIODO_SE_CO_RNE_2009-PeriodoCarga_SE_CO.txt" />
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\FuncoesMacroPlanilha\Modulo_Interligacao_SSE-LIMITE_RSUL.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_RACRO-Limite_Sup_FACRO-MC.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_RACRO-Limite_Sup_FACRO-LD.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_Acre_Rondonia_MT-limite_FMT-LD.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_Acre_Rondonia_MT-limite_FMT-MC.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_GARABI_ITASSA1-LimiteINFGARABI2-LD.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_GARABI_ITASSA1-LimiteINFGARABI2-MC.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_GARABI_ITASSA1-LimiteSUPGARABI2-LD.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_GARABI_ITASSA1-LimiteINFGARABI1-LD.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_GARABI_ITASSA1-LimiteSUPGARABI2-MC.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_GARABI_ITASSA1-LimiteINFGARABI1-MC.txt" />
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_Horarios_RNE_2009-PeriodoCarga_N_NE-LD.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_GARABI_ITASSA1-LimiteSUPGARABI1-LD.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_Interligacao_SSE-GERminARAUC-LD.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_GARABI_ITASSA1-LimiteSUPGARABI1-MC.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_Interligacao_SSE-UGminARAUC-LD.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_Interligacao_SSE-GERminARAUC-MC.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_Interligacao_SSE-UGminARAUC-MC.txt" />
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_Limites_MOPs-Limite_Superior_FSM-LD.txt" />
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_Limites_MOPs-LIM_FNS_n3-LD.txt" />
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_Limites_MOPs-Limite_RSUL_n3-LD.txt" />

@@ -57,6 +57,14 @@ namespace ONS.Compiler.Tests.ValidacaoLimites
         public string LD_PERIODO_DE_CARGA = string.Empty;
         public double LD_ValorReferenciaFRS_Usinas = 0.0;
 
+        public double LDvalorplanilha_UgminAraucaria = 0.0;
+        public double LDvalorplanilha_GeracaoMinimaAraucara = 0.0;
+        public double LDvalorplanilha_LimGrbiISUPImport = 0.0;
+        public double LDvalorplanilha_LimGrbiIINFExport = 0.0;
+        public double LDvalorplanilha_LimGrbiIISUPImport = 0.0;
+        public double LDvalorplanilha_LimGrbiIIINFExport = 0.0;
 
+        
+        
     }
 }

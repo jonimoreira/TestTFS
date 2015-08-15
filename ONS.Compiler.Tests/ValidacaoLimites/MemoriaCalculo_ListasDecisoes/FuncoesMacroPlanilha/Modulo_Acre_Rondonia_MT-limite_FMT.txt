@@ -1,0 +1,23 @@
+Public Function limite_FMT(ger_Itq_PPdr)
+
+'MOP/COSR-NCO 009/2013. Vig.: 01/02/2013
+
+ger = ger_Itq_PPdr
+
+Select Case ger
+    Case 0
+        lim = 800
+    Case 0 To 50
+        lim = 850
+    Case 50 To 100
+        lim = 900
+    Case 100 To 150
+        lim = 950
+    Case 150 To 200
+        lim = 1050
+    Case Is > 200
+        lim = 1050
+End Select
+
+limite_FMT = lim
+End Function

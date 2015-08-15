@@ -16,6 +16,7 @@ namespace ONS.Compiler.Tests.ValidacaoLimites
         public Dictionary<int, SheetRow_SUL> linhas_SUL = new Dictionary<int, SheetRow_SUL>();
         public Dictionary<int, SheetRow_N_NE_SE> linhas_N_NE_SE = new Dictionary<int, SheetRow_N_NE_SE>();
         public Dictionary<int, SheetRow_SEVERA_N3> linhas_SEVERA_N3 = new Dictionary<int, SheetRow_SEVERA_N3>();
+        public Dictionary<int, SheetRow_ACRO_MT> linhas_ACRO_MT = new Dictionary<int, SheetRow_ACRO_MT>();
         
         public void CarregarDados_SheetRow_S_SE()
         {
@@ -152,7 +153,57 @@ namespace ONS.Compiler.Tests.ValidacaoLimites
 
                     sheetRow_SUL.LD_ValorReferenciaFRS_Usinas = double.Parse(valores[43]);
 
+                    sheetRow_SUL.LDvalorplanilha_UgminAraucaria = double.Parse(valores[9]);
+                    sheetRow_SUL.LDvalorplanilha_GeracaoMinimaAraucara = double.Parse(valores[10]);
+                    sheetRow_SUL.LDvalorplanilha_LimGrbiISUPImport = double.Parse(valores[11]);
+                    sheetRow_SUL.LDvalorplanilha_LimGrbiIINFExport = double.Parse(valores[12]);
+                    sheetRow_SUL.LDvalorplanilha_LimGrbiIISUPImport = double.Parse(valores[13]);
+                    sheetRow_SUL.LDvalorplanilha_LimGrbiIIINFExport = double.Parse(valores[14]);
+                    
                     linhas_SUL.Add(iLinhaIdx, sheetRow_SUL);
+                    iLinhaIdx++;
+                }
+
+            }
+        }
+
+        public void CarregarDados_SheetRow_ACRO_MT()
+        {
+            linhas_ACRO_MT.Clear();
+
+            //Abre CSV como texto
+            string fileName = GetCaminhoCompletoArquivoTeste_ValidacaoLimites_Aba_ACRO_MT();
+            System.IO.StreamReader sr = new System.IO.StreamReader(File.OpenRead(fileName));
+
+            int iLinhaIdx = 0;
+
+            while (sr.Peek() != -1)
+            {
+                string line = sr.ReadLine();
+
+                // separa linha do CSV
+                string[] valores = line.Split(',');
+                double primeiraColunaComValor = 0.0;
+
+                if (valores.Length > 3 && double.TryParse(valores[3], out primeiraColunaComValor))
+                {
+
+                    SheetRow_ACRO_MT sheetRow_ACRO_MT = new SheetRow_ACRO_MT();
+                    sheetRow_ACRO_MT.PK_HoraInicFim = new KeyValuePair<string, string>(valores[1].Trim(), valores[2].Trim());
+
+                    sheetRow_ACRO_MT.LDvalorplanilha_Limite_FMT = double.Parse(valores[9]);
+                    sheetRow_ACRO_MT.LDvalorplanilha_Lim_FACROSup = double.Parse(valores[10]);
+                    sheetRow_ACRO_MT.LDvalorplanilha_Lim_FACROInf = double.Parse(valores[11]);
+                    sheetRow_ACRO_MT.LDvalorplanilha_LimiteSm_Aq = double.Parse(valores[12]);
+                    sheetRow_ACRO_MT.LDvalorplanilha_LimiteFBtB = double.Parse(valores[13]);
+                    sheetRow_ACRO_MT.LDvalorplanilha_LimiteFTRpr = double.Parse(valores[14]);
+                    sheetRow_ACRO_MT.LDvalorplanilha_LimitePOLO = double.Parse(valores[14]);
+                    sheetRow_ACRO_MT.LDvalorplanilha_LimiteSAJirau = double.Parse(valores[14]);
+
+                    sheetRow_ACRO_MT.MC_GeracaoItqPPdr = double.Parse(valores[19]);
+
+
+                    linhas_ACRO_MT.Add(iLinhaIdx, sheetRow_ACRO_MT);
                     iLinhaIdx++;
                 }
 
@@ -405,6 +456,23 @@ namespace ONS.Compiler.Tests.ValidacaoLimites
             string result = string.Empty;
             string key = "CaminhoCompletoArquivoTeste_ValidacaoLimites_Aba_SUL";
             //  @"\ValidacaoLimites\Dados\Spreadsheet_Example02_S_SE.csv";
+            try
+            {
+                result = ConfigurationManager.AppSettings[key];
+            }
+            catch (Exception iEx)
+            {
+                throw new Exception("Erro ao carregar chave '" + key + "' do arquivo de configuração (app.config)", iEx);
+            }
+
+            return result;
+        }
+
+        private string GetCaminhoCompletoArquivoTeste_ValidacaoLimites_Aba_ACRO_MT()
+        {
+            string result = string.Empty;
+            string key = "CaminhoCompletoArquivoTeste_ValidacaoLimites_Aba_ACRO_MT";
+            
             try
             {
                 result = ConfigurationManager.AppSettings[key];

@@ -1,0 +1,11 @@
+Public Function LimiteINFGARABI2(garabi2) As Variant
+
+'LEMBRETE: garabi < 0: Brasil para Argentina
+'IO-ON.S.5SU, rev 128. Vig.: 06/05/2013
+
+lim = -1000
+
+LimiteINFGARABI2 = lim
+
+End Function
+
