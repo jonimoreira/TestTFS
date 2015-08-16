@@ -1,0 +1,6 @@
+
+, ger_total = xGerSA + xGerJir;
+
+(xPolo <> 0 And xTR_prov <> 0 And xBtB = 0), lim = 99999;
+(!(xPolo <> 0 And xTR_prov <> 0 And xBtB = 0)), lim = 99999;
+

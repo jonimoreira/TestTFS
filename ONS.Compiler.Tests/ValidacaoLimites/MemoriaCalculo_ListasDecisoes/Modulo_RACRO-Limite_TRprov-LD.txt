@@ -1,0 +1,25 @@
+
+, num_maq = xMaqSA + xMaqJir;
+
+(xPOLO1 = 0 and xBtB <> 0 and num_maq >= 12), lim = 0;
+(xPOLO1 = 0 and xBtB <> 0 and num_maq >= 10 and num_maq < 12), lim = 120;
+(xPOLO1 = 0 and xBtB <> 0 and num_maq < 10), lim = 0;
+
+(xPOLO1 <> 0 And xBtB = 0), lim = RegressaoLinearA(-200, 70, 50, 240) * xFACRO + RegressaoLinearB(-200, 70, 50, 240)
+(xPOLO1 <> 0 And xBtB = 0 and num_maq < 8), lim = 0;
+(xPOLO1 <> 0 And xBtB = 0 and num_maq >= 8 and num_maq < 11 and lim > 220), lim = 220;
+(xPOLO1 <> 0 And xBtB = 0 and num_maq >= 12 and num_maq < 17 and lim > 250), lim = 250;
+(xPOLO1 <> 0 And xBtB = 0 and num_maq >= 18 and num_maq < 23 and lim > 300), lim = 300;
+(xPOLO1 <> 0 And xBtB = 0 and num_maq > 23 and lim > 330), lim = 330;
+
+(xPOLO1 = 0 And xBtB = 0 and xMaqSA >= 10 and xFACRO > 85), lim = 300;
+(xPOLO1 = 0 And xBtB = 0 and xMaqSA >= 10 and xFACRO > -180 and xFACRO <= 85), lim = (1 / RegressaoLinearA(-180, 60, 120, 280)) * xFACRO - (RegressaoLinearB(-180, 60, 120, 280) / RegressaoLinearA(-180, 60, 120, 280));
+(xPOLO1 = 0 And xBtB = 0 and xMaqSA = 9 and xFACRO > 85), lim = 300;
+(xPOLO1 = 0 And xBtB = 0 and xMaqSA = 9 and xFACRO > -160 and xFACRO <= 85), lim = (1 / RegressaoLinearA(-160, 60, 135, 280)) * xFACRO - (RegressaoLinearB(-160, 60, 135, 280) / RegressaoLinearA(-160, 60, 135, 280));
+(xPOLO1 = 0 And xBtB = 0 and xMaqSA = 8 and xFACRO > 85), lim = 300;
+(xPOLO1 = 0 And xBtB = 0 and xMaqSA = 8 and xFACRO > -140 and xFACRO <= 85), lim = (1 / RegressaoLinearA(-140, 60, 145, 280)) * xFACRO - (RegressaoLinearB(-140, 60, 145, 280) / RegressaoLinearA(-140, 60, 145, 280));
+(xPOLO1 = 0 And xBtB = 0 and xMaqSA = 7 and xFACRO > 85), lim = 300;
+(xPOLO1 = 0 And xBtB = 0 and xMaqSA = 7 and xFACRO > -120 and xFACRO <= 85), lim = (1 / RegressaoLinearA(-120, 60, 150, 280)) * xFACRO - (RegressaoLinearB(-120, 60, 150, 280) / RegressaoLinearA(-120, 60, 150, 280));
+(xPOLO1 = 0 And xBtB = 0 and xMaqSA < 7 and xFACRO > 85), lim = 300;
+(xPOLO1 = 0 And xBtB = 0 and xMaqSA < 7 and xFACRO > -100 and xFACRO <= 85), lim = (1 / RegressaoLinearA(-100, 60, 175, 280)) * xFACRO - (RegressaoLinearB(-100, 60, 175, 280) / RegressaoLinearA(-100, 60, 175, 280));
+

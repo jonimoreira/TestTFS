@@ -1,0 +1,46 @@
+Public Function Limite_BtB(xPOLO1, xMaqSA, xMaqJir, xTR_prov, Facro)
+
+'*****************************************************************************
+'IO-ON.N.ACRO Rev. 16  vig.: 28/11/2013
+'*****************************************************************************
+
+'ITEM 6.1, PASSO 04
+'If xPOLO1 = 0 Then
+'    lim = 400
+'Else
+'    lim = 0   'está desligado, por instrução
+'End If
+
+num_maq = xMaqSA + xMaqJir
+
+If xPOLO1 = 0 Then
+    If xMaqSA < 5 Then
+        lim = 0
+    Else
+        lim = 400
+    End If
+
+Else
+    Select Case num_maq
+        Case Is < 12
+            lim = 0
+        
+        Case Is >= 12
+            lim = 400
+    End Select
+End If
+
+If xMaqSA < 5 Then
+    lim = 0
+
+End If
+
+If xTR_prov <= 0 And xTR_prov > -5 Then 'Para pegar o valor expurgado do tr13
+'Limite somente com o Back-to-back em operação ou Back-to-Back + Bipolo - Item 5.1 da IO-ON.N.ACRO
+    lim = 0.7 * Facro + 190
+    
+End If
+
+Limite_BtB = lim
+
+End Function

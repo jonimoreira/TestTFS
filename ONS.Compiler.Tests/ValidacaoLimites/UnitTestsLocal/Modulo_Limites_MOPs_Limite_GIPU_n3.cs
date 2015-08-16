@@ -90,10 +90,10 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsLocal
             mediador.CarregarMemoriaDeCalculo(maquinaInequacoes, nomeFuncao);
             mediador.CarregarListaDecisoes(maquinaInequacoes, nomeFuncao);
             
-            mediador.CarregarDados_SheetRow_S_SE();
-            for (int i = 0; i < mediador.linhas_S_SE.Count; i++)
+            mediador.CarregarDados_SheetRow_N_NE_SE();
+            for (int i = 0; i < mediador.linhas_N_NE_SE.Count; i++)
             {
-                AtualizarVariaveisDaMemoriaDeCalculo(maquinaInequacoes, mediador.linhas_S_SE[i]);
+                AtualizarVariaveisDaMemoriaDeCalculo(maquinaInequacoes, mediador.linhas_N_NE_SE[i]);
             }
 
             Assert.AreEqual(true, true);
@@ -114,16 +114,17 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsLocal
 
             maquinaInequacoes.Compile();
 
-            mediador.CarregarDados_SheetRow_S_SE();
+            mediador.CarregarDados_SheetRow_N_NE_SE();
+            mediador.CarregarDados_SheetRow_SEVERA_N3();
 
-            for (int i = 0; i < mediador.linhas_S_SE.Count; i++)
+            for (int i = 0; i < mediador.linhas_N_NE_SE.Count; i++)
             {
-                AtualizarVariaveisDaMemoriaDeCalculo(maquinaInequacoes, mediador.linhas_S_SE[i]);
+                AtualizarVariaveisDaMemoriaDeCalculo(maquinaInequacoes, mediador.linhas_N_NE_SE[i]);
                 maquinaInequacoes.Execute();
 
                 Variable limite = maquinaInequacoes.CalculationMemory["lim"];
 
-                Assert.AreEqual(limite.GetValue(), mediador.linhas_S_SE[i].LDvalorplanilha_Limite_GIPU_SUP);
+                Assert.AreEqual(limite.GetValue(), mediador.linhas_SEVERA_N3[i].LDvalorplanilha_LIMITGERIPU);
             }
         }
 
@@ -132,10 +133,10 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsLocal
         /// </summary>
         /// <param name="maquinaInequacoes"></param>
         /// <param name="sheetRow_S_SE"></param>
-        public void AtualizarVariaveisDaMemoriaDeCalculo(InequationEngine maquinaInequacoes, SheetRow_S_SE sheetRow_S_SE)
+        public void AtualizarVariaveisDaMemoriaDeCalculo(InequationEngine maquinaInequacoes, SheetRow_N_NE_SE sheetRow_N_NE_SE)
         {
-            maquinaInequacoes.CalculationMemory.UpdateVariable("xlogica24", "");
-            maquinaInequacoes.CalculationMemory.UpdateVariable("xcarga_SIN", 0);
+            maquinaInequacoes.CalculationMemory.UpdateVariable("xlogica24", "Ligada");
+            maquinaInequacoes.CalculationMemory.UpdateVariable("xcarga_SIN", sheetRow_N_NE_SE.MC_CARGASIN);
         }
 
     }

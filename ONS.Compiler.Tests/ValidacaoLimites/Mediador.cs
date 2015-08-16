@@ -197,11 +197,22 @@ namespace ONS.Compiler.Tests.ValidacaoLimites
                     sheetRow_ACRO_MT.LDvalorplanilha_LimiteSm_Aq = double.Parse(valores[12]);
                     sheetRow_ACRO_MT.LDvalorplanilha_LimiteFBtB = double.Parse(valores[13]);
                     sheetRow_ACRO_MT.LDvalorplanilha_LimiteFTRpr = double.Parse(valores[14]);
-                    sheetRow_ACRO_MT.LDvalorplanilha_LimitePOLO = double.Parse(valores[14]);
-                    sheetRow_ACRO_MT.LDvalorplanilha_LimiteSAJirau = double.Parse(valores[14]);
+                    sheetRow_ACRO_MT.LDvalorplanilha_LimitePOLO = double.Parse(valores[15]);
+                    sheetRow_ACRO_MT.LDvalorplanilha_LimiteSAJirau = double.Parse(valores[16]);
 
                     sheetRow_ACRO_MT.MC_GeracaoItqPPdr = double.Parse(valores[19]);
-
+                    sheetRow_ACRO_MT.MC_FACRO = double.Parse(valores[4]);
+                    sheetRow_ACRO_MT.MC_FBtB = double.Parse(valores[6]);
+                    sheetRow_ACRO_MT.MC_FTRpr = double.Parse(valores[7]);
+                    sheetRow_ACRO_MT.MC_POLO1 = double.Parse(valores[8]);
+                    sheetRow_ACRO_MT.MC_UHESantoAntonioNumUGs = double.Parse(valores[20]);
+                    sheetRow_ACRO_MT.MC_UHESantoAntonioGerTotal = double.Parse(valores[20]);
+                    sheetRow_ACRO_MT.MC_UHESantoAntonioGeracaoIlha1 = double.Parse(valores[22]);
+                    sheetRow_ACRO_MT.MC_UHESantoAntonioGeracaoIlha2 = double.Parse(valores[23]);
+                    sheetRow_ACRO_MT.MC_UHESantoAntonioGeracaoMEsqrd = double.Parse(valores[24]);
+                    sheetRow_ACRO_MT.MC_GerTNorteII = double.Parse(valores[25]);
+                    sheetRow_ACRO_MT.MC_UHJirauGer = double.Parse(valores[26]);
+                    sheetRow_ACRO_MT.MC_UHJirauNumUgs = double.Parse(valores[27]);
 
                     linhas_ACRO_MT.Add(iLinhaIdx, sheetRow_ACRO_MT);
                     iLinhaIdx++;
@@ -297,6 +308,7 @@ namespace ONS.Compiler.Tests.ValidacaoLimites
                     sheetRow_SEVERA_N3.MC_HBO = double.Parse(valores[9]);
                     sheetRow_SEVERA_N3.MC_MqsCanaBrava = double.Parse(valores[11]);
 
+                    sheetRow_SEVERA_N3.LDvalorplanilha_LIMITGERIPU = double.Parse(valores[12]);
                     sheetRow_SEVERA_N3.LDvalorplanilha_LIM_FSE_n3 = double.Parse(valores[14]);
                     sheetRow_SEVERA_N3.LDvalorplanilha_LIM_RSE_n3 = double.Parse(valores[15]);
 

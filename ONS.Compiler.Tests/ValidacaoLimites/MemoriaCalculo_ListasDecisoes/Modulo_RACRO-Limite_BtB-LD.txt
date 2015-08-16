@@ -1,0 +1,10 @@
+
+, num_maq = xMaqSA + xMaqJir;
+
+(xPOLO1 = 0 and xMaqSA < 5), lim = 0;
+(xPOLO1 = 0 and xMaqSA >= 5), lim = 400;
+(xPOLO1 <> 0 and num_maq < 12), lim = 0;
+(xPOLO1 <> 0 and num_maq >= 12), lim = 400;
+
+(xMaqSA < 5), lim = 0;
+(xTR_prov <= 0 And xTR_prov > -5), lim = 0.7 * Facro + 190;

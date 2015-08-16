@@ -1,0 +1,232 @@
+Public Function Limite_TRprov(xFACRO, xPOLO1, xMaqSA, xMaqJir, xBtB)
+'*****************************************************************************
+'IO-OC.N.ACRO REV 16 VIG 02/05/2014
+'IO-ON.N.ACRO REV. 19 VIG 02/05/2014
+'MOP/COSR-NCO 039/2014 vig 19/05/2014
+'*****************************************************************************
+
+'y = a*x + b
+'a = parametros (1)
+'b = parametros (2)
+'y = FTR13
+'x = FACRO
+    
+'Limite da IO-ON.N.ACRO ITEM 5.2 PASSO 6
+num_maq = xMaqSA + xMaqJir
+If xPOLO1 = 0 And xBtB <> 0 Then 'Back-to-Back e transformador em operação
+    Select Case num_maq
+        Case Is >= 12
+            lim = 120
+        Case 10 To 12
+            lim = 60
+        Case Is < 10
+            lim = 0
+    End Select
+End If
+
+'Limite da IO-OC.N.ACRO ITEM 3.6.2 PASSO 2
+'MOP/COSR-NCO 039/2014
+
+If xPOLO1 <> 0 And xBtB = 0 Then 'Bipolo e transformador em operação
+    
+    parametros = Parametros_reta(-200, 50, 70, 240)
+    a = parametros(1)
+    b = parametros(2)
+    lim = a * xFACRO + b
+    
+    Select Case num_maq
+        Case Is < 8
+            lim = 0 'não pode operar com menos de 8 UGs
+        Case 8 To 11
+            If lim > 220 Then
+                lim = 220
+            End If
+        Case 12 To 17
+            If lim > 250 Then
+                lim = 250
+            End If
+        Case 18 To 23
+            If lim > 300 Then
+                lim = 300
+            End If
+        Case Is > 23
+            If lim > 330 Then
+                lim = 330
+            End If
+    End Select
+    
+End If
+    
+'Limite da IO-OC.N.ACRO item 3.6.2 passo 3
+If xPOLO1 = 0 And xBtB = 0 Then 'somente transformador em operação
+    Select Case xMaqSA 'Número de Máquinas na Usina de Santo Antonio
+        Case Is >= 10
+            Select Case xFACRO
+                Case Is > 85
+                    lim = 300
+                Case -180 To 85
+                    '-> Limite do ábaco: passo 3.1 da MOP/COSR-NCO 023
+                    'y = a*x + b ou x = (1/a)*y - b/a
+                    'a = parametros (1)
+                    'b = parametros (2)
+                    'y = Racro
+                    'x = FTR13
+                    parametros = Parametros_reta(-180, 120, 60, 280)
+                    a = parametros(1)
+                    b = parametros(2)
+                    lim = (1 / a) * xFACRO - (b / a)
+                Case Is < -180
+                    lim = "Facro!"
+            End Select
+        Case Is = 9
+            Select Case xFACRO
+                Case Is > 85
+                    lim = 300
+                Case -160 To 85
+                    parametros = Parametros_reta(-160, 135, 60, 280)
+                    a = parametros(1)
+                    b = parametros(2)
+                    lim = (1 / a) * xFACRO - (b / a)
+                Case Is < -160
+                    lim = "Facro!"
+            End Select
+        Case Is = 8
+            Select Case xFACRO
+                Case Is > 85
+                    lim = 300
+                Case -140 To 85
+                    parametros = Parametros_reta(-140, 145, 60, 280)
+                    a = parametros(1)
+                    b = parametros(2)
+                    lim = (1 / a) * xFACRO - (b / a)
+                Case Is < -140
+                    lim = "Facro!"
+            End Select
+        Case Is = 7
+            Select Case xFACRO
+                Case Is > 85
+                    lim = 300
+                Case -120 To 85
+                    parametros = Parametros_reta(-120, 150, 60, 280)
+                    a = parametros(1)
+                    b = parametros(2)
+                    lim = (1 / a) * xFACRO - (b / a)
+                Case Is < -120
+                    lim = "Facro!"
+            End Select
+        Case Is < 7
+            Select Case xFACRO
+                Case Is > 85
+                    lim = 300
+                Case -100 To 85
+                    parametros = Parametros_reta(-100, 175, 60, 280)
+                    a = parametros(1)
+                    b = parametros(2)
+                    lim = (1 / a) * xFACRO - (b / a)
+                Case Is < -100
+                    lim = "Facro!"
+            End Select
+    
+    End Select
+End If
+
+Limite_TRprov = lim
+
+
+''MOP 023
+'If xBtB = 0 Then
+'    Select Case xTRprov
+'        Case Is <> 0
+'            Select Case xPOLO1
+'                Case Is <> 0
+'                    'Passo 2.1 da MOP: inequação representativa do gráfico: FTRprov <= 0,7*Facro + 190
+'                    Select Case xFACRO
+'                        Case -200
+'                            lim = 50
+'                        Case -200 To 85
+'                            lim1 = 0.7 * xFACRO + 190
+'                    End Select
+'                Case Is = 0 ' Passo 3 da MOP 023
+'                    xgerSANTON = maior_valor(xilha1, xilha2, xmesq) 'identifica a maior geração entre os três blocos de UGs da UHE Santo Antônio (ilha 1, 2 ou M. Esquerda)
+'                    xgerST_JIR = maior_valor(xgerSANTON, xgerSANTON, xJirau) 'aproveitando a rotina para verificar se a geração de Jirau é maior que as outras
+'
+'                    Select Case xMaqSA 'Número de Máquinas na Usina de Santo Antonio
+'                        Case Is >= 10
+'                            Select Case xFACRO
+'                                Case Is > 85
+'                                    lim = 300
+'                                Case -180 To 85
+'                                    '-> Limite do ábaco: passo 3.1 da MOP/COSR-NCO 023
+'                                    'y = a*x + b ou x = (1/a)*y - b/a
+'                                    'a = parametros (1)
+'                                    'b = parametros (2)
+'                                    'y = Racro
+'                                    'x = FTR13
+'                                    parametros = Parametros_reta(-180, 120, 60, 280)
+'                                    a = parametros(1)
+'                                    b = parametros(2)
+'                                    lim = (1 / a) * xFACRO - (b / a)
+'                                Case Is < -180
+'                                    lim = "Facro!"
+'                            End Select
+'                        Case Is = 9
+'                            Select Case xFACRO
+'                                Case Is > 85
+'                                    lim = 300
+'                                Case -160 To 85
+'                                    parametros = Parametros_reta(-160, 135, 60, 280)
+'                                    a = parametros(1)
+'                                    b = parametros(2)
+'                                    lim = (1 / a) * xFACRO - (b / a)
+'                                Case Is < -160
+'                                    lim = "Facro!"
+'                            End Select
+'                        Case Is = 8
+'                            Select Case xFACRO
+'                                Case Is > 85
+'                                    lim = 300
+'                                Case -140 To 85
+'                                    parametros = Parametros_reta(-140, 145, 60, 280)
+'                                    a = parametros(1)
+'                                    b = parametros(2)
+'                                    lim = (1 / a) * xFACRO - (b / a)
+'                                Case Is < -140
+'                                    lim = "Facro!"
+'                            End Select
+'                        Case Is = 7
+'                            Select Case xFACRO
+'                                Case Is > 85
+'                                    lim = 300
+'                                Case -120 To 85
+'                                    parametros = Parametros_reta(-120, 150, 60, 280)
+'                                    a = parametros(1)
+'                                    b = parametros(2)
+'                                    lim = (1 / a) * xFACRO - (b / a)
+'                                Case Is < -120
+'                                    lim = "Facro!"
+'                            End Select
+'                        Case Is < 7
+'                            Select Case xFACRO
+'                                Case Is > 85
+'                                    lim = 300
+'                                Case -100 To 85
+'                                    parametros = Parametros_reta(-100, 175, 60, 280)
+'                                    a = parametros(1)
+'                                    b = parametros(2)
+'                                    lim = (1 / a) * xFACRO - (b / a)
+'                                Case Is < -100
+'                                    lim = "Facro!"
+'                            End Select
+'
+'                    End Select
+'
+'
+'            End Select
+'
+'        Case Is = 0
+'            lim = 9999 'o TR estará desligado, não faz sentido o limite para ele...
+'    End Select
+'
+'End If
+
+End Function

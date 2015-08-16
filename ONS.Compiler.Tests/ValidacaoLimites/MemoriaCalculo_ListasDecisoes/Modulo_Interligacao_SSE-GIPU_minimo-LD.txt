@@ -1,14 +1,17 @@
 
+(xrsul >= 3001 and xrsul <= 5000 and xcargasul > 10000), lim = 5600;
+(xrsul >= 3001 and xrsul <= 5000 and xcargasul <= 10000), lim = 4900;
 
-(xcargasul <= 15000), lim = 0;
-(xcargasul > 15000 and xcargasul <= 16000 and xrsul <= 4000), lim = 0;
-(xcargasul > 15000 and xcargasul <= 16000 and xrsul > 4000 and xrsul <= 5000), lim = 117; UG = 1; 
-(xcargasul > 15000 and xcargasul <= 16000 and xrsul > 5000), lim = 175; UG = 2; 
+(xrsul >= 5001 and xrsul <= 6000 and xcargasul > 10000), lim = 6300;
+(xrsul >= 5001 and xrsul <= 6000 and xcargasul <= 10000), lim = 4900;
 
-(xcargasul > 16000 and xrsul <= 2000), lim = 0; 
-(xcargasul > 16000 and xrsul > 2000 and xrsul <= 3000), lim = 117; UG = 1;
-(xcargasul > 16000 and xrsul > 3000 and xrsul <= 4000), lim = 175; UG = 2;
-(xcargasul > 16000 and xrsul > 4000), lim = 351; UG = 3;
+(xrsul >= 6001 and xrsul <= 7000 and xcargasul > 10000), lim = 6300;
+(xrsul >= 6001 and xrsul <= 7000 and xcargasul <= 10000), lim = 4900;
+
+(xrsul >= 7000 and xcargasul > 14000), lim = 6800;
+(xrsul >= 7000 and xcargasul > 10000 and xcargasul <= 14000), lim = 6300;
+(xrsul >= 7000 and xcargasul <= 10000), lim = 5600;
+
 
 
 

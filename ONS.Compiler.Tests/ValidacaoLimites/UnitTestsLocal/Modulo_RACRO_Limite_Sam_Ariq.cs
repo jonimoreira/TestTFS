@@ -6,9 +6,9 @@ using System.Collections.Generic;
 namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsLocal
 {
     [TestClass]
-    public class Modulo_RACRO_Limite_Sup_FACRO
+    public class Modulo_RACRO_Limite_Sam_Ariq
     {
-        private string nomeFuncao = "Modulo_RACRO-Limite_Sup_FACRO";
+        private string nomeFuncao = "Modulo_RACRO-Limite_Sam_Ariq";
         /// <summary>
         /// Testa o carregamento da memória de cálculo (MC) a partir do arquivo txt.
         /// </summary>
@@ -75,7 +75,7 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsLocal
 
             Variable limite = maquinaInequacoes.CalculationMemory["lim"];
 
-            Assert.AreEqual(limite.GetValue(), 200.0);
+            Assert.AreEqual(limite.GetValue(), 280.0);
         }
         
         /// <summary>
@@ -123,7 +123,7 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsLocal
 
                 Variable limite = maquinaInequacoes.CalculationMemory["lim"];
 
-                Assert.AreEqual(limite.GetValue(), mediador.linhas_ACRO_MT[i].LDvalorplanilha_Limite_FMT);
+                Assert.AreEqual(limite.GetValue(), mediador.linhas_ACRO_MT[i].LDvalorplanilha_LimiteSm_Aq);
             }
         }
 
@@ -134,7 +134,7 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsLocal
         /// <param name="sheetRow_S_SE"></param>
         public void AtualizarVariaveisDaMemoriaDeCalculo(InequationEngine maquinaInequacoes, SheetRow_ACRO_MT sheetRow_ACRO_MT)
         {
-            maquinaInequacoes.CalculationMemory.UpdateVariable("xBtB", sheetRow_ACRO_MT.MC_GeracaoItqPPdr);
+            maquinaInequacoes.CalculationMemory.UpdateVariable("xTN2", sheetRow_ACRO_MT.MC_GerTNorteII);
         }
 
     }

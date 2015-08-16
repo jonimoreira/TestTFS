@@ -1,0 +1,21 @@
+
+, xgerSANTON = 0; xgerST_JIR = 0;
+
+(xBtB = 0 and xTR_prov = 0), lim = -200;
+(xBtB = 0 and xTR_prov <> 0 and xPOLO1 <> 0 and xTR_prov < 50), lim = -200;
+(xBtB = 0 and xTR_prov <> 0 and xPOLO1 <> 0 and xTR_prov >= 50 and xTR_prov < 250), lim = (xTR_prov - 190) / 0.7;
+(xBtB = 0 and xTR_prov <> 0 and xPOLO1 = 0), xgerSANTON = max(xilha1, xilha2, xmesq); xgerST_JIR = max(xgerSANTON, xgerSANTON, xJirau);
+(xBtB = 0 and xTR_prov <> 0 and xPOLO1 = 0 and xMaqSA >= 10 and xTR_prov < 120), lim = -180;
+(xBtB = 0 and xTR_prov <> 0 and xPOLO1 = 0 and xMaqSA >= 10 and xTR_prov >= 120 and xTR_prov < 300), lim = RegressaoLinearA(120, 280, -180, 60) * xTR_prov + RegressaoLinearB(120, 280, -180, 60);
+(xBtB = 0 and xTR_prov <> 0 and xPOLO1 = 0 and xMaqSA = 9 and xTR_prov < 135), lim = -160;
+(xBtB = 0 and xTR_prov <> 0 and xPOLO1 = 0 and xMaqSA = 9 and xTR_prov >= 135 and xTR_prov < 300), lim = RegressaoLinearA(135, 280, -160, 60) * xTR_prov + RegressaoLinearB(135, 280, -160, 60);
+(xBtB = 0 and xTR_prov <> 0 and xPOLO1 = 0 and xMaqSA = 8 and xTR_prov < 145), lim = -140;
+(xBtB = 0 and xTR_prov <> 0 and xPOLO1 = 0 and xMaqSA = 8 and xTR_prov >= 145 and xTR_prov < 300), lim = RegressaoLinearA(145, 280, -140, 60) * xTR_prov + RegressaoLinearB(145, 280, -140, 60);
+(xBtB = 0 and xTR_prov <> 0 and xPOLO1 = 0 and xMaqSA = 7 and xTR_prov < 160), lim = -120;
+(xBtB = 0 and xTR_prov <> 0 and xPOLO1 = 0 and xMaqSA = 7 and xTR_prov >= 160 and xTR_prov < 300), lim = RegressaoLinearA(160, 280, -120, 60) * xTR_prov + RegressaoLinearB(160, 280, -120, 60);
+(xBtB = 0 and xTR_prov <> 0 and xPOLO1 = 0 and xMaqSA < 7 and xTR_prov < 175), lim = -100;
+(xBtB = 0 and xTR_prov <> 0 and xPOLO1 = 0 and xMaqSA < 7 and xTR_prov >= 175 and xTR_prov < 300), lim = RegressaoLinearA(175, 280, -100, 60) * xTR_prov + RegressaoLinearB(175, 280, -100, 60);
+
+(xBtB <> 0 and xTR_prov <= 0 And xTR_prov > -5), lim = (xBtB - 190) / 0.7;
+(xBtB <> 0 and xTR_prov <= 0 And xTR_prov > -5 and lim < -120), lim = -120;
+(xBtB <> 0 and xTR_prov <> 0 And xPOLO1 = 0), lim = -200;

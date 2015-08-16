@@ -68,6 +68,12 @@
     </Compile>
     <Compile Include="ValidacaoLimites\Mediador.cs" />
     <Compile Include="ValidacaoLimites\SheetRow_ACRO_MT.cs" />
+    <Compile Include="ValidacaoLimites\UnitTestsLocal\Modulo_RACRO_Limite_POLO.cs" />
+    <Compile Include="ValidacaoLimites\UnitTestsLocal\Modulo_RACRO_Limite_SA_JI.cs" />
+    <Compile Include="ValidacaoLimites\UnitTestsLocal\Modulo_RACRO_Limite_TRprov.cs" />
+    <Compile Include="ValidacaoLimites\UnitTestsLocal\Modulo_RACRO_Limite_Inf_FACRO.cs" />
+    <Compile Include="ValidacaoLimites\UnitTestsLocal\Modulo_RACRO_Limite_BtB.cs" />
+    <Compile Include="ValidacaoLimites\UnitTestsLocal\Modulo_RACRO_Limite_Sam_Ariq.cs" />
     <Compile Include="ValidacaoLimites\UnitTestsLocal\Modulo_RACRO_Limite_Sup_FACRO.cs" />
     <Compile Include="ValidacaoLimites\UnitTestsLocal\Modulo_Acre_Rondonia_MT_limite_FMT.cs" />
     <Compile Include="ValidacaoLimites\UnitTestsLocal\Modulo_GARABI_ITASSA1_LimiteINFGARABI2.cs" />
@@ -148,6 +154,12 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\FuncoesMacroPlanilha\Modulo_RACRO-Limite_POLO.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\FuncoesMacroPlanilha\Modulo_RACRO-Limite_SA_JI.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\FuncoesMacroPlanilha\Modulo_RACRO-Limite_TRprov.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\FuncoesMacroPlanilha\Modulo_RACRO-Limite_Inf_FACRO.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\FuncoesMacroPlanilha\Modulo_RACRO-Limite_BtB.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\FuncoesMacroPlanilha\Modulo_RACRO-Limite_Sam_Ariq.txt" />
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\FuncoesMacroPlanilha\Modulo_RACRO-Limite_Sup_FACRO.txt" />
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\FuncoesMacroPlanilha\Modulo_Acre_Rondonia_MT-limite_FMT.txt" />
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\FuncoesMacroPlanilha\Modulo_GARABI_ITASSA1-LimiteINFGARABI2.txt" />
@@ -196,6 +208,18 @@
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\FuncoesMacroPlanilha\Modulo_Limites_MOPs-LimiteFNS_IO.txt" />
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\FuncoesMacroPlanilha\Modulo_PERIODO_SE_CO_RNE_2009-PeriodoCarga_SE_CO.txt" />
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\FuncoesMacroPlanilha\Modulo_Interligacao_SSE-LIMITE_RSUL.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_RACRO-Limite_POLO-LD.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_RACRO-Limite_SA_JI-LD.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_RACRO-Limite_TRprov-LD.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_RACRO-Limite_POLO-MC.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_RACRO-Limite_SA_JI-MC.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_RACRO-Limite_TRprov-MC.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_RACRO-Limite_Inf_FACRO-LD.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_RACRO-Limite_Inf_FACRO-MC.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_RACRO-Limite_BtB-LD.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_RACRO-Limite_Sam_Ariq-LD.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_RACRO-Limite_BtB-MC.txt" />
+    <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_RACRO-Limite_Sam_Ariq-MC.txt" />
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_RACRO-Limite_Sup_FACRO-MC.txt" />
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_RACRO-Limite_Sup_FACRO-LD.txt" />
     <Content Include="ValidacaoLimites\MemoriaCalculo_ListasDecisoes\Modulo_Acre_Rondonia_MT-limite_FMT-LD.txt" />

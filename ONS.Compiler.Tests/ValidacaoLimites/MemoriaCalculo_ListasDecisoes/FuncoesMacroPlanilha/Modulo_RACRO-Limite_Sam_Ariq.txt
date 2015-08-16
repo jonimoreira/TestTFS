@@ -1,0 +1,15 @@
+Public Function Limite_Sam_Ariq(xTN2)
+
+'*****************************************************************************
+'IO-ON.N.ACRO Rev. 16  vig.: 28/11/2013
+'*****************************************************************************
+
+If xTN2 > 0 Then
+    lim = 310  'Termonorte2 em operação
+Else
+    lim = 280  'Termonorte2 desligada
+End If
+
+Limite_Sam_Ariq = lim
+
+End Function

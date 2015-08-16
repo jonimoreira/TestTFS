@@ -1,0 +1,11 @@
+
+, num_maq = xMaqSA + xMaqJir;
+
+(BtB = 0 and num_maq < 8), lim = 0;
+(BtB = 0 and num_maq >= 8 and num_maq < 12), lim = 700;
+(BtB = 0 and num_maq >= 12), lim = 1100;
+(BtB <> 0 and num_maq < 12), lim = 0;
+(BtB <> 0 and num_maq >= 12 and num_maq < 19), lim = 700;
+(BtB <> 0 and num_maq >= 19), lim = 1100;
+(xMaqSA < 5), lim = 0;
+

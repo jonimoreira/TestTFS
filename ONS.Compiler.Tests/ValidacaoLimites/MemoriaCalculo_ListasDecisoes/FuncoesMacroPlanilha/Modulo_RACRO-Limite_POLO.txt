@@ -1,0 +1,41 @@
+Public Function Limite_POLO(xPolo, BtB, xMaqSA, xMaqJir)
+'**************************************************************************
+'IO-ON.6MD, rev. 06, vigencia 02/05/2014
+'**************************************************************************
+num_maq = xMaqSA + xMaqJir
+
+If BtB = 0 Then
+    Select Case num_maq
+    
+        Case Is < 8
+            lim = 0
+            
+        Case Is < 12
+            lim = 700
+        
+        Case Is >= 12
+            lim = 1100
+    
+    End Select
+
+Else
+    Select Case num_maq
+        Case Is < 12
+            lim = 0
+            
+        Case Is < 19
+            lim = 700
+        
+        Case Is >= 19
+            lim = 1100
+    End Select
+End If
+
+If xMaqSA < 5 Then
+    lim = 0
+
+End If
+    
+Limite_POLO = lim
+
+End Function

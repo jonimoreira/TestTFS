@@ -1,0 +1,16 @@
+Public Function Limite_SA_JI(xPolo, xTR_prov, xBtB, xGerSA, xGerJir)
+'**************************************************************************
+'IO-ON.6MD, rev. 06, vigencia 02/05/2014
+'**************************************************************************
+ger_total = xGerSA + xGerJir
+
+If xPolo <> 0 And xTR_prov <> 0 And xBtB = 0 Then
+    lim = 99999
+
+Else
+    lim = 99999
+End If
+
+Limite_SA_JI = lim
+
+End Function
