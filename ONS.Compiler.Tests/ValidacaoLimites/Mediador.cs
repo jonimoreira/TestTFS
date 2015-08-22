@@ -343,61 +343,121 @@ namespace ONS.Compiler.Tests.ValidacaoLimites
                 if (line != string.Empty && line.Substring(0, 2) != "//")
                 {
                     string[] valores = line.Split('=');
-                    string varName = valores[0]; 
-                    object varValue;
-                    VariableDataType varType = VariableDataType.Numeric;
+                    string varName = valores[0];
 
-                    if (valores.Length == 1)
-                    {
-                        varValue = 0.0;
-                    }
-                    else 
-                    {
-                        string valorVariavel = valores[1].Trim();
-                        if (valorVariavel.StartsWith("\"")) // é string
-                        {
-                            string strTemp = string.Empty;
-                            for (int i=1;i<valores.Length;i++)
-                            {
-                                strTemp += valores[i];
-                            }
-                            strTemp = strTemp.Trim();
-                            if (!strTemp.EndsWith("\""))
-                                throw new Exception("Erro ao carregar memória de cálculo do arquivo [" + fileName + "]. Formato de valor da string na definição de variável inválida em: " + line);
-                            else
-                            {
-                                strTemp = strTemp.Remove(0,1); // remove " inicial
-                                varValue = strTemp.Remove(strTemp.Length - 1,1); // remove " final (se tiver no meio, deixa)
-                                varType = VariableDataType.String;
-                            }
-                        }
-                        else
-                        {
-                            varValue = valores[1];
-                            double testDouble = double.MinValue;
-                            bool testBool = true;
-                            DateTime testDateTime = DateTime.Now;
-                            if (double.TryParse(varValue.ToString(), out testDouble))
-                                varType = VariableDataType.Numeric;
-                            else if (bool.TryParse(varValue.ToString(), out testBool))
-                                varType = VariableDataType.Boolean;
-                            else if (DateTime.TryParse(varValue.ToString().Replace("hora(", string.Empty).Replace(")", string.Empty), out testDateTime))
-                            {
-                                varType = VariableDataType.Time;
-                                varValue = testDateTime;
-                            }
-                            else
-                                throw new Exception("Erro ao carregar memória de cálculo do arquivo [" + fileName + "]. Formato de valor na definição de variável inválida em: " + line);
+                    KeyValuePair<VariableDataType, object> varTypeValue = ParseTipoVariavelValor(line, valores, fileName);
+                    VariableDataType varType = varTypeValue.Key;
+                    object varValue = varTypeValue.Value;
 
-                        }
-                    }
-                    
                     Variable var = new Variable(varName, varType, varValue);
                     maquinaInequacoes.CalculationMemory.Add(var);
 
                 }
             }
 
+        }
+
+        public void CarregarMemoriaDeCalculo(MaquinaInequacoesServiceReference.MemoriaCalculo memoriaCalculo, string funcao)
+        {
+            string fileName = GetCaminhoBaseArquivosTeste() + @"\ValidacaoLimites\MemoriaCalculo_ListasDecisoes\" + funcao + "-MC.txt";
+            System.IO.StreamReader sr = new System.IO.StreamReader(File.OpenRead(fileName));
+
+            while (sr.Peek() != -1)
+            {
+                string line = sr.ReadLine().Trim();
+                if (line != string.Empty && line.Substring(0, 2) != "//")
+                {
+                    string[] valores = line.Split('=');
+                    string varName = valores[0];
+
+                    KeyValuePair<VariableDataType, object> varTypeValue = ParseTipoVariavelValor(line, valores, fileName);
+                    VariableDataType varType = varTypeValue.Key;
+                    object varValue = varTypeValue.Value;
+
+                    MaquinaInequacoesServiceReference.Variavel variavel = new MaquinaInequacoesServiceReference.Variavel();
+                    variavel.Nome = varName;
+                    switch(varType)
+                    {
+                        case VariableDataType.Boolean:
+                            variavel.TipoDado = MaquinaInequacoesServiceReference.TipoDado.Booleano;
+                            break;
+                        case VariableDataType.Numeric:
+                            variavel.TipoDado = MaquinaInequacoesServiceReference.TipoDado.Numerico;
+                            break;
+                        case VariableDataType.String:
+                            variavel.TipoDado = MaquinaInequacoesServiceReference.TipoDado.String;
+                            break;
+                        case VariableDataType.Time:
+                            variavel.TipoDado = MaquinaInequacoesServiceReference.TipoDado.HoraMinutoSegundo;
+                            break;
+                        default:
+                            break;
+                    }
+                    variavel.Valor = varValue;
+
+                    if (memoriaCalculo.Variaveis == null)
+                        memoriaCalculo.Variaveis = new List<MaquinaInequacoesServiceReference.Variavel>();
+
+                    memoriaCalculo.Variaveis.Add(variavel);
+
+                }
+            }
+
+        }
+
+        private KeyValuePair<VariableDataType, object> ParseTipoVariavelValor(string line, string[] valores, string fileName)
+        {
+            VariableDataType varType = VariableDataType.Numeric;
+            object varValue;
+
+            if (valores.Length == 1)
+            {
+                varValue = 0.0;
+            }
+            else
+            {
+                string valorVariavel = valores[1].Trim();
+                if (valorVariavel.StartsWith("\"")) // é string
+                {
+                    string strTemp = string.Empty;
+                    for (int i = 1; i < valores.Length; i++)
+                    {
+                        strTemp += valores[i];
+                    }
+                    strTemp = strTemp.Trim();
+                    if (!strTemp.EndsWith("\""))
+                        throw new Exception("Erro ao carregar memória de cálculo do arquivo [" + fileName + "]. Formato de valor da string na definição de variável inválida em: " + line);
+                    else
+                    {
+                        strTemp = strTemp.Remove(0, 1); // remove " inicial
+                        varValue = strTemp.Remove(strTemp.Length - 1, 1); // remove " final (se tiver no meio, deixa)
+                        varType = VariableDataType.String;
+                    }
+                }
+                else
+                {
+                    varValue = valores[1];
+                    double testDouble = double.MinValue;
+                    bool testBool = true;
+                    DateTime testDateTime = DateTime.Now;
+                    if (double.TryParse(varValue.ToString(), out testDouble))
+                        varType = VariableDataType.Numeric;
+                    else if (bool.TryParse(varValue.ToString(), out testBool))
+                        varType = VariableDataType.Boolean;
+                    else if (DateTime.TryParse(varValue.ToString().Replace("hora(", string.Empty).Replace(")", string.Empty), out testDateTime))
+                    {
+                        varType = VariableDataType.Time;
+                        varValue = testDateTime;
+                    }
+                    else
+                        throw new Exception("Erro ao carregar memória de cálculo do arquivo [" + fileName + "]. Formato de valor na definição de variável inválida em: " + line);
+
+                }
+            }
+
+            KeyValuePair<VariableDataType, object> result = new KeyValuePair<VariableDataType, object>(varType, varValue);
+
+            return result;
         }
 
         /// <summary>
@@ -419,17 +479,77 @@ namespace ONS.Compiler.Tests.ValidacaoLimites
 
                 if (!line.StartsWith("//") && line != string.Empty)
                 {
-                    // separa inequação e bloco de ação: <ineq>,<bloco ação>
-                    string inequacao = line.Substring(0, line.IndexOf(","));
-                    string blocoAcao = line.Substring(line.IndexOf(",")+1);
-                    string[] atribuicoes = blocoAcao.Split(';');
-                    if (atribuicoes.Length == 0)
-                        throw new Exception("Erro ao carregar lista de decisões do arquivo. Formato de linha na definição de atribuições na decisão inválida em: " + blocoAcao);
+                    KeyValuePair<string, string> inequacaoBlocoAcao = ParseInequacaoBlocoAcao(line);
+                    string inequacao = inequacaoBlocoAcao.Key;
+                    string blocoAcao = inequacaoBlocoAcao.Value;
 
                     decisao = new KeyValuePair<string, string>(inequacao, blocoAcao);
                     AtualizarListaDeDecisoes(maquinaInequacoes, decisao);
                 }
             }
+        }
+
+        public void CarregarListaDecisoes(MaquinaInequacoesServiceReference.ListaDecisoes listaDecisoes, string funcao)
+        {
+            //Abre lista de decisões
+            List<string> listaDecisioesOrdenada = new List<string>();
+            string fileName = GetCaminhoBaseArquivosTeste() + @"\ValidacaoLimites\MemoriaCalculo_ListasDecisoes\" + funcao + "-LD.txt";
+            StreamReader sr = new StreamReader(File.OpenRead(fileName));
+            while (sr.Peek() != -1)
+            {
+                string line = sr.ReadLine().Trim();
+
+                if (!line.StartsWith("//") && line != string.Empty)
+                {
+                    KeyValuePair<string, string> inequacaoBlocoAcao = ParseInequacaoBlocoAcao(line);
+                    string inequacao = inequacaoBlocoAcao.Key;
+                    string blocoAcao = inequacaoBlocoAcao.Value;
+
+                    MaquinaInequacoesServiceReference.Decisao decisao = new MaquinaInequacoesServiceReference.Decisao();
+                    decisao.Inequacao = inequacao;
+                    decisao.BlocoDeAcao = blocoAcao;
+
+                    if (listaDecisoes.Decisoes == null)
+                        listaDecisoes.Decisoes = new List<MaquinaInequacoesServiceReference.Decisao>();
+
+                    listaDecisoes.Decisoes.Add(decisao);
+                }
+            }
+        }
+
+        public static MaquinaInequacoesServiceReference.Variavel GetVariavelPorNome(MaquinaInequacoesServiceReference.MemoriaCalculo memoriaCalculo, string nome)
+        {
+            foreach (MaquinaInequacoesServiceReference.Variavel variavel in memoriaCalculo.Variaveis)
+            {
+                if (nome.ToLower().Trim() == variavel.Nome.ToLower().Trim())
+                    return variavel;
+            }
+            return null;
+        }
+
+        public static void SetVariavelValor(MaquinaInequacoesServiceReference.MemoriaCalculo memoriaCalculo, string nome, object varValue)
+        {
+            foreach (MaquinaInequacoesServiceReference.Variavel variavel in memoriaCalculo.Variaveis)
+            {
+                if (nome.ToLower().Trim() == variavel.Nome.ToLower().Trim())
+                {
+                    variavel.Valor = varValue;
+                    return;
+                }
+            }
+        }
+
+        private KeyValuePair<string, string> ParseInequacaoBlocoAcao(string line)
+        {
+            // separa inequação e bloco de ação: <ineq>,<bloco ação>
+            string inequacao = line.Substring(0, line.IndexOf(","));
+            string blocoAcao = line.Substring(line.IndexOf(",") + 1);
+            string[] atribuicoes = blocoAcao.Split(';');
+            if (atribuicoes.Length == 0)
+                throw new Exception("Erro ao carregar lista de decisões do arquivo. Formato de linha na definição de atribuições na decisão inválida em: " + blocoAcao);
+
+            KeyValuePair<string, string> result = new KeyValuePair<string, string>(inequacao, blocoAcao);
+            return result;
         }
 
         /// <summary>

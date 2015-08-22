@@ -141,5 +141,11 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsLocal
             
         }
 
+        public static void AtualizarVariaveisDaMemoriaDeCalculo(MaquinaInequacoesServiceReference.MemoriaCalculo memoriaCalculo, SheetRow_S_SE sheetRow_S_SE)
+        {
+            Mediador.SetVariavelValor(memoriaCalculo, "xcarga_SIN", sheetRow_S_SE.MC_CARGA_SIN);
+
+        }
+
     }
 }

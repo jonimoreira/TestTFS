@@ -128,6 +128,8 @@
     <Compile Include="ValidacaoLimites\UnitTestsLocal\Modulo_Interligacao_SSE_limiteFINBA.cs" />
     <Compile Include="ValidacaoLimites\UnitTestsLocal\Modulo_Interligacao_SSE_LimiteFSE.cs" />
     <Compile Include="ValidacaoLimites\UnitTestsLocal\Modulo_Interligacao_SSE_Limite_RSE.cs" />
+    <Compile Include="ValidacaoLimites\UnitTestsWCF\TestesBasicos.cs" />
+    <Compile Include="ValidacaoLimites\UnitTestsWCF\TestesPlanilhaAba_SEVERAN3.cs" />
     <Compile Include="ValidacaoLimites\ValidacaoLimitesUnitTests.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -336,9 +338,7 @@
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\MaquinaInequacoesServiceReference\" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ValidacaoLimites\UnitTestsWCF\" />
-  </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

@@ -139,5 +139,11 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsLocal
             maquinaInequacoes.CalculationMemory.UpdateVariable("xcarga_SIN", sheetRow_N_NE_SE.MC_CARGASIN);
         }
 
+        public static void AtualizarVariaveisDaMemoriaDeCalculo(MaquinaInequacoesServiceReference.MemoriaCalculo memoriaCalculo, SheetRow_N_NE_SE sheetRow_N_NE_SE)
+        {
+            Mediador.SetVariavelValor(memoriaCalculo, "xlogica24", "Ligada");
+            Mediador.SetVariavelValor(memoriaCalculo, "xcarga_SIN", sheetRow_N_NE_SE.MC_CARGASIN);
+        }
+
     }
 }

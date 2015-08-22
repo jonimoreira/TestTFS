@@ -157,5 +157,15 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsLocal
             
         }
 
+        public static void AtualizarVariaveisDaMemoriaDeCalculo(MaquinaInequacoesServiceReference.MemoriaCalculo memoriaCalculo, SheetRow_SEVERA_N3 sheetRow_SEVERA_N3, SheetRow_S_SE sheetRow_S_SE, SheetRow_N_NE_SE sheetRow_N_NE_SE)
+        {
+            Mediador.SetVariavelValor(memoriaCalculo, "xcargaSIN", sheetRow_S_SE.MC_CARGA_SIN);
+            Mediador.SetVariavelValor(memoriaCalculo, "xcbrava", sheetRow_SEVERA_N3.MC_MqsCanaBrava);
+            Mediador.SetVariavelValor(memoriaCalculo, "xhbo", sheetRow_SEVERA_N3.MC_HBO);
+            Mediador.SetVariavelValor(memoriaCalculo, "xmq_sm", sheetRow_N_NE_SE.MC_SMGerando + sheetRow_N_NE_SE.MC_Maqs_SMCOp);
+            Mediador.SetVariavelValor(memoriaCalculo, "xpercarga", sheetRow_S_SE.LDvalorplanilha_PERIODO_DE_CARGA);
+
+        }
+
     }
 }
