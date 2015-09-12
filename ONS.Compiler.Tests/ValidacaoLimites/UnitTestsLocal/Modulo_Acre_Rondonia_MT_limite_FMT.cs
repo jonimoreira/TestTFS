@@ -137,5 +137,9 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsLocal
             maquinaInequacoes.CalculationMemory.UpdateVariable("ger_Itq_PPdr", sheetRow_ACRO_MT.MC_GeracaoItqPPdr);
         }
 
+        public static void AtualizarVariaveisDaMemoriaDeCalculo(MaquinaInequacoesServiceReference.MemoriaCalculo memoriaCalculo, SheetRow_ACRO_MT sheetRow_ACRO_MT)
+        {
+            Mediador.SetVariavelValor(memoriaCalculo, "ger_Itq_PPdr", sheetRow_ACRO_MT.MC_GeracaoItqPPdr);
+        }
     }
 }

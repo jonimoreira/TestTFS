@@ -123,7 +123,7 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsLocal
 
                 Variable limite = maquinaInequacoes.CalculationMemory["lim"];
 
-                Assert.AreEqual(limite.GetValue(), mediador.linhas_N_NE_SE[i].LDvalorplanilha_LimiteEXPN_SUP);
+                Assert.AreEqual(limite.GetValue(), mediador.linhas_N_NE_SE[i].LDvalorplanilha_LimiteRNE);
             }
         }
         
@@ -143,7 +143,18 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsLocal
             maquinaInequacoes.CalculationMemory.UpdateVariable("xugxingo", sheetRow_N_NE_SE.MC_Xingo_NumUgs);
             maquinaInequacoes.CalculationMemory.UpdateVariable("xlimugx", sheetRow_N_NE_SE.LDvalorplanilha_Xingo_MinMaqs);
         }
-        
+
+        public static void AtualizarVariaveisDaMemoriaDeCalculo(MaquinaInequacoesServiceReference.MemoriaCalculo memoriaCalculo, SheetRow_N_NE_SE sheetRow_N_NE_SE)
+        {
+            Mediador.SetVariavelValor(memoriaCalculo, "xpercarga", sheetRow_N_NE_SE.LDvalorplanilha_PerCargaNNE);
+            Mediador.SetVariavelValor(memoriaCalculo, "xRNE", sheetRow_N_NE_SE.MC_RNE);
+            Mediador.SetVariavelValor(memoriaCalculo, "xEXPN", sheetRow_N_NE_SE.MC_EXP_N);
+            Mediador.SetVariavelValor(memoriaCalculo, "xFSENE", sheetRow_N_NE_SE.MC_FSENE);
+            Mediador.SetVariavelValor(memoriaCalculo, "xEXPSE", sheetRow_N_NE_SE.MC_EXP_SE);
+            Mediador.SetVariavelValor(memoriaCalculo, "x_cargaNE", sheetRow_N_NE_SE.MC_CargaNE);
+            Mediador.SetVariavelValor(memoriaCalculo, "xugxingo", sheetRow_N_NE_SE.MC_Xingo_NumUgs);
+            Mediador.SetVariavelValor(memoriaCalculo, "xlimugx", sheetRow_N_NE_SE.LDvalorplanilha_Xingo_MinMaqs);
+        }
 
     }
 }

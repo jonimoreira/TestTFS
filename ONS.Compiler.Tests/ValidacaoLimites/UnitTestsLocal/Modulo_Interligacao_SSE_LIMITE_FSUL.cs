@@ -137,5 +137,11 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsLocal
             maquinaInequacoes.CalculationMemory.UpdateVariable("xpercarga", sheetRow_S_SE.LDretorno_PERIODO_DE_CARGA);
         }
 
+        public static void AtualizarVariaveisDaMemoriaDeCalculo(MaquinaInequacoesServiceReference.MemoriaCalculo memoriaCalculo, SheetRow_S_SE sheetRow_S_SE)
+        {
+            Mediador.SetVariavelValor(memoriaCalculo, "xpercarga", sheetRow_S_SE.LDretorno_PERIODO_DE_CARGA);
+
+        }
+
     }
 }

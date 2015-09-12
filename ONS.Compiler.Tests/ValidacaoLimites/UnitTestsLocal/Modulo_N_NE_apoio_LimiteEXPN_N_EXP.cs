@@ -139,7 +139,14 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsLocal
             maquinaInequacoes.CalculationMemory.UpdateVariable("xEXPN", sheetRow_N_NE_SE.MC_EXP_N);
             maquinaInequacoes.CalculationMemory.UpdateVariable("xFSENE", sheetRow_N_NE_SE.MC_FSENE);
         }
-        
+
+        public static void AtualizarVariaveisDaMemoriaDeCalculo(MaquinaInequacoesServiceReference.MemoriaCalculo memoriaCalculo, SheetRow_N_NE_SE sheetRow_N_NE_SE)
+        {
+            Mediador.SetVariavelValor(memoriaCalculo, "xpercarga", sheetRow_N_NE_SE.LDvalorplanilha_PerCargaNNE);
+            Mediador.SetVariavelValor(memoriaCalculo, "xRNE", sheetRow_N_NE_SE.MC_RNE);
+            Mediador.SetVariavelValor(memoriaCalculo, "xEXPN", sheetRow_N_NE_SE.MC_EXP_N);
+            Mediador.SetVariavelValor(memoriaCalculo, "xFSENE", sheetRow_N_NE_SE.MC_FSENE);
+        }
 
     }
 }

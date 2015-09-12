@@ -146,5 +146,19 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsLocal
             maquinaInequacoes.CalculationMemory.UpdateVariable("xBtB", sheetRow_ACRO_MT.MC_FBtB);
         }
 
+        public static void AtualizarVariaveisDaMemoriaDeCalculo(MaquinaInequacoesServiceReference.MemoriaCalculo memoriaCalculo, SheetRow_ACRO_MT sheetRow_ACRO_MT)
+        {
+            Mediador.SetVariavelValor(memoriaCalculo, "xFACRO", sheetRow_ACRO_MT.MC_FBtB);
+            Mediador.SetVariavelValor(memoriaCalculo, "xMaqSA", sheetRow_ACRO_MT.MC_UHESantoAntonioNumUGs);
+            Mediador.SetVariavelValor(memoriaCalculo, "xMaqJir", sheetRow_ACRO_MT.MC_UHJirauNumUgs);
+            Mediador.SetVariavelValor(memoriaCalculo, "xilha1", sheetRow_ACRO_MT.MC_UHESantoAntonioGeracaoIlha1);
+            Mediador.SetVariavelValor(memoriaCalculo, "xilha2", sheetRow_ACRO_MT.MC_UHESantoAntonioGeracaoIlha2);
+            Mediador.SetVariavelValor(memoriaCalculo, "xmesq", sheetRow_ACRO_MT.MC_UHESantoAntonioGeracaoMEsqrd);
+            Mediador.SetVariavelValor(memoriaCalculo, "xJirau", sheetRow_ACRO_MT.MC_UHJirauGer);
+            Mediador.SetVariavelValor(memoriaCalculo, "xTR_prov", sheetRow_ACRO_MT.MC_FTRpr);
+            Mediador.SetVariavelValor(memoriaCalculo, "xPOLO1", sheetRow_ACRO_MT.MC_POLO1);
+            Mediador.SetVariavelValor(memoriaCalculo, "xBtB", sheetRow_ACRO_MT.MC_FBtB);
+        }
+
     }
 }

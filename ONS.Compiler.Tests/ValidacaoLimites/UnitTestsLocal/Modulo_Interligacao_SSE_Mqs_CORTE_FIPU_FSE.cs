@@ -138,5 +138,12 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsLocal
             maquinaInequacoes.CalculationMemory.UpdateVariable("xFSE", sheetRow_S_SE.MC_FSE_Programado);
             maquinaInequacoes.CalculationMemory.UpdateVariable("xMqs", sheetRow_S_SE.MC_Mq_60Hz);
         }
+
+        public static void AtualizarVariaveisDaMemoriaDeCalculo(MaquinaInequacoesServiceReference.MemoriaCalculo memoriaCalculo, SheetRow_S_SE sheetRow_S_SE)
+        {
+            Mediador.SetVariavelValor(memoriaCalculo, "xFIV", sheetRow_S_SE.MC_FIV);
+            Mediador.SetVariavelValor(memoriaCalculo, "xFSE", sheetRow_S_SE.MC_FSE_Programado);
+            Mediador.SetVariavelValor(memoriaCalculo, "xMqs", sheetRow_S_SE.MC_Mq_60Hz);
+        }
     }
 }

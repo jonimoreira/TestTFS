@@ -140,5 +140,12 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsLocal
             maquinaInequacoes.CalculationMemory.UpdateVariable("xMaqJir", sheetRow_ACRO_MT.MC_UHJirauNumUgs);
         }
 
+        public static void AtualizarVariaveisDaMemoriaDeCalculo(MaquinaInequacoesServiceReference.MemoriaCalculo memoriaCalculo, SheetRow_ACRO_MT sheetRow_ACRO_MT)
+        {
+            Mediador.SetVariavelValor(memoriaCalculo, "xPolo", sheetRow_ACRO_MT.MC_POLO1);
+            Mediador.SetVariavelValor(memoriaCalculo, "BtB", sheetRow_ACRO_MT.MC_FBtB);
+            Mediador.SetVariavelValor(memoriaCalculo, "xMaqSA", sheetRow_ACRO_MT.MC_UHESantoAntonioNumUGs);
+            Mediador.SetVariavelValor(memoriaCalculo, "xMaqJir", sheetRow_ACRO_MT.MC_UHJirauNumUgs);
+        }
     }
 }

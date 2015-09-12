@@ -100,18 +100,7 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsLocal
             Assert.AreEqual(true, true);
 
         }
-
-        /// <summary>
-        /// Atualiza as variáveis da memória de cálculo de acordo com os valores contidos nos parâmetros.
-        /// </summary>
-        /// <param name="maquinaInequacoes"></param>
-        /// <param name="sheetRow_S_SE"></param>
-        public void AtualizarVariaveisDaMemoriaDeCalculo(InequationEngine maquinaInequacoes, SheetRow_N_NE_SE sheetRow_N_NE_SE)
-        {
-            maquinaInequacoes.CalculationMemory.UpdateVariable("xRNE", sheetRow_N_NE_SE.MC_RNE);
-            maquinaInequacoes.CalculationMemory.UpdateVariable("xger_xingo", sheetRow_N_NE_SE.MC_Xingo_Gera);
-        }
-
+        
         /// <summary>
         /// Testa a execução da lista de decisões com base nas variáveis da memória de cálculo e seus valores provenientes da planilha
         /// </summary>
@@ -138,7 +127,24 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsLocal
                 Assert.AreEqual(maq.GetValue(), mediador.linhas_N_NE_SE[i].LDvalorplanilha_Xingo_MinMaqs);
             }
         }
-        
+
+
+        /// <summary>
+        /// Atualiza as variáveis da memória de cálculo de acordo com os valores contidos nos parâmetros.
+        /// </summary>
+        /// <param name="maquinaInequacoes"></param>
+        /// <param name="sheetRow_S_SE"></param>
+        public void AtualizarVariaveisDaMemoriaDeCalculo(InequationEngine maquinaInequacoes, SheetRow_N_NE_SE sheetRow_N_NE_SE)
+        {
+            maquinaInequacoes.CalculationMemory.UpdateVariable("xRNE", sheetRow_N_NE_SE.MC_RNE);
+            maquinaInequacoes.CalculationMemory.UpdateVariable("xger_xingo", sheetRow_N_NE_SE.MC_Xingo_Gera);
+        }
+
+        public static void AtualizarVariaveisDaMemoriaDeCalculo(MaquinaInequacoesServiceReference.MemoriaCalculo memoriaCalculo, SheetRow_N_NE_SE sheetRow_N_NE_SE)
+        {
+            Mediador.SetVariavelValor(memoriaCalculo, "xRNE", sheetRow_N_NE_SE.MC_RNE);
+            Mediador.SetVariavelValor(memoriaCalculo, "xger_xingo", sheetRow_N_NE_SE.MC_Xingo_Gera);
+        }
 
     }
 }

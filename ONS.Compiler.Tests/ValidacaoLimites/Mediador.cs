@@ -185,7 +185,7 @@ namespace ONS.Compiler.Tests.ValidacaoLimites
                 string[] valores = line.Split(',');
                 double primeiraColunaComValor = 0.0;
 
-                if (valores.Length > 3 && double.TryParse(valores[3], out primeiraColunaComValor))
+                if (valores.Length > 3 && double.TryParse(valores[4], out primeiraColunaComValor))
                 {
 
                     SheetRow_ACRO_MT sheetRow_ACRO_MT = new SheetRow_ACRO_MT();
@@ -200,25 +200,27 @@ namespace ONS.Compiler.Tests.ValidacaoLimites
                     sheetRow_ACRO_MT.LDvalorplanilha_LimitePOLO = double.Parse(valores[15]);
                     sheetRow_ACRO_MT.LDvalorplanilha_LimiteSAJirau = double.Parse(valores[16]);
 
-                    sheetRow_ACRO_MT.MC_GeracaoItqPPdr = double.Parse(valores[19]);
+                    sheetRow_ACRO_MT.MC_GeracaoItqPPdr = double.Parse(valores[22]);
                     sheetRow_ACRO_MT.MC_FACRO = double.Parse(valores[4]);
+                    sheetRow_ACRO_MT.MC_FluxoSamAq = double.Parse(valores[5]);
                     sheetRow_ACRO_MT.MC_FBtB = double.Parse(valores[6]);
                     sheetRow_ACRO_MT.MC_FTRpr = double.Parse(valores[7]);
                     sheetRow_ACRO_MT.MC_POLO1 = double.Parse(valores[8]);
-                    sheetRow_ACRO_MT.MC_UHESantoAntonioNumUGs = double.Parse(valores[20]);
-                    sheetRow_ACRO_MT.MC_UHESantoAntonioGerTotal = double.Parse(valores[20]);
-                    sheetRow_ACRO_MT.MC_UHESantoAntonioGeracaoIlha1 = double.Parse(valores[22]);
-                    sheetRow_ACRO_MT.MC_UHESantoAntonioGeracaoIlha2 = double.Parse(valores[23]);
-                    sheetRow_ACRO_MT.MC_UHESantoAntonioGeracaoMEsqrd = double.Parse(valores[24]);
-                    sheetRow_ACRO_MT.MC_GerTNorteII = double.Parse(valores[25]);
-                    sheetRow_ACRO_MT.MC_UHJirauGer = double.Parse(valores[26]);
-                    sheetRow_ACRO_MT.MC_UHJirauNumUgs = double.Parse(valores[27]);
+                    sheetRow_ACRO_MT.MC_UHESantoAntonioNumUGs = double.Parse(valores[23]);
+                    sheetRow_ACRO_MT.MC_UHESantoAntonioGerTotal = double.Parse(valores[24]);
+                    sheetRow_ACRO_MT.MC_UHESantoAntonioGeracaoIlha1 = double.Parse(valores[25]);
+                    sheetRow_ACRO_MT.MC_UHESantoAntonioGeracaoIlha2 = double.Parse(valores[26]);
+                    sheetRow_ACRO_MT.MC_UHESantoAntonioGeracaoMEsqrd = double.Parse(valores[27]);
+                    sheetRow_ACRO_MT.MC_GerTNorteII = double.Parse(valores[28]);
+                    sheetRow_ACRO_MT.MC_UHJirauGer = double.Parse(valores[29]);
+                    sheetRow_ACRO_MT.MC_UHJirauNumUgs = double.Parse(valores[30]);
 
                     linhas_ACRO_MT.Add(iLinhaIdx, sheetRow_ACRO_MT);
                     iLinhaIdx++;
                 }
-
             }
+
+            if (linhas_ACRO_MT.Count == 0) throw new Exception("Lista de valores de linhas_ACRO_MT não foi carregada. Verificar arquivo: " + fileName);
         }
 
         public void CarregarDados_SheetRow_N_NE_SE()
@@ -271,6 +273,7 @@ namespace ONS.Compiler.Tests.ValidacaoLimites
                     sheetRow_N_NE_SE.LDvalorplanilha_LimiteFSENE = double.Parse(valores[29]);
                     sheetRow_N_NE_SE.LDvalorplanilha_LimFNS_N2 = double.Parse(valores[30]);
                     sheetRow_N_NE_SE.LDvalorplanilha_LimFSM_N2_Inf = double.Parse(valores[31]);
+                    sheetRow_N_NE_SE.LDvalorplanilha_LimFSM_N2_Sup = double.Parse(valores[32]);
                     
                     sheetRow_N_NE_SE.LDvalorplanilha_Xingo_MinMaqs = double.Parse(valores[33]);
                     sheetRow_N_NE_SE.LDvalorplanilha_PerCargaNNE = valores[34].Trim();

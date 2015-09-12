@@ -138,5 +138,11 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsLocal
             maquinaInequacoes.CalculationMemory.UpdateVariable("xGarabi2", sheetRow_SUL.MC_Grbi_II);
         }
 
+        public static void AtualizarVariaveisDaMemoriaDeCalculo(MaquinaInequacoesServiceReference.MemoriaCalculo memoriaCalculo, SheetRow_SUL sheetRow_SUL)
+        {
+            Mediador.SetVariavelValor(memoriaCalculo, "xGarabi1", sheetRow_SUL.MC_Grbi_I);
+            Mediador.SetVariavelValor(memoriaCalculo, "xGarabi2", sheetRow_SUL.MC_Grbi_II);
+        }
+
     }
 }

@@ -75,7 +75,7 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsLocal
 
             Variable limite = maquinaInequacoes.CalculationMemory["lim"];
 
-            Assert.AreEqual(limite.GetValue(), 99999);
+            Assert.AreEqual(limite.GetValue(), 99999.0);
         }
         
         /// <summary>
@@ -141,5 +141,13 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsLocal
             maquinaInequacoes.CalculationMemory.UpdateVariable("xGerJir", sheetRow_ACRO_MT.MC_UHJirauGer);
         }
 
+        public static void AtualizarVariaveisDaMemoriaDeCalculo(MaquinaInequacoesServiceReference.MemoriaCalculo memoriaCalculo, SheetRow_ACRO_MT sheetRow_ACRO_MT)
+        {
+            Mediador.SetVariavelValor(memoriaCalculo, "xPolo", sheetRow_ACRO_MT.MC_POLO1);
+            Mediador.SetVariavelValor(memoriaCalculo, "xTR_prov", sheetRow_ACRO_MT.MC_FTRpr);
+            Mediador.SetVariavelValor(memoriaCalculo, "xBtB", sheetRow_ACRO_MT.MC_FBtB);
+            Mediador.SetVariavelValor(memoriaCalculo, "xGerSA", sheetRow_ACRO_MT.MC_UHESantoAntonioGerTotal);
+            Mediador.SetVariavelValor(memoriaCalculo, "xGerJir", sheetRow_ACRO_MT.MC_UHJirauGer);
+        }
     }
 }

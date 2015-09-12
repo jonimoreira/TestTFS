@@ -140,5 +140,10 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsLocal
             maquinaInequacoes.CalculationMemory.UpdateVariable("xcargasul", sheetRow_S_SE.MC_CARGA_SUL);
         }
 
+        public static void AtualizarVariaveisDaMemoriaDeCalculo(MaquinaInequacoesServiceReference.MemoriaCalculo memoriaCalculo, SheetRow_S_SE sheetRow_S_SE)
+        {
+            Mediador.SetVariavelValor(memoriaCalculo, "xrsul", sheetRow_S_SE.MC_RSUL);
+            Mediador.SetVariavelValor(memoriaCalculo, "xcargasul", sheetRow_S_SE.MC_CARGA_SUL);
+        }
     }
 }

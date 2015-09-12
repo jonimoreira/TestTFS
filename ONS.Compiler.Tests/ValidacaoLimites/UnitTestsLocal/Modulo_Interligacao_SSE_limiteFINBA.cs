@@ -147,5 +147,18 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsLocal
             maquinaInequacoes.CalculationMemory.UpdateVariable("xJLGG", sheetRow_SUL.MC_J_Lacerda_GG);
 
         }
+
+        public static void AtualizarVariaveisDaMemoriaDeCalculo(MaquinaInequacoesServiceReference.MemoriaCalculo memoriaCalculo, SheetRow_S_SE sheetRow_S_SE, SheetRow_SUL sheetRow_SUL)
+        {
+            Mediador.SetVariavelValor(memoriaCalculo, "xrsul", sheetRow_S_SE.MC_RSUL);
+            Mediador.SetVariavelValor(memoriaCalculo, "xcargasul", sheetRow_S_SE.MC_CARGA_SUL);
+            Mediador.SetVariavelValor(memoriaCalculo, "xugarauc", sheetRow_SUL.MC_UGs_Gerando_Araucaria);
+            Mediador.SetVariavelValor(memoriaCalculo, "x_refFRS_Ger", sheetRow_SUL.LD_ValorReferenciaFRS_Usinas);
+            Mediador.SetVariavelValor(memoriaCalculo, "xFRS_GerUSs", sheetRow_SUL.MC_FRS - sheetRow_S_SE.MC_Gera_Usinas);
+            Mediador.SetVariavelValor(memoriaCalculo, "xJLP", sheetRow_SUL.MC_J_Lacerda_P);
+            Mediador.SetVariavelValor(memoriaCalculo, "xJLM", sheetRow_SUL.MC_J_Lacerda_M);
+            Mediador.SetVariavelValor(memoriaCalculo, "xJLG", sheetRow_SUL.MC_J_Lacerda_G);
+            Mediador.SetVariavelValor(memoriaCalculo, "xJLGG", sheetRow_SUL.MC_J_Lacerda_GG);
+        }
     }
 }

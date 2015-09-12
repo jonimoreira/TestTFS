@@ -15,6 +15,7 @@ namespace ONS.Compiler.Tests.ValidacaoLimites
         public double MC_FTRpr = 0.0;
         public double MC_POLO1 = 0.0;
         public double MC_FACRO = 0.0;
+        public double MC_FluxoSamAq = 0.0;
         public double MC_UHESantoAntonioNumUGs = 0.0;
         public double MC_UHESantoAntonioGerTotal = 0.0;
         public double MC_UHESantoAntonioGeracaoIlha1 = 0.0;

@@ -138,5 +138,11 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsLocal
             maquinaInequacoes.CalculationMemory.UpdateVariable("xpercarga", 0.0);
         }
 
+        public static void AtualizarVariaveisDaMemoriaDeCalculo(MaquinaInequacoesServiceReference.MemoriaCalculo memoriaCalculo, SheetRow_N_NE_SE sheetRow_N_NE_SE)
+        {
+            Mediador.SetVariavelValor(memoriaCalculo, "xFNS", sheetRow_N_NE_SE.MC_FNS);
+            Mediador.SetVariavelValor(memoriaCalculo, "xpercarga", 0.0);
+        }
+
     }
 }

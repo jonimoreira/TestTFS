@@ -138,5 +138,13 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsLocal
             maquinaInequacoes.CalculationMemory.UpdateVariable("xNMaqIpu", sheetRow_S_SE.MC_Mq_60Hz);
             maquinaInequacoes.CalculationMemory.UpdateVariable("xGerIPU", sheetRow_S_SE.MC_GIPU_60Hz);
         }
+
+        public static void AtualizarVariaveisDaMemoriaDeCalculo(MaquinaInequacoesServiceReference.MemoriaCalculo memoriaCalculo, SheetRow_S_SE sheetRow_S_SE)
+        {
+            Mediador.SetVariavelValor(memoriaCalculo, "xpercarga", sheetRow_S_SE.LDretorno_PERIODO_DE_CARGA);
+            Mediador.SetVariavelValor(memoriaCalculo, "xNMaqIpu", sheetRow_S_SE.MC_Mq_60Hz);
+            Mediador.SetVariavelValor(memoriaCalculo, "xGerIPU", sheetRow_S_SE.MC_GIPU_60Hz);
+        }
+
     }
 }

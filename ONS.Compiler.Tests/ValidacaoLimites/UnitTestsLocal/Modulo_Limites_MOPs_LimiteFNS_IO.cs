@@ -151,5 +151,20 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsLocal
 
         }
 
+        public static void AtualizarVariaveisDaMemoriaDeCalculo(MaquinaInequacoesServiceReference.MemoriaCalculo memoriaCalculo, SheetRow_N_NE_SE sheetRow_N_NE_SE, SheetRow_S_SE sheetRow_S_SE)
+        {
+            Mediador.SetVariavelValor(memoriaCalculo, "xcarga_SIN", sheetRow_N_NE_SE.MC_CARGASIN);
+            Mediador.SetVariavelValor(memoriaCalculo, "xMqIPU", sheetRow_S_SE.LDvalorplanilha_Mqs_crt_IPU_max);
+            Mediador.SetVariavelValor(memoriaCalculo, "xMqSM", sheetRow_N_NE_SE.MC_SMGerando);
+            Mediador.SetVariavelValor(memoriaCalculo, "xSM_cs", sheetRow_N_NE_SE.MC_Maqs_SMCOp);
+            Mediador.SetVariavelValor(memoriaCalculo, "xMqLJ", sheetRow_N_NE_SE.MC_Maqs_Laj);
+            Mediador.SetVariavelValor(memoriaCalculo, "xMqPX", sheetRow_N_NE_SE.MC_Maqs_Px);
+            Mediador.SetVariavelValor(memoriaCalculo, "xECE_IPU_TUC", sheetRow_N_NE_SE.LDvalorplanilha_ECETUCIPU);
+            Mediador.SetVariavelValor(memoriaCalculo, "xpercarga", sheetRow_N_NE_SE.LDvalorplanilha_PerCargaNNE);
+            Mediador.SetVariavelValor(memoriaCalculo, "xFSM", sheetRow_N_NE_SE.MC_FSM);
+            Mediador.SetVariavelValor(memoriaCalculo, "xMW_ug_ipu", sheetRow_S_SE.MC_GIPU_60Hz / sheetRow_S_SE.MC_Mq_60Hz);
+            Mediador.SetVariavelValor(memoriaCalculo, "xFSENE", sheetRow_N_NE_SE.MC_FSENE);
+        }
+
     }
 }

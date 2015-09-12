@@ -142,5 +142,10 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsLocal
             //maquinaInequacoes.CalculationMemory.UpdateVariable("Hverao", Hverao);
         }
 
+        public static void AtualizarVariaveisDaMemoriaDeCalculo(MaquinaInequacoesServiceReference.MemoriaCalculo memoriaCalculo, SheetRow_N_NE_SE sheetRow_N_NE_SE, string xDiaSemana, string xTipo, string Hverao)
+        {
+            Mediador.SetVariavelValor(memoriaCalculo, "xhora", CustomFunctions.Hora(sheetRow_N_NE_SE.PK_HoraInicFim.Key + ":00"));
+        }
+
     }
 }

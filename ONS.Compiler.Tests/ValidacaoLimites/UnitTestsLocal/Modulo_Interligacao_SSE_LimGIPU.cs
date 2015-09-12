@@ -136,6 +136,9 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsLocal
         {
             maquinaInequacoes.CalculationMemory.UpdateVariable("xmaq60", sheetRow_S_SE.MC_Mq_60Hz);
         }
-
+        public static void AtualizarVariaveisDaMemoriaDeCalculo(MaquinaInequacoesServiceReference.MemoriaCalculo memoriaCalculo, SheetRow_S_SE sheetRow_S_SE)
+        {
+            Mediador.SetVariavelValor(memoriaCalculo, "xmaq60", sheetRow_S_SE.MC_Mq_60Hz);
+        }
     }
 }

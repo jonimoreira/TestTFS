@@ -123,7 +123,7 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsLocal
 
                 Variable limite = maquinaInequacoes.CalculationMemory["lim"];
 
-                Assert.AreEqual(limite.GetValue(), mediador.linhas_ACRO_MT[i].LDvalorplanilha_Limite_FMT);
+                Assert.AreEqual(limite.GetValue(), mediador.linhas_ACRO_MT[i].LDvalorplanilha_Lim_FACROSup);
             }
         }
 
@@ -135,6 +135,11 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsLocal
         public void AtualizarVariaveisDaMemoriaDeCalculo(InequationEngine maquinaInequacoes, SheetRow_ACRO_MT sheetRow_ACRO_MT)
         {
             maquinaInequacoes.CalculationMemory.UpdateVariable("xBtB", sheetRow_ACRO_MT.MC_GeracaoItqPPdr);
+        }
+
+        public static void AtualizarVariaveisDaMemoriaDeCalculo(MaquinaInequacoesServiceReference.MemoriaCalculo memoriaCalculo, SheetRow_ACRO_MT sheetRow_ACRO_MT)
+        {
+            Mediador.SetVariavelValor(memoriaCalculo, "xBtB", sheetRow_ACRO_MT.MC_GeracaoItqPPdr);
         }
 
     }

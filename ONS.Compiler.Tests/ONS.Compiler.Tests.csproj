@@ -130,6 +130,10 @@
     <Compile Include="ValidacaoLimites\UnitTestsLocal\Modulo_Interligacao_SSE_Limite_RSE.cs" />
     <Compile Include="ValidacaoLimites\UnitTestsWCF\TestesBasicos.cs" />
     <Compile Include="ValidacaoLimites\UnitTestsWCF\TestesPlanilhaAba_SEVERAN3.cs" />
+    <Compile Include="ValidacaoLimites\UnitTestsWCF\TestesPlanilhaAba_N_NE_SE.cs" />
+    <Compile Include="ValidacaoLimites\UnitTestsWCF\TestesPlanilhaAba_S_SE.cs" />
+    <Compile Include="ValidacaoLimites\UnitTestsWCF\TestesPlanilhaAba_SUL.cs" />
+    <Compile Include="ValidacaoLimites\UnitTestsWCF\TestesPlanilhaAba_ACR_MT.cs" />
     <Compile Include="ValidacaoLimites\ValidacaoLimitesUnitTests.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -327,6 +331,13 @@
     </None>
     <None Include="Service References\MaquinaInequacoesServiceReference\MaquinaInequacoesService2.xsd">
       <SubType>Designer</SubType>
+    </None>
+    <None Include="ValidacaoLimites\LoadTest1.loadtest" />
+    <None Include="ValidacaoLimites\LoadTest2.loadtest">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ValidacaoLimites\LoadTest3.loadtest">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>

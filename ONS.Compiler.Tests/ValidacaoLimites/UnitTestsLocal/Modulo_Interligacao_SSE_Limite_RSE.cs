@@ -142,5 +142,17 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsLocal
             maquinaInequacoes.CalculationMemory.UpdateVariable("xpercarga", sheetRow_S_SE.LDretorno_PERIODO_DE_CARGA);
             
         }
+
+        public static void AtualizarVariaveisDaMemoriaDeCalculo(MaquinaInequacoesServiceReference.MemoriaCalculo memoriaCalculo, SheetRow_S_SE sheetRow_S_SE)
+        {
+            Mediador.SetVariavelValor(memoriaCalculo, "xelo", sheetRow_S_SE.MC_POT_ELO_CC);
+            //Mediador.SetVariavelValor(memoriaCalculo, "xangra", sheetRow_SUL.MC_UGs_Gerando_Araucaria);
+            Mediador.SetVariavelValor(memoriaCalculo, "xMaq", sheetRow_S_SE.MC_Mq_60Hz);
+            Mediador.SetVariavelValor(memoriaCalculo, "xGerIPU", sheetRow_S_SE.MC_GIPU_60Hz);
+            Mediador.SetVariavelValor(memoriaCalculo, "xrsul", sheetRow_S_SE.MC_RSUL);
+            Mediador.SetVariavelValor(memoriaCalculo, "xpercarga", sheetRow_S_SE.LDretorno_PERIODO_DE_CARGA);
+            
+        }
+
     }
 }

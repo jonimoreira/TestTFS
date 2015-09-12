@@ -143,5 +143,10 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsLocal
 
         }
 
+        public static void AtualizarVariaveisDaMemoriaDeCalculo(MaquinaInequacoesServiceReference.MemoriaCalculo memoriaCalculo, SheetRow_N_NE_SE sheetRow_N_NE_SE, SheetRow_S_SE sheetRow_S_SE)
+        {
+            Mediador.SetVariavelValor(memoriaCalculo, "xEXPSE", sheetRow_N_NE_SE.MC_EXP_SE);
+            Mediador.SetVariavelValor(memoriaCalculo, "xugSM", sheetRow_N_NE_SE.MC_SMGerando);
+            Mediador.SetVariavelValor(memoriaCalculo, "xpercarga", sheetRow_S_SE.LDvalorplanilha_PERIODO_DE_CARGA);        }
     }
 }

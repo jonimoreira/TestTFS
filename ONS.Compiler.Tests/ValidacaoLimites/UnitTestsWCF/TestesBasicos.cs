@@ -7,7 +7,7 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsWCF
     [TestClass]
     public class TestesBasicos
     {
-        private string exceptionServicoNaoAtivo = "O serviço parece não estar ativo, verifique se o caminho é válido.";
+        public static string MsgExceptionServicoNaoAtivo = "O serviço parece não estar ativo, verifique se o caminho é válido.";
 
         [TestMethod]
         public void ChamarServicoSimples()
@@ -30,7 +30,7 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsWCF
             catch (Exception iEx)
             {
                 if (iEx is System.ServiceModel.EndpointNotFoundException)
-                    throw new Exception(exceptionServicoNaoAtivo, iEx);
+                    throw new Exception(MsgExceptionServicoNaoAtivo, iEx);
                 else
                 {
                     if (serviceClient != null && serviceClient.State != System.ServiceModel.CommunicationState.Closed)
@@ -81,7 +81,7 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsWCF
             catch (Exception iEx)
             {
                 if (iEx is System.ServiceModel.EndpointNotFoundException)
-                    throw new Exception(exceptionServicoNaoAtivo, iEx);
+                    throw new Exception(MsgExceptionServicoNaoAtivo, iEx);
                 else
                 {
                     if (serviceClient != null && serviceClient.State != System.ServiceModel.CommunicationState.Closed)
