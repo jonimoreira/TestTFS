@@ -66,12 +66,12 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsWCF
 
             try
             {
-                for (int i = 0; i < mediador.linhas_N_NE_SE.Count; i++)
+                for (int i = 0; i < mediador.linhas_S_SE.Count; i++)
                 {
                     Modulo_Limites_MOPs_LIM_FSE_n3.AtualizarVariaveisDaMemoriaDeCalculo(memoriaCalculo, mediador.linhas_SEVERA_N3[i], mediador.linhas_S_SE[i]);
                     memoriaCalculo = serviceClient.ExecutarObjeto(memoriaCalculo, listaDecisoes);
 
-                    Assert.AreEqual(Mediador.GetVariavelPorNome(memoriaCalculo, "lim").Valor, mediador.linhas_SEVERA_N3[i].LDvalorplanilha_LIMITGERIPU);
+                    Assert.AreEqual(Mediador.GetVariavelPorNome(memoriaCalculo, "lim").Valor, mediador.linhas_SEVERA_N3[i].LDvalorplanilha_LIM_FSE_n3);
                 }
 
             }
@@ -107,12 +107,12 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsWCF
 
             try
             {
-                for (int i = 0; i < mediador.linhas_N_NE_SE.Count; i++)
+                for (int i = 0; i < mediador.linhas_S_SE.Count; i++)
                 {
                     Modulo_Limites_MOPs_LIM_RSE_n3.AtualizarVariaveisDaMemoriaDeCalculo(memoriaCalculo, mediador.linhas_SEVERA_N3[i], mediador.linhas_S_SE[i]);
                     memoriaCalculo = serviceClient.ExecutarObjeto(memoriaCalculo, listaDecisoes);
 
-                    Assert.AreEqual(Mediador.GetVariavelPorNome(memoriaCalculo, "lim").Valor, mediador.linhas_SEVERA_N3[i].LDvalorplanilha_LIM_FSE_n3);
+                    Assert.AreEqual(Mediador.GetVariavelPorNome(memoriaCalculo, "lim").Valor, mediador.linhas_SEVERA_N3[i].LDvalorplanilha_LIM_RSE_n3);
                 }
 
             }

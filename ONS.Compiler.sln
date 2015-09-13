@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ONS.Compiler.Tests", "ONS.C
 		{1DF8BCD5-1DDE-440F-84CB-96DFCCBF69CD} = {1DF8BCD5-1DDE-440F-84CB-96DFCCBF69CD}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ONS.MaquinaInequacoes.Service.SelfHost", "ONS.MaquinaInequacoes.Service.SelfHost\ONS.MaquinaInequacoes.Service.SelfHost.csproj", "{AB3DDC86-5ECC-4558-A854-32214E9FE9BE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +55,10 @@ Global
 		{895FEA17-019F-4683-A9E5-853909D74CE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{895FEA17-019F-4683-A9E5-853909D74CE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{895FEA17-019F-4683-A9E5-853909D74CE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB3DDC86-5ECC-4558-A854-32214E9FE9BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB3DDC86-5ECC-4558-A854-32214E9FE9BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB3DDC86-5ECC-4558-A854-32214E9FE9BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB3DDC86-5ECC-4558-A854-32214E9FE9BE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

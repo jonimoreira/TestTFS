@@ -109,7 +109,7 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsWCF
                     Modulo_RACRO_Limite_Inf_FACRO.AtualizarVariaveisDaMemoriaDeCalculo(memoriaCalculo, mediador.linhas_ACRO_MT[i]);
                     memoriaCalculo = serviceClient.ExecutarObjeto(memoriaCalculo, listaDecisoes);
 
-                    Assert.AreEqual(Mediador.GetVariavelPorNome(memoriaCalculo, "lim").Valor, mediador.linhas_ACRO_MT[i].LDvalorplanilha_Lim_FACROInf);
+                    Assert.AreEqual(Math.Round((double)Mediador.GetVariavelPorNome(memoriaCalculo, "lim").Valor,0), Math.Round((double)mediador.linhas_ACRO_MT[i].LDvalorplanilha_Lim_FACROInf,0));
                 }
 
             }
@@ -229,7 +229,7 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsWCF
                     Modulo_RACRO_Limite_TRprov.AtualizarVariaveisDaMemoriaDeCalculo(memoriaCalculo, mediador.linhas_ACRO_MT[i]);
                     memoriaCalculo = serviceClient.ExecutarObjeto(memoriaCalculo, listaDecisoes);
 
-                    Assert.AreEqual(Mediador.GetVariavelPorNome(memoriaCalculo, "lim").Valor, mediador.linhas_ACRO_MT[i].LDvalorplanilha_LimiteFTRpr);
+                    Assert.AreEqual(Math.Round((double)Mediador.GetVariavelPorNome(memoriaCalculo, "lim").Valor,0), Math.Round((double)mediador.linhas_ACRO_MT[i].LDvalorplanilha_LimiteFTRpr),0);
                 }
 
             }

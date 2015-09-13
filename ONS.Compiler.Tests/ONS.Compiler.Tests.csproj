@@ -332,12 +332,44 @@
     <None Include="Service References\MaquinaInequacoesServiceReference\MaquinaInequacoesService2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="ValidacaoLimites\LoadTest1.loadtest" />
-    <None Include="ValidacaoLimites\LoadTest2.loadtest">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Include="ValidacaoLimites\LoadTest3.loadtest">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ValidacaoLimites\UnitTestsLocal\PlanilhaAba_SUL_ExecucaoComDadosLocal.orderedtest">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ValidacaoLimites\UnitTestsLocal\PlanilhaAba_SEVERAN3_ExecucaoComDadosLocal.orderedtest">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ValidacaoLimites\UnitTestsLocal\PlanilhaAba_S_SE_ExecucaoComDadosLocal.orderedtest">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ValidacaoLimites\UnitTestsLocal\PlanilhaAba_N_NE_SE_ExecucaoComDadosLocal.orderedtest">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ValidacaoLimites\UnitTestsLocal\PlanilhaAba_ACR_MT_ExecucaoComDadosLocal.orderedtest">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ValidacaoLimites\UnitTestsLocal\PlanilhaTodasAbasExecucaoComDadosLocal.orderedtest">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ValidacaoLimites\UnitTestsWCF\PlanilhaAba_SUL_ExecucaoComDadosWCF.orderedtest">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ValidacaoLimites\UnitTestsWCF\PlanilhaAba_SEVERAN3_ExecucaoComDadosWCF.orderedtest">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ValidacaoLimites\UnitTestsWCF\PlanilhaAba_S_SE_ExecucaoComDadosWCF.orderedtest">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ValidacaoLimites\UnitTestsWCF\PlanilhaAba_N_NE_SE_ExecucaoComDadosWCF.orderedtest">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ValidacaoLimites\UnitTestsWCF\PlanilhaAba_ACR_MT_ExecucaoComDadosWCF.orderedtest">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ValidacaoLimites\UnitTestsWCF\PlanilhaTodasAbasExecucaoComDadosWCF.orderedtest">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>

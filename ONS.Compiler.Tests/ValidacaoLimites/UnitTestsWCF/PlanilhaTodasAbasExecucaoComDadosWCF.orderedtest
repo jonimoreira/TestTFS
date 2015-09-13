@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<OrderedTest name="PlanilhaTodasAbasExecucaoComDadosWCF" storage="c:\projects\github\onscompiler\main\src\ons.compiler\ons.compiler.tests\validacaolimites\unittestswcf\planilhatodasabasexecucaocomdadoswcf.orderedtest" id="93cf7b12-9a85-478d-be56-3351898a01c9" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestLinks>
+    <TestLink id="fbef631f-81a9-4c1f-b535-fd14fab30909" name="PlanilhaAba_ACR_MT_ExecucaoComDadosWCF" storage="planilhaaba_acr_mt_execucaocomdadoswcf.orderedtest" type="Microsoft.VisualStudio.TestTools.TestTypes.Ordered.AutoSuite, Microsoft.VisualStudio.QualityTools.Tips.OrderedTest.ObjectModel,   PublicKeyToken=b03f5f7f11d50a3a" />
+  </TestLinks>
+</OrderedTest>

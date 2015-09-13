@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<OrderedTest name="PlanilhaTodasAbasExecucaoComDadosLocal" storage="c:\projects\github\onscompiler\main\src\ons.compiler\ons.compiler.tests\validacaolimites\unittestslocal\planilhatodasabasexecucaocomdadoslocal.orderedtest" id="b0aaf3ad-ccc1-469e-9cb5-6176df491ce2" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestLinks>
+    <TestLink id="c2c5d950-570b-4f11-80db-8423cf25c04e" name="PlanilhaAba_ACR_MT_ExecucaoComDadosLocal" storage="planilhaaba_acr_mt_execucaocomdadoslocal.orderedtest" type="Microsoft.VisualStudio.TestTools.TestTypes.Ordered.AutoSuite, Microsoft.VisualStudio.QualityTools.Tips.OrderedTest.ObjectModel,   PublicKeyToken=b03f5f7f11d50a3a" />
+    <TestLink id="6bf442c5-4c5c-4406-8dfa-9f5edbbacbef" name="PlanilhaAba_N_NE_SE_ExecucaoComDadosLocal" storage="planilhaaba_n_ne_se_execucaocomdadoslocal.orderedtest" type="Microsoft.VisualStudio.TestTools.TestTypes.Ordered.AutoSuite, Microsoft.VisualStudio.QualityTools.Tips.OrderedTest.ObjectModel,   PublicKeyToken=b03f5f7f11d50a3a" />
+    <TestLink id="1ab2cf09-036d-461d-9933-3a35c6d053c4" name="PlanilhaAba_S_SE_ExecucaoComDadosLocal" storage="planilhaaba_s_se_execucaocomdadoslocal.orderedtest" type="Microsoft.VisualStudio.TestTools.TestTypes.Ordered.AutoSuite, Microsoft.VisualStudio.QualityTools.Tips.OrderedTest.ObjectModel,   PublicKeyToken=b03f5f7f11d50a3a" />
+    <TestLink id="e42c8c47-5ad0-4aa0-9eac-424442567101" name="PlanilhaAba_SEVERAN3_ExecucaoComDadosLocal" storage="planilhaaba_severan3_execucaocomdadoslocal.orderedtest" type="Microsoft.VisualStudio.TestTools.TestTypes.Ordered.AutoSuite, Microsoft.VisualStudio.QualityTools.Tips.OrderedTest.ObjectModel,   PublicKeyToken=b03f5f7f11d50a3a" />
+    <TestLink id="1d6ed123-82aa-4722-b254-34f799015cf8" name="PlanilhaAba_SUL_ExecucaoComDadosLocal" storage="planilhaaba_sul_execucaocomdadoslocal.orderedtest" type="Microsoft.VisualStudio.TestTools.TestTypes.Ordered.AutoSuite, Microsoft.VisualStudio.QualityTools.Tips.OrderedTest.ObjectModel,   PublicKeyToken=b03f5f7f11d50a3a" />
+  </TestLinks>
+</OrderedTest>

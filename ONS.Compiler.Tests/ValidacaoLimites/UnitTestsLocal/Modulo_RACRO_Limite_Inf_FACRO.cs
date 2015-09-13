@@ -123,7 +123,7 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsLocal
 
                 Variable limite = maquinaInequacoes.CalculationMemory["lim"];
 
-                Assert.AreEqual(limite.GetValue(), mediador.linhas_ACRO_MT[i].LDvalorplanilha_Lim_FACROInf);
+                Assert.AreEqual(Math.Round((double)limite.GetValue(),0), Math.Round((double)mediador.linhas_ACRO_MT[i].LDvalorplanilha_Lim_FACROInf,0));
             }
         }
 
