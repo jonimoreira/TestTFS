@@ -76,6 +76,11 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsLocal
             Variable limite = maquinaInequacoes.CalculationMemory["lim"];
             Variable limiteTexto = maquinaInequacoes.CalculationMemory["limTexto"];
 
+            /*
+            double result = double.MinValue;
+            double.TryParse(limiteTexto.GetValue().ToString().Trim(), out result);
+            Assert.AreEqual(limite.GetValue(), 0.0);
+            */
             if (limiteTexto.GetValue().ToString().Trim() != string.Empty)
                 Assert.AreEqual(limiteTexto.GetValue(), "!Maq.C.Brava!");
             else

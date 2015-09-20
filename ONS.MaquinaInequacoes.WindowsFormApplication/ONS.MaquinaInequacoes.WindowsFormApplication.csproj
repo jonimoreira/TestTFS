@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Funcao.cs" />
     <Compile Include="MaquinaInequacoesServiceClient.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -59,6 +60,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="SimulacaoValidacaoLimitesMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SimulacaoValidacaoLimitesMain.Designer.cs">
+      <DependentUpon>SimulacaoValidacaoLimitesMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SimulacaoValidacaoLimitesVariaveis.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SimulacaoValidacaoLimitesVariaveis.Designer.cs">
+      <DependentUpon>SimulacaoValidacaoLimitesVariaveis.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="MaquinaInequacoesServiceClient.resx">
       <DependentUpon>MaquinaInequacoesServiceClient.cs</DependentUpon>
     </EmbeddedResource>
@@ -71,6 +84,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="SimulacaoValidacaoLimitesMain.resx">
+      <DependentUpon>SimulacaoValidacaoLimitesMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SimulacaoValidacaoLimitesVariaveis.resx">
+      <DependentUpon>SimulacaoValidacaoLimitesVariaveis.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -16,7 +16,8 @@ namespace ONS.MaquinaInequacoes.WindowsFormApplication
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MaquinaInequacoesServiceClient());
+            //Application.Run(new MaquinaInequacoesServiceClient());
+            Application.Run(new SimulacaoValidacaoLimitesMain());
         }
     }
 }

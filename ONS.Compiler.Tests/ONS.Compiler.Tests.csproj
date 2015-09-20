@@ -332,7 +332,31 @@
     <None Include="Service References\MaquinaInequacoesServiceReference\MaquinaInequacoesService2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="ValidacaoLimites\LoadTest3.loadtest">
+    <None Include="ValidacaoLimites\LoadTests\MultiplosUsuarios_MultiplasExecucoesWCF_02.loadtest">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ValidacaoLimites\LoadTests\MultiplosUsuarios_MultiplasExecucoesWCF_01.loadtest">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ValidacaoLimites\LoadTests\MultiplosUsuarios_MultiplasExecucoesLocal_02.loadtest">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ValidacaoLimites\LoadTests\MultiplosUsuarios_MultiplasExecucoesLocal_01.loadtest">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ValidacaoLimites\LoadTests\MultiplosUsuarios_UmaExecucaoWCF_02.loadtest">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ValidacaoLimites\LoadTests\MultiplosUsuarios_UmaExecucaoWCF_01.loadtest">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ValidacaoLimites\LoadTests\MultiplosUsuarios_UmaExecucaoLocal_02.loadtest">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ValidacaoLimites\LoadTests\MultiplosUsuarios_UmaExecucaoLocal_01.loadtest">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ValidacaoLimites\LoadTests\LoadTest3.loadtest">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="ValidacaoLimites\UnitTestsLocal\PlanilhaAba_SUL_ExecucaoComDadosLocal.orderedtest">
