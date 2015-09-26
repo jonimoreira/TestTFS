@@ -37,6 +37,9 @@
             this.btnExecutar = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -46,7 +49,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(828, 403);
+            this.tabPage1.Size = new System.Drawing.Size(860, 465);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -54,10 +57,10 @@
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Location = new System.Drawing.Point(23, 56);
+            this.tabControl1.Location = new System.Drawing.Point(12, 37);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(836, 429);
+            this.tabControl1.Size = new System.Drawing.Size(868, 491);
             this.tabControl1.TabIndex = 0;
             // 
             // menuStrip1
@@ -82,19 +85,19 @@
             // adicionarTabToolStripMenuItem
             // 
             this.adicionarTabToolStripMenuItem.Name = "adicionarTabToolStripMenuItem";
-            this.adicionarTabToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.adicionarTabToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.adicionarTabToolStripMenuItem.Text = "Adicionar tab";
             // 
             // variáveisToolStripMenuItem
             // 
             this.variáveisToolStripMenuItem.Name = "variáveisToolStripMenuItem";
-            this.variáveisToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.variáveisToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.variáveisToolStripMenuItem.Text = "Variáveis";
             // 
             // btnExecutar
             // 
             this.btnExecutar.Font = new System.Drawing.Font("Baskerville Old Face", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExecutar.Location = new System.Drawing.Point(972, 118);
+            this.btnExecutar.Location = new System.Drawing.Point(972, 58);
             this.btnExecutar.Name = "btnExecutar";
             this.btnExecutar.Size = new System.Drawing.Size(110, 39);
             this.btnExecutar.TabIndex = 4;
@@ -105,28 +108,64 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Baskerville Old Face", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(972, 205);
+            this.button1.Location = new System.Drawing.Point(972, 145);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(110, 39);
             this.button1.TabIndex = 5;
             this.button1.Text = "Funções";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Baskerville Old Face", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(972, 294);
+            this.button2.Location = new System.Drawing.Point(972, 234);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(110, 39);
             this.button2.TabIndex = 6;
             this.button2.Text = "Visões";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button3
+            // 
+            this.button3.Font = new System.Drawing.Font("Baskerville Old Face", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Location = new System.Drawing.Point(899, 323);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(263, 39);
+            this.button3.TabIndex = 7;
+            this.button3.Text = "Carregar Validação Limites";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            this.button4.Font = new System.Drawing.Font("Baskerville Old Face", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.Location = new System.Drawing.Point(972, 405);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(110, 39);
+            this.button4.TabIndex = 8;
+            this.button4.Text = "Executar";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // button5
+            // 
+            this.button5.Font = new System.Drawing.Font("Baskerville Old Face", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button5.Location = new System.Drawing.Point(951, 485);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(152, 39);
+            this.button5.TabIndex = 9;
+            this.button5.Text = "Testar serviço";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // SimulacaoValidacaoLimitesMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1181, 540);
+            this.Controls.Add(this.button5);
+            this.Controls.Add(this.button4);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnExecutar);
@@ -155,5 +194,8 @@
         private System.Windows.Forms.Button btnExecutar;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
     }
 }

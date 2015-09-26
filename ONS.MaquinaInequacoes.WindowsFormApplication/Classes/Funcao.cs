@@ -9,6 +9,18 @@ namespace ONS.MaquinaInequacoes.WindowsFormApplication
     public class Funcao
     {
         private string nome;
+
+        public string Nome
+        {
+            get { return nome; }
+            set { nome = value; }
+        }
         private MaquinaInequacoesServiceReference.ListaDecisoes listaDecisoes;
+
+        public MaquinaInequacoesServiceReference.ListaDecisoes ListaDecisoes
+        {
+            get { return listaDecisoes; }
+            set { listaDecisoes = value; }
+        }
     }
 }

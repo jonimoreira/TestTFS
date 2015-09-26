@@ -38,6 +38,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtBoxMemoriaCalculoEntrada
@@ -72,11 +73,11 @@
             // btnExecutar
             // 
             this.btnExecutar.Font = new System.Drawing.Font("Baskerville Old Face", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExecutar.Location = new System.Drawing.Point(791, 626);
+            this.btnExecutar.Location = new System.Drawing.Point(467, 626);
             this.btnExecutar.Name = "btnExecutar";
-            this.btnExecutar.Size = new System.Drawing.Size(110, 39);
+            this.btnExecutar.Size = new System.Drawing.Size(208, 39);
             this.btnExecutar.TabIndex = 3;
-            this.btnExecutar.Text = "Executar";
+            this.btnExecutar.Text = "Executar JSON DSL";
             this.btnExecutar.UseVisualStyleBackColor = true;
             this.btnExecutar.Click += new System.EventHandler(this.btnExecutar_Click);
             // 
@@ -130,12 +131,24 @@
             this.label4.TabIndex = 8;
             this.label4.Text = "Memória de cáculo (saída):";
             // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Baskerville Old Face", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(681, 626);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(223, 39);
+            this.button1.TabIndex = 9;
+            this.button1.Text = "Executar JSON objetos";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
             // MaquinaInequacoesServiceClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1259, 683);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -164,6 +177,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button button1;
     }
 }
 

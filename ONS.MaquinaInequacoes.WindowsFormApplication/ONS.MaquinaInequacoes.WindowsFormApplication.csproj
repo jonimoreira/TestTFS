@@ -46,11 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Funcao.cs" />
-    <Compile Include="MaquinaInequacoesServiceClient.cs">
+    <Compile Include="Classes\Funcao.cs" />
+    <Compile Include="Classes\Visao.cs" />
+    <Compile Include="Telas\MaquinaInequacoesServiceClient.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MaquinaInequacoesServiceClient.Designer.cs">
+    <Compile Include="Telas\MaquinaInequacoesServiceClient.Designer.cs">
       <DependentUpon>MaquinaInequacoesServiceClient.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -60,19 +61,31 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="SimulacaoValidacaoLimitesMain.cs">
+    <Compile Include="Telas\SimulacaoValidacaoLimitesFuncoes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SimulacaoValidacaoLimitesMain.Designer.cs">
+    <Compile Include="Telas\SimulacaoValidacaoLimitesFuncoes.Designer.cs">
+      <DependentUpon>SimulacaoValidacaoLimitesFuncoes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\SimulacaoValidacaoLimitesMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\SimulacaoValidacaoLimitesMain.Designer.cs">
       <DependentUpon>SimulacaoValidacaoLimitesMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="SimulacaoValidacaoLimitesVariaveis.cs">
+    <Compile Include="Telas\SimulacaoValidacaoLimitesVariaveis.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SimulacaoValidacaoLimitesVariaveis.Designer.cs">
+    <Compile Include="Telas\SimulacaoValidacaoLimitesVariaveis.Designer.cs">
       <DependentUpon>SimulacaoValidacaoLimitesVariaveis.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="MaquinaInequacoesServiceClient.resx">
+    <Compile Include="Telas\SimulacaoValidacaoLimitesVisoes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\SimulacaoValidacaoLimitesVisoes.Designer.cs">
+      <DependentUpon>SimulacaoValidacaoLimitesVisoes.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Telas\MaquinaInequacoesServiceClient.resx">
       <DependentUpon>MaquinaInequacoesServiceClient.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -84,11 +97,17 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="SimulacaoValidacaoLimitesMain.resx">
+    <EmbeddedResource Include="Telas\SimulacaoValidacaoLimitesFuncoes.resx">
+      <DependentUpon>SimulacaoValidacaoLimitesFuncoes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\SimulacaoValidacaoLimitesMain.resx">
       <DependentUpon>SimulacaoValidacaoLimitesMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SimulacaoValidacaoLimitesVariaveis.resx">
+    <EmbeddedResource Include="Telas\SimulacaoValidacaoLimitesVariaveis.resx">
       <DependentUpon>SimulacaoValidacaoLimitesVariaveis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\SimulacaoValidacaoLimitesVisoes.resx">
+      <DependentUpon>SimulacaoValidacaoLimitesVisoes.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
