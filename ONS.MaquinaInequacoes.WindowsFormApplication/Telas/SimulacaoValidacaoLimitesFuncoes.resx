@@ -117,4 +117,50 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="textBox3.Text" xml:space="preserve">
+    <value>// [&lt;inequacao&gt;], &lt;atribuições: {&lt;nome_var&gt;=&lt;expressao_ou_valor&gt;;}*&gt;
+// default: inequacao = true
+
+(xUGarauc = 3 and xcargasul &gt; 17300), lim = 3500;
+(xUGarauc = 3 and xcargasul &gt; 17000 and xcargasul &lt; 17300), lim = 5000;
+(xUGarauc = 3 and xcargasul &gt; 16500 and xcargasul &lt; 17000), lim = 6700;
+(xUGarauc = 3 and xcargasul &gt; 16000 and xcargasul &lt; 16500), lim = 7800;
+(xUGarauc = 3 and xcargasul &gt; 15000 and xcargasul &lt; 16000), lim = 7800;
+(xUGarauc = 3 and xcargasul &lt;= 15000) and (xpercarga = "LEVE" or xpercarga = "MINIMA"), lim = 7800 - 300;
+(xUGarauc = 3 and xcargasul &lt;= 15000) and (xpercarga &lt;&gt; "LEVE" and xpercarga &lt;&gt; "MINIMA"), lim = 7800;
+
+(xUGarauc = 2 and xcargasul &gt; 17300), lim = 3500;
+(xUGarauc = 2 and xcargasul &gt; 17000 and xcargasul &lt; 17300), lim = 5000;
+(xUGarauc = 2 and xcargasul &gt; 16500 and xcargasul &lt; 17000), lim = 6000;
+(xUGarauc = 2 and xcargasul &gt; 16000 and xcargasul &lt; 16500), lim = 6700;
+(xUGarauc = 2 and xcargasul &gt; 15000 and xcargasul &lt; 16000), lim = 7800;
+(xUGarauc = 2 and xcargasul &lt;= 15000) and (xpercarga = "LEVE" or xpercarga = "MINIMA"), lim = 7800 - 300;
+(xUGarauc = 2 and xcargasul &lt;= 15000) and (xpercarga &lt;&gt; "LEVE" and xpercarga &lt;&gt; "MINIMA"), lim = 7800;
+
+(xUGarauc = 0 and xcargasul &gt; 16500 and xcargasul &lt; 17000), lim = 4000;
+(xUGarauc = 0 and xcargasul &gt; 16000 and xcargasul &lt; 16500), lim = 4000;
+(xUGarauc = 0 and xcargasul &gt; 15000 and xcargasul &lt; 16000), lim = 6000;
+(xUGarauc = 0 and xcargasul &lt;= 15000) and (xpercarga = "LEVE" or xpercarga = "MINIMA"), lim = 7800 - 300;
+(xUGarauc = 0 and xcargasul &lt;= 15000) and (xpercarga &lt;&gt; "LEVE" and xpercarga &lt;&gt; "MINIMA"), lim = 7800;
+
+(xpercarga = "MEDIA" or xpercarga = "PESADA"), r1 = 10.0; r2 = 12.0; r3 = 3.0; r4 = 4.0;
+(xpercarga = "LEVE" or xpercarga = "MINIMA"),  r1 = 8.0; r2 = 8.0; r3 = 2.0; r4 = 3.0;
+
+,red1 = 500;
+,red2 = 400;
+,red3 = 300;
+,red4 = 400;
+
+,dif1 = r1 - xugG1;
+,dif2 = r2 - xugG2;
+,dif3 = r3 - xugG3;
+,dif4 = r4 - xugG4;
+
+(dif1 &gt; 0), lim = lim - (dif1 * red1);
+(dif2 &gt; 0), lim = lim - (dif2 * red2);
+(dif3 &gt; 0), lim = lim - (dif3 * red3);
+(dif4 &gt; 0), lim = lim - (dif4 * red4);
+
+</value>
+  </data>
 </root>

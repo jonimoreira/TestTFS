@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SimulacaoValidacaoLimitesFuncoes));
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.btnExecutar = new System.Windows.Forms.Button();
@@ -48,6 +49,7 @@
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(392, 267);
             this.textBox3.TabIndex = 24;
+            this.textBox3.Text = resources.GetString("textBox3.Text");
             // 
             // button1
             // 
@@ -77,6 +79,7 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(251, 20);
             this.textBox2.TabIndex = 20;
+            this.textBox2.Text = "LimiteRSUL";
             // 
             // label2
             // 

@@ -132,6 +132,9 @@
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(292, 176);
             this.textBox3.TabIndex = 13;
+            this.textBox3.Text = "xpercarga = \"LEVE\" \r\nxrsul = 0.0\r\nxcargasul\r\nxUGarauc\r\nxugG1\r\nxugG2\r\nxugG3\r\nxugG4" +
+    "\r\n\r\nlim\r\nr1\r\nr2 \r\nr3 \r\nr4\r\nred1 \r\nred2 \r\nred3 \r\nred4 \r\n\r\ndif1 \r\ndif2 \r\ndif3 \r\ndi" +
+    "f4 \r\n";
             // 
             // button2
             // 

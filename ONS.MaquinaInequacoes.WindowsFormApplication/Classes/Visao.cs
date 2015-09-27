@@ -8,12 +8,12 @@ namespace ONS.MaquinaInequacoes.WindowsFormApplication.Classes
 {
     public class Visao
     {
-        private string name;
+        private string nome;
 
-        public string Name
+        public string Nome
         {
-            get { return name; }
-            set { name = value; }
+            get { return nome; }
+            set { nome = value; }
         }
         private List<KeyValuePair<Funcao, int>> funcoes;
 
@@ -28,6 +28,14 @@ namespace ONS.MaquinaInequacoes.WindowsFormApplication.Classes
         {
             get { return variaveis; }
             set { variaveis = value; }
+        }
+
+        private int numValores;
+
+        public int NumValores
+        {
+            get { return numValores; }
+            set { numValores = value; }
         }
 
     }
