@@ -21,6 +21,21 @@ namespace ONS.MaquinaInequacoes.Service.SelfHost
                 //smb.MetadataExporter.PolicyVersion = PlicyVersion
                 host.Description.Behaviors.Add(smb);
 
+                ServiceDebugBehavior sdb = host.Description.Behaviors.Find<ServiceDebugBehavior>();
+                if (sdb == null)
+                {
+                    sdb = new ServiceDebugBehavior();
+                    sdb.IncludeExceptionDetailInFaults = true;
+                    host.Description.Behaviors.Add(sdb);
+                }
+                else
+                {
+                    sdb.IncludeExceptionDetailInFaults = true;
+                    //sdb.HttpHelpPageEnabled = true;
+                    //host.Description.Behaviors.Add(sdb);
+
+                }
+
                 host.Open();
 
                 Console.WriteLine("Serviço ativo em: " + baseAddress);

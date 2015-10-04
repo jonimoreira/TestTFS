@@ -149,6 +149,13 @@ namespace ONS.MaquinaInequacoes.WindowsFormApplication
                     string[] valores = line.Split('=');
                     string varName = valores[0];
 
+                    MaquinaInequacoesServiceReference.Variavel varRepetida = variaveis.Where(v => v.Nome == varName).FirstOrDefault();
+                    if (varRepetida != null)
+                    {
+                        MessageBox.Show("Variável repetida na memória de cáclulo: " + varName);
+                        break;
+                    }
+
                     KeyValuePair<MaquinaInequacoesServiceReference.TipoDado, object> varTypeValue = telaFuncaoParse.ParseTipoVariavelValor(line, valores);
                     MaquinaInequacoesServiceReference.Variavel variavel = new MaquinaInequacoesServiceReference.Variavel();
                     variavel.Nome = varName;

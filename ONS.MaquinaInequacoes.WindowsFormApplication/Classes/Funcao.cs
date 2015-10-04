@@ -22,5 +22,13 @@ namespace ONS.MaquinaInequacoes.WindowsFormApplication
             get { return listaDecisoes; }
             set { listaDecisoes = value; }
         }
+
+        private MaquinaInequacoesServiceReference.Variavel variavelRetorno;
+
+        public MaquinaInequacoesServiceReference.Variavel VariavelRetorno
+        {
+            get { return variavelRetorno; }
+            set { variavelRetorno = value; }
+        }
     }
 }

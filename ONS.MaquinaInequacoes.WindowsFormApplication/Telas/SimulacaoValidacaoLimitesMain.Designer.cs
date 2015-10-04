@@ -97,7 +97,7 @@
             // btnExecutar
             // 
             this.btnExecutar.Font = new System.Drawing.Font("Baskerville Old Face", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExecutar.Location = new System.Drawing.Point(972, 58);
+            this.btnExecutar.Location = new System.Drawing.Point(972, 141);
             this.btnExecutar.Name = "btnExecutar";
             this.btnExecutar.Size = new System.Drawing.Size(110, 39);
             this.btnExecutar.TabIndex = 4;
@@ -108,7 +108,7 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Baskerville Old Face", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(972, 145);
+            this.button1.Location = new System.Drawing.Point(972, 228);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(110, 39);
             this.button1.TabIndex = 5;
@@ -119,7 +119,7 @@
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Baskerville Old Face", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(972, 234);
+            this.button2.Location = new System.Drawing.Point(972, 317);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(110, 39);
             this.button2.TabIndex = 6;
@@ -130,17 +130,18 @@
             // button3
             // 
             this.button3.Font = new System.Drawing.Font("Baskerville Old Face", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(899, 323);
+            this.button3.Location = new System.Drawing.Point(896, 485);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(263, 39);
+            this.button3.Size = new System.Drawing.Size(261, 39);
             this.button3.TabIndex = 7;
             this.button3.Text = "Carregar Validação Limites";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button4
             // 
             this.button4.Font = new System.Drawing.Font("Baskerville Old Face", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(972, 405);
+            this.button4.Location = new System.Drawing.Point(972, 406);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(110, 39);
             this.button4.TabIndex = 8;
@@ -151,7 +152,7 @@
             // button5
             // 
             this.button5.Font = new System.Drawing.Font("Baskerville Old Face", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(951, 485);
+            this.button5.Location = new System.Drawing.Point(951, 59);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(152, 39);
             this.button5.TabIndex = 9;

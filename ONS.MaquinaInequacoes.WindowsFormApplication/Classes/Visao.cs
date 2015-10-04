@@ -38,5 +38,12 @@ namespace ONS.MaquinaInequacoes.WindowsFormApplication.Classes
             set { numValores = value; }
         }
 
+        private bool numValoresDiario30em30min = false;
+
+        public bool NumValoresDiario30em30min
+        {
+            get { return numValoresDiario30em30min; }
+            set { numValoresDiario30em30min = value; }
+        }
     }
 }

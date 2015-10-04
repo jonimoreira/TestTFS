@@ -117,4 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="textBox3.Text" xml:space="preserve">
+    <value>// &lt;nome_variavel&gt;[,&lt;valor_inicial&gt;[,&lt;tipo&gt;]]
+// default: double, 0.0
+
+xangra = "2Ligadas"
+xMaqIpu
+xGerIPU
+xpercarga = "LEVE" 
+
+lim
+
+ehPesadaOuMedia = false
+ehLeveOuMinima = false
+ctrlFluxo = true
+</value>
+  </data>
 </root>

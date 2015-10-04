@@ -54,9 +54,26 @@ namespace ONS.MaquinaInequacoes.WindowsFormApplication
                 }
             }
 
+            MaquinaInequacoesServiceReference.Variavel varRetorno = null;
+            foreach(MaquinaInequacoesServiceReference.Variavel var in ((List<MaquinaInequacoesServiceReference.Variavel>)dataGridView2.DataSource))
+            {
+                if (var.Nome.Trim().ToLower() == textBox1.Text.Trim().ToLower())
+                {
+                    varRetorno = var;
+                    break;
+                }
+            }
+
+            if (varRetorno == null)
+            {
+                MessageBox.Show("Variável inexistente");
+                return;
+            }
+
             Funcao funcao = new Funcao();
             funcao.Nome = textBox2.Text;
             funcao.ListaDecisoes = CarregaListaDecisoes();
+            funcao.VariavelRetorno = varRetorno;
 
             List<Funcao> lista = (List<Funcao>)dataGridView1.DataSource;
             lista.Add(funcao);
@@ -141,6 +158,14 @@ namespace ONS.MaquinaInequacoes.WindowsFormApplication
                 dataGridView1.DataSource = lista;
 
             }
+        }
+
+        private void textBox1_MouseClick(object sender, MouseEventArgs e)
+        {
+            /*
+            if (textBox1.Text == string.Empty)
+                textBox1.Text = textBox2.Text;
+             */
         }
 
     }
