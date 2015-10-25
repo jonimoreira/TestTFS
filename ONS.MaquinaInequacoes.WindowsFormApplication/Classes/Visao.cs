@@ -45,5 +45,14 @@ namespace ONS.MaquinaInequacoes.WindowsFormApplication.Classes
             get { return numValoresDiario30em30min; }
             set { numValoresDiario30em30min = value; }
         }
+
+        private Dictionary<int, List<MaquinaInequacoesServiceReference.Variavel>> valores;
+
+        public Dictionary<int, List<MaquinaInequacoesServiceReference.Variavel>> Valores
+        {
+            get { return valores; }
+            set { valores = value; }
+        }
+        
     }
 }

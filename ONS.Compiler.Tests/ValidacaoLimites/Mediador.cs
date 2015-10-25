@@ -131,20 +131,20 @@ namespace ONS.Compiler.Tests.ValidacaoLimites
                     sheetRow_SUL.MC_UGs_Gerando_S_Osorio = double.Parse(valores[24]);
                     sheetRow_SUL.MC_UGs_Gerando_Araucaria = double.Parse(valores[25]);
 
-                    sheetRow_SUL.MC_C_Sincrono_GBM = double.Parse(valores[16]);
-                    sheetRow_SUL.MC_C_Sincrono_GNB = double.Parse(valores[17]);
-                    sheetRow_SUL.MC_C_Sincrono_SSA = double.Parse(valores[18]);
-                    sheetRow_SUL.MC_C_Sincrono_Ita = double.Parse(valores[19]);
-                    sheetRow_SUL.MC_C_Sincrono_Mach = double.Parse(valores[20]);
-                    sheetRow_SUL.MC_C_Sincrono_B_Grande = double.Parse(valores[21]);
-                    sheetRow_SUL.MC_C_Sincrono_CNO = double.Parse(valores[22]);
-                    sheetRow_SUL.MC_C_Sincrono_GPS = double.Parse(valores[23]);
-                    sheetRow_SUL.MC_C_Sincrono_S_Osorio = double.Parse(valores[24]);
+                    sheetRow_SUL.MC_C_Sincrono_GBM = double.Parse(valores[26]);
+                    sheetRow_SUL.MC_C_Sincrono_GNB = double.Parse(valores[27]);
+                    sheetRow_SUL.MC_C_Sincrono_SSA = double.Parse(valores[28]);
+                    sheetRow_SUL.MC_C_Sincrono_Ita = double.Parse(valores[29]);
+                    sheetRow_SUL.MC_C_Sincrono_Mach = double.Parse(valores[30]);
+                    sheetRow_SUL.MC_C_Sincrono_B_Grande = double.Parse(valores[31]);
+                    sheetRow_SUL.MC_C_Sincrono_CNO = double.Parse(valores[32]);
+                    sheetRow_SUL.MC_C_Sincrono_GPS = double.Parse(valores[33]);
+                    sheetRow_SUL.MC_C_Sincrono_S_Osorio = double.Parse(valores[34]);
 
-                    sheetRow_SUL.MC_J_Lacerda_P = double.Parse(valores[25]);
-                    sheetRow_SUL.MC_J_Lacerda_M = double.Parse(valores[26]);
-                    sheetRow_SUL.MC_J_Lacerda_G = double.Parse(valores[27]);
-                    sheetRow_SUL.MC_J_Lacerda_GG = double.Parse(valores[28]);
+                    sheetRow_SUL.MC_J_Lacerda_P = double.Parse(valores[35]);
+                    sheetRow_SUL.MC_J_Lacerda_M = double.Parse(valores[36]);
+                    sheetRow_SUL.MC_J_Lacerda_G = double.Parse(valores[37]);
+                    sheetRow_SUL.MC_J_Lacerda_GG = double.Parse(valores[38]);
                     
                     sheetRow_SUL.MC_G1 = double.Parse(valores[39]);
                     sheetRow_SUL.MC_G2 = double.Parse(valores[40]);

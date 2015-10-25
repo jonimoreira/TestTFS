@@ -1,4 +1,6 @@
 ﻿using ONS.MaquinaInequacoes.WindowsFormApplication.Classes;
+using ONS.MaquinaInequacoes.WindowsFormApplication.Classes.ValidacaoLimites;
+using ONS.MaquinaInequacoes.WindowsFormApplication.MaquinaInequacoesServiceReference;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -95,7 +97,7 @@ namespace ONS.MaquinaInequacoes.WindowsFormApplication
             simulacaoValidacaoLimitesVisoes.LoadListaFuncoes(Funcoes);
             simulacaoValidacaoLimitesVisoes.ShowDialog();
             visoes = simulacaoValidacaoLimitesVisoes.ListaVisoes;
-            AtualizaTabs();
+            AtualizarTabs();
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -104,7 +106,7 @@ namespace ONS.MaquinaInequacoes.WindowsFormApplication
             maquinaInequacoesServiceClient.ShowDialog();
         }
 
-        private void AtualizaTabs()
+        private void AtualizarTabs()
         {
             tabControl1.TabPages.Clear();
 
@@ -144,8 +146,16 @@ namespace ONS.MaquinaInequacoes.WindowsFormApplication
                     var index = dat.Rows.Add();
                     foreach (KeyValuePair<MaquinaInequacoesServiceReference.Variavel, int> variavel in visao.Variaveis.OrderBy(o => o.Value))
                     {
-                        dat.Rows[index].Cells["var_" + variavel.Key.Nome].Value = variavel.Key.Valor;
+                        object valor = variavel.Key.Valor;
+                        if (visao.Valores != null && visao.Valores.ContainsKey(i))
+                        {
+                            MaquinaInequacoesServiceReference.Variavel varComValor = visao.Valores[i].Where(v => v.Nome == variavel.Key.Nome).FirstOrDefault();
+                            valor = varComValor.Valor;
+                        }
+
+                        dat.Rows[index].Cells["var_" + variavel.Key.Nome].Value = valor;
                     }
+
                     foreach (KeyValuePair<Funcao, int> funcao in visao.Funcoes.OrderBy(o => o.Value))
                     {
                         dat.Rows[index].Cells["func_" + funcao.Key.Nome].Value = "<<executar>>";//funcao.Key.;
@@ -165,14 +175,14 @@ namespace ONS.MaquinaInequacoes.WindowsFormApplication
 
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        public void Executar()
         {
             MaquinaInequacoesServiceReference.MaquinaInequacoesServiceClient maquinaInequacoesServiceClient = new MaquinaInequacoesServiceReference.MaquinaInequacoesServiceClient();
 
             try
             {
                 MaquinaInequacoesServiceReference.MemoriaCalculo memoriaCalculo = new MaquinaInequacoesServiceReference.MemoriaCalculo();
-                
+
                 // Para cada linha no grid em cada visão
                 foreach (TabPage tab in tabControl1.TabPages)
                 {
@@ -203,20 +213,30 @@ namespace ONS.MaquinaInequacoes.WindowsFormApplication
                                     }
                                 }
 
+                                // Se for horário, atualiza a variável xHora
+                                if (visao.NumValoresDiario30em30min)
+                                {
+                                    MaquinaInequacoesServiceReference.Variavel variavelHora = Variaveis.Where(v => v.Nome.Trim().ToLower() == "xhora").FirstOrDefault();
+                                    variavelHora.Valor = DateTime.Parse(row.Cells[0].Value.ToString().Substring(0, 5) + ":00");
+                                    
+                                }
+
                                 memoriaCalculo.Variaveis = Variaveis.ToArray();
 
                                 // Executa para cada função na visão
-                                foreach (KeyValuePair<Funcao,int> funcaoKVP in visao.Funcoes)
+                                foreach (KeyValuePair<Funcao, int> funcaoKVP in visao.Funcoes)
                                 {
                                     Funcao funcao = funcaoKVP.Key;
 
                                     MaquinaInequacoesServiceReference.ListaDecisoes listaDecisoes = funcao.ListaDecisoes;
 
+                                    try
+                                    {
+                                        // Chama o serviço
+                                        MaquinaInequacoesServiceReference.MemoriaCalculo memoriaCalculoResult = maquinaInequacoesServiceClient.ExecutarObjeto(memoriaCalculo, listaDecisoes);
+
                                         try
                                         {
-                                            // Chama o serviço
-                                            MaquinaInequacoesServiceReference.MemoriaCalculo memoriaCalculoResult = maquinaInequacoesServiceClient.ExecutarObjeto(memoriaCalculo, listaDecisoes);
-
                                             // Atualiza variáveis na grid com valores
                                             for (int i = 0; i < row.Cells.Count; i++)
                                             {
@@ -227,9 +247,8 @@ namespace ONS.MaquinaInequacoes.WindowsFormApplication
                                                 }
                                             }
 
-                                            MaquinaInequacoesServiceReference.Variavel varRetornoFuncao = memoriaCalculoResult.Variaveis.Where(v => v.Nome == funcao.VariavelRetorno.Nome).FirstOrDefault();
-                                            if (varRetornoFuncao != null) funcao.VariavelRetorno = varRetornoFuncao;
-
+                                            funcao.VariavelRetorno = memoriaCalculoResult.Variaveis.Where(v => v.Nome.Trim().ToLower() == funcao.VariavelRetorno.Nome.Trim().ToLower()).FirstOrDefault();
+                                            
                                             // Atualiza valor da função na grid com valor da variável de retorno
                                             for (int i = 0; i < row.Cells.Count; i++)
                                             {
@@ -242,9 +261,14 @@ namespace ONS.MaquinaInequacoes.WindowsFormApplication
                                         }
                                         catch(Exception iEx)
                                         {
-                                            MessageBox.Show("Erro na chamada ao serviço:" + iEx.Message + "\n" + iEx.StackTrace);
+                                            MessageBox.Show("Erro após a chamada ao serviço:" + iEx.Message + "\n" + iEx.StackTrace);
                                         }
-                                        
+                                    }
+                                    catch (Exception iEx)
+                                    {
+                                        MessageBox.Show("Erro na chamada ao serviço:" + iEx.Message + "\n" + iEx.StackTrace);
+                                    }
+
                                 }
 
                             }
@@ -268,10 +292,44 @@ namespace ONS.MaquinaInequacoes.WindowsFormApplication
 
         }
 
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Executar();
+
+        }
+
         private void button3_Click(object sender, EventArgs e)
         {
             CarregarMemoriaDeCalculoDeTodasFuncoesValidacaoLimites();
             CarregarListaDecisoesDeTodasFuncoesValidacaoLimites();
+            CarregarVisoesValidacaoLimites();
+            //Executar();
+            
+        }
+
+        public void CarregarVisoesValidacaoLimites()
+        {
+            /*             
+             * SEVERA (N-3)
+             * N_NE_SE
+             * S_SE
+             * SUL
+             * ACRO_MT
+             * 
+             */
+
+            // SUL
+            Visao visao = new Visao();
+            visao.Nome = "SUL";
+            visao.NumValores = 48;
+            visao.NumValoresDiario30em30min = true;
+            VisaoSUL.CarregarVariaveisComDados(visao, Variaveis);
+            VisaoSUL.CarregarFuncoes(visao, Variaveis, Funcoes);
+            Visoes.Add(visao);
+            AtualizarTabs();
+            
+            //MessageBox.Show("Todas visões na Validação de Limites foram carregadas.");
+
         }
 
         private string GetCaminhoBaseArquivosTeste()
@@ -303,13 +361,13 @@ namespace ONS.MaquinaInequacoes.WindowsFormApplication
                 //Directory.Move(file.FullName, filepath + "\\TextFiles\\" + file.Name);
             }
 
-            MessageBox.Show("Todas variáveis das funções na Validação de Limites foram carregadas.");
+            //MessageBox.Show("Todas variáveis das funções na Validação de Limites foram carregadas.");
             
         }
 
         public void CarregarMemoriaDeCalculoDoArquivo(string fileName)
         {
-            System.IO.StreamReader sr = new System.IO.StreamReader(File.OpenRead(fileName));
+            System.IO.StreamReader sr = new System.IO.StreamReader(File.OpenRead(fileName), Encoding.Default, true);
             MaquinaInequacoesServiceClient telaFuncaoParse = new MaquinaInequacoesServiceClient();
 
             while (sr.Peek() != -1)
@@ -320,7 +378,7 @@ namespace ONS.MaquinaInequacoes.WindowsFormApplication
                     string[] valores = line.Split('=');
                     string varName = valores[0];
 
-                    MaquinaInequacoesServiceReference.Variavel varRepetida = variaveis.Where(v => v.Nome == varName).FirstOrDefault();
+                    MaquinaInequacoesServiceReference.Variavel varRepetida = variaveis.Where(v => v.Nome.Trim().ToLower() == varName.Trim().ToLower()).FirstOrDefault();
                     if (varRepetida == null)
                     {
                         KeyValuePair<MaquinaInequacoesServiceReference.TipoDado, object> varTypeValue = telaFuncaoParse.ParseTipoVariavelValor(line, valores);
@@ -348,13 +406,13 @@ namespace ONS.MaquinaInequacoes.WindowsFormApplication
 
             }
 
-            MessageBox.Show("Todas funções na Validação de Limites foram carregadas.");
+            //MessageBox.Show("Todas funções na Validação de Limites foram carregadas.");
 
         }
 
         public void CarregarListaDecisoesDoArquivo(string fileName)
         {
-            System.IO.StreamReader sr = new System.IO.StreamReader(File.OpenRead(fileName));
+            System.IO.StreamReader sr = new System.IO.StreamReader(File.OpenRead(fileName), Encoding.Default, true);
             MaquinaInequacoesServiceClient telaFuncaoParse = new MaquinaInequacoesServiceClient();
 
             Funcao funcao = new Funcao();

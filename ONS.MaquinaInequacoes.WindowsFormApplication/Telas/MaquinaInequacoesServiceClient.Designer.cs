@@ -77,7 +77,7 @@
             this.btnExecutar.Name = "btnExecutar";
             this.btnExecutar.Size = new System.Drawing.Size(208, 39);
             this.btnExecutar.TabIndex = 3;
-            this.btnExecutar.Text = "Executar JSON DSL";
+            this.btnExecutar.Text = "Executar JSON GPL";
             this.btnExecutar.UseVisualStyleBackColor = true;
             this.btnExecutar.Click += new System.EventHandler(this.btnExecutar_Click);
             // 

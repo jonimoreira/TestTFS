@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Funcao.cs" />
+    <Compile Include="Classes\ValidacaoLimites\VisaoSUL.cs" />
     <Compile Include="Classes\Visao.cs" />
     <Compile Include="Telas\MaquinaInequacoesServiceClient.cs">
       <SubType>Form</SubType>
