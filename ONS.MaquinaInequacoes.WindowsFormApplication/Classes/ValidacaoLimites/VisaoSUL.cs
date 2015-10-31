@@ -11,10 +11,10 @@ namespace ONS.MaquinaInequacoes.WindowsFormApplication.Classes.ValidacaoLimites
     public class VisaoSUL
     {
         
-        public static void CarregarVariaveisComDados(Visao visaoSUL, List<Variavel> variaveis)
+        public static void CarregarVariaveisComDados(Visao visao, List<Variavel> variaveis)
         {
-            visaoSUL.Valores = new Dictionary<int, List<MaquinaInequacoesServiceReference.Variavel>>();
-            visaoSUL.Variaveis = new List<KeyValuePair<MaquinaInequacoesServiceReference.Variavel, int>>();
+            visao.Valores = new Dictionary<int, List<MaquinaInequacoesServiceReference.Variavel>>();
+            visao.Variaveis = new List<KeyValuePair<MaquinaInequacoesServiceReference.Variavel, int>>();
             
             //Abre CSV como texto
             string fileName = GetCaminhoCompletoArquivoTeste_ValidacaoLimites_Aba_SUL();
@@ -69,7 +69,7 @@ namespace ONS.MaquinaInequacoes.WindowsFormApplication.Classes.ValidacaoLimites
                     InserirVariavelGlobal("G3", MaquinaInequacoesServiceReference.TipoDado.Numerico, double.Parse(valores[41]), variaveisDaLinha);
                     InserirVariavelGlobal("G4", MaquinaInequacoesServiceReference.TipoDado.Numerico, double.Parse(valores[42]), variaveisDaLinha);
                     
-                    visaoSUL.Valores.Add(iLinhaIdx, variaveisDaLinha);
+                    visao.Valores.Add(iLinhaIdx, variaveisDaLinha);
 
                     iLinhaIdx++;
                 }
@@ -77,10 +77,10 @@ namespace ONS.MaquinaInequacoes.WindowsFormApplication.Classes.ValidacaoLimites
             }
 
             // Carrega variáveis globais na visão
-            foreach(MaquinaInequacoesServiceReference.Variavel var in visaoSUL.Valores[0])
+            foreach(MaquinaInequacoesServiceReference.Variavel var in visao.Valores[0])
             {
                 KeyValuePair<MaquinaInequacoesServiceReference.Variavel, int> variavel = new KeyValuePair<MaquinaInequacoesServiceReference.Variavel, int>(var, 0);
-                visaoSUL.Variaveis.Add(variavel);
+                visao.Variaveis.Add(variavel);
                 variaveis.Add(variavel.Key);
             }
 
@@ -90,12 +90,12 @@ namespace ONS.MaquinaInequacoes.WindowsFormApplication.Classes.ValidacaoLimites
         /// <summary>
         /// Carrega funções na visão adicionando mapeamento valor da variável global para variável "interna" da função
         /// </summary>
-        /// <param name="visaoSUL"></param>
+        /// <param name="visao"></param>
         /// <param name="variaveis"></param>
         /// <param name="funcoes"></param>
-        public static void CarregarFuncoes(Visao visaoSUL, List<Variavel> variaveis, List<Funcao> funcoes)
+        public static void CarregarFuncoes(Visao visao, List<Variavel> variaveis, List<Funcao> funcoes)
         {
-            visaoSUL.Funcoes = new List<KeyValuePair<Funcao, int>>();
+            visao.Funcoes = new List<KeyValuePair<Funcao, int>>();
             int i = 0;
             foreach(Funcao funcao in funcoes)
             {
@@ -118,7 +118,7 @@ namespace ONS.MaquinaInequacoes.WindowsFormApplication.Classes.ValidacaoLimites
                         
                         funcao.VariavelRetorno = variaveis.Where(v => v.Nome.Trim().ToLower() == "lim").FirstOrDefault();
                         func = new KeyValuePair<Funcao, int>(funcao, i);
-                        visaoSUL.Funcoes.Add(func);
+                        visao.Funcoes.Add(func);
                         i++;
                         
                         break;
@@ -135,7 +135,7 @@ namespace ONS.MaquinaInequacoes.WindowsFormApplication.Classes.ValidacaoLimites
                         
                         funcao.VariavelRetorno = variaveis.Where(v => v.Nome.Trim().ToLower() == "lim").FirstOrDefault();
                         func = new KeyValuePair<Funcao, int>(funcao, i);
-                        visaoSUL.Funcoes.Add(func);
+                        visao.Funcoes.Add(func);
                         i++;
                         
                         break;
@@ -143,7 +143,7 @@ namespace ONS.MaquinaInequacoes.WindowsFormApplication.Classes.ValidacaoLimites
 
                         funcao.VariavelRetorno = variaveis.Where(v => v.Nome.Trim().ToLower() == "lim").FirstOrDefault();
                         func = new KeyValuePair<Funcao, int>(funcao, i);
-                        visaoSUL.Funcoes.Add(func);
+                        visao.Funcoes.Add(func);
                         i++;
 
                         break;
@@ -160,7 +160,7 @@ namespace ONS.MaquinaInequacoes.WindowsFormApplication.Classes.ValidacaoLimites
 
                         funcao.VariavelRetorno = variaveis.Where(v => v.Nome.Trim().ToLower() == "lim").FirstOrDefault();
                         func = new KeyValuePair<Funcao, int>(funcao, i);
-                        visaoSUL.Funcoes.Add(func);
+                        visao.Funcoes.Add(func);
                         i++;
 
                         break;
@@ -177,7 +177,7 @@ namespace ONS.MaquinaInequacoes.WindowsFormApplication.Classes.ValidacaoLimites
 
                         funcao.VariavelRetorno = variaveis.Where(v => v.Nome.Trim().ToLower() == "lim").FirstOrDefault();
                         func = new KeyValuePair<Funcao, int>(funcao, i);
-                        visaoSUL.Funcoes.Add(func);
+                        visao.Funcoes.Add(func);
                         i++;
 
                         break;
@@ -185,15 +185,15 @@ namespace ONS.MaquinaInequacoes.WindowsFormApplication.Classes.ValidacaoLimites
 
                         funcao.VariavelRetorno = variaveis.Where(v => v.Nome.Trim().ToLower() == "lim").FirstOrDefault();
                         func = new KeyValuePair<Funcao, int>(funcao, i);
-                        visaoSUL.Funcoes.Add(func);
+                        visao.Funcoes.Add(func);
                         i++;
 
                         break;
                     case "Modulo_PERIODO_SE_CO_RNE_2009-PeriodoCarga_SE_CO":
-                        
+                        // xHora As Date, xDiaSemana As String, xTipo As String, Hverao
                         funcao.VariavelRetorno = variaveis.Where(v => v.Nome.Trim().ToLower() == "PeriodoCarga_SE_CO".ToLower()).FirstOrDefault();
                         func = new KeyValuePair<Funcao, int>(funcao, i);
-                        visaoSUL.Funcoes.Add(func);
+                        visao.Funcoes.Add(func);
                         i++;
 
                         break;

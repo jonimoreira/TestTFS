@@ -109,7 +109,7 @@ namespace ONS.MaquinaInequacoes.WindowsFormApplication
         private void AtualizarTabs()
         {
             tabControl1.TabPages.Clear();
-
+            
             foreach (Visao visao in Visoes)
             {
                 TabPage myTabPage = new TabPage(visao.Nome);
@@ -158,7 +158,7 @@ namespace ONS.MaquinaInequacoes.WindowsFormApplication
 
                     foreach (KeyValuePair<Funcao, int> funcao in visao.Funcoes.OrderBy(o => o.Value))
                     {
-                        dat.Rows[index].Cells["func_" + funcao.Key.Nome].Value = "<<executar>>";//funcao.Key.;
+                        dat.Rows[index].Cells["func_" + funcao.Key.Nome].Value = valorPadraoNaoExecutado;//funcao.Key.;
                     }
 
                     if (visao.NumValoresDiario30em30min)
@@ -174,6 +174,8 @@ namespace ONS.MaquinaInequacoes.WindowsFormApplication
 
 
         }
+
+        private const string valorPadraoNaoExecutado = "<<executar>>";
 
         public void Executar()
         {
@@ -218,7 +220,7 @@ namespace ONS.MaquinaInequacoes.WindowsFormApplication
                                 {
                                     MaquinaInequacoesServiceReference.Variavel variavelHora = Variaveis.Where(v => v.Nome.Trim().ToLower() == "xhora").FirstOrDefault();
                                     variavelHora.Valor = DateTime.Parse(row.Cells[0].Value.ToString().Substring(0, 5) + ":00");
-                                    
+
                                 }
 
                                 memoriaCalculo.Variaveis = Variaveis.ToArray();
@@ -226,6 +228,16 @@ namespace ONS.MaquinaInequacoes.WindowsFormApplication
                                 // Executa para cada função na visão
                                 foreach (KeyValuePair<Funcao, int> funcaoKVP in visao.Funcoes)
                                 {
+                                    // Atualiza variável do Periodo Carga: PeriodoCarga_SE_CO
+                                    if (dat.Columns.Contains("func_Modulo_PERIODO_SE_CO_RNE_2009-PeriodoCarga_SE_CO") && row.Cells["func_Modulo_PERIODO_SE_CO_RNE_2009-PeriodoCarga_SE_CO"].Value.ToString() != valorPadraoNaoExecutado)
+                                    {
+                                        MaquinaInequacoesServiceReference.Variavel variavelPC = Variaveis.Where(v => v.Nome.Trim().ToLower() == "PeriodoCarga_SE_CO".ToLower()).FirstOrDefault();
+                                        if (variavelPC != null)
+                                        {
+                                            variavelPC.Valor = row.Cells["func_Modulo_PERIODO_SE_CO_RNE_2009-PeriodoCarga_SE_CO"].Value;
+                                        }
+                                    }
+
                                     Funcao funcao = funcaoKVP.Key;
 
                                     MaquinaInequacoesServiceReference.ListaDecisoes listaDecisoes = funcao.ListaDecisoes;
@@ -261,12 +273,12 @@ namespace ONS.MaquinaInequacoes.WindowsFormApplication
                                         }
                                         catch(Exception iEx)
                                         {
-                                            MessageBox.Show("Erro após a chamada ao serviço:" + iEx.Message + "\n" + iEx.StackTrace);
+                                            MessageBox.Show("Erro após a chamada ao serviço [" + funcao.Nome + "]:" + iEx.Message + "\n" + iEx.StackTrace);
                                         }
                                     }
                                     catch (Exception iEx)
                                     {
-                                        MessageBox.Show("Erro na chamada ao serviço:" + iEx.Message + "\n" + iEx.StackTrace);
+                                        MessageBox.Show("Erro na chamada ao serviço [" + funcao.Nome + "]:" + iEx.Message + "\n" + iEx.StackTrace);
                                     }
 
                                 }
@@ -300,6 +312,7 @@ namespace ONS.MaquinaInequacoes.WindowsFormApplication
 
         private void button3_Click(object sender, EventArgs e)
         {
+            Visoes.Clear();
             CarregarMemoriaDeCalculoDeTodasFuncoesValidacaoLimites();
             CarregarListaDecisoesDeTodasFuncoesValidacaoLimites();
             CarregarVisoesValidacaoLimites();
@@ -319,6 +332,16 @@ namespace ONS.MaquinaInequacoes.WindowsFormApplication
              */
 
             // SUL
+            CarregarVisaoSUL();
+            CarregarVisaoS_SE();
+            AtualizarTabs();
+            
+            //MessageBox.Show("Todas visões na Validação de Limites foram carregadas.");
+
+        }
+
+        private void CarregarVisaoSUL()
+        {
             Visao visao = new Visao();
             visao.Nome = "SUL";
             visao.NumValores = 48;
@@ -326,9 +349,18 @@ namespace ONS.MaquinaInequacoes.WindowsFormApplication
             VisaoSUL.CarregarVariaveisComDados(visao, Variaveis);
             VisaoSUL.CarregarFuncoes(visao, Variaveis, Funcoes);
             Visoes.Add(visao);
-            AtualizarTabs();
             
-            //MessageBox.Show("Todas visões na Validação de Limites foram carregadas.");
+        }
+
+        private void CarregarVisaoS_SE()
+        {
+            Visao visao = new Visao();
+            visao.Nome = "S_SE";
+            visao.NumValores = 48;
+            visao.NumValoresDiario30em30min = true;
+            VisaoS_SE.CarregarVariaveisComDados(visao, Variaveis);
+            VisaoS_SE.CarregarFuncoes(visao, Variaveis, Funcoes);
+            Visoes.Add(visao);
 
         }
 
