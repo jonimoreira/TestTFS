@@ -53,6 +53,14 @@ namespace ONS.MaquinaInequacoes.WindowsFormApplication.Classes
             get { return valores; }
             set { valores = value; }
         }
-        
+
+        private object dataGridView;
+
+        public object DataGridView
+        {
+            get { return dataGridView; }
+            set { dataGridView = value; }
+        }
+
     }
 }

@@ -41,13 +41,13 @@ namespace ONS.MaquinaInequacoes.WindowsFormApplication.Classes.ValidacaoLimites
                     InserirVariavelGlobal("FBAIN", MaquinaInequacoesServiceReference.TipoDado.Numerico, double.Parse(valores[6]), variaveisDaLinha);
                     InserirVariavelGlobal("FINBA", MaquinaInequacoesServiceReference.TipoDado.Numerico, double.Parse(valores[7]), variaveisDaLinha);
                     InserirVariavelGlobal("POT_ELO_CC", MaquinaInequacoesServiceReference.TipoDado.Numerico, double.Parse(valores[8]), variaveisDaLinha);
-                    InserirVariavelGlobal("FIV", MaquinaInequacoesServiceReference.TipoDado.Numerico, double.Parse(valores[16]), variaveisDaLinha);
-                    InserirVariavelGlobal("GIPU_60Hz", MaquinaInequacoesServiceReference.TipoDado.Numerico, double.Parse(valores[17]), variaveisDaLinha);
-                    InserirVariavelGlobal("Mq_60Hz", MaquinaInequacoesServiceReference.TipoDado.Numerico, double.Parse(valores[18]), variaveisDaLinha);
-                    InserirVariavelGlobal("CARGA_SIN", MaquinaInequacoesServiceReference.TipoDado.Numerico, double.Parse(valores[19]), variaveisDaLinha);
-                    InserirVariavelGlobal("CARGA_SUL", MaquinaInequacoesServiceReference.TipoDado.Numerico, double.Parse(valores[20]), variaveisDaLinha);
-                    InserirVariavelGlobal("LIM_ELO_CC", MaquinaInequacoesServiceReference.TipoDado.Numerico, double.Parse(valores[21]), variaveisDaLinha);
-                    InserirVariavelGlobal("Gera_Usinas", MaquinaInequacoesServiceReference.TipoDado.Numerico, double.Parse(valores[22]), variaveisDaLinha);
+                    InserirVariavelGlobal("FIV", MaquinaInequacoesServiceReference.TipoDado.Numerico, double.Parse(valores[9]), variaveisDaLinha);
+                    InserirVariavelGlobal("GIPU_60Hz", MaquinaInequacoesServiceReference.TipoDado.Numerico, double.Parse(valores[10]), variaveisDaLinha);
+                    InserirVariavelGlobal("Mq_60Hz", MaquinaInequacoesServiceReference.TipoDado.Numerico, double.Parse(valores[11]), variaveisDaLinha);
+                    InserirVariavelGlobal("CARGA_SIN", MaquinaInequacoesServiceReference.TipoDado.Numerico, double.Parse(valores[12]), variaveisDaLinha);
+                    InserirVariavelGlobal("CARGA_SUL", MaquinaInequacoesServiceReference.TipoDado.Numerico, double.Parse(valores[13]), variaveisDaLinha);
+                    InserirVariavelGlobal("LIM_ELO_CC", MaquinaInequacoesServiceReference.TipoDado.String, valores[23].Trim().ToLower(), variaveisDaLinha);
+                    InserirVariavelGlobal("Gera_Usinas", MaquinaInequacoesServiceReference.TipoDado.Numerico, double.Parse(valores[25]), variaveisDaLinha);
                     
                     visao.Valores.Add(iLinhaIdx, variaveisDaLinha);
 

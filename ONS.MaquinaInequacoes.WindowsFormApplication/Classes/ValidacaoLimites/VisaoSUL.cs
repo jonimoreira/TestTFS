@@ -197,6 +197,23 @@ namespace ONS.MaquinaInequacoes.WindowsFormApplication.Classes.ValidacaoLimites
                         i++;
 
                         break;
+                    case "Modulo_Interligacao_SSE-refFRS_Ger":
+
+                        decisao.Inequacao = string.Empty;
+                        decisao.BlocoDeAcao = "xcargasul = vglobal_CARGA_do_SUL; xUGarauc = vglobal_Gera_Araucara";
+                        decisoes.Add(decisao);
+                        foreach (Decisao dec in funcao.ListaDecisoes.Decisoes)
+                        {
+                            decisoes.Add(dec);
+                        }
+                        funcao.ListaDecisoes.Decisoes = decisoes.ToArray();
+
+                        funcao.VariavelRetorno = variaveis.Where(v => v.Nome.Trim().ToLower() == "lim").FirstOrDefault();
+                        func = new KeyValuePair<Funcao, int>(funcao, i);
+                        visao.Funcoes.Add(func);
+                        i++;
+
+                        break;
                     default:
                         break;
                 }

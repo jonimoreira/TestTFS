@@ -198,7 +198,8 @@ namespace ONS.MaquinaInequacoes.WindowsFormApplication
                         if (ctrl is DataGridView)
                         {
                             DataGridView dat = (DataGridView)ctrl;
-
+                            visao.DataGridView = dat;
+                            int rowIndex = 0;
                             foreach (DataGridViewRow row in dat.Rows)
                             {
                                 // Sai do for ao chegar no final (por algum motivo há uma linha a mais com valores nulos no final)
@@ -213,13 +214,14 @@ namespace ONS.MaquinaInequacoes.WindowsFormApplication
                                     {
                                         variavel.Valor = row.Cells[i].Value;
                                     }
-                                }
+                                }  
 
                                 // Se for horário, atualiza a variável xHora
                                 if (visao.NumValoresDiario30em30min)
                                 {
                                     MaquinaInequacoesServiceReference.Variavel variavelHora = Variaveis.Where(v => v.Nome.Trim().ToLower() == "xhora").FirstOrDefault();
-                                    variavelHora.Valor = DateTime.Parse(row.Cells[0].Value.ToString().Substring(0, 5) + ":00");
+                                    if (variavelHora != null)
+                                        variavelHora.Valor = DateTime.Parse(row.Cells[0].Value.ToString().Substring(0, 5) + ":00");
 
                                 }
 
@@ -228,7 +230,11 @@ namespace ONS.MaquinaInequacoes.WindowsFormApplication
                                 // Executa para cada função na visão
                                 foreach (KeyValuePair<Funcao, int> funcaoKVP in visao.Funcoes)
                                 {
-                                    // Atualiza variável do Periodo Carga: PeriodoCarga_SE_CO
+                        
+                                    Funcao funcao = funcaoKVP.Key;
+
+                                    // Atualiza variáveis globais e dependência enre visões da Validação Limites
+                                    // 01) Atualiza variável do Periodo Carga: PeriodoCarga_SE_CO
                                     if (dat.Columns.Contains("func_Modulo_PERIODO_SE_CO_RNE_2009-PeriodoCarga_SE_CO") && row.Cells["func_Modulo_PERIODO_SE_CO_RNE_2009-PeriodoCarga_SE_CO"].Value.ToString() != valorPadraoNaoExecutado)
                                     {
                                         MaquinaInequacoesServiceReference.Variavel variavelPC = Variaveis.Where(v => v.Nome.Trim().ToLower() == "PeriodoCarga_SE_CO".ToLower()).FirstOrDefault();
@@ -238,7 +244,55 @@ namespace ONS.MaquinaInequacoes.WindowsFormApplication
                                         }
                                     }
 
-                                    Funcao funcao = funcaoKVP.Key;
+                                    // 02) Dependência da VisaoS_SE com VisaoSUL: xUGarauc, x_refFRS_Ger, xFRS_GerUSs, xJLP, xJLM, xJLG, xJLGG
+                                    // "Modulo_Interligacao_SSE-limiteFINBA"
+                                    if (visao.Nome == "S_SE" && funcao.Nome == "Modulo_Interligacao_SSE-limiteFINBA")
+                                    {
+                                        Visao visaoSUL = Visoes.Where(v => v.Nome == "SUL").FirstOrDefault();
+                                        DataGridView dgv = (DataGridView)visaoSUL.DataGridView;
+                                            
+                                        MaquinaInequacoesServiceReference.Variavel varHardCode = Variaveis.Where(v => v.Nome.Trim().ToLower() == "xUGarauc".ToLower()).FirstOrDefault();
+                                        if (varHardCode != null)
+                                        {
+                                            varHardCode.Valor = dgv.Rows[rowIndex].Cells["var_vglobal_UGs_Gerando_Araucaria"].Value;
+                                        }
+
+                                        varHardCode = Variaveis.Where(v => v.Nome.Trim().ToLower() == "x_refFRS_Ger".ToLower()).FirstOrDefault();
+                                        if (varHardCode != null)
+                                        {
+                                            varHardCode.Valor = dgv.Rows[rowIndex].Cells["func_Modulo_Interligacao_SSE-refFRS_Ger"].Value;
+                                        }
+
+                                        varHardCode = Variaveis.Where(v => v.Nome.Trim().ToLower() == "xFRS_GerUSs".ToLower()).FirstOrDefault();
+                                        if (varHardCode != null)
+                                        {
+                                            // SUL[FRS] - S_SE[Gera_Usinas]
+                                            varHardCode.Valor = double.Parse(dgv.Rows[rowIndex].Cells["var_vglobal_FRS"].Value.ToString()) - double.Parse(row.Cells["var_vglobal_Gera_Usinas"].Value.ToString());
+                                        }
+
+                                        varHardCode = Variaveis.Where(v => v.Nome.Trim().ToLower() == "xJLP".ToLower()).FirstOrDefault();
+                                        if (varHardCode != null)
+                                        {
+                                            varHardCode.Valor = dgv.Rows[rowIndex].Cells["var_vglobal_J_Lacerda_P"].Value;
+                                        }
+                                        varHardCode = Variaveis.Where(v => v.Nome.Trim().ToLower() == "xJLM".ToLower()).FirstOrDefault();
+                                        if (varHardCode != null)
+                                        {
+                                            varHardCode.Valor = dgv.Rows[rowIndex].Cells["var_vglobal_J_Lacerda_M"].Value;
+                                        }
+                                        varHardCode = Variaveis.Where(v => v.Nome.Trim().ToLower() == "xJLG".ToLower()).FirstOrDefault();
+                                        if (varHardCode != null)
+                                        {
+                                            varHardCode.Valor = dgv.Rows[rowIndex].Cells["var_vglobal_J_Lacerda_G"].Value;
+                                        }
+                                        varHardCode = Variaveis.Where(v => v.Nome.Trim().ToLower() == "xJLGG".ToLower()).FirstOrDefault();
+                                        if (varHardCode != null)
+                                        {
+                                            varHardCode.Valor = dgv.Rows[rowIndex].Cells["var_vglobal_J_Lacerda_GG"].Value;
+                                        }
+
+                                    }
+                        
 
                                     MaquinaInequacoesServiceReference.ListaDecisoes listaDecisoes = funcao.ListaDecisoes;
 
@@ -282,6 +336,8 @@ namespace ONS.MaquinaInequacoes.WindowsFormApplication
                                     }
 
                                 }
+
+                                rowIndex++;
 
                             }
                             break;
