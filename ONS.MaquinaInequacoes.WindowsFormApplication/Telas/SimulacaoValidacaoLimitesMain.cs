@@ -243,6 +243,14 @@ namespace ONS.MaquinaInequacoes.WindowsFormApplication
                                             variavelPC.Valor = row.Cells["func_Modulo_PERIODO_SE_CO_RNE_2009-PeriodoCarga_SE_CO"].Value;
                                         }
                                     }
+                                    if (dat.Columns.Contains("func_Modulo_Horarios_RNE_2009-PeriodoCarga_N_NE") && row.Cells["func_Modulo_Horarios_RNE_2009-PeriodoCarga_N_NE"].Value.ToString() != valorPadraoNaoExecutado)
+                                    {
+                                        MaquinaInequacoesServiceReference.Variavel variavelPC = Variaveis.Where(v => v.Nome.Trim().ToLower() == "PeriodoCarga_N_NE".ToLower()).FirstOrDefault();
+                                        if (variavelPC != null)
+                                        {
+                                            variavelPC.Valor = row.Cells["func_Modulo_Horarios_RNE_2009-PeriodoCarga_N_NE"].Value;
+                                        }
+                                    }
 
                                     // 02) Dependência da VisaoS_SE com VisaoSUL: xUGarauc, x_refFRS_Ger, xFRS_GerUSs, xJLP, xJLM, xJLG, xJLGG
                                     // "Modulo_Interligacao_SSE-limiteFINBA"
@@ -292,7 +300,75 @@ namespace ONS.MaquinaInequacoes.WindowsFormApplication
                                         }
 
                                     }
-                        
+
+                                    // 03) Dependência da VisaoN_NE_SE com VisaoS_SE: xMqIPU
+                                    if (visao.Nome == "N_NE_SE" && (funcao.Nome == "Modulo_Limites_MOPs-LimiteFNS_IO" || funcao.Nome == "Modulo_Limites_MOPs-Limite_Superior_FSM"))
+                                    {
+                                        Visao visaoS_SE = Visoes.Where(v => v.Nome == "S_SE").FirstOrDefault();
+                                        DataGridView dgv = (DataGridView)visaoS_SE.DataGridView;
+                                        DataGridView dgvN_NE_SE = (DataGridView)visao.DataGridView;
+
+                                        MaquinaInequacoesServiceReference.Variavel varHardCode = Variaveis.Where(v => v.Nome.Trim().ToLower() == "xMqIPU".ToLower()).FirstOrDefault();
+                                        if (varHardCode != null)
+                                        {
+                                            varHardCode.Valor = dgv.Rows[rowIndex].Cells["func_Modulo_Interligacao_SSE-Mqs_CORTE_FIPU_FSE"].Value;
+                                        }
+                                        varHardCode = Variaveis.Where(v => v.Nome.Trim().ToLower() == "xECE_IPU_TUC".ToLower()).FirstOrDefault();
+                                        if (varHardCode != null)
+                                        {
+                                            varHardCode.Valor = dgvN_NE_SE.Rows[rowIndex].Cells["func_Modulo_N_NE_SE_comECE_RNE_2009-ECE_ON_OFF"].Value;
+                                        }
+                                        varHardCode = Variaveis.Where(v => v.Nome.Trim().ToLower() == "xMW_ug_ipu".ToLower()).FirstOrDefault();
+                                        if (varHardCode != null)
+                                        {
+                                            varHardCode.Valor = double.Parse(dgv.Rows[rowIndex].Cells["var_vglobal_GIPU_60Hz"].Value.ToString()) / double.Parse(dgv.Rows[rowIndex].Cells["var_vglobal_Mq_60Hz"].Value.ToString());
+                                        }
+                                    }
+
+                                    // 04) Dependência da VisaoSEVERA_N3 com VisaoN_NE_SE e VisaoS_SE
+                                    if (visao.Nome == "SEVERA_N3" && (funcao.Nome == "Modulo_Limites_MOPs-Limite_GIPU_n3") || funcao.Nome == "Modulo_Limites_MOPs-LIM_FSE_n3" || funcao.Nome == "Modulo_Limites_MOPs-LIM_FNS_n3" || funcao.Nome == "Modulo_Limites_MOPs-LIM_FSM_n3" || funcao.Nome == "Modulo_Limites_MOPs-Limite_RSUL_n3")
+                                    {
+                                        Visao visaoS_SE = Visoes.Where(v => v.Nome == "S_SE").FirstOrDefault();
+                                        DataGridView dgvS_SE = (DataGridView)visaoS_SE.DataGridView;
+                                        Visao visaoN_NE_SE = Visoes.Where(v => v.Nome == "N_NE_SE").FirstOrDefault();
+                                        DataGridView dgvN_NE_SE = (DataGridView)visaoN_NE_SE.DataGridView;
+
+                                        MaquinaInequacoesServiceReference.Variavel varHardCode = Variaveis.Where(v => v.Nome.Trim().ToLower() == "xcarga_SIN".ToLower()).FirstOrDefault();
+                                        if (varHardCode != null)
+                                        {
+                                            varHardCode.Valor = dgvN_NE_SE.Rows[rowIndex].Cells["var_vglobal_CARGASIN"].Value;
+                                        }
+
+                                        varHardCode = Variaveis.Where(v => v.Nome.Trim().ToLower() == "xcargaSIN".ToLower()).FirstOrDefault();
+                                        if (varHardCode != null)
+                                        {
+                                            varHardCode.Valor = dgvS_SE.Rows[rowIndex].Cells["var_vglobal_CARGA_SIN"].Value;
+                                        }
+
+                                        varHardCode = Variaveis.Where(v => v.Nome.Trim().ToLower() == "xelocc".ToLower()).FirstOrDefault();
+                                        if (varHardCode != null)
+                                        {
+                                            varHardCode.Valor = dgvS_SE.Rows[rowIndex].Cells["var_vglobal_POT_ELO_CC"].Value;
+                                        }
+
+                                        varHardCode = Variaveis.Where(v => v.Nome.Trim().ToLower() == "xlimite_fse".ToLower()).FirstOrDefault();
+                                        if (varHardCode != null)
+                                        {
+                                            varHardCode.Valor = dgvS_SE.Rows[rowIndex].Cells["func_Modulo_Interligacao_SSE-LimiteFSE"].Value;
+                                        }
+                                        varHardCode = Variaveis.Where(v => v.Nome.Trim().ToLower() == "xlimite_rse".ToLower()).FirstOrDefault();
+                                        if (varHardCode != null)
+                                        {
+                                            varHardCode.Valor = dgvS_SE.Rows[rowIndex].Cells["func_Modulo_Interligacao_SSE-Limite_RSE"].Value;
+                                        }
+
+                                        // xmq_sm = N_NE_SE!L6+N_NE_SE!O6
+                                        varHardCode = Variaveis.Where(v => v.Nome.Trim().ToLower() == "xmq_sm".ToLower()).FirstOrDefault();
+                                        if (varHardCode != null)
+                                        {
+                                            varHardCode.Valor = double.Parse(dgvN_NE_SE.Rows[rowIndex].Cells["var_vglobal_SMGerando"].Value.ToString()) + double.Parse(dgvN_NE_SE.Rows[rowIndex].Cells["var_vglobal_Maqs_SMCOp"].Value.ToString());
+                                        }
+                                    }
 
                                     MaquinaInequacoesServiceReference.ListaDecisoes listaDecisoes = funcao.ListaDecisoes;
 
@@ -390,6 +466,9 @@ namespace ONS.MaquinaInequacoes.WindowsFormApplication
             // SUL
             CarregarVisaoSUL();
             CarregarVisaoS_SE();
+            CarregarVisaoACRO_MT();
+            CarregarVisaoN_NE_SE();
+            CarregarVisaoSEVERA_N3();
             AtualizarTabs();
             
             //MessageBox.Show("Todas visões na Validação de Limites foram carregadas.");
@@ -416,6 +495,42 @@ namespace ONS.MaquinaInequacoes.WindowsFormApplication
             visao.NumValoresDiario30em30min = true;
             VisaoS_SE.CarregarVariaveisComDados(visao, Variaveis);
             VisaoS_SE.CarregarFuncoes(visao, Variaveis, Funcoes);
+            Visoes.Add(visao);
+
+        }
+
+        private void CarregarVisaoSEVERA_N3()
+        {
+            Visao visao = new Visao();
+            visao.Nome = "SEVERA_N3";
+            visao.NumValores = 48;
+            visao.NumValoresDiario30em30min = true;
+            VisaoSEVERA_N3.CarregarVariaveisComDados(visao, Variaveis);
+            VisaoSEVERA_N3.CarregarFuncoes(visao, Variaveis, Funcoes);
+            Visoes.Add(visao);
+
+        }
+
+        private void CarregarVisaoN_NE_SE()
+        {
+            Visao visao = new Visao();
+            visao.Nome = "N_NE_SE";
+            visao.NumValores = 48;
+            visao.NumValoresDiario30em30min = true;
+            VisaoN_NE_SE.CarregarVariaveisComDados(visao, Variaveis);
+            VisaoN_NE_SE.CarregarFuncoes(visao, Variaveis, Funcoes);
+            Visoes.Add(visao);
+
+        }
+
+        private void CarregarVisaoACRO_MT()
+        {
+            Visao visao = new Visao();
+            visao.Nome = "ACRO_MT";
+            visao.NumValores = 48;
+            visao.NumValoresDiario30em30min = true;
+            VisaoACRO_MT.CarregarVariaveisComDados(visao, Variaveis);
+            VisaoACRO_MT.CarregarFuncoes(visao, Variaveis, Funcoes);
             Visoes.Add(visao);
 
         }
