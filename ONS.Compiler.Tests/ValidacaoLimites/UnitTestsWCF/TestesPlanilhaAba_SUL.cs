@@ -28,7 +28,7 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsWCF
                 for (int i = 0; i < mediador.linhas_S_SE.Count; i++)
                 {
                     Modulo_Interligacao_SSE_UGminARAUC.AtualizarVariaveisDaMemoriaDeCalculo(memoriaCalculo, mediador.linhas_S_SE[i]);
-                    memoriaCalculo = serviceClient.ExecutarObjeto(memoriaCalculo, listaDecisoes);
+                    memoriaCalculo = serviceClient.ExecutarJSONcomObjetos(memoriaCalculo, listaDecisoes);
 
                     Assert.AreEqual(Mediador.GetVariavelPorNome(memoriaCalculo, "lim").Valor, mediador.linhas_SUL[i].LDvalorplanilha_UgminAraucaria);
                 }
@@ -69,7 +69,7 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsWCF
                 for (int i = 0; i < mediador.linhas_S_SE.Count; i++)
                 {
                     Modulo_Interligacao_SSE_GERminARAUC.AtualizarVariaveisDaMemoriaDeCalculo(memoriaCalculo, mediador.linhas_S_SE[i]);
-                    memoriaCalculo = serviceClient.ExecutarObjeto(memoriaCalculo, listaDecisoes);
+                    memoriaCalculo = serviceClient.ExecutarJSONcomObjetos(memoriaCalculo, listaDecisoes);
 
                     Assert.AreEqual(Mediador.GetVariavelPorNome(memoriaCalculo, "lim").Valor, mediador.linhas_SUL[i].LDvalorplanilha_GeracaoMinimaAraucara);
                 }
@@ -109,7 +109,7 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsWCF
                 for (int i = 0; i < mediador.linhas_SUL.Count; i++)
                 {
                     Modulo_GARABI_ITASSA1_LimiteSUPGARABI1.AtualizarVariaveisDaMemoriaDeCalculo(memoriaCalculo, mediador.linhas_SUL[i]);
-                    memoriaCalculo = serviceClient.ExecutarObjeto(memoriaCalculo, listaDecisoes);
+                    memoriaCalculo = serviceClient.ExecutarJSONcomObjetos(memoriaCalculo, listaDecisoes);
 
                     Assert.AreEqual(Mediador.GetVariavelPorNome(memoriaCalculo, "lim").Valor, mediador.linhas_SUL[i].LDvalorplanilha_LimGrbiISUPImport);
                 }
@@ -149,7 +149,7 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsWCF
                 for (int i = 0; i < mediador.linhas_SUL.Count; i++)
                 {
                     Modulo_GARABI_ITASSA1_LimiteINFGARABI1.AtualizarVariaveisDaMemoriaDeCalculo(memoriaCalculo, mediador.linhas_SUL[i]);
-                    memoriaCalculo = serviceClient.ExecutarObjeto(memoriaCalculo, listaDecisoes);
+                    memoriaCalculo = serviceClient.ExecutarJSONcomObjetos(memoriaCalculo, listaDecisoes);
 
                     Assert.AreEqual(Mediador.GetVariavelPorNome(memoriaCalculo, "lim").Valor, mediador.linhas_SUL[i].LDvalorplanilha_LimGrbiIINFExport);
                 }
@@ -189,7 +189,7 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsWCF
                 for (int i = 0; i < mediador.linhas_SUL.Count; i++)
                 {
                     Modulo_GARABI_ITASSA1_LimiteSUPGARABI2.AtualizarVariaveisDaMemoriaDeCalculo(memoriaCalculo, mediador.linhas_SUL[i]);
-                    memoriaCalculo = serviceClient.ExecutarObjeto(memoriaCalculo, listaDecisoes);
+                    memoriaCalculo = serviceClient.ExecutarJSONcomObjetos(memoriaCalculo, listaDecisoes);
 
                     Assert.AreEqual(Mediador.GetVariavelPorNome(memoriaCalculo, "lim").Valor, mediador.linhas_SUL[i].LDvalorplanilha_LimGrbiIISUPImport);
                 }
@@ -229,7 +229,7 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsWCF
                 for (int i = 0; i < mediador.linhas_SUL.Count; i++)
                 {
                     Modulo_GARABI_ITASSA1_LimiteINFGARABI2.AtualizarVariaveisDaMemoriaDeCalculo(memoriaCalculo, mediador.linhas_SUL[i]);
-                    memoriaCalculo = serviceClient.ExecutarObjeto(memoriaCalculo, listaDecisoes);
+                    memoriaCalculo = serviceClient.ExecutarJSONcomObjetos(memoriaCalculo, listaDecisoes);
 
                     Assert.AreEqual(Mediador.GetVariavelPorNome(memoriaCalculo, "lim").Valor, mediador.linhas_SUL[i].LDvalorplanilha_LimGrbiIIINFExport);
                 }

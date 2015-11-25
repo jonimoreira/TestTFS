@@ -177,8 +177,9 @@ namespace ONS.MaquinaInequacoes.WindowsFormApplication
 
         private const string valorPadraoNaoExecutado = "<<executar>>";
 
-        public void Executar()
+        public bool Executar()
         {
+            bool result = true;
             MaquinaInequacoesServiceReference.MaquinaInequacoesServiceClient maquinaInequacoesServiceClient = new MaquinaInequacoesServiceReference.MaquinaInequacoesServiceClient();
 
             try
@@ -375,7 +376,7 @@ namespace ONS.MaquinaInequacoes.WindowsFormApplication
                                     try
                                     {
                                         // Chama o serviço
-                                        MaquinaInequacoesServiceReference.MemoriaCalculo memoriaCalculoResult = maquinaInequacoesServiceClient.ExecutarObjeto(memoriaCalculo, listaDecisoes);
+                                        MaquinaInequacoesServiceReference.MemoriaCalculo memoriaCalculoResult = maquinaInequacoesServiceClient.ExecutarJSONcomObjetos(memoriaCalculo, listaDecisoes);
 
                                         try
                                         {
@@ -423,7 +424,7 @@ namespace ONS.MaquinaInequacoes.WindowsFormApplication
                 }
 
                 maquinaInequacoesServiceClient.Close();
-                MessageBox.Show("Execução efetuada com sucesso.");
+                
             }
             catch (Exception iEx)
             {
@@ -431,15 +432,22 @@ namespace ONS.MaquinaInequacoes.WindowsFormApplication
                 if (maquinaInequacoesServiceClient != null && maquinaInequacoesServiceClient.State == System.ServiceModel.CommunicationState.Opened)
                     maquinaInequacoesServiceClient.Close();
                 maquinaInequacoesServiceClient = null;
+                result = false;
             }
+
+            return result;
 
 
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            Executar();
-
+            DateTime dtHrInic = DateTime.Now;
+            bool executousucesso = Executar();
+            string tempoTotal = "Tempo total de execucao: " + (DateTime.Now - dtHrInic).TotalSeconds.ToString() + " segundos.   ";
+            MessageBox.Show(tempoTotal);
+            if (executousucesso)
+                MessageBox.Show("Execução efetuada com sucesso.");
         }
 
         private void button3_Click(object sender, EventArgs e)

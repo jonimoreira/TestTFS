@@ -27,7 +27,7 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsWCF
                 for (int i = 0; i < mediador.linhas_S_SE.Count; i++)
                 {
                     Modulo_Interligacao_SSE_LimiteFBAIN.AtualizarVariaveisDaMemoriaDeCalculo(memoriaCalculo, mediador.linhas_S_SE[i]);
-                    memoriaCalculo = serviceClient.ExecutarObjeto(memoriaCalculo, listaDecisoes);
+                    memoriaCalculo = serviceClient.ExecutarJSONcomObjetos(memoriaCalculo, listaDecisoes);
 
                     Assert.AreEqual(Mediador.GetVariavelPorNome(memoriaCalculo, "lim").Valor, mediador.linhas_S_SE[i].LDvalorplanilha_LIM_FBAIN);
                 }
@@ -68,7 +68,7 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsWCF
                 for (int i = 0; i < mediador.linhas_S_SE.Count; i++)
                 {
                     Modulo_Interligacao_SSE_limiteFINBA.AtualizarVariaveisDaMemoriaDeCalculo(memoriaCalculo, mediador.linhas_S_SE[i], mediador.linhas_SUL[i]);
-                    memoriaCalculo = serviceClient.ExecutarObjeto(memoriaCalculo, listaDecisoes);
+                    memoriaCalculo = serviceClient.ExecutarJSONcomObjetos(memoriaCalculo, listaDecisoes);
 
                     Assert.AreEqual(Mediador.GetVariavelPorNome(memoriaCalculo, "lim").Valor, mediador.linhas_S_SE[i].LDvalorplanilha_LIM_FINBA);
                 }
@@ -108,7 +108,7 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsWCF
                 for (int i = 0; i < mediador.linhas_S_SE.Count; i++)
                 {
                     Modulo_Interligacao_SSE_LimiteFSE.AtualizarVariaveisDaMemoriaDeCalculo(memoriaCalculo, mediador.linhas_S_SE[i]);
-                    memoriaCalculo = serviceClient.ExecutarObjeto(memoriaCalculo, listaDecisoes);
+                    memoriaCalculo = serviceClient.ExecutarJSONcomObjetos(memoriaCalculo, listaDecisoes);
 
                     Assert.AreEqual(Mediador.GetVariavelPorNome(memoriaCalculo, "lim").Valor, mediador.linhas_S_SE[i].LDvalorplanilha_LIM_FSE);
                 }
@@ -148,7 +148,7 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsWCF
                 for (int i = 0; i < mediador.linhas_S_SE.Count; i++)
                 {
                     Modulo_Interligacao_SSE_Limite_RSE.AtualizarVariaveisDaMemoriaDeCalculo(memoriaCalculo, mediador.linhas_S_SE[i]);
-                    memoriaCalculo = serviceClient.ExecutarObjeto(memoriaCalculo, listaDecisoes);
+                    memoriaCalculo = serviceClient.ExecutarJSONcomObjetos(memoriaCalculo, listaDecisoes);
 
                     Assert.AreEqual(Mediador.GetVariavelPorNome(memoriaCalculo, "lim").Valor, mediador.linhas_S_SE[i].LDvalorplanilha_LIM_RSE);
                 }
@@ -188,7 +188,7 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsWCF
                 for (int i = 0; i < mediador.linhas_S_SE.Count; i++)
                 {
                     Modulo_Interligacao_SSE_LIMITE_RSUL.AtualizarVariaveisDaMemoriaDeCalculo(memoriaCalculo, mediador.linhas_S_SE[i], mediador.linhas_SUL[i]);
-                    memoriaCalculo = serviceClient.ExecutarObjeto(memoriaCalculo, listaDecisoes);
+                    memoriaCalculo = serviceClient.ExecutarJSONcomObjetos(memoriaCalculo, listaDecisoes);
 
                     Assert.AreEqual(Mediador.GetVariavelPorNome(memoriaCalculo, "lim").Valor, mediador.linhas_S_SE[i].LDvalorplanilha_LIM_RSUL_FSUL_SUP_RSUL);
                 }
@@ -227,7 +227,7 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsWCF
                 for (int i = 0; i < mediador.linhas_S_SE.Count; i++)
                 {
                     Modulo_Interligacao_SSE_LIMITE_FSUL.AtualizarVariaveisDaMemoriaDeCalculo(memoriaCalculo, mediador.linhas_S_SE[i]);
-                    memoriaCalculo = serviceClient.ExecutarObjeto(memoriaCalculo, listaDecisoes);
+                    memoriaCalculo = serviceClient.ExecutarJSONcomObjetos(memoriaCalculo, listaDecisoes);
 
                     Assert.AreEqual(Mediador.GetVariavelPorNome(memoriaCalculo, "lim").Valor, mediador.linhas_S_SE[i].LDvalorplanilha_LIM_RSUL_FSUL_INF_FSUL);
                 }
@@ -266,7 +266,7 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsWCF
                 for (int i = 0; i < mediador.linhas_S_SE.Count; i++)
                 {
                     Modulo_Interligacao_SSE_Mqs_CORTE_FIPU_FSE.AtualizarVariaveisDaMemoriaDeCalculo(memoriaCalculo, mediador.linhas_S_SE[i]);
-                    memoriaCalculo = serviceClient.ExecutarObjeto(memoriaCalculo, listaDecisoes);
+                    memoriaCalculo = serviceClient.ExecutarJSONcomObjetos(memoriaCalculo, listaDecisoes);
 
                     Assert.AreEqual(Mediador.GetVariavelPorNome(memoriaCalculo, "corte").Valor, mediador.linhas_S_SE[i].LDvalorplanilha_Mqs_crt_IPU_max);
                 }
@@ -305,7 +305,7 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsWCF
                 for (int i = 0; i < mediador.linhas_S_SE.Count; i++)
                 {
                     Modulo_Interligacao_SSE_LimGIPU.AtualizarVariaveisDaMemoriaDeCalculo(memoriaCalculo, mediador.linhas_S_SE[i]);
-                    memoriaCalculo = serviceClient.ExecutarObjeto(memoriaCalculo, listaDecisoes);
+                    memoriaCalculo = serviceClient.ExecutarJSONcomObjetos(memoriaCalculo, listaDecisoes);
 
                     Assert.AreEqual(Mediador.GetVariavelPorNome(memoriaCalculo, "lim").Valor, mediador.linhas_S_SE[i].LDvalorplanilha_Limite_GIPU_SUP);
                 }
@@ -344,7 +344,7 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsWCF
                 for (int i = 0; i < mediador.linhas_S_SE.Count; i++)
                 {
                     Modulo_Interligacao_SSE_GIPU_minimo.AtualizarVariaveisDaMemoriaDeCalculo(memoriaCalculo, mediador.linhas_S_SE[i]);
-                    memoriaCalculo = serviceClient.ExecutarObjeto(memoriaCalculo, listaDecisoes);
+                    memoriaCalculo = serviceClient.ExecutarJSONcomObjetos(memoriaCalculo, listaDecisoes);
 
                     Assert.AreEqual(Mediador.GetVariavelPorNome(memoriaCalculo, "lim").Valor, mediador.linhas_S_SE[i].LDvalorplanilha_Limite_GIPU_INF);
                 }
@@ -393,7 +393,7 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsWCF
                 for (int i = 0; i < mediador.linhas_S_SE.Count; i++)
                 {
                     Modulo_Interligacao_SSE_refFRS_Ger.AtualizarVariaveisDaMemoriaDeCalculo(memoriaCalculo, mediador.linhas_S_SE[i], mediador.linhas_SUL[i]);
-                    memoriaCalculo = serviceClient.ExecutarObjeto(memoriaCalculo, listaDecisoes);
+                    memoriaCalculo = serviceClient.ExecutarJSONcomObjetos(memoriaCalculo, listaDecisoes);
 
                     Assert.AreEqual(Mediador.GetVariavelPorNome(memoriaCalculo, "lim").Valor, mediador.linhas_S_SE[i].LDvalorplanilha_Valor_referencia_FRS_Usinas);
                 }

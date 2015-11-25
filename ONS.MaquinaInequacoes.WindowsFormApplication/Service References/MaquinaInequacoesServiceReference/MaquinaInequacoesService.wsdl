@@ -7,52 +7,52 @@
       <xsd:import schemaLocation="http://localhost:2562/MaquinaInequacoesService.svc?xsd=xsd1" namespace="http://schemas.datacontract.org/2004/07/ONS.MaquinaInequacoes.Service.DataContracts" />
     </xsd:schema>
   </wsdl:types>
-  <wsdl:message name="IMaquinaInequacoesService_ExecutarJSON_InputMessage">
-    <wsdl:part name="parameters" element="tns:ExecutarJSON" />
+  <wsdl:message name="IMaquinaInequacoesService_ExecutarJSONcomGPL_InputMessage">
+    <wsdl:part name="parameters" element="tns:ExecutarJSONcomGPL" />
   </wsdl:message>
-  <wsdl:message name="IMaquinaInequacoesService_ExecutarJSON_OutputMessage">
-    <wsdl:part name="parameters" element="tns:ExecutarJSONResponse" />
+  <wsdl:message name="IMaquinaInequacoesService_ExecutarJSONcomGPL_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ExecutarJSONcomGPLResponse" />
   </wsdl:message>
-  <wsdl:message name="IMaquinaInequacoesService_ExecutarXML_InputMessage">
-    <wsdl:part name="parameters" element="tns:ExecutarXML" />
+  <wsdl:message name="IMaquinaInequacoesService_ExecutarXMLcomGPL_InputMessage">
+    <wsdl:part name="parameters" element="tns:ExecutarXMLcomGPL" />
   </wsdl:message>
-  <wsdl:message name="IMaquinaInequacoesService_ExecutarXML_OutputMessage">
-    <wsdl:part name="parameters" element="tns:ExecutarXMLResponse" />
+  <wsdl:message name="IMaquinaInequacoesService_ExecutarXMLcomGPL_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ExecutarXMLcomGPLResponse" />
   </wsdl:message>
-  <wsdl:message name="IMaquinaInequacoesService_ExecutarString_InputMessage">
-    <wsdl:part name="parameters" element="tns:ExecutarString" />
+  <wsdl:message name="IMaquinaInequacoesService_ExecutarJSONcomObjetos_InputMessage">
+    <wsdl:part name="parameters" element="tns:ExecutarJSONcomObjetos" />
   </wsdl:message>
-  <wsdl:message name="IMaquinaInequacoesService_ExecutarString_OutputMessage">
-    <wsdl:part name="parameters" element="tns:ExecutarStringResponse" />
+  <wsdl:message name="IMaquinaInequacoesService_ExecutarJSONcomObjetos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ExecutarJSONcomObjetosResponse" />
   </wsdl:message>
-  <wsdl:message name="IMaquinaInequacoesService_ExecutarObjeto_InputMessage">
-    <wsdl:part name="parameters" element="tns:ExecutarObjeto" />
+  <wsdl:message name="IMaquinaInequacoesService_ExecutarXMLcomObjetos_InputMessage">
+    <wsdl:part name="parameters" element="tns:ExecutarXMLcomObjetos" />
   </wsdl:message>
-  <wsdl:message name="IMaquinaInequacoesService_ExecutarObjeto_OutputMessage">
-    <wsdl:part name="parameters" element="tns:ExecutarObjetoResponse" />
+  <wsdl:message name="IMaquinaInequacoesService_ExecutarXMLcomObjetos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ExecutarXMLcomObjetosResponse" />
   </wsdl:message>
   <wsdl:portType name="IMaquinaInequacoesService">
-    <wsdl:operation name="ExecutarJSON">
-      <wsdl:input wsaw:Action="http://tempuri.org/IMaquinaInequacoesService/ExecutarJSON" message="tns:IMaquinaInequacoesService_ExecutarJSON_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IMaquinaInequacoesService/ExecutarJSONResponse" message="tns:IMaquinaInequacoesService_ExecutarJSON_OutputMessage" />
+    <wsdl:operation name="ExecutarJSONcomGPL">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMaquinaInequacoesService/ExecutarJSONcomGPL" message="tns:IMaquinaInequacoesService_ExecutarJSONcomGPL_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMaquinaInequacoesService/ExecutarJSONcomGPLResponse" message="tns:IMaquinaInequacoesService_ExecutarJSONcomGPL_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="ExecutarXML">
-      <wsdl:input wsaw:Action="http://tempuri.org/IMaquinaInequacoesService/ExecutarXML" message="tns:IMaquinaInequacoesService_ExecutarXML_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IMaquinaInequacoesService/ExecutarXMLResponse" message="tns:IMaquinaInequacoesService_ExecutarXML_OutputMessage" />
+    <wsdl:operation name="ExecutarXMLcomGPL">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMaquinaInequacoesService/ExecutarXMLcomGPL" message="tns:IMaquinaInequacoesService_ExecutarXMLcomGPL_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMaquinaInequacoesService/ExecutarXMLcomGPLResponse" message="tns:IMaquinaInequacoesService_ExecutarXMLcomGPL_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="ExecutarString">
-      <wsdl:input wsaw:Action="http://tempuri.org/IMaquinaInequacoesService/ExecutarString" message="tns:IMaquinaInequacoesService_ExecutarString_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IMaquinaInequacoesService/ExecutarStringResponse" message="tns:IMaquinaInequacoesService_ExecutarString_OutputMessage" />
+    <wsdl:operation name="ExecutarJSONcomObjetos">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMaquinaInequacoesService/ExecutarJSONcomObjetos" message="tns:IMaquinaInequacoesService_ExecutarJSONcomObjetos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMaquinaInequacoesService/ExecutarJSONcomObjetosResponse" message="tns:IMaquinaInequacoesService_ExecutarJSONcomObjetos_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="ExecutarObjeto">
-      <wsdl:input wsaw:Action="http://tempuri.org/IMaquinaInequacoesService/ExecutarObjeto" message="tns:IMaquinaInequacoesService_ExecutarObjeto_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IMaquinaInequacoesService/ExecutarObjetoResponse" message="tns:IMaquinaInequacoesService_ExecutarObjeto_OutputMessage" />
+    <wsdl:operation name="ExecutarXMLcomObjetos">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMaquinaInequacoesService/ExecutarXMLcomObjetos" message="tns:IMaquinaInequacoesService_ExecutarXMLcomObjetos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMaquinaInequacoesService/ExecutarXMLcomObjetosResponse" message="tns:IMaquinaInequacoesService_ExecutarXMLcomObjetos_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IMaquinaInequacoesService" type="tns:IMaquinaInequacoesService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="ExecutarJSON">
-      <soap:operation soapAction="http://tempuri.org/IMaquinaInequacoesService/ExecutarJSON" style="document" />
+    <wsdl:operation name="ExecutarJSONcomGPL">
+      <soap:operation soapAction="http://tempuri.org/IMaquinaInequacoesService/ExecutarJSONcomGPL" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -60,8 +60,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="ExecutarXML">
-      <soap:operation soapAction="http://tempuri.org/IMaquinaInequacoesService/ExecutarXML" style="document" />
+    <wsdl:operation name="ExecutarXMLcomGPL">
+      <soap:operation soapAction="http://tempuri.org/IMaquinaInequacoesService/ExecutarXMLcomGPL" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -69,8 +69,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="ExecutarString">
-      <soap:operation soapAction="http://tempuri.org/IMaquinaInequacoesService/ExecutarString" style="document" />
+    <wsdl:operation name="ExecutarJSONcomObjetos">
+      <soap:operation soapAction="http://tempuri.org/IMaquinaInequacoesService/ExecutarJSONcomObjetos" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -78,8 +78,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="ExecutarObjeto">
-      <soap:operation soapAction="http://tempuri.org/IMaquinaInequacoesService/ExecutarObjeto" style="document" />
+    <wsdl:operation name="ExecutarXMLcomObjetos">
+      <soap:operation soapAction="http://tempuri.org/IMaquinaInequacoesService/ExecutarXMLcomObjetos" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

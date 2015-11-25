@@ -28,7 +28,7 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsWCF
                 for (int i = 0; i < mediador.linhas_N_NE_SE.Count; i++)
                 {
                     Modulo_Limites_MOPs_Limite_GIPU_n3.AtualizarVariaveisDaMemoriaDeCalculo(memoriaCalculo, mediador.linhas_N_NE_SE[i]);
-                    memoriaCalculo = serviceClient.ExecutarObjeto(memoriaCalculo, listaDecisoes);
+                    memoriaCalculo = serviceClient.ExecutarJSONcomObjetos(memoriaCalculo, listaDecisoes);
 
                     Assert.AreEqual(Mediador.GetVariavelPorNome(memoriaCalculo, "lim").Valor, mediador.linhas_SEVERA_N3[i].LDvalorplanilha_LIMITGERIPU);
                 }
@@ -69,7 +69,7 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsWCF
                 for (int i = 0; i < mediador.linhas_S_SE.Count; i++)
                 {
                     Modulo_Limites_MOPs_LIM_FSE_n3.AtualizarVariaveisDaMemoriaDeCalculo(memoriaCalculo, mediador.linhas_SEVERA_N3[i], mediador.linhas_S_SE[i]);
-                    memoriaCalculo = serviceClient.ExecutarObjeto(memoriaCalculo, listaDecisoes);
+                    memoriaCalculo = serviceClient.ExecutarJSONcomObjetos(memoriaCalculo, listaDecisoes);
 
                     Assert.AreEqual(Mediador.GetVariavelPorNome(memoriaCalculo, "lim").Valor, mediador.linhas_SEVERA_N3[i].LDvalorplanilha_LIM_FSE_n3);
                 }
@@ -110,7 +110,7 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsWCF
                 for (int i = 0; i < mediador.linhas_S_SE.Count; i++)
                 {
                     Modulo_Limites_MOPs_LIM_RSE_n3.AtualizarVariaveisDaMemoriaDeCalculo(memoriaCalculo, mediador.linhas_SEVERA_N3[i], mediador.linhas_S_SE[i]);
-                    memoriaCalculo = serviceClient.ExecutarObjeto(memoriaCalculo, listaDecisoes);
+                    memoriaCalculo = serviceClient.ExecutarJSONcomObjetos(memoriaCalculo, listaDecisoes);
 
                     Assert.AreEqual(Mediador.GetVariavelPorNome(memoriaCalculo, "lim").Valor, mediador.linhas_SEVERA_N3[i].LDvalorplanilha_LIM_RSE_n3);
                 }
@@ -152,7 +152,7 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsWCF
                 for (int i = 0; i < mediador.linhas_N_NE_SE.Count; i++)
                 {
                     Modulo_Limites_MOPs_LIM_FNS_n3.AtualizarVariaveisDaMemoriaDeCalculo(memoriaCalculo, mediador.linhas_SEVERA_N3[i], mediador.linhas_S_SE[i], mediador.linhas_N_NE_SE[i]);
-                    memoriaCalculo = serviceClient.ExecutarObjeto(memoriaCalculo, listaDecisoes);
+                    memoriaCalculo = serviceClient.ExecutarJSONcomObjetos(memoriaCalculo, listaDecisoes);
 
                     MaquinaInequacoesServiceReference.Variavel limite = Mediador.GetVariavelPorNome(memoriaCalculo, "lim");
                     MaquinaInequacoesServiceReference.Variavel limiteTexto = Mediador.GetVariavelPorNome(memoriaCalculo, "limTexto");
@@ -200,7 +200,7 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsWCF
                 for (int i = 0; i < mediador.linhas_N_NE_SE.Count; i++)
                 {
                     Modulo_Limites_MOPs_LIM_FSM_n3.AtualizarVariaveisDaMemoriaDeCalculo(memoriaCalculo, mediador.linhas_SEVERA_N3[i], mediador.linhas_S_SE[i], mediador.linhas_N_NE_SE[i]);
-                    memoriaCalculo = serviceClient.ExecutarObjeto(memoriaCalculo, listaDecisoes);
+                    memoriaCalculo = serviceClient.ExecutarJSONcomObjetos(memoriaCalculo, listaDecisoes);
 
                     Assert.AreEqual(Mediador.GetVariavelPorNome(memoriaCalculo, "lim").Valor, mediador.linhas_SEVERA_N3[i].LDvalorplanilha_LIMIT_FSM);
                 }
@@ -241,7 +241,7 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsWCF
                 for (int i = 0; i < mediador.linhas_S_SE.Count; i++)
                 {
                     Modulo_Limites_MOPs_Limite_RSUL_n3.AtualizarVariaveisDaMemoriaDeCalculo(memoriaCalculo, mediador.linhas_S_SE[i]);
-                    memoriaCalculo = serviceClient.ExecutarObjeto(memoriaCalculo, listaDecisoes);
+                    memoriaCalculo = serviceClient.ExecutarJSONcomObjetos(memoriaCalculo, listaDecisoes);
 
                     Assert.AreEqual(Mediador.GetVariavelPorNome(memoriaCalculo, "lim").Valor, mediador.linhas_SEVERA_N3[i].LDvalorplanilha_LIMIT_RSUL);
                 }

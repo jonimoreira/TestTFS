@@ -27,7 +27,7 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsWCF
                 for (int i = 0; i < mediador.linhas_ACRO_MT.Count; i++)
                 {
                     Modulo_Acre_Rondonia_MT_limite_FMT.AtualizarVariaveisDaMemoriaDeCalculo(memoriaCalculo, mediador.linhas_ACRO_MT[i]);
-                    memoriaCalculo = serviceClient.ExecutarObjeto(memoriaCalculo, listaDecisoes);
+                    memoriaCalculo = serviceClient.ExecutarJSONcomObjetos(memoriaCalculo, listaDecisoes);
 
                     Assert.AreEqual(Mediador.GetVariavelPorNome(memoriaCalculo, "lim").Valor, mediador.linhas_ACRO_MT[i].LDvalorplanilha_Limite_FMT);
                 }
@@ -67,7 +67,7 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsWCF
                 for (int i = 0; i < mediador.linhas_ACRO_MT.Count; i++)
                 {
                     Modulo_RACRO_Limite_Sup_FACRO.AtualizarVariaveisDaMemoriaDeCalculo(memoriaCalculo, mediador.linhas_ACRO_MT[i]);
-                    memoriaCalculo = serviceClient.ExecutarObjeto(memoriaCalculo, listaDecisoes);
+                    memoriaCalculo = serviceClient.ExecutarJSONcomObjetos(memoriaCalculo, listaDecisoes);
 
                     Assert.AreEqual(Mediador.GetVariavelPorNome(memoriaCalculo, "lim").Valor, mediador.linhas_ACRO_MT[i].LDvalorplanilha_Limite_FMT);
                 }
@@ -107,7 +107,7 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsWCF
                 for (int i = 0; i < mediador.linhas_ACRO_MT.Count; i++)
                 {
                     Modulo_RACRO_Limite_Inf_FACRO.AtualizarVariaveisDaMemoriaDeCalculo(memoriaCalculo, mediador.linhas_ACRO_MT[i]);
-                    memoriaCalculo = serviceClient.ExecutarObjeto(memoriaCalculo, listaDecisoes);
+                    memoriaCalculo = serviceClient.ExecutarJSONcomObjetos(memoriaCalculo, listaDecisoes);
 
                     Assert.AreEqual(Math.Round((double)Mediador.GetVariavelPorNome(memoriaCalculo, "lim").Valor,0), Math.Round((double)mediador.linhas_ACRO_MT[i].LDvalorplanilha_Lim_FACROInf,0));
                 }
@@ -147,7 +147,7 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsWCF
                 for (int i = 0; i < mediador.linhas_ACRO_MT.Count; i++)
                 {
                     Modulo_RACRO_Limite_Sam_Ariq.AtualizarVariaveisDaMemoriaDeCalculo(memoriaCalculo, mediador.linhas_ACRO_MT[i]);
-                    memoriaCalculo = serviceClient.ExecutarObjeto(memoriaCalculo, listaDecisoes);
+                    memoriaCalculo = serviceClient.ExecutarJSONcomObjetos(memoriaCalculo, listaDecisoes);
 
                     Assert.AreEqual(Mediador.GetVariavelPorNome(memoriaCalculo, "lim").Valor, mediador.linhas_ACRO_MT[i].LDvalorplanilha_LimiteSm_Aq);
                 }
@@ -187,7 +187,7 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsWCF
                 for (int i = 0; i < mediador.linhas_ACRO_MT.Count; i++)
                 {
                     Modulo_RACRO_Limite_BtB.AtualizarVariaveisDaMemoriaDeCalculo(memoriaCalculo, mediador.linhas_ACRO_MT[i]);
-                    memoriaCalculo = serviceClient.ExecutarObjeto(memoriaCalculo, listaDecisoes);
+                    memoriaCalculo = serviceClient.ExecutarJSONcomObjetos(memoriaCalculo, listaDecisoes);
 
                     Assert.AreEqual(Mediador.GetVariavelPorNome(memoriaCalculo, "lim").Valor, mediador.linhas_ACRO_MT[i].LDvalorplanilha_LimiteFBtB);
                 }
@@ -227,7 +227,7 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsWCF
                 for (int i = 0; i < mediador.linhas_ACRO_MT.Count; i++)
                 {
                     Modulo_RACRO_Limite_TRprov.AtualizarVariaveisDaMemoriaDeCalculo(memoriaCalculo, mediador.linhas_ACRO_MT[i]);
-                    memoriaCalculo = serviceClient.ExecutarObjeto(memoriaCalculo, listaDecisoes);
+                    memoriaCalculo = serviceClient.ExecutarJSONcomObjetos(memoriaCalculo, listaDecisoes);
 
                     Assert.AreEqual(Math.Round((double)Mediador.GetVariavelPorNome(memoriaCalculo, "lim").Valor,0), Math.Round((double)mediador.linhas_ACRO_MT[i].LDvalorplanilha_LimiteFTRpr),0);
                 }
@@ -267,7 +267,7 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsWCF
                 for (int i = 0; i < mediador.linhas_ACRO_MT.Count; i++)
                 {
                     Modulo_RACRO_Limite_POLO.AtualizarVariaveisDaMemoriaDeCalculo(memoriaCalculo, mediador.linhas_ACRO_MT[i]);
-                    memoriaCalculo = serviceClient.ExecutarObjeto(memoriaCalculo, listaDecisoes);
+                    memoriaCalculo = serviceClient.ExecutarJSONcomObjetos(memoriaCalculo, listaDecisoes);
 
                     Assert.AreEqual(Mediador.GetVariavelPorNome(memoriaCalculo, "lim").Valor, mediador.linhas_ACRO_MT[i].LDvalorplanilha_LimitePOLO);
                 }
@@ -307,7 +307,7 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsWCF
                 for (int i = 0; i < mediador.linhas_ACRO_MT.Count; i++)
                 {
                     Modulo_RACRO_Limite_SA_JI.AtualizarVariaveisDaMemoriaDeCalculo(memoriaCalculo, mediador.linhas_ACRO_MT[i]);
-                    memoriaCalculo = serviceClient.ExecutarObjeto(memoriaCalculo, listaDecisoes);
+                    memoriaCalculo = serviceClient.ExecutarJSONcomObjetos(memoriaCalculo, listaDecisoes);
 
                     Assert.AreEqual(Mediador.GetVariavelPorNome(memoriaCalculo, "lim").Valor, mediador.linhas_ACRO_MT[i].LDvalorplanilha_LimiteSAJirau);
                 }

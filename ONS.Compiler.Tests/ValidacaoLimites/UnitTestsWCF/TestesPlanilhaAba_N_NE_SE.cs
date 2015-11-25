@@ -27,7 +27,7 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsWCF
                 for (int i = 0; i < mediador.linhas_N_NE_SE.Count; i++)
                 {
                     Modulo_N_NE_SE_comECE_RNE_2009_ECE_ON_OFF.AtualizarVariaveisDaMemoriaDeCalculo(memoriaCalculo, mediador.linhas_N_NE_SE[i]);
-                    memoriaCalculo = serviceClient.ExecutarObjeto(memoriaCalculo, listaDecisoes);
+                    memoriaCalculo = serviceClient.ExecutarJSONcomObjetos(memoriaCalculo, listaDecisoes);
 
                     Assert.AreEqual(Mediador.GetVariavelPorNome(memoriaCalculo, "estado_ece").Valor, mediador.linhas_N_NE_SE[i].LDvalorplanilha_ECETUCIPU);
                 }
@@ -66,7 +66,7 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsWCF
                 for (int i = 0; i < mediador.linhas_N_NE_SE.Count; i++)
                 {
                     Modulo_N_NE_apoio_LimiteEXPN_N_EXP.AtualizarVariaveisDaMemoriaDeCalculo(memoriaCalculo, mediador.linhas_N_NE_SE[i]);
-                    memoriaCalculo = serviceClient.ExecutarObjeto(memoriaCalculo, listaDecisoes);
+                    memoriaCalculo = serviceClient.ExecutarJSONcomObjetos(memoriaCalculo, listaDecisoes);
 
                     Assert.AreEqual(Mediador.GetVariavelPorNome(memoriaCalculo, "lim").Valor, mediador.linhas_N_NE_SE[i].LDvalorplanilha_LimiteEXPN_SUP);
                 }
@@ -105,7 +105,7 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsWCF
                 for (int i = 0; i < mediador.linhas_N_NE_SE.Count; i++)
                 {
                     Modulo_N_NE_apoio_Limite_Inf_EXPN_IO_NNE.AtualizarVariaveisDaMemoriaDeCalculo(memoriaCalculo, mediador.linhas_N_NE_SE[i]);
-                    memoriaCalculo = serviceClient.ExecutarObjeto(memoriaCalculo, listaDecisoes);
+                    memoriaCalculo = serviceClient.ExecutarJSONcomObjetos(memoriaCalculo, listaDecisoes);
 
                     Assert.AreEqual(Mediador.GetVariavelPorNome(memoriaCalculo, "lim").Valor, mediador.linhas_N_NE_SE[i].LDvalorplanilha_LimiteEXPN_INF);
                 }
@@ -144,7 +144,7 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsWCF
                 for (int i = 0; i < mediador.linhas_N_NE_SE.Count; i++)
                 {
                     Modulo_N_NE_apoio_LimiteRNE_Cenarios_N_NE_SE.AtualizarVariaveisDaMemoriaDeCalculo(memoriaCalculo, mediador.linhas_N_NE_SE[i]);
-                    memoriaCalculo = serviceClient.ExecutarObjeto(memoriaCalculo, listaDecisoes);
+                    memoriaCalculo = serviceClient.ExecutarJSONcomObjetos(memoriaCalculo, listaDecisoes);
 
                     Assert.AreEqual(Mediador.GetVariavelPorNome(memoriaCalculo, "lim").Valor, mediador.linhas_N_NE_SE[i].LDvalorplanilha_LimiteRNE);
                 }
@@ -183,7 +183,7 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsWCF
                 for (int i = 0; i < mediador.linhas_N_NE_SE.Count; i++)
                 {
                     Modulo_N_NE_apoio_LimiteEXP_SE_cenarios.AtualizarVariaveisDaMemoriaDeCalculo(memoriaCalculo, mediador.linhas_N_NE_SE[i]);
-                    memoriaCalculo = serviceClient.ExecutarObjeto(memoriaCalculo, listaDecisoes);
+                    memoriaCalculo = serviceClient.ExecutarJSONcomObjetos(memoriaCalculo, listaDecisoes);
 
                     Assert.AreEqual(Mediador.GetVariavelPorNome(memoriaCalculo, "lim").Valor, mediador.linhas_N_NE_SE[i].LDvalorplanilha_LimiteEXP_SE_Sup);
                 }
@@ -222,7 +222,7 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsWCF
                 for (int i = 0; i < mediador.linhas_N_NE_SE.Count; i++)
                 {
                     Modulo_N_NE_apoio_Limite_inf_EXP_SE_SE_EXP.AtualizarVariaveisDaMemoriaDeCalculo(memoriaCalculo, mediador.linhas_N_NE_SE[i]);
-                    memoriaCalculo = serviceClient.ExecutarObjeto(memoriaCalculo, listaDecisoes);
+                    memoriaCalculo = serviceClient.ExecutarJSONcomObjetos(memoriaCalculo, listaDecisoes);
 
                     Assert.AreEqual(Mediador.GetVariavelPorNome(memoriaCalculo, "lim").Valor, mediador.linhas_N_NE_SE[i].LDvalorplanilha_LimiteEXP_SE_Inf);
                 }
@@ -261,7 +261,7 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsWCF
                 for (int i = 0; i < mediador.linhas_N_NE_SE.Count; i++)
                 {
                     Modulo_N_NE_apoio_LimiteFSENE.AtualizarVariaveisDaMemoriaDeCalculo(memoriaCalculo, mediador.linhas_N_NE_SE[i]);
-                    memoriaCalculo = serviceClient.ExecutarObjeto(memoriaCalculo, listaDecisoes);
+                    memoriaCalculo = serviceClient.ExecutarJSONcomObjetos(memoriaCalculo, listaDecisoes);
 
                     Assert.AreEqual(Mediador.GetVariavelPorNome(memoriaCalculo, "lim").Valor, mediador.linhas_N_NE_SE[i].LDvalorplanilha_LimiteFSENE);
                 }
@@ -301,7 +301,7 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsWCF
                 for (int i = 0; i < mediador.linhas_N_NE_SE.Count; i++)
                 {
                     Modulo_Limites_MOPs_LimiteFNS_IO.AtualizarVariaveisDaMemoriaDeCalculo(memoriaCalculo, mediador.linhas_N_NE_SE[i], mediador.linhas_S_SE[i]);
-                    memoriaCalculo = serviceClient.ExecutarObjeto(memoriaCalculo, listaDecisoes);
+                    memoriaCalculo = serviceClient.ExecutarJSONcomObjetos(memoriaCalculo, listaDecisoes);
 
                     Assert.AreEqual(Mediador.GetVariavelPorNome(memoriaCalculo, "lim").Valor, mediador.linhas_N_NE_SE[i].LDvalorplanilha_LimFNS_N2);
                 }
@@ -341,7 +341,7 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsWCF
                 for (int i = 0; i < mediador.linhas_N_NE_SE.Count; i++)
                 {
                     Modulo_Limites_MOPs_Lim_Inferior_FSM.AtualizarVariaveisDaMemoriaDeCalculo(memoriaCalculo, mediador.linhas_N_NE_SE[i], mediador.linhas_S_SE[i]);
-                    memoriaCalculo = serviceClient.ExecutarObjeto(memoriaCalculo, listaDecisoes);
+                    memoriaCalculo = serviceClient.ExecutarJSONcomObjetos(memoriaCalculo, listaDecisoes);
 
                     Assert.AreEqual(Mediador.GetVariavelPorNome(memoriaCalculo, "lim").Valor, mediador.linhas_N_NE_SE[i].LDvalorplanilha_LimFSM_N2_Inf);
                 }
@@ -381,7 +381,7 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsWCF
                 for (int i = 0; i < mediador.linhas_N_NE_SE.Count; i++)
                 {
                     Modulo_Limites_MOPs_Limite_Superior_FSM.AtualizarVariaveisDaMemoriaDeCalculo(memoriaCalculo, mediador.linhas_N_NE_SE[i], mediador.linhas_S_SE[i]);
-                    memoriaCalculo = serviceClient.ExecutarObjeto(memoriaCalculo, listaDecisoes);
+                    memoriaCalculo = serviceClient.ExecutarJSONcomObjetos(memoriaCalculo, listaDecisoes);
 
                     Assert.AreEqual(Mediador.GetVariavelPorNome(memoriaCalculo, "lim").Valor, mediador.linhas_N_NE_SE[i].LDvalorplanilha_LimFSM_N2_Sup);
                 }
@@ -420,7 +420,7 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsWCF
                 for (int i = 0; i < mediador.linhas_N_NE_SE.Count; i++)
                 {
                     Modulo_N_NE_SE_semECE_RNE_2009_min_Xingo.AtualizarVariaveisDaMemoriaDeCalculo(memoriaCalculo, mediador.linhas_N_NE_SE[i]);
-                    memoriaCalculo = serviceClient.ExecutarObjeto(memoriaCalculo, listaDecisoes);
+                    memoriaCalculo = serviceClient.ExecutarJSONcomObjetos(memoriaCalculo, listaDecisoes);
 
                     Assert.AreEqual(Mediador.GetVariavelPorNome(memoriaCalculo, "maqs").Valor, mediador.linhas_N_NE_SE[i].LDvalorplanilha_Xingo_MinMaqs);
                 }
@@ -460,7 +460,7 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsWCF
                 for (int i = 0; i < mediador.linhas_N_NE_SE.Count; i++)
                 {
                     Modulo_Horarios_RNE_2009_PeriodoCarga_N_NE.AtualizarVariaveisDaMemoriaDeCalculo(memoriaCalculo, mediador.linhas_N_NE_SE[i], "Terça-Feira", "ÚTIL", "NORMAL");
-                    memoriaCalculo = serviceClient.ExecutarObjeto(memoriaCalculo, listaDecisoes);
+                    memoriaCalculo = serviceClient.ExecutarJSONcomObjetos(memoriaCalculo, listaDecisoes);
 
                     Assert.AreEqual(Mediador.GetVariavelPorNome(memoriaCalculo, "PeriodoCarga_N_NE").Valor, mediador.linhas_N_NE_SE[i].LDvalorplanilha_PerCargaNNE);
                 }
@@ -499,7 +499,7 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsWCF
                 for (int i = 0; i < mediador.linhas_S_SE.Count; i++)
                 {
                     Modulo_PERIODO_SE_CO_RNE_2009_PeriodoCarga_SE_CO.AtualizarVariaveisDaMemoriaDeCalculo(memoriaCalculo, mediador.linhas_S_SE[i], "Terça-Feira", "ÚTIL", "NORMAL");
-                    memoriaCalculo = serviceClient.ExecutarObjeto(memoriaCalculo, listaDecisoes);
+                    memoriaCalculo = serviceClient.ExecutarJSONcomObjetos(memoriaCalculo, listaDecisoes);
 
                     Assert.AreEqual(Mediador.GetVariavelPorNome(memoriaCalculo, "PeriodoCarga_SE_CO").Valor, mediador.linhas_S_SE[i].LDretorno_PERIODO_DE_CARGA);
                 }

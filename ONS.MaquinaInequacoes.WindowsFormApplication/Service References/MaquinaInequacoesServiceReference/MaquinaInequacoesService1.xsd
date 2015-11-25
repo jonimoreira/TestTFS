@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ONS.MaquinaInequacoes.Service.DataContracts" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ONS.MaquinaInequacoes.Service.DataContracts" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://localhost:2562/MaquinaInequacoesService.svc?xsd=xsd0" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="Variavel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Nome" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TipoDado" type="tns:TipoDado" />
+      <xs:element minOccurs="0" name="Valor" nillable="true" type="xs:anyType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Variavel" nillable="true" type="tns:Variavel" />
   <xs:simpleType name="TipoDado">
     <xs:restriction base="xs:string">
       <xs:enumeration value="Numerico">
@@ -46,14 +54,13 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfVariavel" nillable="true" type="tns:ArrayOfVariavel" />
-  <xs:complexType name="Variavel">
+  <xs:complexType name="Decisao">
     <xs:sequence>
-      <xs:element minOccurs="0" name="Nome" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="TipoDado" type="tns:TipoDado" />
-      <xs:element minOccurs="0" name="Valor" nillable="true" type="xs:anyType" />
+      <xs:element minOccurs="0" name="BlocoDeAcao" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Inequacao" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="Variavel" nillable="true" type="tns:Variavel" />
+  <xs:element name="Decisao" nillable="true" type="tns:Decisao" />
   <xs:complexType name="ListaDecisoes">
     <xs:sequence>
       <xs:element minOccurs="0" name="Decisoes" nillable="true" type="tns:ArrayOfDecisao" />
@@ -66,11 +73,4 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfDecisao" nillable="true" type="tns:ArrayOfDecisao" />
-  <xs:complexType name="Decisao">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="BlocoDeAcao" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Inequacao" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="Decisao" nillable="true" type="tns:Decisao" />
 </xs:schema>

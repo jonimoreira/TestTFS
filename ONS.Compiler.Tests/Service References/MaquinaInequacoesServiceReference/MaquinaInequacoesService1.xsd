@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://localhost:2562/MaquinaInequacoesService.svc?xsd=xsd1" namespace="http://schemas.datacontract.org/2004/07/ONS.MaquinaInequacoes.Service.DataContracts" />
-  <xs:element name="ExecutarJSON">
+  <xs:element name="ExecutarJSONcomGPL">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="memoriaCalculo" nillable="true" type="xs:string" />
@@ -9,29 +9,14 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="ExecutarJSONResponse">
+  <xs:element name="ExecutarJSONcomGPLResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="ExecutarJSONResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ExecutarJSONcomGPLResult" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="ExecutarXML">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="memoriaCalculo" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="listaDecisoes" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="ExecutarXMLResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="ExecutarXMLResult" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="ExecutarString">
+  <xs:element name="ExecutarXMLcomGPL">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="memoriaCalculo" nillable="true" type="xs:string" />
@@ -39,14 +24,14 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="ExecutarStringResponse">
+  <xs:element name="ExecutarXMLcomGPLResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="ExecutarStringResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ExecutarXMLcomGPLResult" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="ExecutarObjeto">
+  <xs:element name="ExecutarJSONcomObjetos">
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/ONS.MaquinaInequacoes.Service.DataContracts" minOccurs="0" name="memoriaCalculo" nillable="true" type="q1:MemoriaCalculo" />
@@ -54,10 +39,25 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="ExecutarObjetoResponse">
+  <xs:element name="ExecutarJSONcomObjetosResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/ONS.MaquinaInequacoes.Service.DataContracts" minOccurs="0" name="ExecutarObjetoResult" nillable="true" type="q3:MemoriaCalculo" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/ONS.MaquinaInequacoes.Service.DataContracts" minOccurs="0" name="ExecutarJSONcomObjetosResult" nillable="true" type="q3:MemoriaCalculo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ExecutarXMLcomObjetos">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/ONS.MaquinaInequacoes.Service.DataContracts" minOccurs="0" name="memoriaCalculo" nillable="true" type="q4:MemoriaCalculo" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/ONS.MaquinaInequacoes.Service.DataContracts" minOccurs="0" name="listaDecisoes" nillable="true" type="q5:ListaDecisoes" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ExecutarXMLcomObjetosResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/ONS.MaquinaInequacoes.Service.DataContracts" minOccurs="0" name="ExecutarXMLcomObjetosResult" nillable="true" type="q6:MemoriaCalculo" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

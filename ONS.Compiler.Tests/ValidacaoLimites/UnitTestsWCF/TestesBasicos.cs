@@ -25,7 +25,7 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsWCF
             try
             {
                 // call the service method getdata
-                var response = serviceClient.ExecutarString(memoriaCalculo, listaDecisoes);
+                var response = serviceClient.ExecutarJSONcomGPL(memoriaCalculo, listaDecisoes);
             }
             catch (Exception iEx)
             {
@@ -73,7 +73,7 @@ namespace ONS.Compiler.Tests.ValidacaoLimites.UnitTestsWCF
 
             try
             {
-                memoriaCalculo = serviceClient.ExecutarObjeto(memoriaCalculo, listaDecisoes);
+                memoriaCalculo = serviceClient.ExecutarJSONcomObjetos(memoriaCalculo, listaDecisoes);
 
                 Assert.AreEqual(memoriaCalculo.Variaveis[0].Valor, 0.0);
                 Assert.AreEqual(memoriaCalculo.Variaveis[1].Valor, -1.0);

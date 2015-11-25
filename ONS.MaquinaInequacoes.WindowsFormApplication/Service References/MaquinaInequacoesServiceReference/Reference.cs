@@ -67,9 +67,9 @@ namespace ONS.MaquinaInequacoes.WindowsFormApplication.MaquinaInequacoesServiceR
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ONS.MaquinaInequacoes.WindowsFormApplication.MaquinaInequacoesServiceReference.TipoDado))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ONS.MaquinaInequacoes.WindowsFormApplication.MaquinaInequacoesServiceReference.MemoriaCalculo))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ONS.MaquinaInequacoes.WindowsFormApplication.MaquinaInequacoesServiceReference.Variavel[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ONS.MaquinaInequacoes.WindowsFormApplication.MaquinaInequacoesServiceReference.Decisao))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ONS.MaquinaInequacoes.WindowsFormApplication.MaquinaInequacoesServiceReference.ListaDecisoes))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ONS.MaquinaInequacoes.WindowsFormApplication.MaquinaInequacoesServiceReference.Decisao[]))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ONS.MaquinaInequacoes.WindowsFormApplication.MaquinaInequacoesServiceReference.Decisao))]
     public partial class Variavel : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
@@ -163,52 +163,6 @@ namespace ONS.MaquinaInequacoes.WindowsFormApplication.MaquinaInequacoesServiceR
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ListaDecisoes", Namespace="http://schemas.datacontract.org/2004/07/ONS.MaquinaInequacoes.Service.DataContrac" +
-        "ts")]
-    [System.SerializableAttribute()]
-    public partial class ListaDecisoes : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private ONS.MaquinaInequacoes.WindowsFormApplication.MaquinaInequacoesServiceReference.Decisao[] DecisoesField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public ONS.MaquinaInequacoes.WindowsFormApplication.MaquinaInequacoesServiceReference.Decisao[] Decisoes {
-            get {
-                return this.DecisoesField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.DecisoesField, value) != true)) {
-                    this.DecisoesField = value;
-                    this.RaisePropertyChanged("Decisoes");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Decisao", Namespace="http://schemas.datacontract.org/2004/07/ONS.MaquinaInequacoes.Service.DataContrac" +
         "ts")]
     [System.SerializableAttribute()]
@@ -269,33 +223,79 @@ namespace ONS.MaquinaInequacoes.WindowsFormApplication.MaquinaInequacoesServiceR
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ListaDecisoes", Namespace="http://schemas.datacontract.org/2004/07/ONS.MaquinaInequacoes.Service.DataContrac" +
+        "ts")]
+    [System.SerializableAttribute()]
+    public partial class ListaDecisoes : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private ONS.MaquinaInequacoes.WindowsFormApplication.MaquinaInequacoesServiceReference.Decisao[] DecisoesField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public ONS.MaquinaInequacoes.WindowsFormApplication.MaquinaInequacoesServiceReference.Decisao[] Decisoes {
+            get {
+                return this.DecisoesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DecisoesField, value) != true)) {
+                    this.DecisoesField = value;
+                    this.RaisePropertyChanged("Decisoes");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="MaquinaInequacoesServiceReference.IMaquinaInequacoesService")]
     public interface IMaquinaInequacoesService {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMaquinaInequacoesService/ExecutarJSON", ReplyAction="http://tempuri.org/IMaquinaInequacoesService/ExecutarJSONResponse")]
-        string ExecutarJSON(string memoriaCalculo, string listaDecisoes);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMaquinaInequacoesService/ExecutarJSONcomGPL", ReplyAction="http://tempuri.org/IMaquinaInequacoesService/ExecutarJSONcomGPLResponse")]
+        string ExecutarJSONcomGPL(string memoriaCalculo, string listaDecisoes);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMaquinaInequacoesService/ExecutarJSON", ReplyAction="http://tempuri.org/IMaquinaInequacoesService/ExecutarJSONResponse")]
-        System.Threading.Tasks.Task<string> ExecutarJSONAsync(string memoriaCalculo, string listaDecisoes);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMaquinaInequacoesService/ExecutarJSONcomGPL", ReplyAction="http://tempuri.org/IMaquinaInequacoesService/ExecutarJSONcomGPLResponse")]
+        System.Threading.Tasks.Task<string> ExecutarJSONcomGPLAsync(string memoriaCalculo, string listaDecisoes);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMaquinaInequacoesService/ExecutarXML", ReplyAction="http://tempuri.org/IMaquinaInequacoesService/ExecutarXMLResponse")]
-        string ExecutarXML(string memoriaCalculo, string listaDecisoes);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMaquinaInequacoesService/ExecutarXMLcomGPL", ReplyAction="http://tempuri.org/IMaquinaInequacoesService/ExecutarXMLcomGPLResponse")]
+        string ExecutarXMLcomGPL(string memoriaCalculo, string listaDecisoes);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMaquinaInequacoesService/ExecutarXML", ReplyAction="http://tempuri.org/IMaquinaInequacoesService/ExecutarXMLResponse")]
-        System.Threading.Tasks.Task<string> ExecutarXMLAsync(string memoriaCalculo, string listaDecisoes);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMaquinaInequacoesService/ExecutarXMLcomGPL", ReplyAction="http://tempuri.org/IMaquinaInequacoesService/ExecutarXMLcomGPLResponse")]
+        System.Threading.Tasks.Task<string> ExecutarXMLcomGPLAsync(string memoriaCalculo, string listaDecisoes);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMaquinaInequacoesService/ExecutarString", ReplyAction="http://tempuri.org/IMaquinaInequacoesService/ExecutarStringResponse")]
-        string ExecutarString(string memoriaCalculo, string listaDecisoes);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMaquinaInequacoesService/ExecutarJSONcomObjetos", ReplyAction="http://tempuri.org/IMaquinaInequacoesService/ExecutarJSONcomObjetosResponse")]
+        ONS.MaquinaInequacoes.WindowsFormApplication.MaquinaInequacoesServiceReference.MemoriaCalculo ExecutarJSONcomObjetos(ONS.MaquinaInequacoes.WindowsFormApplication.MaquinaInequacoesServiceReference.MemoriaCalculo memoriaCalculo, ONS.MaquinaInequacoes.WindowsFormApplication.MaquinaInequacoesServiceReference.ListaDecisoes listaDecisoes);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMaquinaInequacoesService/ExecutarString", ReplyAction="http://tempuri.org/IMaquinaInequacoesService/ExecutarStringResponse")]
-        System.Threading.Tasks.Task<string> ExecutarStringAsync(string memoriaCalculo, string listaDecisoes);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMaquinaInequacoesService/ExecutarJSONcomObjetos", ReplyAction="http://tempuri.org/IMaquinaInequacoesService/ExecutarJSONcomObjetosResponse")]
+        System.Threading.Tasks.Task<ONS.MaquinaInequacoes.WindowsFormApplication.MaquinaInequacoesServiceReference.MemoriaCalculo> ExecutarJSONcomObjetosAsync(ONS.MaquinaInequacoes.WindowsFormApplication.MaquinaInequacoesServiceReference.MemoriaCalculo memoriaCalculo, ONS.MaquinaInequacoes.WindowsFormApplication.MaquinaInequacoesServiceReference.ListaDecisoes listaDecisoes);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMaquinaInequacoesService/ExecutarObjeto", ReplyAction="http://tempuri.org/IMaquinaInequacoesService/ExecutarObjetoResponse")]
-        ONS.MaquinaInequacoes.WindowsFormApplication.MaquinaInequacoesServiceReference.MemoriaCalculo ExecutarObjeto(ONS.MaquinaInequacoes.WindowsFormApplication.MaquinaInequacoesServiceReference.MemoriaCalculo memoriaCalculo, ONS.MaquinaInequacoes.WindowsFormApplication.MaquinaInequacoesServiceReference.ListaDecisoes listaDecisoes);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMaquinaInequacoesService/ExecutarXMLcomObjetos", ReplyAction="http://tempuri.org/IMaquinaInequacoesService/ExecutarXMLcomObjetosResponse")]
+        ONS.MaquinaInequacoes.WindowsFormApplication.MaquinaInequacoesServiceReference.MemoriaCalculo ExecutarXMLcomObjetos(ONS.MaquinaInequacoes.WindowsFormApplication.MaquinaInequacoesServiceReference.MemoriaCalculo memoriaCalculo, ONS.MaquinaInequacoes.WindowsFormApplication.MaquinaInequacoesServiceReference.ListaDecisoes listaDecisoes);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMaquinaInequacoesService/ExecutarObjeto", ReplyAction="http://tempuri.org/IMaquinaInequacoesService/ExecutarObjetoResponse")]
-        System.Threading.Tasks.Task<ONS.MaquinaInequacoes.WindowsFormApplication.MaquinaInequacoesServiceReference.MemoriaCalculo> ExecutarObjetoAsync(ONS.MaquinaInequacoes.WindowsFormApplication.MaquinaInequacoesServiceReference.MemoriaCalculo memoriaCalculo, ONS.MaquinaInequacoes.WindowsFormApplication.MaquinaInequacoesServiceReference.ListaDecisoes listaDecisoes);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMaquinaInequacoesService/ExecutarXMLcomObjetos", ReplyAction="http://tempuri.org/IMaquinaInequacoesService/ExecutarXMLcomObjetosResponse")]
+        System.Threading.Tasks.Task<ONS.MaquinaInequacoes.WindowsFormApplication.MaquinaInequacoesServiceReference.MemoriaCalculo> ExecutarXMLcomObjetosAsync(ONS.MaquinaInequacoes.WindowsFormApplication.MaquinaInequacoesServiceReference.MemoriaCalculo memoriaCalculo, ONS.MaquinaInequacoes.WindowsFormApplication.MaquinaInequacoesServiceReference.ListaDecisoes listaDecisoes);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -325,36 +325,36 @@ namespace ONS.MaquinaInequacoes.WindowsFormApplication.MaquinaInequacoesServiceR
                 base(binding, remoteAddress) {
         }
         
-        public string ExecutarJSON(string memoriaCalculo, string listaDecisoes) {
-            return base.Channel.ExecutarJSON(memoriaCalculo, listaDecisoes);
+        public string ExecutarJSONcomGPL(string memoriaCalculo, string listaDecisoes) {
+            return base.Channel.ExecutarJSONcomGPL(memoriaCalculo, listaDecisoes);
         }
         
-        public System.Threading.Tasks.Task<string> ExecutarJSONAsync(string memoriaCalculo, string listaDecisoes) {
-            return base.Channel.ExecutarJSONAsync(memoriaCalculo, listaDecisoes);
+        public System.Threading.Tasks.Task<string> ExecutarJSONcomGPLAsync(string memoriaCalculo, string listaDecisoes) {
+            return base.Channel.ExecutarJSONcomGPLAsync(memoriaCalculo, listaDecisoes);
         }
         
-        public string ExecutarXML(string memoriaCalculo, string listaDecisoes) {
-            return base.Channel.ExecutarXML(memoriaCalculo, listaDecisoes);
+        public string ExecutarXMLcomGPL(string memoriaCalculo, string listaDecisoes) {
+            return base.Channel.ExecutarXMLcomGPL(memoriaCalculo, listaDecisoes);
         }
         
-        public System.Threading.Tasks.Task<string> ExecutarXMLAsync(string memoriaCalculo, string listaDecisoes) {
-            return base.Channel.ExecutarXMLAsync(memoriaCalculo, listaDecisoes);
+        public System.Threading.Tasks.Task<string> ExecutarXMLcomGPLAsync(string memoriaCalculo, string listaDecisoes) {
+            return base.Channel.ExecutarXMLcomGPLAsync(memoriaCalculo, listaDecisoes);
         }
         
-        public string ExecutarString(string memoriaCalculo, string listaDecisoes) {
-            return base.Channel.ExecutarString(memoriaCalculo, listaDecisoes);
+        public ONS.MaquinaInequacoes.WindowsFormApplication.MaquinaInequacoesServiceReference.MemoriaCalculo ExecutarJSONcomObjetos(ONS.MaquinaInequacoes.WindowsFormApplication.MaquinaInequacoesServiceReference.MemoriaCalculo memoriaCalculo, ONS.MaquinaInequacoes.WindowsFormApplication.MaquinaInequacoesServiceReference.ListaDecisoes listaDecisoes) {
+            return base.Channel.ExecutarJSONcomObjetos(memoriaCalculo, listaDecisoes);
         }
         
-        public System.Threading.Tasks.Task<string> ExecutarStringAsync(string memoriaCalculo, string listaDecisoes) {
-            return base.Channel.ExecutarStringAsync(memoriaCalculo, listaDecisoes);
+        public System.Threading.Tasks.Task<ONS.MaquinaInequacoes.WindowsFormApplication.MaquinaInequacoesServiceReference.MemoriaCalculo> ExecutarJSONcomObjetosAsync(ONS.MaquinaInequacoes.WindowsFormApplication.MaquinaInequacoesServiceReference.MemoriaCalculo memoriaCalculo, ONS.MaquinaInequacoes.WindowsFormApplication.MaquinaInequacoesServiceReference.ListaDecisoes listaDecisoes) {
+            return base.Channel.ExecutarJSONcomObjetosAsync(memoriaCalculo, listaDecisoes);
         }
         
-        public ONS.MaquinaInequacoes.WindowsFormApplication.MaquinaInequacoesServiceReference.MemoriaCalculo ExecutarObjeto(ONS.MaquinaInequacoes.WindowsFormApplication.MaquinaInequacoesServiceReference.MemoriaCalculo memoriaCalculo, ONS.MaquinaInequacoes.WindowsFormApplication.MaquinaInequacoesServiceReference.ListaDecisoes listaDecisoes) {
-            return base.Channel.ExecutarObjeto(memoriaCalculo, listaDecisoes);
+        public ONS.MaquinaInequacoes.WindowsFormApplication.MaquinaInequacoesServiceReference.MemoriaCalculo ExecutarXMLcomObjetos(ONS.MaquinaInequacoes.WindowsFormApplication.MaquinaInequacoesServiceReference.MemoriaCalculo memoriaCalculo, ONS.MaquinaInequacoes.WindowsFormApplication.MaquinaInequacoesServiceReference.ListaDecisoes listaDecisoes) {
+            return base.Channel.ExecutarXMLcomObjetos(memoriaCalculo, listaDecisoes);
         }
         
-        public System.Threading.Tasks.Task<ONS.MaquinaInequacoes.WindowsFormApplication.MaquinaInequacoesServiceReference.MemoriaCalculo> ExecutarObjetoAsync(ONS.MaquinaInequacoes.WindowsFormApplication.MaquinaInequacoesServiceReference.MemoriaCalculo memoriaCalculo, ONS.MaquinaInequacoes.WindowsFormApplication.MaquinaInequacoesServiceReference.ListaDecisoes listaDecisoes) {
-            return base.Channel.ExecutarObjetoAsync(memoriaCalculo, listaDecisoes);
+        public System.Threading.Tasks.Task<ONS.MaquinaInequacoes.WindowsFormApplication.MaquinaInequacoesServiceReference.MemoriaCalculo> ExecutarXMLcomObjetosAsync(ONS.MaquinaInequacoes.WindowsFormApplication.MaquinaInequacoesServiceReference.MemoriaCalculo memoriaCalculo, ONS.MaquinaInequacoes.WindowsFormApplication.MaquinaInequacoesServiceReference.ListaDecisoes listaDecisoes) {
+            return base.Channel.ExecutarXMLcomObjetosAsync(memoriaCalculo, listaDecisoes);
         }
     }
 }
