@@ -12,7 +12,7 @@ namespace ONS.MaquinaInequacoes.Service.SelfHost
     {
         static void Main(string[] args)
         {
-            Uri baseAddress = new Uri("http://localhost:8080/MaquinaInequacoes");
+            Uri baseAddress = new Uri("http://localhost:8080/MaquinaInequacoesSelfHost");
 
             using (ServiceHost host = new ServiceHost(typeof(MaquinaInequacoesService), baseAddress))
             {
